@@ -109,10 +109,10 @@ Site **one-page, mobile-first** (80%+ du trafic depuis Instagram Stories). Chaqu
 
 | Document | Description |
 |----------|-------------|
-| [Brainstorming](/_bmad-output/brainstorming/brainstorming-session-2026-01-31.md) | Session initiale — 54 idées, 4 phases d'analyse |
-| [Product Brief](/_bmad-output/planning-artifacts/product-brief-slow-adventures-2026-02-03.md) | Vision produit, personas, métriques, scope MVP |
-| [UX Design Spec](/_bmad-output/planning-artifacts/ux-design-specification.md) | Spécification UX complète, parcours, composants |
-| [UX Directions](/_bmad-output/planning-artifacts/ux-design-directions.html) | Explorations visuelles et directions de design |
+| [Brainstorming](/docs/brainstorming/brainstorming-session-2026-01-31.md) | Session initiale — 54 idées, 4 phases d'analyse |
+| [Product Brief](/docs/planning-artifacts/product-brief-slow-adventures-2026-02-03.md) | Vision produit, personas, métriques, scope MVP |
+| [UX Design Spec](/docs/planning-artifacts/ux-design-specification.md) | Spécification UX complète, parcours, composants |
+| [UX Directions](/docs/planning-artifacts/ux-design-directions.html) | Explorations visuelles et directions de design |
 
 ## Avancement
 

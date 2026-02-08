@@ -17,8 +17,8 @@ Service de création de voyages immersifs aux Amériques, fondé par Elena Dolla
 
 ### Elena
 
-- Instagram Slow Adventures : [@slow_adventures_](https://instagram.com/slow_adventures_)
-- Instagram Voyage : [@faistesvalises___](https://instagram.com/faistesvalises___)
+- Instagram Slow Adventures : [@slow*adventures*](https://instagram.com/slow_adventures_)
+- Instagram Voyage : [@faistesvalises\_\_\_](https://instagram.com/faistesvalises___)
 - Instagram Personnel : [@pearow](https://instagram.com/pearow)
 - LinkedIn : [Elena Dolla](https://www.linkedin.com/in/elena-dolla-433884173/)
 - WeRoad : [Profil Coordinatrice](https://www.weroad.fr/coordinateurs/elena-dolla-1)
@@ -35,12 +35,12 @@ Service de création de voyages immersifs aux Amériques, fondé par Elena Dolla
 
 ### Cibles principales
 
-| Persona | Profil | Doute principal |
-|---------|--------|-----------------|
-| **Camille** (priorité lancement) | 34 ans, CSP+ self-made, voyageuse DIY fatiguée | "Elle va comprendre ce qu'on aime ?" |
-| **Antoine** | 29 ans, veut passer un cap vers les Amériques | "Elle connaît vraiment ce pays ?" |
-| **Nathalie** | 41 ans, déclencheur de vie, premier solo | "C'est safe ? Elle va comprendre ?" |
-| **Thomas** (B2B, post-MVP) | CEO startup, séminaire corporate | "Assez structurée pour 35 personnes ?" |
+| Persona                          | Profil                                         | Doute principal                        |
+| -------------------------------- | ---------------------------------------------- | -------------------------------------- |
+| **Camille** (priorité lancement) | 34 ans, CSP+ self-made, voyageuse DIY fatiguée | "Elle va comprendre ce qu'on aime ?"   |
+| **Antoine**                      | 29 ans, veut passer un cap vers les Amériques  | "Elle connaît vraiment ce pays ?"      |
+| **Nathalie**                     | 41 ans, déclencheur de vie, premier solo       | "C'est safe ? Elle va comprendre ?"    |
+| **Thomas** (B2B, post-MVP)       | CEO startup, séminaire corporate               | "Assez structurée pour 35 personnes ?" |
 
 ### Pricing
 
@@ -85,11 +85,11 @@ Site **one-page, mobile-first** (80%+ du trafic depuis Instagram Stories). Chaqu
 
 ### Palette
 
-| Rôle | Couleur | Hex |
-|------|---------|-----|
-| Primary (terracotta chaud) | 🟠 | `#c0603e` |
-| Secondary (bleu vif) | 🔵 | `#1696ff` |
-| Background (crème chaud) | ⬜ | `#fff9f3` |
+| Rôle                       | Couleur | Hex       |
+| -------------------------- | ------- | --------- |
+| Primary (terracotta chaud) | 🟠      | `#c0603e` |
+| Secondary (bleu vif)       | 🔵      | `#1696ff` |
+| Background (crème chaud)   | ⬜      | `#fff9f3` |
 
 ### Système de communication
 
@@ -107,12 +107,12 @@ Site **one-page, mobile-first** (80%+ du trafic depuis Instagram Stories). Chaqu
 
 ## Documentation projet
 
-| Document | Description |
-|----------|-------------|
-| [Brainstorming](/docs/brainstorming/brainstorming-session-2026-01-31.md) | Session initiale — 54 idées, 4 phases d'analyse |
-| [Product Brief](/docs/planning-artifacts/product-brief-slow-adventures-2026-02-03.md) | Vision produit, personas, métriques, scope MVP |
-| [UX Design Spec](/docs/planning-artifacts/ux-design-specification.md) | Spécification UX complète, parcours, composants |
-| [UX Directions](/docs/planning-artifacts/ux-design-directions.html) | Explorations visuelles et directions de design |
+| Document                                                                              | Description                                     |
+| ------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| [Brainstorming](/docs/brainstorming/brainstorming-session-2026-01-31.md)              | Session initiale — 54 idées, 4 phases d'analyse |
+| [Product Brief](/docs/planning-artifacts/product-brief-slow-adventures-2026-02-03.md) | Vision produit, personas, métriques, scope MVP  |
+| [UX Design Spec](/docs/planning-artifacts/ux-design-specification.md)                 | Spécification UX complète, parcours, composants |
+| [UX Directions](/docs/planning-artifacts/ux-design-directions.html)                   | Explorations visuelles et directions de design  |
 
 ## Avancement
 
@@ -121,19 +121,21 @@ Site **one-page, mobile-first** (80%+ du trafic depuis Instagram Stories). Chaqu
 - [x] Brainstorming (54 idées, business model, acquisition, pricing)
 - [x] Product Brief (vision, personas, métriques, MVP scope)
 - [x] UX Design (spec complète, mobile-first, système de communication)
-- [ ] PRD détaillé
-- [ ] Architecture technique
+- [ ] Architecture
 - [ ] Epics & Stories
+- [ ] Readiness Check
+- [ ] Sprint Planning
+- [ ] Dev
 
 ### Prochaines étapes
 
-| Étape | Workflow | Agent | Description |
-|-------|----------|-------|-------------|
-| 1. Architecture | `/bmad-bmm-create-architecture` | Winston | Décisions techniques : structure Astro, Brevo API, Calendly embed, hébergement, CI/CD |
-| 2. Epics & Stories | `/bmad-bmm-create-epics-and-stories` | John | Transformer PRD + Architecture + UX en user stories implémentables |
-| 3. Readiness Check | `/bmad-bmm-check-implementation-readiness` | Winston | Valider que tout est aligné avant de coder |
-| 4. Sprint Planning | `/bmad-bmm-sprint-planning` | Bob | Planifier l'implémentation |
-| 5. Dev | `/bmad-bmm-dev-story` | Amelia | Implémenter story par story |
+| Étape              | Workflow                                   | Agent   | Description                                                                           |
+| ------------------ | ------------------------------------------ | ------- | ------------------------------------------------------------------------------------- |
+| 1. Architecture    | `/bmad-bmm-create-architecture`            | Winston | Décisions techniques : structure Astro, Brevo API, Calendly embed, hébergement, CI/CD |
+| 2. Epics & Stories | `/bmad-bmm-create-epics-and-stories`       | John    | Transformer PRD + Architecture + UX en user stories implémentables                    |
+| 3. Readiness Check | `/bmad-bmm-check-implementation-readiness` | Winston | Valider que tout est aligné avant de coder                                            |
+| 4. Sprint Planning | `/bmad-bmm-sprint-planning`                | Bob     | Planifier l'implémentation                                                            |
+| 5. Dev             | `/bmad-bmm-dev-story`                      | Amelia  | Implémenter story par story                                                           |
 
 ## Installation
 

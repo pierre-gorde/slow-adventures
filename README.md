@@ -125,10 +125,15 @@ Site **one-page, mobile-first** (80%+ du trafic depuis Instagram Stories). Chaqu
 - [ ] Architecture technique
 - [ ] Epics & Stories
 
-### Phase Implémentation
+### Prochaines étapes
 
-- [ ] Sprint planning
-- [ ] Développement des stories
+| Étape | Workflow | Agent | Description |
+|-------|----------|-------|-------------|
+| 1. Architecture | `/bmad-bmm-create-architecture` | Winston | Décisions techniques : structure Astro, Brevo API, Calendly embed, hébergement, CI/CD |
+| 2. Epics & Stories | `/bmad-bmm-create-epics-and-stories` | John | Transformer PRD + Architecture + UX en user stories implémentables |
+| 3. Readiness Check | `/bmad-bmm-check-implementation-readiness` | Winston | Valider que tout est aligné avant de coder |
+| 4. Sprint Planning | `/bmad-bmm-sprint-planning` | Bob | Planifier l'implémentation |
+| 5. Dev | `/bmad-bmm-dev-story` | Amelia | Implémenter story par story |
 
 ## Installation
 

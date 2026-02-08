@@ -1,114 +1,134 @@
-# Slow Adventures 🌍
+<p align="center">
+  <img src="assets/logo.png" alt="Slow Adventures — Spécialiste des Amériques" width="400">
+</p>
 
-Travel planner moderne développé en TypeScript pour créer des expériences de voyage sur-mesure.
+<p align="center">
+  <em>Porté par la passion — Des rêves habités, ni travel planner classique, ni agence.</em>
+</p>
+
+---
+
+Service de création de voyages immersifs aux Amériques, fondé par Elena Dolla — spécialiste du slow travel. Le site web sert de vitrine de crédibilité dans le parcours **Instagram → Site → Contact**, transformant l'hésitation des visiteurs en confiance.
 
 ## L'équipe
 
-- **Elena Dolla** - Travel Planner & Expert Voyage
-- **Pierre Gordé** - Développeur
+- **Elena Dolla** — Travel Planner, créatrice de voyages immersifs & fondatrice
+- **Pierre Gordé** — Développeur
 
-## À propos d'Elena
+### Elena
 
-Elena est une travel planner expérimentée, coordinatrice WeRoad et créatrice de contenu voyage.
+- Instagram Slow Adventures : [@slow_adventures_](https://instagram.com/slow_adventures_)
+- Instagram Voyage : [@faistesvalises___](https://instagram.com/faistesvalises___)
+- Instagram Personnel : [@pearow](https://instagram.com/pearow)
+- LinkedIn : [Elena Dolla](https://www.linkedin.com/in/elena-dolla-433884173/)
+- WeRoad : [Profil Coordinatrice](https://www.weroad.fr/coordinateurs/elena-dolla-1)
+- Malt : [Profil Freelance](https://www.malt.fr/profile/elenalorquindolla)
 
-- Instagram Slow Adventures: [@slow*adventures*](https://instagram.com/slow_adventures_)
-- Instagram Voyage: [@faistesvalises\_\_\_](https://instagram.com/faistesvalises___)
-- Instagram Personnel: [@pearow](https://instagram.com/pearow)
-- LinkedIn: [Elena Dolla](https://www.linkedin.com/in/elena-dolla-433884173/)
-- WeRoad: [Profil Coordinatrice](https://www.weroad.fr/coordinateurs/elena-dolla-1)
-- Malt: [Profil Freelance](https://www.malt.fr/profile/elenalorquindolla)
+## Le concept
 
-## Workflows BMAD recommandés
+**Slow Adventures crée une catégorie nouvelle : les "rêves habités".**
 
-Séquence de workflows pour développer le site Slow Adventures :
+- Spécialisation Amériques par passion vécue, pas par stratégie marketing
+- Accompagnement humain et incarné — Elena = le produit
+- Transparence totale sur le pricing (anti-agence classique)
+- Double promesse sur chaque interaction : **rassurer ET faire rêver**
+
+### Cibles principales
+
+| Persona | Profil | Doute principal |
+|---------|--------|-----------------|
+| **Camille** (priorité lancement) | 34 ans, CSP+ self-made, voyageuse DIY fatiguée | "Elle va comprendre ce qu'on aime ?" |
+| **Antoine** | 29 ans, veut passer un cap vers les Amériques | "Elle connaît vraiment ce pays ?" |
+| **Nathalie** | 41 ans, déclencheur de vie, premier solo | "C'est safe ? Elle va comprendre ?" |
+| **Thomas** (B2B, post-MVP) | CEO startup, séminaire corporate | "Assez structurée pour 35 personnes ?" |
+
+### Pricing
+
+À partir de **300€** — Acompte 100€ au lancement, solde 200€ avant départ.
+Early bird : **-100€** pour les premiers clients.
+
+## Le site — MVP
+
+Site **one-page, mobile-first** (80%+ du trafic depuis Instagram Stories). Chaque section joue un double rôle : rassurer ET faire rêver.
+
+### Sections
+
+1. **Hero** — Photo immersive plein écran + parallax + tagline + CTA
+2. **Elena** — Storytelling anti-doute : qui elle est, pourquoi les Amériques
+3. **Concept** — "Rêves habités" : positionnement et différenciation
+4. **Destinations** — Aperçu visuel des Amériques, photos personnelles
+5. **Pricing** — Transparent, process en 3 étapes
+6. **Témoignages** — Social proof (bootstrappé si nécessaire)
+7. **CTA récurrent** — "20 min, gratuit, sans engagement" → Calendly
+8. **Capture email** — "Reçois nos inspirations voyage" → Brevo
+9. **Footer** — Liens Instagram, mentions légales
+
+### Critères de succès MVP
+
+- Parcours Insta → Site → CTA → Calendly sans friction
+- Au moins 1 discovery call réservée via le site en 2 mois
+- Taux de rebond < 70%
+- Go/No-Go : 3+ discovery calls en 3 mois → blog + SEO
+
+## Stack technique
+
+- **Astro** — SSG, performance native, SEO excellent, islands architecture
+- **TypeScript** — Type safety et maintenabilité
+- Mobile-first responsive design
+- Core Web Vitals optimisés (LCP < 2.5s, FID < 100ms, CLS < 0.1)
+- Images WebP, lazy loading, code splitting
+- SEO : meta tags, Schema.org (LocalBusiness + TravelAgency), sitemap XML
+- Google Analytics : tracking visites, rebond, clics CTA, sources UTM
+- Micro-animations : fade-in au scroll, parallax Hero, hover CTA
+
+## Design
+
+### Palette
+
+| Rôle | Couleur | Hex |
+|------|---------|-----|
+| Primary (terracotta chaud) | 🟠 | `#c0603e` |
+| Secondary (bleu vif) | 🔵 | `#1696ff` |
+| Background (crème chaud) | ⬜ | `#fff9f3` |
+
+### Système de communication
+
+- **Tagline** : "Porté par la passion"
+- **CTA principal** : "Confiez-nous votre prochain rêve"
+- **Sous-CTA** : "20 min, gratuit, sans engagement"
+
+### Principes UX
+
+- Le scroll est le storytelling — descente douce vers la confiance
+- Transition seamless Instagram → Site (même univers visuel)
+- Touch-first : scroll naturel, tap CTA, pas de hover complexe sur mobile
+- Chargement instantané (< 2s) — un chargement lent tue le rêve
+- Concis et impactant : chaque mot compte, zéro pavé
+
+## Documentation projet
+
+| Document | Description |
+|----------|-------------|
+| [Brainstorming](/_bmad-output/brainstorming/brainstorming-session-2026-01-31.md) | Session initiale — 54 idées, 4 phases d'analyse |
+| [Product Brief](/_bmad-output/planning-artifacts/product-brief-slow-adventures-2026-02-03.md) | Vision produit, personas, métriques, scope MVP |
+| [UX Design Spec](/_bmad-output/planning-artifacts/ux-design-specification.md) | Spécification UX complète, parcours, composants |
+| [UX Directions](/_bmad-output/planning-artifacts/ux-design-directions.html) | Explorations visuelles et directions de design |
+
+## Avancement
 
 ### Phase Conception
 
-1. `/bmad-bmm-create-product-brief` - Formaliser la vision produit (basé sur le brainstorming)
-2. `/bmad-bmm-create-prd` - PRD détaillé du site (pages, fonctionnalités)
-3. `/bmad-bmm-create-ux-design` - Wireframes et parcours utilisateur
-4. `/bmad-bmm-create-architecture` - Stack TypeScript, structure technique
+- [x] Brainstorming (54 idées, business model, acquisition, pricing)
+- [x] Product Brief (vision, personas, métriques, MVP scope)
+- [x] UX Design (spec complète, mobile-first, système de communication)
+- [ ] PRD détaillé
+- [ ] Architecture technique
+- [ ] Epics & Stories
 
 ### Phase Implémentation
 
-5. `/bmad-bmm-create-epics-and-stories` - Découper en épics et stories dev-ready
-6. `/bmad-bmm-sprint-planning` - Organiser en sprints
-7. `/bmad-bmm-dev-story` - Exécuter chaque story
-
-### Raccourci (dev rapide)
-
-- `/bmad-bmm-quick-spec` - Spec conversationnelle → implémentation directe
-
-### Contenu & Marketing
-
-- `/bmad-cis-storytelling` - Structurer le storytelling Instagram
-
-### Documentation projet
-
-- Brainstorming session : `_bmad-output/brainstorming/brainstorming-session-2026-01-31.md`
-
-## Stack Technique
-
-- **TypeScript** - Type safety et maintenabilité
-- Architecture modulaire et scalable
-- Base de données relationnelle
-
-## Contraintes & Best Practices
-
-### Performance
-
-- Code splitting et lazy loading
-- Optimisation des images (WebP, compression)
-- Caching stratégique (Redis, CDN)
-- SSR/SSG pour le temps de chargement initial
-- Core Web Vitals optimisés (LCP < 2.5s, FID < 100ms, CLS < 0.1)
-
-### SEO & Visibilité
-
-- Meta tags optimisés (Open Graph, Twitter Cards)
-- Schema.org markup (LocalBusiness, TravelAgency)
-- Sitemap XML dynamique
-- URLs sémantiques et structure claire
-- Temps de chargement < 3s
-- Mobile-first responsive design
-
-### AI & LLM Optimization
-
-- Structured data pour les moteurs de recherche IA
-- Content markup sémantique
-- API public/privé bien documentée (Swagger)
-- Données accessibles et crawlables
-- Rich snippets et FAQ schema
-
-### Code Quality
-
-- Linting strict (ESLint, Prettier)
-- Tests unitaires et d'intégration
-- CI/CD automatisé
-- Documentation technique à jour
-- Git workflow (feature branches, PR reviews)
-- Gestion des secrets et variables d'environnement
-
-### Sécurité
-
-- HTTPS obligatoire
-- Headers de sécurité (CSP, HSTS)
-- Validation des inputs
-- Rate limiting
-- RGPD compliant
-
-### Accessibilité
-
-- WCAG 2.1 Level AA minimum
-- Navigation clavier
-- ARIA labels
-- Contraste des couleurs
-
-## Couleurs du projet
-
-Primary : #c0603e
-Secondary : #1696ff
-Background : #fff9f3
+- [ ] Sprint planning
+- [ ] Développement des stories
 
 ## Installation
 
@@ -128,4 +148,4 @@ npm run lint     # Linting
 
 ## Licence
 
-Propriétaire - Slow Adventures © 2026
+Propriétaire — Slow Adventures © 2026

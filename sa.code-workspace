@@ -8,11 +8,10 @@
   "folders": [
     { "name": "api", "path": "api" },
     { "name": "web", "path": "web" },
-    { "name": "config & CI", "path": "." }
+    { "name": "config & CI", "path": "." },
   ],
 
   "settings": {
-
     // ── Theme de base ───────────────────────────────────────────
     "workbench.colorTheme": "Default Light Modern",
     "workbench.iconTheme": "vs-seti",
@@ -35,7 +34,6 @@
     //  warm-gray      #6b5e52   Texte secondaire
     //
     "workbench.colorCustomizations": {
-
       // Focus & bordures
       "focusBorder": "#c0603e",
       "widget.border": "#f5ede3",
@@ -301,7 +299,7 @@
       "keybindingLabel.background": "#f5ede3",
       "keybindingLabel.foreground": "#2c2825",
       "keybindingLabel.border": "#e8ddd0",
-      "keybindingLabel.bottomBorder": "#c9a08e"
+      "keybindingLabel.bottomBorder": "#c9a08e",
     },
 
     // ── Syntax highlighting (brand-aligned) ─────────────────────
@@ -315,14 +313,14 @@
             "keyword.operator.new",
             "keyword.operator.expression",
             "storage.type",
-            "storage.modifier"
+            "storage.modifier",
           ],
-          "settings": { "foreground": "#c0603e" }
+          "settings": { "foreground": "#c0603e" },
         },
         // Operators
         {
           "scope": ["keyword.operator", "keyword.operator.assignment"],
-          "settings": { "foreground": "#6b5e52" }
+          "settings": { "foreground": "#6b5e52" },
         },
         // Strings — sauge (nature/vert doux)
         {
@@ -330,9 +328,9 @@
             "string",
             "string.quoted",
             "string.template",
-            "punctuation.definition.string"
+            "punctuation.definition.string",
           ],
-          "settings": { "foreground": "#7B8F6B" }
+          "settings": { "foreground": "#7B8F6B" },
         },
         // Numbers & constants — bleu
         {
@@ -340,9 +338,9 @@
             "constant.numeric",
             "constant.language",
             "constant.character",
-            "support.constant"
+            "support.constant",
           ],
-          "settings": { "foreground": "#1696ff" }
+          "settings": { "foreground": "#1696ff" },
         },
         // Comments — warm-gray italic
         {
@@ -350,18 +348,18 @@
             "comment",
             "comment.line",
             "comment.block",
-            "punctuation.definition.comment"
+            "punctuation.definition.comment",
           ],
-          "settings": { "foreground": "#c9a08e", "fontStyle": "italic" }
+          "settings": { "foreground": "#c9a08e", "fontStyle": "italic" },
         },
         // Functions — terracotta-dark
         {
           "scope": [
             "entity.name.function",
             "support.function",
-            "meta.function-call"
+            "meta.function-call",
           ],
-          "settings": { "foreground": "#a04e30" }
+          "settings": { "foreground": "#a04e30" },
         },
         // Types, classes, interfaces — bleu
         {
@@ -370,134 +368,118 @@
             "entity.name.class",
             "support.type",
             "support.class",
-            "entity.other.inherited-class"
+            "entity.other.inherited-class",
           ],
-          "settings": { "foreground": "#1696ff" }
+          "settings": { "foreground": "#1696ff" },
         },
         // Decorators — ambre (NestJS)
         {
           "scope": [
             "meta.decorator",
             "punctuation.decorator",
-            "meta.decorator entity.name.function"
+            "meta.decorator entity.name.function",
           ],
-          "settings": { "foreground": "#D4956A" }
+          "settings": { "foreground": "#D4956A" },
         },
         // Variables — warm-black
         {
-          "scope": [
-            "variable",
-            "variable.other",
-            "variable.parameter"
-          ],
-          "settings": { "foreground": "#2c2825" }
+          "scope": ["variable", "variable.other", "variable.parameter"],
+          "settings": { "foreground": "#2c2825" },
         },
         // Properties & object keys — terracotta-dark
         {
           "scope": [
             "meta.object-literal.key",
             "variable.other.property",
-            "support.type.property-name"
+            "support.type.property-name",
           ],
-          "settings": { "foreground": "#a04e30" }
+          "settings": { "foreground": "#a04e30" },
         },
         // HTML/Astro tags — terracotta
         {
-          "scope": [
-            "entity.name.tag",
-            "punctuation.definition.tag"
-          ],
-          "settings": { "foreground": "#c0603e" }
+          "scope": ["entity.name.tag", "punctuation.definition.tag"],
+          "settings": { "foreground": "#c0603e" },
         },
         // HTML attributes — ambre
         {
-          "scope": [
-            "entity.other.attribute-name"
-          ],
-          "settings": { "foreground": "#D4956A" }
+          "scope": ["entity.other.attribute-name"],
+          "settings": { "foreground": "#D4956A" },
         },
         // CSS property names — warm-black
         {
           "scope": [
             "support.type.property-name.css",
-            "support.type.vendored.property-name.css"
+            "support.type.vendored.property-name.css",
           ],
-          "settings": { "foreground": "#2c2825" }
+          "settings": { "foreground": "#2c2825" },
         },
         // CSS values — bleu
         {
           "scope": [
             "support.constant.property-value.css",
             "support.constant.color.css",
-            "constant.other.color.rgb-value.hex.css"
+            "constant.other.color.rgb-value.hex.css",
           ],
-          "settings": { "foreground": "#1696ff" }
+          "settings": { "foreground": "#1696ff" },
         },
         // CSS selectors — terracotta
         {
           "scope": [
             "entity.other.attribute-name.class.css",
-            "entity.other.attribute-name.id.css"
+            "entity.other.attribute-name.id.css",
           ],
-          "settings": { "foreground": "#c0603e" }
+          "settings": { "foreground": "#c0603e" },
         },
         // Template expressions (${...}) — terracotta
         {
-          "scope": [
-            "punctuation.definition.template-expression"
-          ],
-          "settings": { "foreground": "#c0603e" }
+          "scope": ["punctuation.definition.template-expression"],
+          "settings": { "foreground": "#c0603e" },
         },
         // Punctuation — warm-gray
         {
           "scope": [
             "punctuation.separator",
             "punctuation.terminator",
-            "meta.brace"
+            "meta.brace",
           ],
-          "settings": { "foreground": "#6b5e52" }
+          "settings": { "foreground": "#6b5e52" },
         },
         // Regex
         {
-          "scope": [
-            "string.regexp"
-          ],
-          "settings": { "foreground": "#D4956A" }
+          "scope": ["string.regexp"],
+          "settings": { "foreground": "#D4956A" },
         },
         // Markdown headings
         {
-          "scope": [
-            "markup.heading",
-            "entity.name.section.markdown"
-          ],
-          "settings": { "foreground": "#c0603e", "fontStyle": "bold" }
+          "scope": ["markup.heading", "entity.name.section.markdown"],
+          "settings": { "foreground": "#c0603e", "fontStyle": "bold" },
         },
         // Markdown bold
         {
           "scope": ["markup.bold"],
-          "settings": { "foreground": "#2c2825", "fontStyle": "bold" }
+          "settings": { "foreground": "#2c2825", "fontStyle": "bold" },
         },
         // Markdown italic
         {
           "scope": ["markup.italic"],
-          "settings": { "foreground": "#6b5e52", "fontStyle": "italic" }
+          "settings": { "foreground": "#6b5e52", "fontStyle": "italic" },
         },
         // Markdown links
         {
           "scope": ["markup.underline.link"],
-          "settings": { "foreground": "#1696ff" }
+          "settings": { "foreground": "#1696ff" },
         },
         // Markdown code
         {
           "scope": ["markup.inline.raw", "markup.fenced_code"],
-          "settings": { "foreground": "#a04e30" }
+          "settings": { "foreground": "#a04e30" },
         },
         // JSON keys
         {
           "scope": ["support.type.property-name.json"],
-          "settings": { "foreground": "#a04e30" }
-        }
-      ]
+          "settings": { "foreground": "#a04e30" },
+        },
+      ],
     },
 
     // ── Editeur — parametres generaux ───────────────────────────
@@ -527,36 +509,36 @@
     "editor.quickSuggestions": {
       "strings": true,
       "comments": false,
-      "other": true
+      "other": true,
     },
 
     // ── Formateurs par langage ──────────────────────────────────
     "[typescript]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode",
       "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": "explicit"
-      }
+        "source.fixAll.eslint": "explicit",
+      },
     },
     "[javascript]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
     },
     "[astro]": {
-      "editor.defaultFormatter": "astro-build.astro-vscode"
+      "editor.defaultFormatter": "astro-build.astro-vscode",
     },
     "[html]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
     },
     "[css]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
     },
     "[postcss]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
     },
     "[json]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
     },
     "[jsonc]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
     },
     "[markdown]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -564,12 +546,12 @@
       "editor.quickSuggestions": {
         "comments": false,
         "strings": false,
-        "other": false
-      }
+        "other": false,
+      },
     },
     "[yaml]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode",
-      "editor.tabSize": 2
+      "editor.tabSize": 2,
     },
 
     // ── TypeScript ──────────────────────────────────────────────
@@ -582,26 +564,22 @@
     // ── Tailwind CSS ────────────────────────────────────────────
     "tailwindCSS.emmetCompletions": true,
     "tailwindCSS.includeLanguages": {
-      "astro": "html"
+      "astro": "html",
     },
     "tailwindCSS.classAttributes": [
       "class",
       "className",
       "class:list",
-      "ngClass"
+      "ngClass",
     ],
 
     // ── Emmet ───────────────────────────────────────────────────
     "emmet.includeLanguages": {
-      "astro": "html"
+      "astro": "html",
     },
 
     // ── ESLint ──────────────────────────────────────────────────
-    "eslint.validate": [
-      "javascript",
-      "typescript",
-      "astro"
-    ],
+    "eslint.validate": ["javascript", "typescript", "astro"],
     "eslint.useFlatConfig": true,
 
     // ── Fichiers ────────────────────────────────────────────────
@@ -614,14 +592,14 @@
     "files.associations": {
       "*.astro": "astro",
       "*.css": "tailwindcss",
-      ".env*": "dotenv"
+      ".env*": "dotenv",
     },
     "files.exclude": {
       "**/.DS_Store": true,
       "**/.git": true,
       "**/.idea": true,
       "**/node_modules": true,
-      "**/.astro": true
+      "**/.astro": true,
     },
 
     // ── File nesting (DX propre) ────────────────────────────────
@@ -636,7 +614,7 @@
       "*.astro": "${capture}.astro.css",
       ".gitignore": ".gitattributes",
       "README.md": "LICENSE*, CHANGELOG*, CONTRIBUTING*",
-      ".env": ".env.*"
+      ".env": ".env.*",
     },
 
     // ── Recherche ───────────────────────────────────────────────
@@ -648,7 +626,7 @@
       "**/.git": true,
       "**/package-lock.json": true,
       "**/pnpm-lock.yaml": true,
-      "**/.next": true
+      "**/.next": true,
     },
 
     // ── Terminal ─────────────────────────────────────────────────
@@ -668,10 +646,7 @@
 
     // ── Spell checker ───────────────────────────────────────────
     "cSpell.language": "en,fr",
-    "cSpell.enableFiletypes": [
-      "astro",
-      "markdown"
-    ],
+    "cSpell.enableFiletypes": ["astro", "markdown"],
     "cSpell.words": [
       "Amériques",
       "Astro",
@@ -685,7 +660,7 @@
       "terracotta",
       "vitejs",
       "sauge",
-      "ambre"
+      "ambre",
     ],
 
     // ── Error Lens ──────────────────────────────────────────────
@@ -693,20 +668,14 @@
     "errorLens.delay": 500,
 
     // ── Todo Tree ───────────────────────────────────────────────
-    "todo-tree.general.tags": [
-      "TODO",
-      "FIXME",
-      "HACK",
-      "NOTE",
-      "PERF"
-    ],
+    "todo-tree.general.tags": ["TODO", "FIXME", "HACK", "NOTE", "PERF"],
     "todo-tree.highlights.customHighlight": {
       "TODO": { "foreground": "#c0603e", "icon": "checklist" },
       "FIXME": { "foreground": "#D64545", "icon": "alert" },
       "HACK": { "foreground": "#D4956A", "icon": "tools" },
       "NOTE": { "foreground": "#1696ff", "icon": "note" },
-      "PERF": { "foreground": "#7B8F6B", "icon": "dashboard" }
-    }
+      "PERF": { "foreground": "#7B8F6B", "icon": "dashboard" },
+    },
   },
 
   // ── Extensions ──────────────────────────────────────────────
@@ -723,16 +692,15 @@
       "christian-kohler.path-intellisense",
       "formulahendry.auto-rename-tag",
       "usernamehw.errorlens",
-      "eamodio.gitlens",
       "gruntfuggly.todo-tree",
 
       // Qualite de texte (projet bilingue FR/EN)
       "streetsidesoftware.code-spell-checker",
-      "streetsidesoftware.code-spell-checker-french"
+      "streetsidesoftware.code-spell-checker-french",
     ],
     "unwantedRecommendations": [
       "hookyqr.beautify",
-      "ms-vscode.vscode-typescript-tslint-plugin"
-    ]
-  }
+      "ms-vscode.vscode-typescript-tslint-plugin",
+    ],
+  },
 }

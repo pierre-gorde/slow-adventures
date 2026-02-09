@@ -4,9 +4,9 @@ lastStep: 14
 workflowComplete: true
 completedAt: 2026-02-08
 inputDocuments:
-  - '_bmad-output/planning-artifacts/product-brief-slow-adventures-2026-02-03.md'
-  - '_bmad-output/brainstorming/brainstorming-session-2026-01-31.md'
-  - 'README.md'
+  - "docs/planning-artifacts/product-brief-slow-adventures-2026-02-03.md"
+  - "docs/brainstorming/brainstorming-session-2026-01-31.md"
+  - "README.md"
 date: 2026-02-06
 author: Elena
 ---
@@ -75,18 +75,19 @@ Site web one-page mobile-first pour Slow Adventures, service de création de voy
 
 ### Effortless Interactions
 
-| Interaction | Doit être... |
-|-------------|-------------|
-| **Scroll** | Fluide, immersif, naturel — l'utilisateur est "porté" |
+| Interaction       | Doit être...                                                        |
+| ----------------- | ------------------------------------------------------------------- |
+| **Scroll**        | Fluide, immersif, naturel — l'utilisateur est "porté"               |
 | **CTA principal** | Visible sans chercher, chaleureux pas agressif, toujours accessible |
-| **Chargement** | Instantané (< 2s) — un chargement lent tue le rêve |
-| **Lecture** | Concise et impactante — pas de pavés, chaque mot compte |
-| **Prise de RDV** | Clic → Calendly → créneau en 3 taps max |
-| **Capture email** | Un champ, un bouton, zéro friction |
+| **Chargement**    | Instantané (< 2s) — un chargement lent tue le rêve                  |
+| **Lecture**       | Concise et impactante — pas de pavés, chaque mot compte             |
+| **Prise de RDV**  | Clic → Calendly → créneau en 3 taps max                             |
+| **Capture email** | Un champ, un bouton, zéro friction                                  |
 
 ### Critical Success Moments
 
 **Ce qui ruinerait tout :**
+
 - Chargement trop lent sur mobile (le rêve s'évapore)
 - CTA invisible ou trop compliqué à trouver
 - Texte trop long qui fait décrocher
@@ -95,6 +96,7 @@ Site web one-page mobile-first pour Slow Adventures, service de création de voy
 - Ton trop corporate OU trop casual — pas le bon équilibre
 
 **Ce qui crée le succès :**
+
 - Le moment où Camille voit Elena (section About) et se dit "elle est vraie"
 - Le moment où les destinations défilent et les sens sont stimulés
 - Le moment où le pricing est clair et transparent ("pas de piège")
@@ -117,6 +119,7 @@ Site web one-page mobile-first pour Slow Adventures, service de création de voy
 **Émotion dominante : La nostalgie d'un rêve pas encore vécu**
 
 L'utilisateur qui quitte le site sans cliquer le CTA doit emporter avec lui une empreinte émotionnelle — pas une information, mais un sentiment. Un mélange de :
+
 - **Envie** — "j'ai envie de vivre ça"
 - **Curiosité** — "c'est pas comme d'habitude, c'est un système différent"
 - **Nostalgie anticipée** — le rêve s'est installé, il ne s'efface plus
@@ -127,42 +130,43 @@ La confiance commence à se construire mais n'est pas l'émotion dominante au pr
 
 ### Emotional Journey Mapping
 
-| Phase du parcours | Émotion cible | Signal UX |
-|---|---|---|
-| **Arrivée (0-3s)** | "Je suis au bon endroit" | Chaleur visuelle + spécialisation Amériques immédiate + énergie humaine (pas corporate) |
-| **Scroll Hero → About** | Envie + curiosité | Visuels immersifs, mouvement subtil, ambiance sensorielle |
-| **Section Elena** | Confiance + connexion | Vraie personne passionnée, ton friendly et pro. "Elle sait de quoi elle parle, et en plus elle a l'air sympa" |
-| **Destinations / Offre** | Rêve + projection | L'utilisateur se voit là-bas. Stimulation sensorielle des Amériques |
-| **Section Pricing** | Soulagement + clarté | Transparent, pas de piège, abordable. La barrière financière tombe |
-| **CTA** | Invitation chaleureuse | Main tendue, pas pression. "20 min, gratuit, sans engagement" |
-| **Post-visite (sans clic)** | Nostalgie + trace | Le rêve reste. L'email capture prolonge le lien |
+| Phase du parcours           | Émotion cible            | Signal UX                                                                                                     |
+| --------------------------- | ------------------------ | ------------------------------------------------------------------------------------------------------------- |
+| **Arrivée (0-3s)**          | "Je suis au bon endroit" | Chaleur visuelle + spécialisation Amériques immédiate + énergie humaine (pas corporate)                       |
+| **Scroll Hero → About**     | Envie + curiosité        | Visuels immersifs, mouvement subtil, ambiance sensorielle                                                     |
+| **Section Elena**           | Confiance + connexion    | Vraie personne passionnée, ton friendly et pro. "Elle sait de quoi elle parle, et en plus elle a l'air sympa" |
+| **Destinations / Offre**    | Rêve + projection        | L'utilisateur se voit là-bas. Stimulation sensorielle des Amériques                                           |
+| **Section Pricing**         | Soulagement + clarté     | Transparent, pas de piège, abordable. La barrière financière tombe                                            |
+| **CTA**                     | Invitation chaleureuse   | Main tendue, pas pression. "20 min, gratuit, sans engagement"                                                 |
+| **Post-visite (sans clic)** | Nostalgie + trace        | Le rêve reste. L'email capture prolonge le lien                                                               |
 
 ### Micro-Emotions
 
 **Tensions émotionnelles à gérer :**
 
-| Tension | Résolution design |
-|---|---|
-| **Rêve vs Peur** | Le rêve d'abord, la réassurance suit rapidement. La qualité du site elle-même rassure (pro = safe). Les deux peuvent coexister en parallèle mais subtilement |
-| **Curiosité vs Méfiance** | La spécialisation Amériques crédibilise. Le côté humain désarme. Le site interactif et soigné prouve que ce n'est pas une amatrice |
-| **Envie vs Inertie** | Le CTA basse friction ("20 min, gratuit") réduit le coût psychologique de l'action. L'email capture rattrape ceux qui ne sont pas prêts |
-| **Confiance vs Distance** | La confiance totale vient après l'échange humain (discovery call). Le site doit amener assez de confiance pour déclencher ce premier pas |
+| Tension                   | Résolution design                                                                                                                                            |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Rêve vs Peur**          | Le rêve d'abord, la réassurance suit rapidement. La qualité du site elle-même rassure (pro = safe). Les deux peuvent coexister en parallèle mais subtilement |
+| **Curiosité vs Méfiance** | La spécialisation Amériques crédibilise. Le côté humain désarme. Le site interactif et soigné prouve que ce n'est pas une amatrice                           |
+| **Envie vs Inertie**      | Le CTA basse friction ("20 min, gratuit") réduit le coût psychologique de l'action. L'email capture rattrape ceux qui ne sont pas prêts                      |
+| **Confiance vs Distance** | La confiance totale vient après l'échange humain (discovery call). Le site doit amener assez de confiance pour déclencher ce premier pas                     |
 
 **Micro-émotions critiques par persona :**
+
 - **Camille** : "Elle va comprendre ce qu'on aime" → réponse : ton personnalisé, pas de formules, "tout est possible"
 - **Antoine** : "Elle connaît vraiment ?" → réponse : spécialisation visible, partenaires locaux, expertise terrain
 - **Nathalie** : "C'est safe ?" → réponse : professionnalisme du site, transparence, ton rassurant
 
 ### Design Implications
 
-| Objectif émotionnel | Implication UX |
-|---|---|
-| **Nostalgie d'un rêve** | Photos personnelles immersives, couleurs chaudes, transitions lentes et fluides, espace blanc généreux |
-| **"Pas une commerciale"** | Zéro langage de vente. Le CTA est une invitation, jamais une injonction. Pas de compteur d'urgence, pas de "offre limitée" |
-| **Spécialisation = crédibilité** | Les Amériques visibles dès le Hero. Noms de pays/régions, visuels spécifiques (pas des photos génériques "voyage") |
-| **Humain > Corporate** | Photo d'Elena visible tôt. Tutoiement. Ton conversationnel. Pas de stock photos de personnes |
-| **Pro mais pas froid** | Qualité technique du site (animations, transitions, performance) = signal de professionnalisme. Le design fait le travail que les mots ne doivent pas faire |
-| **Fluide, pas de prise de tête** | Scroll sans friction, textes courts, parcours linéaire évident, CTA accessible sans chercher |
+| Objectif émotionnel              | Implication UX                                                                                                                                              |
+| -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Nostalgie d'un rêve**          | Photos personnelles immersives, couleurs chaudes, transitions lentes et fluides, espace blanc généreux                                                      |
+| **"Pas une commerciale"**        | Zéro langage de vente. Le CTA est une invitation, jamais une injonction. Pas de compteur d'urgence, pas de "offre limitée"                                  |
+| **Spécialisation = crédibilité** | Les Amériques visibles dès le Hero. Noms de pays/régions, visuels spécifiques (pas des photos génériques "voyage")                                          |
+| **Humain > Corporate**           | Photo d'Elena visible tôt. Tutoiement. Ton conversationnel. Pas de stock photos de personnes                                                                |
+| **Pro mais pas froid**           | Qualité technique du site (animations, transitions, performance) = signal de professionnalisme. Le design fait le travail que les mots ne doivent pas faire |
+| **Fluide, pas de prise de tête** | Scroll sans friction, textes courts, parcours linéaire évident, CTA accessible sans chercher                                                                |
 
 ### Emotional Design Principles
 
@@ -179,12 +183,14 @@ La confiance commence à se construire mais n'est pas l'émotion dominante au pr
 ### Inspiring Products Analysis
 
 **Copines de Voyage — L'emportement visuel**
+
 - Hero vidéo drone : l'utilisateur est immédiatement transporté sans effort. La destination importe peu — c'est le mouvement et l'émotion qui accrochent
 - Humain visible partout : fondatrices nommées avec vraies photos, social proof tissé dans le flux
 - CTAs en première personne ("Je m'inscris") — l'utilisateur est sujet de l'action
 - **Pattern à adopter** : le hero immersif vidéo/animation comme première impression émotionnelle. La preuve sociale intégrée au flux, pas isolée
 
 **Apple (pages produit) — Le scroll comme narration**
+
 - Scroll-controlled canvas : séquence d'images contrôlée par le pouce, "vidéo dont tu es le maître"
 - Structure en 3 actes : Désir → Capacité → Valeurs + Action
 - Bénéfices humains plutôt que specs ("Keep on zoomin'" plutôt que "50MP")
@@ -192,12 +198,14 @@ La confiance commence à se construire mais n'est pas l'émotion dominante au pr
 - **Pattern à adopter** : scroll-triggered animations (GSAP ScrollTrigger), textes courts orientés bénéfice, sections expandables pour le détail
 
 **Black Tomato — Le feeling-first**
+
 - Navigation par l'émotion ("Comment voulez-vous vous sentir ?") au lieu de la destination
 - Positionnement contrarian : le silence au milieu du bruit. Pas de prix visibles = bespoke
 - Badges presse et confiance placés à côté des CTAs au moment de la décision
 - **Pattern à adopter** : sections organisées par émotion/style de voyage, trust signals adjacents au CTA
 
 **Airbnb — La chaleur du design system**
+
 - Category chips émotionnels : navigation par le feeling, pas par la logique
 - Typographie warm-but-pro (famille Circular/Cereal)
 - Photos comme contenu principal, texte comme annotation secondaire
@@ -205,6 +213,7 @@ La confiance commence à se construire mais n'est pas l'émotion dominante au pr
 - **Pattern à adopter** : typo distinctive warm+pro, photo-first, micro-animations comme signature
 
 **Lusion.co — L'immersion totale**
+
 - "Scroll to explore" comme invitation explicite dans le hero
 - Header minimal/invisible pendant les sections immersives
 - Contenu révélé progressivement : chaque scroll = une récompense
@@ -213,23 +222,27 @@ La confiance commence à se construire mais n'est pas l'émotion dominante au pr
 ### Transferable UX Patterns
 
 **Patterns de navigation :**
+
 - Header minimal/transparent qui s'efface pendant le hero immersif, réapparaît ensuite
 - CTA sticky en bas de mobile (zone du pouce) après la première section
 - Scroll linéaire one-page sans navigation complexe
 
 **Patterns d'interaction :**
+
 - Scroll-triggered image sequence dans le hero (30-60 frames drone, contrôle au pouce via GSAP ScrollTrigger + Canvas)
 - Fade-in progressif des sections au scroll (IntersectionObserver)
 - Sections expandables/accordion pour le détail (itinéraire, pricing) derrière l'overview émotionnel
 - "Scroll to explore" comme invitation dans le hero
 
 **Patterns visuels :**
+
 - Typo distinctive : serif éditorial pour les titres (Cormorant Garamond, Playfair Display) + sans-serif warm pour le body (DM Sans, Plus Jakarta Sans)
 - Photo-first : les photos d'Elena sont le contenu principal, le texte annote
 - Espacement généreux : line-height 1.6-1.8, padding de section large, respiration visuelle
 - Transition dark → warm : hero sombre/cinématique (rêve) → sections claires/chaleureuses (réassurance)
 
 **Patterns de conversion :**
+
 - CTA Hero (soft) : "Confiez-nous votre prochain rêve"
 - CTA sticky mobile (après 1ère section) : "Réservez votre appel découverte"
 - CTA mid-page (après social proof) : personnalisé avec le nom d'Elena
@@ -238,22 +251,23 @@ La confiance commence à se construire mais n'est pas l'émotion dominante au pr
 
 ### Anti-Patterns to Avoid
 
-| Anti-pattern | Pourquoi c'est toxique | Notre alternative |
-|---|---|---|
-| **Grille de destinations avec prix** | Transforme les rêves en catalogue. Aucune différenciation | Histoires de voyage, pas des fiches produit. "Le matin où on a vu les condors au Canyon de Colca" |
-| **Barre de recherche en Hero** | Signal "self-service" quand la valeur c'est "on fait tout pour toi" | CTA unique et chaleureux. Le hero existe pour créer du désir, pas collecter des données |
-| **Stock photos** | Les mêmes images sur 500 sites = zéro authenticité | Exclusivement les photos personnelles d'Elena, même si techniquement imparfaites |
-| **Palette bleu-vert-orange** | Code couleur générique "industrie voyage" | Palette terracotta/crème/warm unique, ancrage terre des Amériques |
-| **Fondateur invisible** | "Notre équipe d'experts" = zéro confiance pour du sur-mesure | Elena visible dès le premier scroll, pas dans un "À propos" |
-| **Chatbot surgissant** | Prend de la place, casse l'immersion, agace | Zéro chatbot. Le CTA Calendly suffit |
-| **Carrousels automatiques** | Daté, frustrant si trop rapide, enlève le contrôle à l'utilisateur | Scroll contrôlé par l'utilisateur ou grille fixe |
-| **Formulaires à rallonge** | Abandon immédiat | Un champ email max pour la capture. Le reste se fait en discovery call |
-| **Itinéraire-tableau** | "Jour 1: Arrivée" = logistique, pas rêve | Arc émotionnel : "Jour 1 : Le vertige de l'arrivée" + accordion pour les détails |
-| **Référence/recherche cassée** | L'utilisateur arrive avec une intention et se retrouve bloqué | Parcours linéaire clair, pas de recherche nécessaire sur un one-page |
+| Anti-pattern                         | Pourquoi c'est toxique                                              | Notre alternative                                                                                 |
+| ------------------------------------ | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| **Grille de destinations avec prix** | Transforme les rêves en catalogue. Aucune différenciation           | Histoires de voyage, pas des fiches produit. "Le matin où on a vu les condors au Canyon de Colca" |
+| **Barre de recherche en Hero**       | Signal "self-service" quand la valeur c'est "on fait tout pour toi" | CTA unique et chaleureux. Le hero existe pour créer du désir, pas collecter des données           |
+| **Stock photos**                     | Les mêmes images sur 500 sites = zéro authenticité                  | Exclusivement les photos personnelles d'Elena, même si techniquement imparfaites                  |
+| **Palette bleu-vert-orange**         | Code couleur générique "industrie voyage"                           | Palette terracotta/crème/warm unique, ancrage terre des Amériques                                 |
+| **Fondateur invisible**              | "Notre équipe d'experts" = zéro confiance pour du sur-mesure        | Elena visible dès le premier scroll, pas dans un "À propos"                                       |
+| **Chatbot surgissant**               | Prend de la place, casse l'immersion, agace                         | Zéro chatbot. Le CTA Calendly suffit                                                              |
+| **Carrousels automatiques**          | Daté, frustrant si trop rapide, enlève le contrôle à l'utilisateur  | Scroll contrôlé par l'utilisateur ou grille fixe                                                  |
+| **Formulaires à rallonge**           | Abandon immédiat                                                    | Un champ email max pour la capture. Le reste se fait en discovery call                            |
+| **Itinéraire-tableau**               | "Jour 1: Arrivée" = logistique, pas rêve                            | Arc émotionnel : "Jour 1 : Le vertige de l'arrivée" + accordion pour les détails                  |
+| **Référence/recherche cassée**       | L'utilisateur arrive avec une intention et se retrouve bloqué       | Parcours linéaire clair, pas de recherche nécessaire sur un one-page                              |
 
 ### Design Inspiration Strategy
 
 **À adopter directement :**
+
 - Hero immersif avec vidéo/animation scroll-triggered (inspiration Copines de Voyage + Apple)
 - Photos personnelles d'Elena comme contenu principal (anti stock photos)
 - CTA basse friction sticky en mobile (zone pouce)
@@ -262,12 +276,14 @@ La confiance commence à se construire mais n'est pas l'émotion dominante au pr
 - Typo distinctive warm : serif éditorial + sans-serif chaleureux
 
 **À adapter au contexte Slow Adventures :**
+
 - Le scroll-controlled canvas Apple (séquence drone) → version allégée 30 frames max pour le mobile (performance)
 - Le feelings-first de Black Tomato → sections par style de voyage émotionnel, pas par destination
 - Les category chips Airbnb → pas de navigation complexe, mais des ancres émotionnelles dans le scroll
 - L'expandable content Apple → accordion pour pricing et détails pratiques derrière l'overview émotionnel
 
 **À éviter absolument :**
+
 - Toute la palette UX "agence de voyage standard" (barre de recherche, grille destinations, palette bleue)
 - Chatbots, pop-ups, carrousels automatiques
 - Formulaires de plus d'un champ
@@ -286,29 +302,32 @@ Approche utility-first sans composants pré-faits — chaque élément du site e
 
 ### Rationale for Selection
 
-| Critère | Pourquoi Tailwind |
-|---|---|
-| **Unicité visuelle** | Utility-first = pas de composants pré-stylés. Le site ne ressemblera à aucun template |
-| **Performance** | Purge automatique du CSS non utilisé. Bundle CSS minimal → Core Web Vitals optimisés |
-| **Astro natif** | Intégration officielle Astro + Tailwind, zero config |
+| Critère              | Pourquoi Tailwind                                                                                 |
+| -------------------- | ------------------------------------------------------------------------------------------------- |
+| **Unicité visuelle** | Utility-first = pas de composants pré-stylés. Le site ne ressemblera à aucun template             |
+| **Performance**      | Purge automatique du CSS non utilisé. Bundle CSS minimal → Core Web Vitals optimisés              |
+| **Astro natif**      | Intégration officielle Astro + Tailwind, zero config                                              |
 | **Développeur solo** | Pierre développe seul — Tailwind est plus rapide à écrire et itérer qu'un CSS custom from scratch |
-| **GSAP compatible** | Les animations scroll-triggered (ScrollTrigger) fonctionnent indépendamment du système CSS |
-| **Scalable** | Les design tokens définis maintenant servent pour le blog et les pages futures post-MVP |
+| **GSAP compatible**  | Les animations scroll-triggered (ScrollTrigger) fonctionnent indépendamment du système CSS        |
+| **Scalable**         | Les design tokens définis maintenant servent pour le blog et les pages futures post-MVP           |
 
 ### Implementation Approach
 
 **Stack animation :**
+
 - **GSAP + ScrollTrigger** : animations scroll-triggered sur tout le site, chargé intelligemment via `client:visible` sur les composants Astro (lazy-load, pas au premier octet)
 - **Tailwind transitions** : micro-interactions simples (hover, focus, tap feedback)
 - **CSS natif** : keyframes pour les animations persistantes (loading, pulse CTA)
 
 **Stack typographique (Google Fonts, disponibles Canva) :**
+
 - Titres : **Lora** (semi-bold 600) — chaleureuse, élégante, lisible mobile
 - Body : **Plus Jakarta Sans** (regular 400 / medium 500 / semi-bold 600) — warm, moderne, friendly
 - Hébergement : Google Fonts avec `font-display: swap` pour la performance
 - Cohérence cross-canal : mêmes typos utilisables sur Canva pour les posts Instagram
 
 **Stack images :**
+
 - Format WebP avec fallback JPEG
 - Lazy loading natif (`loading="lazy"`)
 - `<picture>` avec art direction responsive (portrait mobile / paysage desktop)
@@ -339,22 +358,23 @@ src/
 
 **Palette complète :**
 
-| Token | Hex | Usage |
-|---|---|---|
-| `terracotta` | #c0603e | Primary — CTA, accents, énergie |
-| `terracotta-light` | #d4856a | Hover states |
-| `terracotta-dark` | #a04e30 | Active states |
-| `terracotta-muted` | #c9a08e | Disabled / muted |
-| `bleu` | #1696ff | Secondary — liens, accents froids |
-| `creme` | #fff9f3 | Background principal |
-| `creme-dark` | #f5ede3 | Sections alternées (contraste subtil) |
-| `sauge` | #7B8F6B | Réassurance, succès, check marks |
-| `ambre` | #D4956A | Accents luxe, séparateurs, détails |
-| `warm-black` | #2c2825 | Texte principal (jamais noir pur) |
-| `warm-gray` | #6b5e52 | Texte secondaire |
-| `white` | #ffffff | Cards, overlays |
+| Token              | Hex     | Usage                                 |
+| ------------------ | ------- | ------------------------------------- |
+| `terracotta`       | #c0603e | Primary — CTA, accents, énergie       |
+| `terracotta-light` | #d4856a | Hover states                          |
+| `terracotta-dark`  | #a04e30 | Active states                         |
+| `terracotta-muted` | #c9a08e | Disabled / muted                      |
+| `bleu`             | #1696ff | Secondary — liens, accents froids     |
+| `creme`            | #fff9f3 | Background principal                  |
+| `creme-dark`       | #f5ede3 | Sections alternées (contraste subtil) |
+| `sauge`            | #7B8F6B | Réassurance, succès, check marks      |
+| `ambre`            | #D4956A | Accents luxe, séparateurs, détails    |
+| `warm-black`       | #2c2825 | Texte principal (jamais noir pur)     |
+| `warm-gray`        | #6b5e52 | Texte secondaire                      |
+| `white`            | #ffffff | Cards, overlays                       |
 
 **Shadows chaudes (teintées terracotta) :**
+
 - Cards : `0 4px 24px rgba(192, 96, 62, 0.08)`
 - CTA hover : `0 8px 32px rgba(192, 96, 62, 0.15)`
 
@@ -404,6 +424,7 @@ transition:
 ### User Mental Model
 
 **Le parcours actuel sans Elena :**
+
 1. **Rêve initial** — Instagram, reels, photos d'amis, envie vague
 2. **ChatGPT** — premier réflexe, génère un itinéraire générique
 3. **Vérification croisée** — YouTube, blogs voyage, forums
@@ -412,6 +433,7 @@ transition:
 6. **Abandon ou voyage médiocre** — soit ils ne partent pas, soit ils partent mal préparés
 
 **Frustrations spécifiques par zone :**
+
 - **Amérique latine/centrale** : logistique perçue comme complexe (sécurité, transports, langues), peu de retours d'expérience dans l'entourage, sentiment d'être submergé par les recherches au lieu de converger vers un itinéraire
 - **États-Unis/Canada** : immensité géographique — "où exactement dormir ? où exactement aller ?" — besoin de curation dans un océan de possibilités
 
@@ -421,20 +443,22 @@ transition:
 
 **Le funnel du rêve en 4 étapes :**
 
-| Étape | Canal | Émotion | Concrétisation |
-|---|---|---|---|
-| 1 | **Instagram** | Rêve pur | 0% — "j'ai envie" |
-| 2 | **Site web** | Rêve + début de confiance | 30% — "elle peut le faire pour moi" |
-| 3 | **Email confirmation** | Anticipation + excitation | 60% — "je vais passer un bon moment" |
-| 4 | **Discovery call** | Rêve + concrétisation | 90% — "c'est carré, j'y vais" |
+| Étape | Canal                  | Émotion                   | Concrétisation                       |
+| ----- | ---------------------- | ------------------------- | ------------------------------------ |
+| 1     | **Instagram**          | Rêve pur                  | 0% — "j'ai envie"                    |
+| 2     | **Site web**           | Rêve + début de confiance | 30% — "elle peut le faire pour moi"  |
+| 3     | **Email confirmation** | Anticipation + excitation | 60% — "je vais passer un bon moment" |
+| 4     | **Discovery call**     | Rêve + concrétisation     | 90% — "c'est carré, j'y vais"        |
 
 **Critères de succès de l'expérience site :**
+
 - L'utilisateur ne ressent aucune rupture émotionnelle entre Instagram et le site
 - Le scroll crée une montée progressive du "j'ai envie" vers "je peux le faire"
 - Le CTA est atteint naturellement, sans effort de recherche
 - Le clic sur le CTA ne génère aucune anxiété ("20 min, gratuit, sans engagement")
 
 **Signal de conversion réussie (post-call) :**
+
 - Elena a démontré son expertise sans tout révéler — la "carotte" qui donne envie d'aller plus loin
 - Camille se dit : "elle est sérieuse, hyper sympa, j'ai envie de partir avec elle"
 - La friction était si basse que passer à l'action a semblé naturel
@@ -442,12 +466,14 @@ transition:
 ### Novel UX Patterns
 
 **Patterns établis utilisés :**
+
 - One-page scroll (pattern prouvé pour les landing pages)
 - Sticky CTA mobile (pattern e-commerce / SaaS éprouvé)
 - Calendly embed (pattern de booking familier)
 - Email de confirmation automatique (pattern standard)
 
 **Innovation dans le contexte :**
+
 - **Le scroll comme pont dream-to-action** — le one-page n'est pas une landing page classique qui "vend", c'est un tunnel émotionnel qui transforme progressivement le rêve en intention d'agir
 - **L'email de confirmation comme 3ème étape du rêve** — pas un email transactionnel mais une continuation de l'émotion. Objet : "Parlons de ton prochain rêve" (pas "Confirmation RDV")
 - **L'anti-search-bar** — là où toute l'industrie met une barre de recherche, on met une invitation émotionnelle. Le message implicite : "tu n'as pas besoin de chercher, on va le faire ensemble"
@@ -455,18 +481,21 @@ transition:
 ### Experience Mechanics
 
 **1. Initiation — Le clic depuis Instagram**
+
 - L'utilisateur tape le lien en bio ou swipe sur une Story
 - Le site se charge en < 2 secondes
 - Le hero immersif apparaît — continuité visuelle avec l'univers Instagram d'Elena
 - Aucune rupture émotionnelle : elle scrollait du rêve, elle continue de scroller du rêve
 
 **2. Interaction — Le scroll immersif**
+
 - Chaque section nourrit l'émotion de la précédente (montée progressive)
 - Le CTA apparaît en sticky mobile après la première section (toujours accessible)
 - L'utilisateur ne "décide" pas de scroller — il est emporté
 - Les sections alternent rêve et réassurance subtilement
 
 **3. Feedback — Les signaux de confiance**
+
 - Photos personnelles = "elle y était vraiment"
 - Spécialisation Amériques = "elle sait de quoi elle parle"
 - Ton friendly + site pro = "elle est sérieuse ET sympa"
@@ -474,6 +503,7 @@ transition:
 - CTA basse friction = "je n'ai rien à perdre"
 
 **4. Completion — Post-clic CTA**
+
 - Clic sur "Confiez-nous votre prochain rêve" → Calendly s'ouvre
 - Choix d'un créneau de 20 min en 2-3 taps
 - Email de confirmation automatique :
@@ -491,18 +521,19 @@ transition:
 
 **Palette sémantique complète** définie en étape 6 (Design System Foundation). Vérification des contrastes WCAG AA pour toutes les combinaisons critiques :
 
-| Combinaison | Ratio | WCAG AA | Usage |
-|---|---|---|---|
-| `warm-black` #2c2825 sur `creme` #fff9f3 | 11.2:1 | ✅ Pass | Texte principal |
-| `warm-black` #2c2825 sur `creme-dark` #f5ede3 | 9.1:1 | ✅ Pass | Texte sur sections alternées |
-| `warm-gray` #6b5e52 sur `creme` #fff9f3 | 5.3:1 | ✅ Pass | Texte secondaire |
-| `terracotta` #c0603e sur `creme` #fff9f3 | 4.6:1 | ✅ Pass (AA large) | Titres, CTA text |
-| `white` #ffffff sur `terracotta` #c0603e | 4.6:1 | ✅ Pass (AA large) | Texte sur boutons CTA |
-| `terracotta-dark` #a04e30 sur `creme` #fff9f3 | 5.8:1 | ✅ Pass | CTA active state |
-| `sauge` #7B8F6B sur `creme` #fff9f3 | 3.7:1 | ⚠️ Large only | Check marks, icônes — pas pour texte courant |
-| `ambre` #D4956A sur `creme` #fff9f3 | 3.1:1 | ⚠️ Décoratif | Séparateurs, accents — jamais porteur d'information seul |
+| Combinaison                                   | Ratio  | WCAG AA            | Usage                                                    |
+| --------------------------------------------- | ------ | ------------------ | -------------------------------------------------------- |
+| `warm-black` #2c2825 sur `creme` #fff9f3      | 11.2:1 | ✅ Pass            | Texte principal                                          |
+| `warm-black` #2c2825 sur `creme-dark` #f5ede3 | 9.1:1  | ✅ Pass            | Texte sur sections alternées                             |
+| `warm-gray` #6b5e52 sur `creme` #fff9f3       | 5.3:1  | ✅ Pass            | Texte secondaire                                         |
+| `terracotta` #c0603e sur `creme` #fff9f3      | 4.6:1  | ✅ Pass (AA large) | Titres, CTA text                                         |
+| `white` #ffffff sur `terracotta` #c0603e      | 4.6:1  | ✅ Pass (AA large) | Texte sur boutons CTA                                    |
+| `terracotta-dark` #a04e30 sur `creme` #fff9f3 | 5.8:1  | ✅ Pass            | CTA active state                                         |
+| `sauge` #7B8F6B sur `creme` #fff9f3           | 3.7:1  | ⚠️ Large only      | Check marks, icônes — pas pour texte courant             |
+| `ambre` #D4956A sur `creme` #fff9f3           | 3.1:1  | ⚠️ Décoratif       | Séparateurs, accents — jamais porteur d'information seul |
 
 **Stratégie couleur :**
+
 - Terracotta comme fil conducteur émotionnel (CTA, accents, énergie)
 - Crème/crème-dark pour le rythme fond clair/fond subtil entre sections
 - Sauge et ambre en accents décoratifs uniquement (jamais porteurs d'information critique)
@@ -512,17 +543,18 @@ transition:
 
 **Échelle typographique complète :**
 
-| Rôle | Font | Weight | Taille | Line-height | Usage |
-|---|---|---|---|---|---|
-| **Hero** | Lora | 600 (semi-bold) | `clamp(2.5rem, 5vw, 4.5rem)` | 1.2 | Titre principal hero |
-| **H2** | Lora | 600 (semi-bold) | `clamp(1.75rem, 3vw, 2.5rem)` | 1.2 | Titres de section |
-| **H3** | Lora | 600 (semi-bold) | `clamp(1.25rem, 2vw, 1.5rem)` | 1.3 | Sous-titres |
-| **Body** | Plus Jakarta Sans | 400 (regular) | 1.125rem (18px) | 1.7 | Texte courant |
-| **Body bold** | Plus Jakarta Sans | 600 (semi-bold) | 1.125rem (18px) | 1.7 | Emphase dans le texte |
-| **Small** | Plus Jakarta Sans | 400 (regular) | 0.875rem (14px) | 1.5 | Légendes, metadata |
-| **CTA** | Plus Jakarta Sans | 600 (semi-bold) | 1.125rem (18px) | 1 | Boutons, actions |
+| Rôle          | Font              | Weight          | Taille                        | Line-height | Usage                 |
+| ------------- | ----------------- | --------------- | ----------------------------- | ----------- | --------------------- |
+| **Hero**      | Lora              | 600 (semi-bold) | `clamp(2.5rem, 5vw, 4.5rem)`  | 1.2         | Titre principal hero  |
+| **H2**        | Lora              | 600 (semi-bold) | `clamp(1.75rem, 3vw, 2.5rem)` | 1.2         | Titres de section     |
+| **H3**        | Lora              | 600 (semi-bold) | `clamp(1.25rem, 2vw, 1.5rem)` | 1.3         | Sous-titres           |
+| **Body**      | Plus Jakarta Sans | 400 (regular)   | 1.125rem (18px)               | 1.7         | Texte courant         |
+| **Body bold** | Plus Jakarta Sans | 600 (semi-bold) | 1.125rem (18px)               | 1.7         | Emphase dans le texte |
+| **Small**     | Plus Jakarta Sans | 400 (regular)   | 0.875rem (14px)               | 1.5         | Légendes, metadata    |
+| **CTA**       | Plus Jakarta Sans | 600 (semi-bold) | 1.125rem (18px)               | 1           | Boutons, actions      |
 
 **Principes typographiques :**
+
 - Lora (serif) = rêve, émotion, personnalité → titres uniquement
 - Plus Jakarta Sans (sans-serif) = clarté, modernité, chaleur → tout le reste
 - Taille minimum 18px pour le body (lisibilité mobile prioritaire)
@@ -536,6 +568,7 @@ transition:
 Chaque section du one-page occupe approximativement la hauteur d'un viewport mobile, mais avec flexibilité — le contenu dicte, pas la grille. Objectif : rythme visuel naturel où chaque scroll révèle une nouvelle "scène" du storytelling.
 
 **Grille et structure :**
+
 - Mobile-first, single column
 - Padding horizontal : 24px mobile / 48px desktop
 - Padding vertical inter-sections : 80px mobile / 120px desktop
@@ -544,12 +577,14 @@ Chaque section du one-page occupe approximativement la hauteur d'un viewport mob
 - Breakpoints principaux : `sm` (640px), `md` (768px), `lg` (1024px)
 
 **Rythme vertical :**
+
 - Entre éléments dans une section : 16px-24px
 - Entre sous-sections : 32px-48px
 - Entre sections principales : 80px-120px
 - L'espacement crée la respiration — le vide guide l'œil vers le contenu suivant
 
 **Invitation au scroll :**
+
 - Le bas de chaque section "déborde" légèrement vers la suivante (un aperçu visuel de ce qui vient)
 - Pas de pagination, pas de points de navigation — le scroll EST la navigation
 - Le CTA sticky mobile apparaît après le hero et reste accessible sans chercher
@@ -558,15 +593,16 @@ Chaque section du one-page occupe approximativement la hauteur d'un viewport mob
 
 **Propositions visuelles pour renforcer l'identité :**
 
-| Élément | Description | Usage | Implémentation |
-|---|---|---|---|
-| **Texture grain/noise** | Grain subtil en overlay sur les fonds crème | Fond de sections, derrière le hero | CSS `background-image` avec SVG noise, opacité 3-5% |
-| **Gradient chaud** | Dégradé transparent terracotta/ambre en overlay sur les photos | Photos de destinations, hero | `linear-gradient` + `mix-blend-mode: multiply`, opacité légère |
-| **Ligne séparatrice ambre** | Fine ligne décorative ambre entre sections | Transition entre sections principales | Bordure 1px `ambre` #D4956A, largeur 60px centrée |
-| **Formes organiques (blobs)** | Masques arrondis irréguliers pour les photos | Cadrage photos d'Elena, destinations | `clip-path` ou SVG mask, formes douces asymétriques |
-| **Icônes ligne simple** | Icônes minimalistes trait fin | Étapes du processus uniquement (pas partout) | SVG stroke-only, 24px, couleur `warm-gray` |
+| Élément                       | Description                                                    | Usage                                        | Implémentation                                                 |
+| ----------------------------- | -------------------------------------------------------------- | -------------------------------------------- | -------------------------------------------------------------- |
+| **Texture grain/noise**       | Grain subtil en overlay sur les fonds crème                    | Fond de sections, derrière le hero           | CSS `background-image` avec SVG noise, opacité 3-5%            |
+| **Gradient chaud**            | Dégradé transparent terracotta/ambre en overlay sur les photos | Photos de destinations, hero                 | `linear-gradient` + `mix-blend-mode: multiply`, opacité légère |
+| **Ligne séparatrice ambre**   | Fine ligne décorative ambre entre sections                     | Transition entre sections principales        | Bordure 1px `ambre` #D4956A, largeur 60px centrée              |
+| **Formes organiques (blobs)** | Masques arrondis irréguliers pour les photos                   | Cadrage photos d'Elena, destinations         | `clip-path` ou SVG mask, formes douces asymétriques            |
+| **Icônes ligne simple**       | Icônes minimalistes trait fin                                  | Étapes du processus uniquement (pas partout) | SVG stroke-only, 24px, couleur `warm-gray`                     |
 
 **Principes graphiques :**
+
 - Moins c'est plus — les éléments graphiques soutiennent le contenu, ils ne le concurrencent jamais
 - Les photos d'Elena restent le héros visuel, les éléments graphiques créent l'écrin
 - Cohérence avec l'univers Instagram d'Elena (chaleur, naturel, pas trop "designé")
@@ -576,20 +612,24 @@ Chaque section du one-page occupe approximativement la hauteur d'un viewport mob
 **Approche : best-effort WCAG AA (pas la priorité absolue, mais on fait bien les choses)**
 
 **Typographie :**
+
 - Taille minimum body : 18px (supérieure au minimum WCAG de 16px)
 - Contraste vérifié pour toutes les combinaisons texte/fond (voir tableau Color System)
 - Line-height 1.7 pour le body (confort de lecture)
 
 **Interactions :**
+
 - Touch targets minimum 44x44px sur mobile (WCAG 2.5.5)
 - CTA sticky suffisamment grand pour le tap au pouce
 - Espacement suffisant entre éléments interactifs (pas de tap accidentel)
 
 **Animations :**
+
 - `prefers-reduced-motion: reduce` respecté — toutes les animations GSAP désactivées pour les utilisateurs qui le demandent
 - Fallback statique élégant : le site reste beau et fonctionnel sans animation
 
 **Sémantique :**
+
 - HTML sémantique (`<header>`, `<main>`, `<section>`, `<footer>`, `<nav>`)
 - Attributs `alt` descriptifs sur toutes les images
 - Structure de headings logique (h1 → h2 → h3)
@@ -614,16 +654,16 @@ Chaque section du one-page occupe approximativement la hauteur d'un viewport mob
 
 **Direction hybride** — Chaque section utilise la direction la plus adaptée à son émotion cible :
 
-| Section | Direction | Traitement visuel |
-|---|---|---|
-| **1. Hero** | Story Vertical (Dir. 4) | Vidéo dark plein écran (autoplay, muted, loop), titre centré XL "Slow Adventures", sous-titre "Voyages immersifs aux Amériques", "scroll to explore". **Pas de CTA dans le hero** — on fait rêver d'abord |
-| **2. Elena** | Cinématique (Dir. 1) | Photo cercle avec bordure blanche sur fond dark overlay. Texte clair centré. Impact émotionnel fort — "elle est vraie". CTA intégré dans la section (desktop uniquement) |
-| **3. Destinations** | Full Immersif (Dir. 6) | **Un pays par bloc** (jamais groupés). Photo plein écran + overlay terracotta ou sauge par pays. Séparation visuelle claire entre pays (ligne blanche ou élément de rythme). CTA dédié après la section (desktop uniquement) |
-| **4. Processus** | Full Immersif (Dir. 6) | Section claire (crème) avec steps numérotés. Titre : **"Du rêve à la réalité"** (pas "Comment ça marche") |
-| **5. Témoignages** | Full Immersif (Dir. 6) | Photo fond + overlay ambre, citation en blanc, nom en dessous. CTA intégré dans la section (desktop uniquement) |
-| **6. Pricing** | Cinématique (Dir. 1) | Fond crème, lignes claires avec label/prix. Transparent et lisible |
-| **7. CTA Final** | Cinématique (Dir. 1) | Fond dark overlay, titre centré inclusif (pas genré), CTA terracotta large |
-| **8. Email Capture** | Full Immersif (Dir. 6) | Fond dark photo overlay. Formulation positive, tutoiement. Double objectif : CTA + inscription newsletter |
+| Section              | Direction               | Traitement visuel                                                                                                                                                                                                            |
+| -------------------- | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **1. Hero**          | Story Vertical (Dir. 4) | Vidéo dark plein écran (autoplay, muted, loop), titre centré XL "Slow Adventures", sous-titre "Voyages immersifs aux Amériques", "scroll to explore". **Pas de CTA dans le hero** — on fait rêver d'abord                    |
+| **2. Elena**         | Cinématique (Dir. 1)    | Photo cercle avec bordure blanche sur fond dark overlay. Texte clair centré. Impact émotionnel fort — "elle est vraie". CTA intégré dans la section (desktop uniquement)                                                     |
+| **3. Destinations**  | Full Immersif (Dir. 6)  | **Un pays par bloc** (jamais groupés). Photo plein écran + overlay terracotta ou sauge par pays. Séparation visuelle claire entre pays (ligne blanche ou élément de rythme). CTA dédié après la section (desktop uniquement) |
+| **4. Processus**     | Full Immersif (Dir. 6)  | Section claire (crème) avec steps numérotés. Titre : **"Du rêve à la réalité"** (pas "Comment ça marche")                                                                                                                    |
+| **5. Témoignages**   | Full Immersif (Dir. 6)  | Photo fond + overlay ambre, citation en blanc, nom en dessous. CTA intégré dans la section (desktop uniquement)                                                                                                              |
+| **6. Pricing**       | Cinématique (Dir. 1)    | Fond crème, lignes claires avec label/prix. Transparent et lisible                                                                                                                                                           |
+| **7. CTA Final**     | Cinématique (Dir. 1)    | Fond dark overlay, titre centré inclusif (pas genré), CTA terracotta large                                                                                                                                                   |
+| **8. Email Capture** | Full Immersif (Dir. 6)  | Fond dark photo overlay. Formulation positive, tutoiement. Double objectif : CTA + inscription newsletter                                                                                                                    |
 
 ### Design Rationale
 
@@ -641,6 +681,7 @@ Chaque section du one-page occupe approximativement la hauteur d'un viewport mob
 Le CTA "Confiez-nous ton prochain rêve" est réparti sur le site, avec une stratégie différente mobile vs desktop :
 
 **Sur desktop — CTA intégrés aux sections :**
+
 - **Jamais dans le hero** — Le hero fait rêver, pas vendre
 - **Dans la section Elena** — Intégré à la section, pas une section CTA séparée. Premier point de confiance établi
 - **Après les destinations** — Section CTA dédiée entre destinations et processus. Le rêve est à son maximum
@@ -648,6 +689,7 @@ Le CTA "Confiez-nous ton prochain rêve" est réparti sur le site, avec une stra
 - **Section CTA finale (7)** — Fermeture émotionnelle dédiée
 
 **Sur mobile — CTA sticky remplace les CTA intégrés :**
+
 - Le **CTA sticky mobile** (barre en bas de l'écran, zone du pouce) apparaît après le hero et reste visible tout le long du scroll
 - Les CTA intégrés aux sections Elena, destinations et témoignages **ne sont pas affichés sur mobile** — le sticky fait le travail
 - Seule la **section CTA finale (7)** reste visible sur mobile en plus du sticky
@@ -705,18 +747,19 @@ graph TD
 
 **Mécanique du scroll immersif section par section :**
 
-| Section | Animation d'entrée | Durée scroll | Signal émotionnel |
-|---|---|---|---|
-| **Hero** | Poster statique puis fade vers vidéo (autoplay, muted, loop) + titre avec léger parallax. "Scroll to explore" pulse doucement en bas | ~1 viewport | L'utilisateur est "posé" dans le rêve. Pas de CTA, pas d'urgence |
-| **Elena** | Photo circle scale-in depuis le centre, texte fade-in 200ms après | ~1 viewport | Reveal progressif : d'abord le visage, puis les mots. Connexion humaine immédiate |
-| **Destinations** | Chaque pays entre en fade-in au scroll. L'overlay coloré s'intensifie progressivement (de 30% à 55% opacité) | ~1 viewport par pays | Chaque scroll = un nouveau pays = une nouvelle "page" du livre photo |
-| **Processus** | Steps apparaissent un par un au scroll (stagger 150ms) | ~0.7 viewport | Rythme rapide — pas de lenteur sur la réassurance |
-| **Témoignages** | Citation en fade-in avec léger slide-up | ~0.7 viewport | La voix des autres, pas celle d'Elena — changement de ton |
-| **Pricing** | Lignes apparaissent une par une (stagger 100ms) | ~0.5 viewport | Rapide et clair — pas de mystère |
-| **CTA Final** | Titre et bouton scale-in, fond s'assombrit progressivement | ~1 viewport | Moment de pause. L'espace vide autour du CTA crée la gravité |
-| **Email Capture** | Input et texte fade-in | ~0.5 viewport | Doux, pas insistant |
+| Section           | Animation d'entrée                                                                                                                   | Durée scroll         | Signal émotionnel                                                                 |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------ | -------------------- | --------------------------------------------------------------------------------- |
+| **Hero**          | Poster statique puis fade vers vidéo (autoplay, muted, loop) + titre avec léger parallax. "Scroll to explore" pulse doucement en bas | ~1 viewport          | L'utilisateur est "posé" dans le rêve. Pas de CTA, pas d'urgence                  |
+| **Elena**         | Photo circle scale-in depuis le centre, texte fade-in 200ms après                                                                    | ~1 viewport          | Reveal progressif : d'abord le visage, puis les mots. Connexion humaine immédiate |
+| **Destinations**  | Chaque pays entre en fade-in au scroll. L'overlay coloré s'intensifie progressivement (de 30% à 55% opacité)                         | ~1 viewport par pays | Chaque scroll = un nouveau pays = une nouvelle "page" du livre photo              |
+| **Processus**     | Steps apparaissent un par un au scroll (stagger 150ms)                                                                               | ~0.7 viewport        | Rythme rapide — pas de lenteur sur la réassurance                                 |
+| **Témoignages**   | Citation en fade-in avec léger slide-up                                                                                              | ~0.7 viewport        | La voix des autres, pas celle d'Elena — changement de ton                         |
+| **Pricing**       | Lignes apparaissent une par une (stagger 100ms)                                                                                      | ~0.5 viewport        | Rapide et clair — pas de mystère                                                  |
+| **CTA Final**     | Titre et bouton scale-in, fond s'assombrit progressivement                                                                           | ~1 viewport          | Moment de pause. L'espace vide autour du CTA crée la gravité                      |
+| **Email Capture** | Input et texte fade-in                                                                                                               | ~0.5 viewport        | Doux, pas insistant                                                               |
 
 **CTA sticky mobile — Comportement détaillé :**
+
 - **Apparition :** Dès que le hero sort du viewport (scroll > 100vh)
 - **Design :** Barre en bas de l'écran, fond crème semi-transparent + backdrop-filter blur, bouton terracotta, texte "Confiez-nous ton prochain rêve"
 - **Disparition temporaire :** Se masque quand la section CTA finale est visible (éviter le doublon)
@@ -724,6 +767,7 @@ graph TD
 - **Ne s'affiche pas sur desktop** — remplacé par les CTA intégrés aux sections
 
 **CTA desktop intégrés — Comment ne pas casser l'immersion :**
+
 - **Dans Elena :** Bouton terracotta discret sous le texte de présentation, même style que le CTA final mais plus petit. Pas de section séparée — il fait partie du bloc Elena
 - **Après destinations :** Section CTA dédiée courte, fond crème, titre émotionnel + bouton. Sert de "respiration" entre destinations et processus
 - **Dans témoignages :** Bouton sous la citation, adjacent au trust signal. "La preuve sociale vient de tomber → action"
@@ -762,17 +806,18 @@ graph TD
 
 **Stratégie email nurturing (Brevo) :**
 
-| Timing | Email | Contenu | Objectif |
-|---|---|---|---|
-| **Inscription** | Email de bienvenue | Ton chaleureux, présentation Elena, "ravie que tu sois là". Lien vers le site | Confirmer le lien, donner envie de revenir |
-| **Vendredi S+1** | Newsletter #1 | Inspiration voyage — photo + mini-histoire d'un pays | Rêve — garder le feu allumé |
-| **Vendredi S+2** | Newsletter #2 | Focus destination — conseils pratiques + "tu savais que..." | Expertise — renforcer la crédibilité |
-| **Vendredi S+3** | Newsletter #3 | Témoignage client — citation + photos du voyage | Preuve sociale — "d'autres l'ont fait" |
-| **Vendredi S+4+** | Rotation | Alternance inspiration / destination / témoignage | Maintenir le lien sans lasser |
+| Timing            | Email              | Contenu                                                                       | Objectif                                   |
+| ----------------- | ------------------ | ----------------------------------------------------------------------------- | ------------------------------------------ |
+| **Inscription**   | Email de bienvenue | Ton chaleureux, présentation Elena, "ravie que tu sois là". Lien vers le site | Confirmer le lien, donner envie de revenir |
+| **Vendredi S+1**  | Newsletter #1      | Inspiration voyage — photo + mini-histoire d'un pays                          | Rêve — garder le feu allumé                |
+| **Vendredi S+2**  | Newsletter #2      | Focus destination — conseils pratiques + "tu savais que..."                   | Expertise — renforcer la crédibilité       |
+| **Vendredi S+3**  | Newsletter #3      | Témoignage client — citation + photos du voyage                               | Preuve sociale — "d'autres l'ont fait"     |
+| **Vendredi S+4+** | Rotation           | Alternance inspiration / destination / témoignage                             | Maintenir le lien sans lasser              |
 
 **Pourquoi le vendredi :** Les gens ont le week-end devant eux, plus de temps pour rêver et visiter le site. Le contenu voyage se consomme mieux en mode détente qu'en semaine.
 
 **Détection visiteur de retour (MVP) :**
+
 - Technologie : `localStorage` — on stocke un flag `sa_visited: true` + `sa_visit_count` + `sa_first_visit_date` au premier passage
 - Au retour : on détecte le flag et on peut déclencher une micro-animation de bienvenue
 - Limitation : on ne connaît pas le prénom (sauf si email capturé). Le message reste générique mais chaleureux : "Content de te revoir" ou "Tu es revenu(e), ça fait plaisir"
@@ -805,6 +850,7 @@ graph TD
 ```
 
 **Email de confirmation post-booking (automatique) :**
+
 - **Objet :** "Parlons de ton prochain rêve"
 - **Ton :** Chaleureux, personnel (même si automatisé). Tutoiement
 - **Contenu :** Présentation courte Elena, ce qui va se passer pendant le call (on fait connaissance, tes envies, tes voyages passés, ce que tu aimes/n'aimes pas), rassurance ("c'est un échange, pas un pitch")
@@ -812,6 +858,7 @@ graph TD
 - **Pas de lien "modifier/annuler" en gros** — le garder petit en bas (réduire les annulations)
 
 **Email post-call (manuel par Elena) :**
+
 - **Pourquoi manuel :** Elena n'aura pas 15 calls/jour. Le manuel est plus authentique et personnalisé. Un email automatique = "je suis un numéro"
 - **Contenu :** Récapitulatif personnalisé du cahier des charges (ce que le client a dit, ses envies, ses contraintes). Le client voit tout sous ses yeux → peut corriger/ajouter en répondant directement à l'email
 - **Objectif :** Le client se dit "elle a vraiment écouté, elle a tout retenu"
@@ -838,13 +885,13 @@ graph TD
 
 **Patterns récurrents identifiés :**
 
-| Pattern | Où il apparaît | Principe |
-|---|---|---|
-| **CTA basse friction** | Partout | "20 min, gratuit, sans engagement" + tutoiement + formulation inclusive |
-| **Rêve d'abord, action ensuite** | Hero, destinations, email | Le contenu émotionnel précède toujours l'appel à l'action |
-| **Nurturing multi-canal** | Email + Insta + site | Le site n'est pas seul — il fait partie d'un écosystème de présence |
-| **Manuel > auto quand ça compte** | Post-call | L'automatisation gère la logistique, Elena gère la relation |
-| **Détection sans intrusion** | localStorage, pas de cookies tiers | On détecte les retours sans tracking invasif |
+| Pattern                           | Où il apparaît                     | Principe                                                                |
+| --------------------------------- | ---------------------------------- | ----------------------------------------------------------------------- |
+| **CTA basse friction**            | Partout                            | "20 min, gratuit, sans engagement" + tutoiement + formulation inclusive |
+| **Rêve d'abord, action ensuite**  | Hero, destinations, email          | Le contenu émotionnel précède toujours l'appel à l'action               |
+| **Nurturing multi-canal**         | Email + Insta + site               | Le site n'est pas seul — il fait partie d'un écosystème de présence     |
+| **Manuel > auto quand ça compte** | Post-call                          | L'automatisation gère la logistique, Elena gère la relation             |
+| **Détection sans intrusion**      | localStorage, pas de cookies tiers | On détecte les retours sans tracking invasif                            |
 
 ### Flow Optimization Principles
 
@@ -899,6 +946,7 @@ src/
 **Spécifications par composant :**
 
 #### BaseLayout.astro
+
 - **Type :** Statique (0 JS)
 - **Purpose :** Structure HTML commune, chargement des fonts, meta tags SEO, injection de tokens.css
 - **Content :** `<!DOCTYPE html>`, `<head>` (meta charset, viewport, title, description, OG tags, fonts Lora + Plus Jakarta Sans avec `font-display: swap`, lien tokens.css), `<body>` avec slot principal
@@ -907,6 +955,7 @@ src/
 - **Performance :** fonts preload, CSS critique inline
 
 #### Hero.astro
+
 - **Type :** Island interactif (`client:load`)
 - **Purpose :** Séquence d'entrée immersive — vidéo plein écran en boucle + titre avec léger parallax
 - **Content :** Vidéo plein écran dark overlay (autoplay, muted, loop, playsinline), "Slow Adventures" en Lora XL, sous-titre "Voyages immersifs aux Amériques"
@@ -918,6 +967,7 @@ src/
 - **Vidéo specs :** Mobile = 720p, 8-12s, ~2MB MP4. Desktop = 1080p, 10-15s, ~4MB MP4. Compression H.264 CRF 23-28, pas d'audio track
 
 #### ScrollHint.astro
+
 - **Type :** Island interactif (`client:visible`)
 - **Purpose :** Indicateur "scroll to explore" qui pulse doucement en bas du hero
 - **Content :** Texte "scroll to explore" + chevron animé
@@ -927,6 +977,7 @@ src/
 - **Note :** `client:visible` suffit car ce composant n'est pertinent que dans le hero viewport
 
 #### StickyMobileCTA.astro
+
 - **Type :** Island interactif (`client:load`)
 - **Purpose :** Barre CTA fixée en bas de l'écran sur mobile uniquement
 - **Content :** Bouton terracotta "Confiez-nous ton prochain rêve" — fond crème semi-transparent + backdrop-filter blur
@@ -936,6 +987,7 @@ src/
 - **JS :** ~1kb (IntersectionObserver pour le hero et la section CTA finale, délai de réapparition 300ms)
 
 #### SectionReveal.astro
+
 - **Type :** Island interactif (`client:visible`)
 - **Purpose :** Wrapper réutilisable qui déclenche un fade-in GSAP quand la section entre dans le viewport
 - **Content :** Slot — enveloppe n'importe quel contenu de section
@@ -945,6 +997,7 @@ src/
 - **JS :** Importe GSAP + ScrollTrigger indépendamment — Astro déduplique automatiquement au build, donc pas de double chargement même si Hero importe aussi GSAP. Aucune race condition possible car chaque island gère son propre import
 
 #### CTAButton.astro
+
 - **Type :** Statique (0 JS)
 - **Purpose :** Bouton CTA réutilisable avec lien vers Calendly
 - **Content :** Texte configurable (default: "Confiez-nous ton prochain rêve"), sous-texte optionnel ("20 min, gratuit, sans engagement")
@@ -953,6 +1006,7 @@ src/
 - **Accessibility :** `<a>` sémantique, focus visible, contrastes vérifiés pour chaque variant
 
 #### ElenaSection.astro
+
 - **Type :** Statique (0 JS)
 - **Purpose :** Section de présentation d'Elena — photo cercle sur fond dark overlay
 - **Content :** Photo Elena en cercle avec bordure blanche, texte de présentation, CTA intégré (desktop only via CTAButton `desktopOnly`)
@@ -960,6 +1014,7 @@ src/
 - **Accessibility :** Alt text descriptif sur la photo, structure heading logique
 
 #### DestinationBlock.astro
+
 - **Type :** Statique (0 JS)
 - **Purpose :** Bloc full-screen par pays — un pays = un bloc = un écran
 - **Content :** Photo plein écran + overlay coloré (terracotta ou sauge), nom du pays, courte description, lien "en savoir plus" conditionnel
@@ -969,6 +1024,7 @@ src/
 - **Note post-MVP :** Le prop `learnMoreHref` permet d'activer les pages destination sans recoder le composant
 
 #### ProcessStep.astro
+
 - **Type :** Statique (0 JS)
 - **Purpose :** Étape numérotée du processus "Du rêve à la réalité"
 - **Content :** Numéro, titre, description courte, icône optionnelle (SVG stroke-only)
@@ -976,6 +1032,7 @@ src/
 - **Accessibility :** Structure sémantique `<li>` dans une `<ol>`, numérotation explicite
 
 #### TestimonialCard.astro
+
 - **Type :** Statique (0 JS)
 - **Purpose :** Citation client sur fond photo avec overlay ambre
 - **Content :** Photo fond + overlay ambre, citation en blanc, nom et contexte voyage
@@ -983,6 +1040,7 @@ src/
 - **Accessibility :** `<blockquote>` sémantique, `<cite>` pour l'attribution
 
 #### PricingRow.astro
+
 - **Type :** Statique (0 JS)
 - **Purpose :** Ligne de tarification claire — label + prix
 - **Content :** Label du service, prix, description optionnelle
@@ -990,6 +1048,7 @@ src/
 - **Accessibility :** Structure `<dl>` (definition list)
 
 #### EmailCapture.astro
+
 - **Type :** Island interactif (`client:visible`)
 - **Purpose :** Formulaire d'inscription newsletter — intégration Brevo
 - **Content :** Titre positif (ex: "Reste connecté(e) à l'aventure"), champ email, bouton submit, texte RGPD
@@ -998,6 +1057,7 @@ src/
 - **JS :** ~5kb (fetch API vers Brevo, validation email, gestion d'état)
 
 #### ReturnVisitorBanner.astro
+
 - **Type :** Island interactif (`client:load`)
 - **Purpose :** Micro-animation de bienvenue pour les visiteurs de retour détectés via localStorage
 - **Content :** Message chaleureux "Content de te revoir" — positionné en transition entre le hero et la section Elena (pas en haut de page, pour préserver l'immersion du hero)
@@ -1006,6 +1066,7 @@ src/
 - **JS :** ~1kb (localStorage read/write, animation CSS)
 
 #### CalendlyModal.astro
+
 - **Type :** Island interactif (`client:load`)
 - **Purpose :** Modale full-size pour embed Calendly — permet de booker un appel sans quitter le site
 - **Content :** Modale plein écran avec fond semi-transparent dark `rgba(44, 40, 37, 0.7)` + backdrop-filter blur, iframe Calendly, bouton fermer (X) en haut à droite
@@ -1018,6 +1079,7 @@ src/
 ### Component Implementation Strategy
 
 **Principes :**
+
 - **Statique par défaut** — Un composant n'est un island que s'il a besoin de JS côté client. 7/13 composants sont statiques (0 JS)
 - **Tokens partagés** — Tous les composants utilisent les design tokens Tailwind (couleurs, typo, spacing). Aucun style en dur. tokens.css réservé aux valeurs dynamiques (GSAP, backdrop-filter)
 - **GSAP partagé** — Hero et SectionReveal importent chacun GSAP+ScrollTrigger indépendamment. Astro déduplique au build → un seul bundle chargé. Pas de race condition
@@ -1027,22 +1089,23 @@ src/
 
 **Budget JS total :**
 
-| Composant | Taille raw (minifié) | Taille gzippé | Directive Astro |
-|---|---|---|---|
-| Hero.astro (GSAP+ScrollTrigger) | ~24kb | ~8kb | `client:load` |
-| ScrollHint.astro | ~0.5kb | ~0.2kb | `client:visible` |
-| StickyMobileCTA.astro | ~1kb | ~0.4kb | `client:load` |
-| SectionReveal.astro | ~0kb (GSAP déjà chargé) | ~0kb | `client:visible` |
-| EmailCapture.astro | ~5kb | ~2kb | `client:visible` |
-| ReturnVisitorBanner.astro | ~1kb | ~0.4kb | `client:load` |
-| CalendlyModal.astro | ~2kb | ~0.7kb | `client:load` |
-| **Total** | **~33.5kb raw** | **~11.7kb gzippé** | |
+| Composant                       | Taille raw (minifié)    | Taille gzippé      | Directive Astro  |
+| ------------------------------- | ----------------------- | ------------------ | ---------------- |
+| Hero.astro (GSAP+ScrollTrigger) | ~24kb                   | ~8kb               | `client:load`    |
+| ScrollHint.astro                | ~0.5kb                  | ~0.2kb             | `client:visible` |
+| StickyMobileCTA.astro           | ~1kb                    | ~0.4kb             | `client:load`    |
+| SectionReveal.astro             | ~0kb (GSAP déjà chargé) | ~0kb               | `client:visible` |
+| EmailCapture.astro              | ~5kb                    | ~2kb               | `client:visible` |
+| ReturnVisitorBanner.astro       | ~1kb                    | ~0.4kb             | `client:load`    |
+| CalendlyModal.astro             | ~2kb                    | ~0.7kb             | `client:load`    |
+| **Total**                       | **~33.5kb raw**         | **~11.7kb gzippé** |                  |
 
 **~11.7kb gzippé** — excellent pour la performance. Le site reste essentiellement statique avec des touches d'interactivité ciblées. Le chargement initial (`client:load`) = ~9.5kb gzippé. Le reste se charge au scroll (`client:visible`).
 
 ### Implementation Roadmap
 
 **Phase 1 — Core (MVP critique) :**
+
 - `BaseLayout.astro` — structure HTML, meta, fonts, tokens, SEO
 - `Hero.astro` + `ScrollHint.astro` — première impression, séquence GSAP
 - `CTAButton.astro` — réutilisé partout, props variant/desktopOnly
@@ -1052,6 +1115,7 @@ src/
 - `EmailCapture.astro` — capture email Brevo
 
 **Phase 2 — Sections de contenu :**
+
 - `ElenaSection.astro` — présentation personnelle + CTA intégré desktop
 - `DestinationBlock.astro` — un bloc par pays, overlay coloré, source données content collection
 - `ProcessStep.astro` — "Du rêve à la réalité" en étapes numérotées
@@ -1059,6 +1123,7 @@ src/
 - `PricingRow.astro` — tarification transparente
 
 **Phase 3 — Enrichissement :**
+
 - `ReturnVisitorBanner.astro` — détection localStorage, positionné entre hero et Elena
 - Activation des liens `learnMoreHref` sur DestinationBlock (quand les pages destination existent)
 
@@ -1074,22 +1139,25 @@ Slow Adventures est un one-page à action unique (booker un call). Il n'y a pas 
 
 **CTAButton — Quand utiliser chaque variant :**
 
-| Variant | Quand l'utiliser | Fond de la section | Exemple |
-|---|---|---|---|
-| **solid** | Action principale sur fond clair | `creme`, `creme-dark` | Section CTA dédiée après destinations, CTA final |
-| **outline** | Action sur fond dark/photo overlay | Dark overlay, photo | Section Elena (desktop), section témoignages (desktop) |
-| **ghost** | Lien secondaire subtil | Tout contexte | Lien "en savoir plus" dans DestinationBlock (post-MVP) |
+| Variant     | Quand l'utiliser                   | Fond de la section    | Exemple                                                |
+| ----------- | ---------------------------------- | --------------------- | ------------------------------------------------------ |
+| **solid**   | Action principale sur fond clair   | `creme`, `creme-dark` | Section CTA dédiée après destinations, CTA final       |
+| **outline** | Action sur fond dark/photo overlay | Dark overlay, photo   | Section Elena (desktop), section témoignages (desktop) |
+| **ghost**   | Lien secondaire subtil             | Tout contexte         | Lien "en savoir plus" dans DestinationBlock (post-MVP) |
 
 **Règles de sizing :**
+
 - `default` : CTA final (section 7) et sticky mobile — c'est le bouton "star", le plus grand
 - `small` : CTA intégrés dans les sections Elena, après destinations, témoignages — ils accompagnent le contenu, ils ne dominent pas
 
 **Règle `desktopOnly` :**
+
 - Tous les CTA intégrés (Elena, après destinations, témoignages) sont `desktopOnly: true`
 - Le CTA final (section 7) est toujours visible (mobile + desktop)
 - Le sticky mobile remplace tous les CTA intégrés sur mobile
 
 **Hover/Active cohérents :**
+
 - Hover : `box-shadow: 0 8px 32px rgba(192, 96, 62, 0.15)` + `transform: scale(1.02)` — transition 300ms ease-out
 - Active : fond `terracotta-dark` #a04e30 — feedback immédiat au tap
 - Focus : `outline: 2px solid terracotta` + `outline-offset: 4px` — visible au clavier
@@ -1102,15 +1170,16 @@ Le CTAButton reste un `<a href="https://calendly.com/...">` statique. Un script 
 
 **Pattern 1 : Feedback formulaire (EmailCapture)**
 
-| État | Visuel | Message | Durée |
-|---|---|---|---|
-| **Default** | Champ email vide, placeholder "ton@email.com" | — | Permanent |
-| **Validation error** | Bordure `terracotta` sur le champ, message sous le champ en `terracotta` | "Hmm, cette adresse ne semble pas valide" | Jusqu'à correction |
-| **Loading** | Bouton submit remplacé par spinner (SVG animé, couleur `terracotta`) | — | Durée de la requête |
-| **Success** | Champ + bouton remplacés par message de succès en `sauge` | "Bienvenue dans l'aventure ! Regarde ta boîte mail." | Permanent (pas de reset) |
-| **Server error** | Bordure `terracotta` sur le champ, message sous le champ | "Oups, quelque chose n'a pas marché. Réessaie ?" | Jusqu'à nouvel essai |
+| État                 | Visuel                                                                   | Message                                              | Durée                    |
+| -------------------- | ------------------------------------------------------------------------ | ---------------------------------------------------- | ------------------------ |
+| **Default**          | Champ email vide, placeholder "ton@email.com"                            | —                                                    | Permanent                |
+| **Validation error** | Bordure `terracotta` sur le champ, message sous le champ en `terracotta` | "Hmm, cette adresse ne semble pas valide"            | Jusqu'à correction       |
+| **Loading**          | Bouton submit remplacé par spinner (SVG animé, couleur `terracotta`)     | —                                                    | Durée de la requête      |
+| **Success**          | Champ + bouton remplacés par message de succès en `sauge`                | "Bienvenue dans l'aventure ! Regarde ta boîte mail." | Permanent (pas de reset) |
+| **Server error**     | Bordure `terracotta` sur le champ, message sous le champ                 | "Oups, quelque chose n'a pas marché. Réessaie ?"     | Jusqu'à nouvel essai     |
 
 **Principes de feedback :**
+
 - Tutoiement dans tous les messages
 - Ton chaleureux, jamais technique ("pas valide" plutôt que "format incorrect")
 - Pas de toast/notification flottante — les messages sont inline, à côté du composant concerné
@@ -1118,20 +1187,20 @@ Le CTAButton reste un `<a href="https://calendly.com/...">` statique. Un script 
 
 **Pattern 2 : Feedback visiteur de retour (ReturnVisitorBanner)**
 
-| État | Visuel | Comportement |
-|---|---|---|
-| **Premier visiteur** | Rien — aucun banner | — |
+| État                   | Visuel                                                                                                       | Comportement                                                                       |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------- |
+| **Premier visiteur**   | Rien — aucun banner                                                                                          | —                                                                                  |
 | **Visiteur de retour** | Banner entre hero et Elena, fond `creme-dark` semi-transparent, texte "Content de te revoir" en `warm-black` | Apparaît au scroll après le hero. Fade-in CSS 400ms. Auto-dismiss après 5s ou clic |
-| **Post-dismiss** | Banner disparaît en fade-out 300ms | Ne réapparaît pas pendant la session (sessionStorage flag) |
+| **Post-dismiss**       | Banner disparaît en fade-out 300ms                                                                           | Ne réapparaît pas pendant la session (sessionStorage flag)                         |
 
 **Pattern 3 : Feedback Calendly (modale full-size)**
 
-| État | Visuel | Comportement |
-|---|---|---|
-| **Clic CTA** | Modale full-size s'ouvre par-dessus le site. Fond semi-transparent dark `rgba(44, 40, 37, 0.7)` + backdrop-filter blur | Transition : modale slide-up 400ms ease-out |
-| **Calendly chargé** | Embed Calendly occupe la modale. Bouton fermer (X) en haut à droite, `warm-gray` | Si l'utilisateur ferme : retour au site exactement là où il était (scroll position préservée) |
-| **Créneau réservé** | Calendly affiche sa propre confirmation. Modale reste ouverte | L'utilisateur ferme quand il veut |
-| **Fermeture** | Modale disparaît en fade-out 300ms | Scroll position restaurée |
+| État                | Visuel                                                                                                                 | Comportement                                                                                  |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| **Clic CTA**        | Modale full-size s'ouvre par-dessus le site. Fond semi-transparent dark `rgba(44, 40, 37, 0.7)` + backdrop-filter blur | Transition : modale slide-up 400ms ease-out                                                   |
+| **Calendly chargé** | Embed Calendly occupe la modale. Bouton fermer (X) en haut à droite, `warm-gray`                                       | Si l'utilisateur ferme : retour au site exactement là où il était (scroll position préservée) |
+| **Créneau réservé** | Calendly affiche sa propre confirmation. Modale reste ouverte                                                          | L'utilisateur ferme quand il veut                                                             |
+| **Fermeture**       | Modale disparaît en fade-out 300ms                                                                                     | Scroll position restaurée                                                                     |
 
 **Accès mobile :** La modale est full-screen sur mobile (pas de margin). Le sticky CTA se masque quand la modale est ouverte.
 
@@ -1144,6 +1213,7 @@ Le CTAButton reste un `<a href="https://calendly.com/...">` statique. Un script 
 **Un seul formulaire sur le site : EmailCapture**
 
 **Structure :**
+
 ```
 [Label invisible (sr-only) : "Ton adresse email"]
 [Input email — placeholder "ton@email.com"]
@@ -1153,6 +1223,7 @@ Le CTAButton reste un `<a href="https://calendly.com/...">` statique. Un script 
 ```
 
 **Règles de formulaire :**
+
 - **Pas de label visible** — le placeholder suffit visuellement, mais un `<label>` avec `sr-only` est toujours présent pour l'accessibilité
 - **Validation côté client** — regex email basique avant envoi. Pas de validation restrictive (pas de blocage .fr/.com obligatoire)
 - **Submit sur Enter** — le formulaire est un `<form>` standard, Enter fonctionne nativement
@@ -1168,13 +1239,13 @@ Slow Adventures n'a pas de navigation classique (pas de menu, pas de header fixe
 
 **Repères de navigation implicites :**
 
-| Repère | Rôle | Implémentation |
-|---|---|---|
-| **Skip-to-content** | Lien d'accessibilité en haut du `<body>`, visuellement caché sauf au focus clavier | `<a href="#main" class="sr-only focus:not-sr-only">Aller au contenu</a>` — WCAG 2.4.1 |
-| **ScrollHint** | Invite au scroll depuis le hero | Texte "scroll to explore" + chevron, disparaît au premier scroll |
-| **Sticky CTA mobile** | Rappel permanent de l'action principale | Fixed bottom bar, masqué dans le hero et la section CTA finale |
-| **Alternance dark/light** | Signal visuel de changement de section | Les fonds alternent entre dark overlay et crème |
-| **Ligne séparatrice ambre** | Transition douce entre sections | 60px centrée, 1px ambre — ponctuation visuelle |
+| Repère                      | Rôle                                                                               | Implémentation                                                                        |
+| --------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| **Skip-to-content**         | Lien d'accessibilité en haut du `<body>`, visuellement caché sauf au focus clavier | `<a href="#main" class="sr-only focus:not-sr-only">Aller au contenu</a>` — WCAG 2.4.1 |
+| **ScrollHint**              | Invite au scroll depuis le hero                                                    | Texte "scroll to explore" + chevron, disparaît au premier scroll                      |
+| **Sticky CTA mobile**       | Rappel permanent de l'action principale                                            | Fixed bottom bar, masqué dans le hero et la section CTA finale                        |
+| **Alternance dark/light**   | Signal visuel de changement de section                                             | Les fonds alternent entre dark overlay et crème                                       |
+| **Ligne séparatrice ambre** | Transition douce entre sections                                                    | 60px centrée, 1px ambre — ponctuation visuelle                                        |
 
 **Pas de scroll-to-top :** Le site est conçu pour être scrollé du haut vers le bas en une seule session. Pas de bouton "retour en haut".
 
@@ -1183,6 +1254,7 @@ Slow Adventures n'a pas de navigation classique (pas de menu, pas de header fixe
 Le clic sur n'importe quel CTAButton déclenche l'ouverture de la modale Calendly. Ce comportement est identique partout — pas de variation selon le CTA cliqué.
 
 **Séquence :**
+
 1. Clic CTA → script page intercepte via `[data-calendly-trigger]` → CalendlyModal s'ouvre (slide-up 400ms)
 2. Calendly s'initialise dans l'iframe (fond `creme` en attendant)
 3. L'utilisateur choisit son créneau dans la modale
@@ -1199,6 +1271,7 @@ Le clic sur n'importe quel CTAButton déclenche l'ouverture de la modale Calendl
 Quand GSAP n'a pas encore chargé ou quand `prefers-reduced-motion: reduce` est activé, le contenu utilise un fallback progressif :
 
 **Hiérarchie de comportement :**
+
 1. **GSAP chargé + motion OK** → animations complètes (fade-up, stagger, parallax)
 2. **GSAP pas encore chargé + motion OK** → transition CSS opacity 200ms via micro-script IntersectionObserver natif
 3. **prefers-reduced-motion: reduce** → tout visible immédiatement, aucune transition
@@ -1207,7 +1280,9 @@ Quand GSAP n'a pas encore chargé ou quand `prefers-reduced-motion: reduce` est 
 
 ```css
 /* État initial : invisible */
-[data-reveal] { opacity: 0; }
+[data-reveal] {
+  opacity: 0;
+}
 
 /* Fallback CSS quand IntersectionObserver détecte l'élément */
 [data-reveal].revealed {
@@ -1217,7 +1292,9 @@ Quand GSAP n'a pas encore chargé ou quand `prefers-reduced-motion: reduce` est 
 
 /* Si reduced-motion : tout visible immédiatement */
 @media (prefers-reduced-motion: reduce) {
-  [data-reveal] { opacity: 1; }
+  [data-reveal] {
+    opacity: 1;
+  }
 }
 ```
 
@@ -1225,12 +1302,12 @@ Un micro-script IntersectionObserver natif (~20 lignes, inline dans BaseLayout) 
 
 **Pattern : Chargement des images**
 
-| Image | Chargement | Placeholder |
-|---|---|---|
-| **Hero (poster)** | Poster `loading="eager"`, preload en `<link>`. Vidéo en streaming progressif (`preload="auto"` desktop, `preload="metadata"` mobile) | Fond `warm-black` #2c2825 puis poster, puis vidéo |
-| **Elena** | `loading="lazy"` | Fond `warm-black` avec fade-in quand chargée |
-| **Destinations** | `loading="lazy"` | Fond overlay couleur (terracotta ou sauge) — le overlay est visible même sans image |
-| **Témoignages** | `loading="lazy"` | Fond `ambre` opacity 60% |
+| Image             | Chargement                                                                                                                           | Placeholder                                                                         |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------- |
+| **Hero (poster)** | Poster `loading="eager"`, preload en `<link>`. Vidéo en streaming progressif (`preload="auto"` desktop, `preload="metadata"` mobile) | Fond `warm-black` #2c2825 puis poster, puis vidéo                                   |
+| **Elena**         | `loading="lazy"`                                                                                                                     | Fond `warm-black` avec fade-in quand chargée                                        |
+| **Destinations**  | `loading="lazy"`                                                                                                                     | Fond overlay couleur (terracotta ou sauge) — le overlay est visible même sans image |
+| **Témoignages**   | `loading="lazy"`                                                                                                                     | Fond `ambre` opacity 60%                                                            |
 
 **Principe :** Le placeholder n'est jamais un spinner ou un squelette gris. C'est toujours une couleur cohérente avec la palette — le site est "beau" même pendant le chargement.
 
@@ -1247,6 +1324,7 @@ Un micro-script IntersectionObserver natif (~20 lignes, inline dans BaseLayout) 
 Le footer n'est pas une section du storytelling — c'est un bloc utilitaire discret tout en bas, après l'email capture. Pas de composant dédié, directement intégré dans la page.
 
 **Contenu :**
+
 - Mentions légales (lien)
 - Politique de confidentialité (lien — obligatoire RGPD car collecte d'emails via Brevo)
 - Contact Elena (email)
@@ -1256,18 +1334,19 @@ Le footer n'est pas une section du storytelling — c'est un bloc utilitaire dis
 
 **Pattern : Ton et microcopy**
 
-| Contexte | Registre | Exemple |
-|---|---|---|
-| **CTA principal** | Invitation chaleureuse | "Confiez-nous ton prochain rêve" |
-| **Sous-CTA** | Réassurance décontractée | "20 min, gratuit, sans engagement" |
-| **Email capture** | Positif, inclusif | "Reste connecté(e) à l'aventure" |
-| **Success** | Célébration douce | "Bienvenue dans l'aventure !" |
-| **Erreur** | Empathique, solution | "Oups, quelque chose n'a pas marché. Réessaie ?" |
-| **Visiteur retour** | Chaleureux, simple | "Content de te revoir" |
-| **RGPD** | Court, positif | "Désabonnement en un clic" |
-| **Footer** | Utilitaire, discret | Pas de ton émotionnel — juste les obligations légales |
+| Contexte            | Registre                 | Exemple                                               |
+| ------------------- | ------------------------ | ----------------------------------------------------- |
+| **CTA principal**   | Invitation chaleureuse   | "Confiez-nous ton prochain rêve"                      |
+| **Sous-CTA**        | Réassurance décontractée | "20 min, gratuit, sans engagement"                    |
+| **Email capture**   | Positif, inclusif        | "Reste connecté(e) à l'aventure"                      |
+| **Success**         | Célébration douce        | "Bienvenue dans l'aventure !"                         |
+| **Erreur**          | Empathique, solution     | "Oups, quelque chose n'a pas marché. Réessaie ?"      |
+| **Visiteur retour** | Chaleureux, simple       | "Content de te revoir"                                |
+| **RGPD**            | Court, positif           | "Désabonnement en un clic"                            |
+| **Footer**          | Utilitaire, discret      | Pas de ton émotionnel — juste les obligations légales |
 
 **Règles transversales du microcopy :**
+
 - Tutoiement partout, sans exception
 - Jamais genré (pas de "prête/prêt", utiliser des tournures neutres)
 - Jamais négatif ("pas encore prêt" → "reste connecté(e)")
@@ -1284,19 +1363,19 @@ Le site est conçu mobile-first — le CSS de base cible les écrans mobiles, pu
 
 **Comportement par device :**
 
-| Aspect | Mobile (< 768px) | Tablette (768px - 1023px) | Desktop (1024px+) |
-|---|---|---|---|
-| **Layout** | Single column, full-width | Single column, padding augmenté | Conteneur centré 1280px max |
-| **Hero** | Vidéo plein écran ou poster statique (Save-Data / connexion lente) | Vidéo plein écran | Vidéo plein écran, léger parallax GSAP |
-| **CTA** | Sticky bottom bar uniquement | Sticky bottom bar + CTA intégrés visibles | CTA intégrés aux sections uniquement |
-| **Images** | Full-bleed, srcset mobile | Full-bleed, srcset tablette | Full-bleed (destinations), conteneur (autres) |
-| **Typographie** | Tailles `clamp()` min | Tailles `clamp()` mid | Tailles `clamp()` max |
-| **Destinations** | 1 pays = 1 écran scroll | Idem mobile | Idem, overlay plus subtil |
-| **Elena** | Photo + texte empilés | Photo + texte empilés, cercle plus grand | Photo cercle à gauche, texte à droite possible |
-| **Processus** | Steps empilés verticalement | 2 colonnes (2x2 ou 3+1) | 3-4 colonnes horizontales |
-| **Pricing** | Liste verticale | Liste verticale avec padding | Layout centré plus aéré |
-| **CalendlyModal** | Full-screen sans margin | Full-screen avec margin 24px | Modale centrée 800px max-width |
-| **Footer** | Empilé, centré | Empilé, centré | Inline horizontal, centré |
+| Aspect            | Mobile (< 768px)                                                   | Tablette (768px - 1023px)                 | Desktop (1024px+)                              |
+| ----------------- | ------------------------------------------------------------------ | ----------------------------------------- | ---------------------------------------------- |
+| **Layout**        | Single column, full-width                                          | Single column, padding augmenté           | Conteneur centré 1280px max                    |
+| **Hero**          | Vidéo plein écran ou poster statique (Save-Data / connexion lente) | Vidéo plein écran                         | Vidéo plein écran, léger parallax GSAP         |
+| **CTA**           | Sticky bottom bar uniquement                                       | Sticky bottom bar + CTA intégrés visibles | CTA intégrés aux sections uniquement           |
+| **Images**        | Full-bleed, srcset mobile                                          | Full-bleed, srcset tablette               | Full-bleed (destinations), conteneur (autres)  |
+| **Typographie**   | Tailles `clamp()` min                                              | Tailles `clamp()` mid                     | Tailles `clamp()` max                          |
+| **Destinations**  | 1 pays = 1 écran scroll                                            | Idem mobile                               | Idem, overlay plus subtil                      |
+| **Elena**         | Photo + texte empilés                                              | Photo + texte empilés, cercle plus grand  | Photo cercle à gauche, texte à droite possible |
+| **Processus**     | Steps empilés verticalement                                        | 2 colonnes (2x2 ou 3+1)                   | 3-4 colonnes horizontales                      |
+| **Pricing**       | Liste verticale                                                    | Liste verticale avec padding              | Layout centré plus aéré                        |
+| **CalendlyModal** | Full-screen sans margin                                            | Full-screen avec margin 24px              | Modale centrée 800px max-width                 |
+| **Footer**        | Empilé, centré                                                     | Empilé, centré                            | Inline horizontal, centré                      |
 
 **Décision tablette pour StickyMobileCTA :**
 Sur tablette (768px-1023px), le sticky CTA reste visible car l'expérience est tactile comme sur mobile. Il disparaît uniquement à partir de `lg:` (1024px) où l'on passe en mode desktop avec les CTA intégrés.
@@ -1305,12 +1384,12 @@ Sur tablette (768px-1023px), le sticky CTA reste visible car l'expérience est t
 
 **3 breakpoints Tailwind, mobile-first :**
 
-| Breakpoint | Taille | Rôle | Changements clés |
-|---|---|---|---|
-| **Base** (default) | 0 - 639px | Mobile petit | Layout de base, single column, sticky CTA |
-| **`sm:`** | 640px+ | Mobile large | Padding horizontal 32px (au lieu de 24px), touch targets légèrement plus espacés |
-| **`md:`** | 768px+ | Tablette | Processus en 2 colonnes, Elena cercle plus grand, CalendlyModal avec margin, footer centré avec plus de respiration |
-| **`lg:`** | 1024px+ | Desktop | Conteneur 1280px, CTA intégrés visibles, sticky CTA masqué, Elena possible layout horizontal, processus 3-4 colonnes |
+| Breakpoint         | Taille    | Rôle         | Changements clés                                                                                                     |
+| ------------------ | --------- | ------------ | -------------------------------------------------------------------------------------------------------------------- |
+| **Base** (default) | 0 - 639px | Mobile petit | Layout de base, single column, sticky CTA                                                                            |
+| **`sm:`**          | 640px+    | Mobile large | Padding horizontal 32px (au lieu de 24px), touch targets légèrement plus espacés                                     |
+| **`md:`**          | 768px+    | Tablette     | Processus en 2 colonnes, Elena cercle plus grand, CalendlyModal avec margin, footer centré avec plus de respiration  |
+| **`lg:`**          | 1024px+   | Desktop      | Conteneur 1280px, CTA intégrés visibles, sticky CTA masqué, Elena possible layout horizontal, processus 3-4 colonnes |
 
 **Pas de breakpoint XL/2XL :** Le site est un one-page scroll immersif — au-delà de 1280px le conteneur est centré avec du vide de chaque côté. Les images et vidéos full-bleed (hero, destinations, témoignages) restent plein écran quelle que soit la taille.
 
@@ -1318,22 +1397,22 @@ Sur tablette (768px-1023px), le sticky CTA reste visible car l'expérience est t
 
 **Largeurs max :**
 
-| Élément | Max-width | Justification |
-|---|---|---|
-| **Texte courant** | 640px | ~65 caractères/ligne — lisibilité optimale |
-| **Layout global** | 1280px | Conteneur principal desktop |
-| **Vidéo/images full-bleed** | Aucune limite | Hero, destinations, témoignages — plein écran |
-| **CalendlyModal** | 800px (desktop) | Confort de lecture de l'embed Calendly |
-| **Footer** | 640px | Aligné sur le texte courant |
+| Élément                     | Max-width       | Justification                                 |
+| --------------------------- | --------------- | --------------------------------------------- |
+| **Texte courant**           | 640px           | ~65 caractères/ligne — lisibilité optimale    |
+| **Layout global**           | 1280px          | Conteneur principal desktop                   |
+| **Vidéo/images full-bleed** | Aucune limite   | Hero, destinations, témoignages — plein écran |
+| **CalendlyModal**           | 800px (desktop) | Confort de lecture de l'embed Calendly        |
+| **Footer**                  | 640px           | Aligné sur le texte courant                   |
 
 ### Hero Video Strategy
 
 **Format et encodage :**
 
-| Format | Usage | Compatibilité |
-|---|---|---|
-| **MP4 (H.264)** | Format principal | 98%+ des navigateurs |
-| **WebM (VP9)** | Optionnel, meilleure compression | Chrome, Firefox, Edge |
+| Format          | Usage                            | Compatibilité         |
+| --------------- | -------------------------------- | --------------------- |
+| **MP4 (H.264)** | Format principal                 | 98%+ des navigateurs  |
+| **WebM (VP9)**  | Optionnel, meilleure compression | Chrome, Firefox, Edge |
 
 **Implémentation HTML :**
 
@@ -1348,7 +1427,11 @@ Sur tablette (768px-1023px), le sticky CTA reste visible car l'expérience est t
     preload="auto"
     aria-hidden="true"
   >
-    <source src="/videos/hero-desktop.mp4" media="(min-width: 768px)" type="video/mp4" />
+    <source
+      src="/videos/hero-desktop.mp4"
+      media="(min-width: 768px)"
+      type="video/mp4"
+    />
     <source src="/videos/hero-mobile.mp4" type="video/mp4" />
     <!-- Fallback : le poster s'affiche si <video> non supporté -->
   </video>
@@ -1358,12 +1441,13 @@ Sur tablette (768px-1023px), le sticky CTA reste visible car l'expérience est t
 
 **Spécifications vidéo par device :**
 
-| Version | Résolution | Durée | Poids cible | Usage |
-|---|---|---|---|---|
-| **Mobile** | 720p (720x1280 portrait ou 1280x720) | 8-12s loop | ~1.5-2.5MB | Écrans < 768px |
-| **Desktop** | 1080p (1920x1080) | 10-15s loop | ~3-5MB | Écrans 768px+ |
+| Version     | Résolution                           | Durée       | Poids cible | Usage          |
+| ----------- | ------------------------------------ | ----------- | ----------- | -------------- |
+| **Mobile**  | 720p (720x1280 portrait ou 1280x720) | 8-12s loop  | ~1.5-2.5MB  | Écrans < 768px |
+| **Desktop** | 1080p (1920x1080)                    | 10-15s loop | ~3-5MB      | Écrans 768px+  |
 
 **Stratégie de chargement :**
+
 1. **Poster image** chargée en priorité (`loading="eager"`, preloaded) — le site affiche immédiatement un visuel beau et complet
 2. **Vidéo** démarre en streaming progressif dès que le navigateur a assez de buffer — transition douce du poster vers la vidéo via un fade CSS
 3. **LCP** = poster image, pas la vidéo — le score Lighthouse n'est pas impacté
@@ -1371,20 +1455,22 @@ Sur tablette (768px-1023px), le sticky CTA reste visible car l'expérience est t
 
 **Fallbacks et conditions :**
 
-| Condition | Comportement |
-|---|---|
-| **prefers-reduced-motion: reduce** | Vidéo ne se lance pas. Poster statique uniquement |
-| **Save-Data: on** (header HTTP) | Poster statique, pas de vidéo téléchargée |
-| **Connexion lente** (Network Information API si disponible) | Poster statique ou vidéo mobile uniquement |
-| **Navigateur sans `<video>`** | Poster image visible via fallback CSS |
-| **iOS Safari** | `playsinline` empêche le plein écran natif, autoplay OK car muted |
+| Condition                                                   | Comportement                                                      |
+| ----------------------------------------------------------- | ----------------------------------------------------------------- |
+| **prefers-reduced-motion: reduce**                          | Vidéo ne se lance pas. Poster statique uniquement                 |
+| **Save-Data: on** (header HTTP)                             | Poster statique, pas de vidéo téléchargée                         |
+| **Connexion lente** (Network Information API si disponible) | Poster statique ou vidéo mobile uniquement                        |
+| **Navigateur sans `<video>`**                               | Poster image visible via fallback CSS                             |
+| **iOS Safari**                                              | `playsinline` empêche le plein écran natif, autoplay OK car muted |
 
 **Impact sur le budget JS de Hero.astro :**
+
 - Le composant GSAP gère toujours le fade-in du titre et le parallax
 - Ajout : détection `prefers-reduced-motion` et `Save-Data` pour conditionner le lancement vidéo (~0.3kb supplémentaire)
 - Budget JS Hero inchangé en pratique (~24kb GSAP, la logique vidéo est marginale)
 
 **Production vidéo :**
+
 - Elena fournit la vidéo source (format le plus haute résolution possible)
 - Pierre encode en 2 versions (mobile 720p + desktop 1080p) avec FFmpeg ou Handbrake
 - Compression H.264 CRF 23-28 (bon ratio qualité/poids)
@@ -1398,26 +1484,27 @@ Standard industrie pour un site professionnel. Couvre les besoins réels des uti
 
 **Checklist WCAG 2.1 AA appliquée au projet :**
 
-| Critère WCAG | Exigence | Implémentation Slow Adventures |
-|---|---|---|
-| **1.1.1** Non-text Content | Alt text sur toutes les images | Alt descriptif sur poster hero, Elena, destinations, témoignages. `aria-hidden` sur vidéo décorative |
-| **1.3.1** Info and Relationships | Structure sémantique | `<header>`, `<main>`, `<section>`, `<footer>`, headings h1→h2→h3, `<ol>` pour processus, `<blockquote>` pour témoignages, `<dl>` pour pricing |
-| **1.4.3** Contrast (Minimum) | 4.5:1 texte normal, 3:1 large | Vérifié — voir tableau contrastes step 7 |
-| **1.4.4** Resize Text | Zoom 200% sans perte | Unités `rem` et `clamp()`, layout flexible |
-| **1.4.10** Reflow | Pas de scroll horizontal à 320px | Single column mobile-first |
-| **1.4.11** Non-text Contrast | 3:1 pour éléments UI | Focus ring terracotta sur fond creme = 4.6:1 |
-| **2.1.1** Keyboard | Tout accessible au clavier | Focus ring visible sur CTA, formulaire, liens. Tab order logique |
-| **2.3.1** Three Flashes | Pas de contenu qui flashe 3x/s | Vidéo hero = ambiance douce, pas de flash. Animations GSAP douces |
-| **2.4.1** Bypass Blocks | Skip navigation | `<a href="#main" class="sr-only focus:not-sr-only">Aller au contenu</a>` |
-| **2.4.3** Focus Order | Ordre logique | Ordre DOM = ordre visuel. Pas de `tabindex` positif |
-| **2.4.7** Focus Visible | Focus toujours visible | `outline: 2px solid terracotta` + `outline-offset: 4px` |
-| **2.5.5** Target Size | Touch targets 44x44px minimum | CTA 48px, input email 44px, bouton submit 44px |
-| **3.1.1** Language of Page | `lang` attribut | `<html lang="fr">` |
-| **3.3.1** Error Identification | Erreurs identifiées | EmailCapture : message inline en `terracotta` |
-| **3.3.2** Labels or Instructions | Labels sur les champs | `<label class="sr-only">` sur le champ email |
-| **4.1.2** Name, Role, Value | ARIA approprié | `aria-modal`, `aria-live`, `role="dialog"`, `role="status"` |
+| Critère WCAG                     | Exigence                         | Implémentation Slow Adventures                                                                                                                |
+| -------------------------------- | -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| **1.1.1** Non-text Content       | Alt text sur toutes les images   | Alt descriptif sur poster hero, Elena, destinations, témoignages. `aria-hidden` sur vidéo décorative                                          |
+| **1.3.1** Info and Relationships | Structure sémantique             | `<header>`, `<main>`, `<section>`, `<footer>`, headings h1→h2→h3, `<ol>` pour processus, `<blockquote>` pour témoignages, `<dl>` pour pricing |
+| **1.4.3** Contrast (Minimum)     | 4.5:1 texte normal, 3:1 large    | Vérifié — voir tableau contrastes step 7                                                                                                      |
+| **1.4.4** Resize Text            | Zoom 200% sans perte             | Unités `rem` et `clamp()`, layout flexible                                                                                                    |
+| **1.4.10** Reflow                | Pas de scroll horizontal à 320px | Single column mobile-first                                                                                                                    |
+| **1.4.11** Non-text Contrast     | 3:1 pour éléments UI             | Focus ring terracotta sur fond creme = 4.6:1                                                                                                  |
+| **2.1.1** Keyboard               | Tout accessible au clavier       | Focus ring visible sur CTA, formulaire, liens. Tab order logique                                                                              |
+| **2.3.1** Three Flashes          | Pas de contenu qui flashe 3x/s   | Vidéo hero = ambiance douce, pas de flash. Animations GSAP douces                                                                             |
+| **2.4.1** Bypass Blocks          | Skip navigation                  | `<a href="#main" class="sr-only focus:not-sr-only">Aller au contenu</a>`                                                                      |
+| **2.4.3** Focus Order            | Ordre logique                    | Ordre DOM = ordre visuel. Pas de `tabindex` positif                                                                                           |
+| **2.4.7** Focus Visible          | Focus toujours visible           | `outline: 2px solid terracotta` + `outline-offset: 4px`                                                                                       |
+| **2.5.5** Target Size            | Touch targets 44x44px minimum    | CTA 48px, input email 44px, bouton submit 44px                                                                                                |
+| **3.1.1** Language of Page       | `lang` attribut                  | `<html lang="fr">`                                                                                                                            |
+| **3.3.1** Error Identification   | Erreurs identifiées              | EmailCapture : message inline en `terracotta`                                                                                                 |
+| **3.3.2** Labels or Instructions | Labels sur les champs            | `<label class="sr-only">` sur le champ email                                                                                                  |
+| **4.1.2** Name, Role, Value      | ARIA approprié                   | `aria-modal`, `aria-live`, `role="dialog"`, `role="status"`                                                                                   |
 
 **Gestion du mouvement :**
+
 - `prefers-reduced-motion: reduce` → vidéo hero arrêtée (poster uniquement) + toutes les animations GSAP désactivées
 - Fallback CSS opacity 200ms quand GSAP pas encore chargé
 - Aucune animation qui flashe ou clignote
@@ -1429,19 +1516,21 @@ Standard industrie pour un site professionnel. Couvre les besoins réels des uti
 
 **Images — 3 tailles, format WebP :**
 
-| Taille | Largeur | Usage |
-|---|---|---|
-| **Small** | 768w | Mobile et tablette portrait |
-| **Medium** | 1440w | Desktop standard |
-| **Large** | 2880w | Retina / HiDPI |
+| Taille     | Largeur | Usage                       |
+| ---------- | ------- | --------------------------- |
+| **Small**  | 768w    | Mobile et tablette portrait |
+| **Medium** | 1440w   | Desktop standard            |
+| **Large**  | 2880w   | Retina / HiDPI              |
 
 ```html
 <!-- Destinations, Témoignages — lazy loading -->
 <img
   src="/images/destination-peru-1440.webp"
-  srcset="/images/destination-peru-768.webp 768w,
-         /images/destination-peru-1440.webp 1440w,
-         /images/destination-peru-2880.webp 2880w"
+  srcset="
+    /images/destination-peru-768.webp   768w,
+    /images/destination-peru-1440.webp 1440w,
+    /images/destination-peru-2880.webp 2880w
+  "
   sizes="100vw"
   alt="[Description du pays]"
   loading="lazy"
@@ -1451,8 +1540,7 @@ Standard industrie pour un site professionnel. Couvre les besoins réels des uti
 <!-- Elena — taille fixe selon device -->
 <img
   src="/images/elena-768.webp"
-  srcset="/images/elena-768.webp 768w,
-         /images/elena-1440.webp 1440w"
+  srcset="/images/elena-768.webp 768w, /images/elena-1440.webp 1440w"
   sizes="(min-width: 1024px) 400px, 250px"
   alt="Elena, créatrice de Slow Adventures"
   loading="lazy"
@@ -1468,41 +1556,42 @@ Standard industrie pour un site professionnel. Couvre les besoins réels des uti
 
 **Tests responsive :**
 
-| Device | Outil | Points de vérification |
-|---|---|---|
-| **iPhone SE** (375px) | Chrome DevTools / Safari | Layout, sticky CTA, touch targets, vidéo poster |
-| **iPhone 14** (390px) | Chrome DevTools / Safari | Vidéo hero mobile, CalendlyModal full-screen |
-| **iPad** (768px) | Chrome DevTools / Safari | Breakpoint `md:`, processus 2 colonnes, sticky CTA |
-| **iPad Pro** (1024px) | Chrome DevTools / Safari | Transition tablette→desktop, vidéo desktop |
-| **Desktop** (1440px) | Chrome | Conteneur 1280px, vidéo plein écran, layout complet |
-| **Grand écran** (1920px+) | Chrome | Vide latéral propre, vidéo pas étirée |
+| Device                    | Outil                    | Points de vérification                              |
+| ------------------------- | ------------------------ | --------------------------------------------------- |
+| **iPhone SE** (375px)     | Chrome DevTools / Safari | Layout, sticky CTA, touch targets, vidéo poster     |
+| **iPhone 14** (390px)     | Chrome DevTools / Safari | Vidéo hero mobile, CalendlyModal full-screen        |
+| **iPad** (768px)          | Chrome DevTools / Safari | Breakpoint `md:`, processus 2 colonnes, sticky CTA  |
+| **iPad Pro** (1024px)     | Chrome DevTools / Safari | Transition tablette→desktop, vidéo desktop          |
+| **Desktop** (1440px)      | Chrome                   | Conteneur 1280px, vidéo plein écran, layout complet |
+| **Grand écran** (1920px+) | Chrome                   | Vide latéral propre, vidéo pas étirée               |
 
 **Tests vidéo hero spécifiques :**
 
-| Test | Vérification |
-|---|---|
-| **Autoplay** | La vidéo démarre automatiquement sans interaction utilisateur |
-| **Muted** | Aucun son ne sort, même si le volume est au max |
-| **Loop** | La vidéo boucle sans coupure visible |
-| **iOS Safari** | `playsinline` fonctionne, pas de passage en plein écran natif |
-| **prefers-reduced-motion** | Poster statique affiché, vidéo ne se lance pas |
-| **Save-Data** | Si détecté, poster statique uniquement |
-| **Poster visible** | Le poster s'affiche immédiatement, avant que la vidéo charge |
-| **Transition poster→vidéo** | Fade doux, pas de flash blanc entre les deux |
+| Test                        | Vérification                                                  |
+| --------------------------- | ------------------------------------------------------------- |
+| **Autoplay**                | La vidéo démarre automatiquement sans interaction utilisateur |
+| **Muted**                   | Aucun son ne sort, même si le volume est au max               |
+| **Loop**                    | La vidéo boucle sans coupure visible                          |
+| **iOS Safari**              | `playsinline` fonctionne, pas de passage en plein écran natif |
+| **prefers-reduced-motion**  | Poster statique affiché, vidéo ne se lance pas                |
+| **Save-Data**               | Si détecté, poster statique uniquement                        |
+| **Poster visible**          | Le poster s'affiche immédiatement, avant que la vidéo charge  |
+| **Transition poster→vidéo** | Fade doux, pas de flash blanc entre les deux                  |
 
 **Tests accessibility :**
 
-| Test | Outil | Fréquence |
-|---|---|---|
-| **Audit automatique** | Lighthouse | À chaque déploiement — Accessibility 90+ |
-| **Scan WCAG** | axe DevTools | Pendant le dev — zéro violation critical/serious |
-| **Navigation clavier** | Tab/Shift+Tab | Avant chaque release |
-| **Lecteur d'écran** | VoiceOver (macOS/iOS) | Avant release MVP |
-| **Contraste** | WebAIM Contrast Checker | Déjà validé — re-vérifier si nouvelles couleurs |
-| **Zoom 200%** | Navigateur | Avant release — pas de contenu tronqué |
-| **Reduced motion** | DevTools | Vérifier vidéo arrêtée + animations off |
+| Test                   | Outil                   | Fréquence                                        |
+| ---------------------- | ----------------------- | ------------------------------------------------ |
+| **Audit automatique**  | Lighthouse              | À chaque déploiement — Accessibility 90+         |
+| **Scan WCAG**          | axe DevTools            | Pendant le dev — zéro violation critical/serious |
+| **Navigation clavier** | Tab/Shift+Tab           | Avant chaque release                             |
+| **Lecteur d'écran**    | VoiceOver (macOS/iOS)   | Avant release MVP                                |
+| **Contraste**          | WebAIM Contrast Checker | Déjà validé — re-vérifier si nouvelles couleurs  |
+| **Zoom 200%**          | Navigateur              | Avant release — pas de contenu tronqué           |
+| **Reduced motion**     | DevTools                | Vérifier vidéo arrêtée + animations off          |
 
 **Critères de succès MVP :**
+
 - Lighthouse Performance 90+ / Accessibility 95+
 - Zéro violation axe critical/serious
 - Navigation clavier complète hero→footer
@@ -1516,26 +1605,29 @@ Standard industrie pour un site professionnel. Couvre les besoins réels des uti
 **Pour le développeur (Pierre) :**
 
 **Responsive :**
+
 - Toujours écrire le CSS mobile-first, enrichir avec `sm:`, `md:`, `lg:`
 - Ne jamais utiliser de pixel fixe pour les dimensions (sauf touch targets et icônes)
 - `clamp()` pour la typographie (déjà défini en step 7)
 - Tester chaque composant à 320px, 768px, 1024px avant de passer au suivant
 
 **Vidéo hero :**
+
 - Encoder 2 versions : mobile (720p, 8-12s, ~2MB) et desktop (1080p, 10-15s, ~4MB)
 - `<source media="(min-width: 768px)">` pour servir la bonne version
 - Poster image preloadée, vidéo en streaming progressif
 - Conditionner le lancement vidéo sur `prefers-reduced-motion` et `Save-Data`
 
 **Images :**
+
 - `astro:assets` pour le processing automatique des images au build
 - Toujours fournir `srcset` + `sizes` + `loading` + `decoding="async"`
 - WebP qualité 80%, 3 tailles (768, 1440, 2880)
 
 **Accessibility :**
+
 - HTML sémantique (`<button>`, `<a>`, pas `<div onclick>`)
 - `alt` descriptif sur chaque `<img>`, `aria-hidden` sur la vidéo décorative
 - Focus ring visible : ne jamais `outline: none` sans alternative
 - `aria-live="polite"` sur tout contenu dynamique
 - `<html lang="fr">` toujours présent
-

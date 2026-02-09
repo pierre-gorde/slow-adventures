@@ -1,8 +1,8 @@
 ---
 stepsCompleted: [1, 2, 3, 4, 5]
 inputDocuments:
-  - '_bmad-output/brainstorming/brainstorming-session-2026-01-31.md'
-  - 'README.md'
+  - "docs/brainstorming/brainstorming-session-2026-01-31.md"
+  - "README.md"
 date: 2026-02-03
 author: Elena
 ---
@@ -92,6 +92,7 @@ Un site vitrine simple, esthétique et chaleureux qui fonctionne comme un **argu
 - **Avantage marketing** : N témoignages + N comptes Insta qui postent = multiplicateur de visibilité organique
 
 **Profil transversal B2C :**
+
 - CSP+ self-made (pas hérité) — valorise l'humain et l'authenticité, rejette le "sur-mesure catalogue"
 - Habitude de voyager mais besoin d'un coup de pouce (temps, expertise, ou confiance)
 - 28-45 ans cœur de cible, ouvert jusqu'à 55+ pour les anciens baroudeurs
@@ -113,24 +114,26 @@ Un site vitrine simple, esthétique et chaleureux qui fonctionne comme un **argu
 
 **Parcours type (Camille — représentatif du B2C) :**
 
-| Étape | Moment | Émotion | Action |
-|-------|--------|---------|--------|
-| **Découverte** | Story Insta partagée par une amie | Curiosité | Clique profil SA |
-| **Exploration** | Scroll Insta + visite site | Intriguée → rassurée | Lit About, explore destinations |
-| **Hésitation** | Referme le site, y repense 3-4 jours | Doute ("va-t-elle comprendre ?") | En parle au partenaire, remontre le site |
-| **Passage à l'action** | Revient, clique CTA "Confiez-nous votre prochain rêve" | Saut de confiance | Réserve créneau Calendly |
-| **Appel découverte** | 20 min gratuit, sans engagement — Elena pose les bonnes questions | **Moment aha** — "elle comprend" | Valide pour avancer |
-| **Proposition** | Reçoit itinéraire + devis | Excitation — "des spots qu'on n'aurait jamais trouvés" | Paie acompte 100€ |
-| **Pré-voyage** | WhatsApp + roadbook + ajustements | Excitation croissante + zéro stress | Réservations via template |
-| **Pendant le voyage** | Messages WhatsApp Elena, tips temps réel | Suivi rassurant | Vit le voyage, partage avec Elena |
-| **Post-voyage** | Call retour + demande témoignage | Gratitude | Témoignage + recommandation |
+| Étape                  | Moment                                                            | Émotion                                                | Action                                   |
+| ---------------------- | ----------------------------------------------------------------- | ------------------------------------------------------ | ---------------------------------------- |
+| **Découverte**         | Story Insta partagée par une amie                                 | Curiosité                                              | Clique profil SA                         |
+| **Exploration**        | Scroll Insta + visite site                                        | Intriguée → rassurée                                   | Lit About, explore destinations          |
+| **Hésitation**         | Referme le site, y repense 3-4 jours                              | Doute ("va-t-elle comprendre ?")                       | En parle au partenaire, remontre le site |
+| **Passage à l'action** | Revient, clique CTA "Confiez-nous votre prochain rêve"            | Saut de confiance                                      | Réserve créneau Calendly                 |
+| **Appel découverte**   | 20 min gratuit, sans engagement — Elena pose les bonnes questions | **Moment aha** — "elle comprend"                       | Valide pour avancer                      |
+| **Proposition**        | Reçoit itinéraire + devis                                         | Excitation — "des spots qu'on n'aurait jamais trouvés" | Paie acompte 100€                        |
+| **Pré-voyage**         | WhatsApp + roadbook + ajustements                                 | Excitation croissante + zéro stress                    | Réservations via template                |
+| **Pendant le voyage**  | Messages WhatsApp Elena, tips temps réel                          | Suivi rassurant                                        | Vit le voyage, partage avec Elena        |
+| **Post-voyage**        | Call retour + demande témoignage                                  | Gratitude                                              | Témoignage + recommandation              |
 
 **Variations par persona :**
+
 - **Antoine** : Découverte via reel thématique, moment aha = expertise terrain, besoin potentiel de guide francophone via réseau DMC
 - **Nathalie** : Découverte via LinkedIn, hésitation plus longue (2 semaines), moment aha = empathie d'Elena sur l'aspect émotionnel, suivi WhatsApp encore plus important pendant le voyage solo
 - **Thomas (B2B)** : Découverte via Insta perso ou recommandation → page Entreprises du site → discovery call orientée logistique/budget → devis clé en main
 
 **Mécanismes anti-déperdition :**
+
 - **Pré-contact** : CTA basse friction ("20 min, gratuit, sans engagement — on fait connaissance"), contenu Insta régulier qui maintient la visibilité pendant la phase d'hésitation
 - **Post-contact** : Google Sheet de suivi, relance 48h, urgence authentique (prix vols/hébergements qui bougent), "mon partenaire local me demande où on en est"
 
@@ -142,46 +145,46 @@ Un site vitrine simple, esthétique et chaleureux qui fonctionne comme un **argu
 
 **Engagement site :**
 
-| Métrique | Ce que ça mesure | Outil | Cible indicative |
-|----------|-----------------|-------|-----------------|
-| Taux de rebond | % visiteurs qui partent sans interagir | Google Analytics | < 50% |
-| Temps moyen sur site | Intérêt pour le contenu | Google Analytics | > 2 min |
-| Pages par session | Profondeur d'exploration | Google Analytics | > 3 pages |
-| Visiteurs récurrents | Phase hésitation / retour | Google Analytics | > 20% du trafic |
-| Scroll depth page About | Lecture de l'histoire d'Elena | GA / Hotjar | > 70% |
+| Métrique                | Ce que ça mesure                       | Outil            | Cible indicative |
+| ----------------------- | -------------------------------------- | ---------------- | ---------------- |
+| Taux de rebond          | % visiteurs qui partent sans interagir | Google Analytics | < 50%            |
+| Temps moyen sur site    | Intérêt pour le contenu                | Google Analytics | > 2 min          |
+| Pages par session       | Profondeur d'exploration               | Google Analytics | > 3 pages        |
+| Visiteurs récurrents    | Phase hésitation / retour              | Google Analytics | > 20% du trafic  |
+| Scroll depth page About | Lecture de l'histoire d'Elena          | GA / Hotjar      | > 70%            |
 
 **Conversion site :**
 
-| Métrique | Cible indicative |
-|----------|-----------------|
+| Métrique                                                        | Cible indicative   |
+| --------------------------------------------------------------- | ------------------ |
 | Taux de clic CTA principal ("Confiez-nous votre prochain rêve") | > 5% des visiteurs |
-| Taux de complétion Calendly (clic CTA → créneau réservé) | > 50% |
-| Source du trafic (Insta, direct, Google) | Tracking UTM |
+| Taux de complétion Calendly (clic CTA → créneau réservé)        | > 50%              |
+| Source du trafic (Insta, direct, Google)                        | Tracking UTM       |
 
 ### Métriques Funnel
 
-| Étape du funnel | Métrique | Cible 3 mois | Cible 12 mois |
-|----------------|----------|-------------|--------------|
-| Audience Insta | Abonnés SA | 200 | 800+ |
-| Visites site | Visiteurs uniques/mois | 50 | 300+ |
-| Discovery calls | Appels réservés/mois | 2 | 6-8 |
-| Taux de conversion call → client | % appels convertis | 30% | 40-50% |
-| Clients signés | Acomptes reçus/mois | 0-1 | 1-2 |
-| Panier moyen | Revenu moyen par client | 300€ | 350€ |
-| Taux de recommandation | % clients qui recommandent | N/A | > 50% |
+| Étape du funnel                  | Métrique                   | Cible 3 mois | Cible 12 mois |
+| -------------------------------- | -------------------------- | ------------ | ------------- |
+| Audience Insta                   | Abonnés SA                 | 200          | 800+          |
+| Visites site                     | Visiteurs uniques/mois     | 50           | 300+          |
+| Discovery calls                  | Appels réservés/mois       | 2            | 6-8           |
+| Taux de conversion call → client | % appels convertis         | 30%          | 40-50%        |
+| Clients signés                   | Acomptes reçus/mois        | 0-1          | 1-2           |
+| Panier moyen                     | Revenu moyen par client    | 300€         | 350€          |
+| Taux de recommandation           | % clients qui recommandent | N/A          | > 50%         |
 
 **Ratio clé :** Discovery calls → Clients. 0 conversion sur 10 calls = problème d'offre/call. 0 calls = problème de visibilité/contenu.
 
 ### Business Objectives
 
-| Métrique | Cible 3 mois | Cible 6 mois | Cible 12 mois |
-|----------|-------------|-------------|--------------|
-| Clients B2C/mois | 0-1 | 0,5-1,5 | 1-3 |
-| CA B2C mensuel | 0-300€ | 150-450€ | 300-900€ |
-| CA B2B | 0€ | 0-3 000€ (1er projet) | 3 000-6 000€ |
-| Clients cumulés | 1-2 | 4-6 | 10-15 |
-| Témoignages récoltés | 1 | 3-4 | 8+ |
-| Partenaires DMC actifs | 1-2 contacts | 2-3 actifs | 3-5 par pays clé |
+| Métrique               | Cible 3 mois | Cible 6 mois          | Cible 12 mois    |
+| ---------------------- | ------------ | --------------------- | ---------------- |
+| Clients B2C/mois       | 0-1          | 0,5-1,5               | 1-3              |
+| CA B2C mensuel         | 0-300€       | 150-450€              | 300-900€         |
+| CA B2B                 | 0€           | 0-3 000€ (1er projet) | 3 000-6 000€     |
+| Clients cumulés        | 1-2          | 4-6                   | 10-15            |
+| Témoignages récoltés   | 1            | 3-4                   | 8+               |
+| Partenaires DMC actifs | 1-2 contacts | 2-3 actifs            | 3-5 par pays clé |
 
 **Note :** Le seuil de 2 000€ net/mois (quitter Marco Vasco) = ~2 500-2 800€ brut/mois en micro-entreprise. Horizon moyen terme (18-24 mois), pas un objectif à 12 mois. L'évolution du panier moyen et le B2B seront déterminants.
 
@@ -189,14 +192,14 @@ Un site vitrine simple, esthétique et chaleureux qui fonctionne comme un **argu
 
 **Signaux de pivot :**
 
-| Signal d'alerte | Délai | Action |
-|----------------|-------|--------|
-| 0 discovery call en 3 mois | Mois 3 | Revoir contenu Insta, CTA, ou cible |
-| Calls mais 0 conversion en 3 mois | Mois 3 | Revoir script d'appel, pricing, ou proposition |
-| 0 client après 6 mois | Mois 6 | **Pivot sérieux** — tester autre canal, revoir positionnement |
-| Clients mais 0 recommandation | Mois 9 | Problème de satisfaction — revoir qualité livrable/suivi |
-| Taux de rebond > 70% | Permanent | Site ne rassure pas — revoir design/contenu/cohérence |
-| Audience Insta stagne | Mois 6 | Revoir stratégie contenu, fréquence, ou collaborations |
+| Signal d'alerte                   | Délai     | Action                                                        |
+| --------------------------------- | --------- | ------------------------------------------------------------- |
+| 0 discovery call en 3 mois        | Mois 3    | Revoir contenu Insta, CTA, ou cible                           |
+| Calls mais 0 conversion en 3 mois | Mois 3    | Revoir script d'appel, pricing, ou proposition                |
+| 0 client après 6 mois             | Mois 6    | **Pivot sérieux** — tester autre canal, revoir positionnement |
+| Clients mais 0 recommandation     | Mois 9    | Problème de satisfaction — revoir qualité livrable/suivi      |
+| Taux de rebond > 70%              | Permanent | Site ne rassure pas — revoir design/contenu/cohérence         |
+| Audience Insta stagne             | Mois 6    | Revoir stratégie contenu, fréquence, ou collaborations        |
 
 **Signal le plus dangereux :** Visites sans clic CTA = le site intéresse mais ne convainc pas (trou noir pré-contact).
 
@@ -227,17 +230,17 @@ Un site vitrine simple, esthétique et chaleureux qui fonctionne comme un **argu
 
 ### Out of Scope for MVP
 
-| Feature | Priorité post-MVP | Condition |
-|---------|-------------------|-----------|
-| Blog / contenu éditorial | Haute | Dès que le MVP est en ligne |
-| SEO avancé (backlinks, articles invités, annuaires) | Haute | En parallèle du blog |
-| Référencement IA avancé (mentions tierces, avis Google) | Haute | Progressive post-lancement |
-| Newsletter contenu régulier | Moyenne | Quand la liste email justifie l'effort |
-| Page B2B "Entreprises" | Conditionnelle | UNIQUEMENT après premier client B2C parti en voyage |
-| Formulaire de contact avancé | Basse | Calendly suffit |
-| Multi-langue | Basse | Cible francophone uniquement |
-| Galerie photos avancée | Basse | Photos dans les sections suffisent |
-| Chatbot / FAQ | Basse | Volume insuffisant |
+| Feature                                                 | Priorité post-MVP | Condition                                           |
+| ------------------------------------------------------- | ----------------- | --------------------------------------------------- |
+| Blog / contenu éditorial                                | Haute             | Dès que le MVP est en ligne                         |
+| SEO avancé (backlinks, articles invités, annuaires)     | Haute             | En parallèle du blog                                |
+| Référencement IA avancé (mentions tierces, avis Google) | Haute             | Progressive post-lancement                          |
+| Newsletter contenu régulier                             | Moyenne           | Quand la liste email justifie l'effort              |
+| Page B2B "Entreprises"                                  | Conditionnelle    | UNIQUEMENT après premier client B2C parti en voyage |
+| Formulaire de contact avancé                            | Basse             | Calendly suffit                                     |
+| Multi-langue                                            | Basse             | Cible francophone uniquement                        |
+| Galerie photos avancée                                  | Basse             | Photos dans les sections suffisent                  |
+| Chatbot / FAQ                                           | Basse             | Volume insuffisant                                  |
 
 ### MVP Success Criteria
 
@@ -250,4 +253,3 @@ Un site vitrine simple, esthétique et chaleureux qui fonctionne comme un **argu
 ### Future Vision
 
 Si succès à 12-18 mois : blog destination (SEO organique), page B2B avec cas d'usage corporate, newsletter mensuelle, intégration avis Google + témoignages vidéo, présence annuaires TP, mini-guides téléchargeables (revenus passifs + capture email)
-

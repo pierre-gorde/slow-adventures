@@ -5,7 +5,7 @@
 .DS_Store
 
 # Source assets (non-optimized images/videos)
-assets/
+/assets/
 
 # Dependencies
 node_modules/

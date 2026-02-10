@@ -686,13 +686,11 @@
       "bradlc.vscode-tailwindcss",
       "dbaeumer.vscode-eslint",
       "esbenp.prettier-vscode",
-      "csstools.postcss",
 
       // DX & productivite
-      "christian-kohler.path-intellisense",
-      "formulahendry.auto-rename-tag",
       "usernamehw.errorlens",
       "gruntfuggly.todo-tree",
+      "mikestead.dotenv",
 
       // Qualite de texte (projet bilingue FR/EN)
       "streetsidesoftware.code-spell-checker",

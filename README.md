@@ -6,6 +6,10 @@
   <em>Porté par la passion — Des rêves habités, ni travel planner classique, ni agence.</em>
 </p>
 
+<p align="center">
+  <a href="https://slowadventures.fr"><strong>https://slowadventures.fr</strong></a>
+</p>
+
 ---
 
 Service de création de voyages immersifs aux Amériques, fondé par Elena Dolla — spécialiste du slow travel. Le site web sert de vitrine de crédibilité dans le parcours **Instagram → Site → Contact**, transformant l'hésitation des visiteurs en confiance.
@@ -107,11 +111,11 @@ Site **one-page, mobile-first** (80%+ du trafic depuis Instagram Stories). Chaqu
 
 ## Structure monorepo
 
-| Dossier | Description | README |
-|---|---|---|
-| [`web/`](web/) | Frontend Astro (SSG, Tailwind, GSAP) | [web/README.md](web/README.md) |
-| [`api/`](api/) | Backend (futur) | — |
-| [`docs/`](docs/) | Documentation projet | — |
+| Dossier          | Description                          | README                         |
+| ---------------- | ------------------------------------ | ------------------------------ |
+| [`web/`](web/)   | Frontend Astro (SSG, Tailwind, GSAP) | [web/README.md](web/README.md) |
+| [`api/`](api/)   | Backend (futur)                      | —                              |
+| [`docs/`](docs/) | Documentation projet                 | —                              |
 
 ## Documentation projet
 
@@ -122,29 +126,7 @@ Site **one-page, mobile-first** (80%+ du trafic depuis Instagram Stories). Chaqu
 | [UX Design Spec](/docs/planning-artifacts/ux-design-specification.md)                 | Spécification UX complète, parcours, composants |
 | [UX Directions](/docs/planning-artifacts/ux-design-directions.html)                   | Explorations visuelles et directions de design  |
 
-## Avancement
-
-### Phase Conception
-
-- [x] Brainstorming (54 idées, business model, acquisition, pricing)
-- [x] Product Brief (vision, personas, métriques, MVP scope)
-- [x] UX Design (spec complète, mobile-first, système de communication)
-- [x] PRD
-- [x] Architecture
-- [x] Epics & Stories (5 epics, 17 stories)
-- [x] Sprint Planning ([sprint-status.yaml](/docs/implementation-artifacts/sprint-status.yaml))
-
-### Phase Implémentation
-
-| Epic | Titre | Stories | Statut |
-| ---- | ----- | ------- | ------ |
-| 1 | Fondation & Infrastructure deployable | 3 | **in-progress** |
-| 2 | Experience immersive & Contenu | 6 | backlog |
-| 3 | Conversion & Booking Calendly | 3 | backlog |
-| 4 | Capture Email & Engagement | 3 | backlog |
-| 5 | Analytics, Consentement & Tracking | 2 | backlog |
-
-### Cycle de dev par story
+## Cycle de dev par story
 
 ```
 /bmad-bmm-create-story  →  prepare la story

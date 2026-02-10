@@ -1,5 +1,37 @@
 @import 'tailwindcss';
 
 @theme {
-  /* Design tokens will be added in Story 1.2 */
+  /* Color tokens */
+  --color-terracotta: #c0603e;
+  --color-terracotta-light: #d4856a;
+  --color-terracotta-dark: #a04e30;
+  --color-terracotta-muted: #c9a08e;
+  --color-bleu: #1696ff;
+  --color-creme: #fff9f3;
+  --color-creme-dark: #f5ede3;
+  --color-sauge: #7b8f6b;
+  --color-ambre: #d4956a;
+  --color-warm-black: #2c2825;
+  --color-warm-gray: #6b5e52;
+
+  /* Font families */
+  --font-family-serif: 'Lora', 'Georgia', serif;
+  --font-family-sans: 'Plus Jakarta Sans', 'system-ui', sans-serif;
+
+  /* Border radius */
+  --radius-soft: 8px;
+  --radius-round: 24px;
+  --radius-full: 9999px;
+}
+
+:root {
+  /* GSAP animation custom properties */
+  --gsap-duration-default: 300ms;
+  --gsap-duration-slow: 600ms;
+  --gsap-ease-default: ease-out;
+  --gsap-ease-slow: ease-in-out;
+}
+
+.sa-section-padding {
+  @apply px-6 py-16 md:px-12 md:py-24 lg:px-24 lg:py-32;
 }

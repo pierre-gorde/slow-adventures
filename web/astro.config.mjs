@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 import robotsTxt from 'astro-robots-txt';
 
 export default defineConfig({
-  site: process.env.SITE_URL || 'https://slow-adventures.com',
+  site: process.env.SITE_URL || 'https://slowadventures.fr',
   integrations: [sitemap(), robotsTxt()],
   vite: { plugins: [tailwindcss()] },
 });

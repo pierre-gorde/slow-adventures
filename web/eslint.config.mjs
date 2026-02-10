@@ -17,5 +17,13 @@ export default tseslint.config(
         ...globals.node,
       },
     },
+  },
+  {
+    files: ['**/*.astro'],
+    languageOptions: {
+      globals: {
+        ImageMetadata: 'readonly',
+      },
+    },
   }
 );

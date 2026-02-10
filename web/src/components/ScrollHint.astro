@@ -1,0 +1,96 @@
+---
+
+---
+
+<div class="scroll-hint" aria-hidden="true">
+  <span class="scroll-hint__text">scroll to explore</span>
+  <svg
+    class="scroll-hint__chevron"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <path
+      d="M6 9l6 6 6-6"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"></path>
+  </svg>
+</div>
+
+<style>
+  .scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+    z-index: 3;
+  }
+
+  .scroll-hint.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .scroll-hint__text {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-weight: 500;
+  }
+
+  .scroll-hint__chevron {
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    50% {
+      opacity: 0.5;
+      transform: translateY(4px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-hint__chevron {
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  function initScrollHint() {
+    const hint = document.querySelector<HTMLElement>('.scroll-hint');
+    if (!hint) return;
+
+    let hidden = false;
+
+    function onScroll() {
+      if (hidden) return;
+      if (window.scrollY > 50) {
+        hint.classList.add('is-hidden');
+        hidden = true;
+        window.removeEventListener('scroll', onScroll);
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
+  initScrollHint();
+</script>

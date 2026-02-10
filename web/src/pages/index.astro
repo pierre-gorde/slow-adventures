@@ -1,10 +1,27 @@
 ---
+import { getImage } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/HeroSection.astro';
+import heroPoster from '../assets/images/hero-poster.webp';
+
+const optimizedPoster = await getImage({
+  src: heroPoster,
+  width: 1440,
+  format: 'webp',
+});
 ---
 
 <BaseLayout
   title="Slow Adventures — Voyages immersifs aux Amériques"
   description="Création de voyages immersifs et sur-mesure aux Amériques. Discovery call gratuite de 20 minutes."
+  heroPreloadImage={optimizedPoster.src}
 >
-  <main id="main"></main>
+  <main id="main">
+    <HeroSection
+      posterSrc={heroPoster}
+      videoSrc="/videos/hero.mp4"
+      title="Slow Adventures"
+      subtitle="Voyages immersifs aux Amériques"
+    />
+  </main>
 </BaseLayout>

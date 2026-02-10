@@ -20,6 +20,10 @@ describe('BaseLayout.astro', () => {
     it('defines optional ogImage prop', () => {
       expect(layout).toMatch(/ogImage\?:\s*string/);
     });
+
+    it('defines optional heroPreloadImage prop', () => {
+      expect(layout).toMatch(/heroPreloadImage\?:\s*string/);
+    });
   });
 
   describe('head meta tags', () => {
@@ -67,6 +71,18 @@ describe('BaseLayout.astro', () => {
       expect(layout).toContain('family=Lora:wght@600');
       expect(layout).toContain('family=Plus+Jakarta+Sans:wght@400;500;600');
       expect(layout).toContain('display=swap');
+    });
+  });
+
+  describe('Hero poster preload', () => {
+    it('conditionally renders preload link for hero image', () => {
+      expect(layout).toContain('heroPreloadImage');
+      expect(layout).toContain('rel="preload"');
+      expect(layout).toContain('as="image"');
+    });
+
+    it('specifies WebP type for preloaded image', () => {
+      expect(layout).toContain('type="image/webp"');
     });
   });
 

@@ -6,9 +6,15 @@ interface Props {
   title: string;
   description: string;
   ogImage?: string;
+  heroPreloadImage?: string;
 }
 
-const { title, description, ogImage = '/og-image.jpg' } = Astro.props;
+const {
+  title,
+  description,
+  ogImage = '/og-image.jpg',
+  heroPreloadImage,
+} = Astro.props;
 const siteUrl = Astro.site ?? new URL('https://slowadventures.fr');
 const ogImageUrl = new URL(ogImage, siteUrl);
 const canonicalUrl = Astro.url;
@@ -41,6 +47,16 @@ const jsonLd = {
     <link rel="canonical" href={canonicalUrl.toString()} />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {
+      heroPreloadImage && (
+        <link
+          rel="preload"
+          as="image"
+          href={heroPreloadImage}
+          type="image/webp"
+        />
+      )
+    }
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

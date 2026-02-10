@@ -4,6 +4,9 @@
 # OS
 .DS_Store
 
+# Source assets (non-optimized images/videos)
+assets/
+
 # Dependencies
 node_modules/
 

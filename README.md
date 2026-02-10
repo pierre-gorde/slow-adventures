@@ -135,6 +135,10 @@ Site **one-page, mobile-first** (80%+ du trafic depuis Instagram Stories). Chaqu
 Repeter pour la story suivante
 ```
 
+## Assets
+
+Le dossier `assets/` à la racine du repo contient les images sources non optimisées et non utilisées (logos, photos par section). Elles sont disponibles pour être ajoutées dans `web/` si besoin, après optimisation.
+
 ## Installation
 
 ```bash

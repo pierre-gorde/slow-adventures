@@ -32,6 +32,24 @@
   --gsap-ease-slow: ease-in-out;
 }
 
+/* SectionReveal: initial hidden state */
+[data-reveal] {
+  opacity: 0;
+}
+
+/* SectionReveal: CSS fallback when GSAP not loaded */
+[data-reveal].revealed {
+  opacity: 1;
+  transition: opacity 200ms ease-in;
+}
+
+/* Accessibility: skip all animations for reduced-motion users */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1;
+  }
+}
+
 .sa-section-padding {
   @apply px-6 py-16 md:px-12 md:py-24 lg:px-24 lg:py-32;
 }

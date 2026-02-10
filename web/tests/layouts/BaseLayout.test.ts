@@ -142,6 +142,39 @@ describe('BaseLayout.astro', () => {
     });
   });
 
+  describe('IntersectionObserver fallback script', () => {
+    it('includes inline script with is:inline directive', () => {
+      expect(layout).toContain('script is:inline');
+    });
+
+    it('uses IntersectionObserver for data-reveal elements', () => {
+      expect(layout).toContain('IntersectionObserver');
+      expect(layout).toContain('[data-reveal]');
+    });
+
+    it('adds revealed class on intersection', () => {
+      expect(layout).toContain("classList.add('revealed')");
+    });
+
+    it('unobserves after revealing', () => {
+      expect(layout).toContain('observer.unobserve');
+    });
+
+    it('provides fallback when IntersectionObserver unavailable', () => {
+      expect(layout).toContain("'IntersectionObserver' in window");
+    });
+
+    it('exposes observer on window for GSAP coordination', () => {
+      expect(layout).toContain('__revealObserver');
+    });
+  });
+
+  describe('noscript fallbacks', () => {
+    it('ensures [data-reveal] elements are visible without JavaScript', () => {
+      expect(layout).toContain('opacity: 1 !important');
+    });
+  });
+
   describe('footer integration', () => {
     it('includes Footer component in body', () => {
       expect(layout).toContain('<Footer />');

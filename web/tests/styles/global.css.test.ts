@@ -72,6 +72,28 @@ describe('global.css design tokens', () => {
     });
   });
 
+  describe('[data-reveal] rules', () => {
+    it('defines [data-reveal] with opacity: 0 (initial hidden state)', () => {
+      const rule = css.match(/\[data-reveal\]\s*\{([^}]+)\}/);
+      expect(rule).not.toBeNull();
+      expect(rule?.[1] ?? '').toContain('opacity: 0');
+    });
+
+    it('defines [data-reveal].revealed with opacity: 1 and transition in same rule', () => {
+      const rule = css.match(/\[data-reveal\]\.revealed\s*\{([^}]+)\}/);
+      expect(rule).not.toBeNull();
+      const rules = rule?.[1] ?? '';
+      expect(rules).toContain('opacity: 1');
+      expect(rules).toContain('transition: opacity 200ms ease-in');
+    });
+
+    it('defines prefers-reduced-motion: reduce with [data-reveal] opacity: 1', () => {
+      expect(css).toMatch(
+        /prefers-reduced-motion:\s*reduce[\s\S]*?\[data-reveal\][\s\S]*?opacity:\s*1/
+      );
+    });
+  });
+
   describe('.sa-section-padding utility class', () => {
     it('defines .sa-section-padding', () => {
       expect(css).toContain('.sa-section-padding');

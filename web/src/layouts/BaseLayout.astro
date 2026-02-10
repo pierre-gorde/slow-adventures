@@ -54,6 +54,11 @@ const jsonLd = {
         href="https://fonts.googleapis.com/css2?family=Lora:wght@600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap"
         rel="stylesheet"
       />
+      <style>
+        [data-reveal] {
+          opacity: 1 !important;
+        }
+      </style>
     </noscript>
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -70,5 +75,30 @@ const jsonLd = {
   <body class="bg-creme text-warm-black font-sans">
     <slot />
     <Footer />
+    <script is:inline>
+      // Fallback CSS pour [data-reveal] quand GSAP n'est pas encore chargé
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+        document.querySelectorAll('[data-reveal]').forEach(function (el) {
+          observer.observe(el);
+        });
+        // Expose for GSAP coordination (SectionReveal takes over when loaded)
+        window.__revealObserver = observer;
+      } else {
+        document.querySelectorAll('[data-reveal]').forEach(function (el) {
+          el.classList.add('revealed');
+        });
+      }
+    </script>
   </body>
 </html>

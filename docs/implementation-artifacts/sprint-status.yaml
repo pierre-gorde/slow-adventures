@@ -41,15 +41,15 @@ story_location: docs/implementation-artifacts
 
 development_status:
   # Epic 1: Fondation & Infrastructure deployable
-  epic-1: in-progress
+  epic-1: done
   1-1-initialisation-projet-pipeline-de-deploiement: done
   1-2-design-tokens-baselayout-seo: done
   1-3-pages-legales-footer-conformite: done
   epic-1-retrospective: optional
 
   # Epic 2: Experience immersive & Contenu
-  epic-2: backlog
-  2-1-module-gsap-unifie-sectionreveal: backlog
+  epic-2: in-progress
+  2-1-module-gsap-unifie-sectionreveal: done
   2-2-herosection-video-immersive-scrollhint: backlog
   2-3-section-elena-section-processus: backlog
   2-4-destinations-content-collections-destinationblock: backlog

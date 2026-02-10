@@ -146,6 +146,15 @@ describe('build output validation', () => {
     });
   });
 
+  describe('IntersectionObserver fallback in build output', () => {
+    it('renders IntersectionObserver fallback script in index.html', () => {
+      const html = readFileSync(resolve(distDir, 'index.html'), 'utf-8');
+      expect(html).toContain('IntersectionObserver');
+      expect(html).toContain('data-reveal');
+      expect(html).toContain('revealed');
+    });
+  });
+
   describe('SEO files', () => {
     it('generates sitemap-index.xml', () => {
       expect(existsSync(resolve(distDir, 'sitemap-index.xml'))).toBe(true);

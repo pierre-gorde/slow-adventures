@@ -1,0 +1,69 @@
+---
+interface Props {
+  animation?: 'fade-up' | 'fade-in' | 'stagger';
+  delay?: number;
+  duration?: number;
+}
+
+const { animation = 'fade-up', delay = 0, duration = 600 } = Astro.props;
+---
+
+<div
+  data-reveal
+  data-animation={animation}
+  data-delay={delay}
+  data-duration={duration}
+>
+  <slot />
+</div>
+
+<script>
+  import { gsap, ScrollTrigger } from '../lib/gsap';
+
+  const elements = document.querySelectorAll('[data-reveal]');
+
+  // Coordinate with IO fallback: take over reveal responsibility from BaseLayout
+  const win = window as unknown as { __revealObserver?: IntersectionObserver };
+  const io = win.__revealObserver;
+
+  gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+    elements.forEach((el) => {
+      // Stop IO fallback from acting on this element
+      if (io) io.unobserve(el);
+
+      // If IO already revealed this element, skip GSAP animation
+      if (el.classList.contains('revealed')) return;
+
+      const anim = el.getAttribute('data-animation') ?? 'fade-up';
+      const delayVal = Number(el.getAttribute('data-delay') ?? 0) / 1000;
+      const durationVal =
+        Number(el.getAttribute('data-duration') ?? 600) / 1000;
+
+      if (anim === 'stagger') {
+        gsap.from(el.children, {
+          opacity: 0,
+          y: 20,
+          stagger: 0.15,
+          duration: durationVal,
+          delay: delayVal,
+          scrollTrigger: { trigger: el, start: 'top 80%', once: true },
+        });
+      } else {
+        gsap.from(el, {
+          opacity: 0,
+          y: anim === 'fade-up' ? 20 : 0,
+          duration: durationVal,
+          delay: delayVal,
+          scrollTrigger: { trigger: el, start: 'top 80%', once: true },
+        });
+      }
+    });
+
+    // Cleanup: only kill ScrollTriggers owned by SectionReveal
+    return () => {
+      ScrollTrigger.getAll()
+        .filter((st) => st.trigger?.hasAttribute('data-reveal'))
+        .forEach((st) => st.kill());
+    };
+  });
+</script>

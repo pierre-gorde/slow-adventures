@@ -81,6 +81,71 @@ describe('build output validation', () => {
     });
   });
 
+  describe('mentions-legales page output', () => {
+    it('generates mentions-legales/index.html', () => {
+      expect(existsSync(resolve(distDir, 'mentions-legales/index.html'))).toBe(
+        true
+      );
+    });
+
+    it('renders mentions-legales with correct content', () => {
+      const html = readFileSync(
+        resolve(distDir, 'mentions-legales/index.html'),
+        'utf-8'
+      );
+      expect(html).toContain('Mentions légales');
+      expect(html).toContain('Netlify');
+      expect(html).toContain('<footer');
+    });
+  });
+
+  describe('politique-confidentialite page output', () => {
+    it('generates politique-confidentialite/index.html', () => {
+      expect(
+        existsSync(resolve(distDir, 'politique-confidentialite/index.html'))
+      ).toBe(true);
+    });
+
+    it('renders politique-confidentialite with correct content', () => {
+      const html = readFileSync(
+        resolve(distDir, 'politique-confidentialite/index.html'),
+        'utf-8'
+      );
+      expect(html).toContain('Politique de confidentialité');
+      expect(html).toContain('Brevo');
+      expect(html).toContain('Google Analytics');
+      expect(html).toContain('<footer');
+    });
+  });
+
+  describe('footer in all pages', () => {
+    it('renders footer in index.html', () => {
+      const html = readFileSync(resolve(distDir, 'index.html'), 'utf-8');
+      expect(html).toContain('<footer');
+      expect(html).toContain('Mentions légales');
+      expect(html).toContain('Politique de confidentialité');
+    });
+
+    it('renders footer with contact email', () => {
+      const html = readFileSync(resolve(distDir, 'index.html'), 'utf-8');
+      expect(html).toContain('contact@slowadventures.fr');
+      expect(html).toContain('mailto:contact@slowadventures.fr');
+    });
+
+    it('renders footer with copyright', () => {
+      const html = readFileSync(resolve(distDir, 'index.html'), 'utf-8');
+      const currentYear = new Date().getFullYear().toString();
+      expect(html).toContain(currentYear);
+      expect(html).toContain('Slow Adventures');
+    });
+
+    it('renders footer with navigation links', () => {
+      const html = readFileSync(resolve(distDir, 'index.html'), 'utf-8');
+      expect(html).toContain('/mentions-legales');
+      expect(html).toContain('/politique-confidentialite');
+    });
+  });
+
   describe('SEO files', () => {
     it('generates sitemap-index.xml', () => {
       expect(existsSync(resolve(distDir, 'sitemap-index.xml'))).toBe(true);

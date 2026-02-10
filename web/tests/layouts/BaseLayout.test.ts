@@ -134,5 +134,23 @@ describe('BaseLayout.astro', () => {
     it('imports global.css', () => {
       expect(layout).toContain('global.css');
     });
+
+    it('imports Footer component', () => {
+      expect(layout).toContain(
+        "import Footer from '../components/Footer.astro'"
+      );
+    });
+  });
+
+  describe('footer integration', () => {
+    it('includes Footer component in body', () => {
+      expect(layout).toContain('<Footer />');
+    });
+
+    it('places Footer after slot', () => {
+      const slotIndex = layout.indexOf('<slot />');
+      const footerIndex = layout.indexOf('<Footer />');
+      expect(footerIndex).toBeGreaterThan(slotIndex);
+    });
   });
 });

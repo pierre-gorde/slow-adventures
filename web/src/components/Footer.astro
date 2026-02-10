@@ -1,0 +1,28 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-creme-dark py-8" aria-label="Pied de page">
+  <div
+    class="max-w-[640px] mx-auto px-6 flex flex-col items-center gap-4 lg:flex-row lg:justify-center lg:gap-6"
+  >
+    <a
+      href="/mentions-legales"
+      class="text-warm-gray text-sm hover:underline transition-colors hover:text-warm-black"
+      >Mentions légales</a
+    >
+    <a
+      href="/politique-confidentialite"
+      class="text-warm-gray text-sm hover:underline transition-colors hover:text-warm-black"
+      >Politique de confidentialité</a
+    >
+    <a
+      href="mailto:contact@slowadventures.fr"
+      class="text-warm-gray text-sm hover:underline transition-colors hover:text-warm-black"
+      >contact@slowadventures.fr</a
+    >
+    <span class="text-warm-gray text-sm"
+      >&copy; {currentYear} Slow Adventures</span
+    >
+  </div>
+</footer>

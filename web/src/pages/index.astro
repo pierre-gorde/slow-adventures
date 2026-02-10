@@ -2,7 +2,12 @@
 import { getImage } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroSection from '../components/HeroSection.astro';
+import ElenaSection from '../components/ElenaSection.astro';
+import SectionReveal from '../components/SectionReveal.astro';
+import ProcessStep from '../components/ProcessStep.astro';
 import heroPoster from '../assets/images/hero-poster.webp';
+import elenaPhoto from '../assets/images/elena.webp';
+import { processSteps } from '../data/processSteps';
 
 const optimizedPoster = await getImage({
   src: heroPoster,
@@ -23,5 +28,37 @@ const optimizedPoster = await getImage({
       title="Slow Adventures"
       subtitle="Voyages immersifs aux Amériques"
     />
+    <ElenaSection
+      imageSrc={elenaPhoto}
+      imageAlt="Elena, créatrice de voyages immersifs aux Amériques"
+      title="Rencontrez Elena"
+      description="Passionnée des Amériques depuis plus de 10 ans, je crée des voyages immersifs et sur-mesure qui vous connectent à l'essence de chaque destination. Mon approche : écouter vos rêves, les transformer en itinéraires uniques grâce à mes contacts locaux et mon expertise terrain."
+      ctaHref="#contact"
+    />
+    <section class="bg-creme sa-section-padding">
+      <div class="max-w-5xl mx-auto">
+        <h2
+          class="font-serif text-3xl md:text-4xl text-warm-black text-center mb-12"
+        >
+          Du rêve à la réalité
+        </h2>
+        <SectionReveal animation="stagger">
+          <ol
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 list-none p-0"
+          >
+            {
+              processSteps.map((step) => (
+                <ProcessStep
+                  number={step.number}
+                  title={step.title}
+                  description={step.description}
+                  icon={step.icon}
+                />
+              ))
+            }
+          </ol>
+        </SectionReveal>
+      </div>
+    </section>
   </main>
 </BaseLayout>

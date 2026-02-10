@@ -1,0 +1,52 @@
+---
+interface Props {
+  text?: string;
+  subtext?: string;
+  href: string;
+  size?: 'default' | 'small';
+  variant?: 'solid' | 'outline' | 'ghost';
+  desktopOnly?: boolean;
+}
+
+const {
+  text = 'Confiez-nous ton prochain rêve',
+  subtext,
+  href,
+  size = 'default',
+  variant = 'solid',
+  desktopOnly = false,
+} = Astro.props;
+
+const sizeClasses =
+  size === 'small' ? 'px-6 py-3 text-sm' : 'px-8 py-4 text-base';
+
+const variantClasses = {
+  solid:
+    'bg-terracotta text-white border-2 border-terracotta active:bg-terracotta-dark',
+  outline: 'bg-transparent text-white border-2 border-white hover:bg-white/10',
+  ghost:
+    'bg-transparent text-terracotta border-2 border-transparent hover:bg-terracotta/10',
+}[variant];
+
+const visibilityClass = desktopOnly ? 'hidden lg:inline-block' : '';
+---
+
+<a
+  href={href}
+  data-calendly-trigger
+  class:list={[
+    'inline-block rounded-full font-sans font-semibold text-center transition-all duration-300',
+    'hover:scale-[1.02] hover:shadow-[0_8px_32px_rgba(192,96,62,0.15)]',
+    'focus:outline-2 focus:outline-terracotta focus:outline-offset-4',
+    sizeClasses,
+    variantClasses,
+    visibilityClass,
+  ]}
+>
+  {text}
+  {
+    subtext && (
+      <span class="block text-xs font-normal mt-1 opacity-80">{subtext}</span>
+    )
+  }
+</a>

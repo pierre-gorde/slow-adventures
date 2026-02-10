@@ -1,6 +1,6 @@
 ---
 interface Props {
-  animation?: 'fade-up' | 'fade-in' | 'stagger';
+  animation?: 'fade-up' | 'fade-in' | 'stagger' | 'scale-in';
   delay?: number;
   duration?: number;
 }
@@ -39,23 +39,47 @@ const { animation = 'fade-up', delay = 0, duration = 600 } = Astro.props;
       const durationVal =
         Number(el.getAttribute('data-duration') ?? 600) / 1000;
 
+      const scrollTrigger = { trigger: el, start: 'top 80%', once: true };
+
       if (anim === 'stagger') {
-        gsap.from(el.children, {
-          opacity: 0,
-          y: 20,
-          stagger: 0.15,
-          duration: durationVal,
-          delay: delayVal,
-          scrollTrigger: { trigger: el, start: 'top 80%', once: true },
-        });
+        // Reveal parent container immediately so staggered children are visible
+        gsap.set(el, { opacity: 1 });
+        gsap.fromTo(
+          el.children,
+          { opacity: 0, y: 20 },
+          {
+            opacity: 1,
+            y: 0,
+            stagger: 0.15,
+            duration: durationVal,
+            delay: delayVal,
+            scrollTrigger,
+          }
+        );
+      } else if (anim === 'scale-in') {
+        gsap.fromTo(
+          el,
+          { opacity: 0, scale: 0.85 },
+          {
+            opacity: 1,
+            scale: 1,
+            duration: durationVal,
+            delay: delayVal,
+            scrollTrigger,
+          }
+        );
       } else {
-        gsap.from(el, {
-          opacity: 0,
-          y: anim === 'fade-up' ? 20 : 0,
-          duration: durationVal,
-          delay: delayVal,
-          scrollTrigger: { trigger: el, start: 'top 80%', once: true },
-        });
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: anim === 'fade-up' ? 20 : 0 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: durationVal,
+            delay: delayVal,
+            scrollTrigger,
+          }
+        );
       }
     });
 

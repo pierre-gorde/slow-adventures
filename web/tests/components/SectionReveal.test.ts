@@ -9,9 +9,9 @@ const component = readFileSync(
 
 describe('SectionReveal.astro', () => {
   describe('Props interface', () => {
-    it('defines animation prop with union type', () => {
+    it('defines animation prop with union type including scale-in', () => {
       expect(component).toContain(
-        "animation?: 'fade-up' | 'fade-in' | 'stagger'"
+        "animation?: 'fade-up' | 'fade-in' | 'stagger' | 'scale-in'"
       );
     });
 
@@ -87,8 +87,20 @@ describe('SectionReveal.astro', () => {
       expect(component).toContain('stagger: 0.15');
     });
 
-    it('implements stagger using el.children', () => {
-      expect(component).toContain('gsap.from(el.children');
+    it('implements stagger using el.children with fromTo', () => {
+      expect(component).toContain('el.children');
+      expect(component).toContain('gsap.fromTo');
+    });
+
+    it('implements scale-in with fromTo (scale: 0.85 to 1)', () => {
+      expect(component).toContain("anim === 'scale-in'");
+      expect(component).toContain('scale: 0.85');
+      expect(component).toContain('scale: 1');
+    });
+
+    it('uses gsap.fromTo for explicit opacity: 1 target', () => {
+      expect(component).toContain('opacity: 1');
+      expect(component).not.toMatch(/gsap\.from\(/);
     });
   });
 

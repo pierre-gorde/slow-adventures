@@ -1,6 +1,6 @@
 # Story 1.1: Initialisation projet & pipeline de déploiement
 
-Status: review
+Status: done
 
 ## Story
 
@@ -343,6 +343,7 @@ Claude Opus 4.6
 ### Change Log
 
 - 2026-02-10: Story 1.1 implementation complete — Full project scaffolding, configuration, and CI/CD pipeline
+- 2026-02-10: Code review fixes — 1 High, 5 Medium, 3 Low issues addressed (see Senior Developer Review below)
 
 ### File List
 
@@ -355,14 +356,17 @@ Claude Opus 4.6
 - `web/eslint.config.mjs` — ESLint 9 flat config with TypeScript + Astro support
 - `web/.prettierrc` — Prettier configuration with Astro plugin
 - `web/.prettierignore` — Prettier ignore patterns
-- `web/.gitignore` — Git ignore (from create-astro)
+- `web/.gitignore` — Git ignore (from create-astro, updated with .vscode/)
 - `web/.env.example` — Environment variables documentation
 - `web/.env` — Local environment file (gitignored)
 - `web/netlify.toml` — Netlify config with security headers and cache rules
-- `web/src/pages/index.astro` — Minimal index page importing global.css
+- `web/README.md` — Project-specific README with links to root docs
+- `web/src/pages/index.astro` — Minimal index page (lang="fr"), importing global.css
 - `web/src/styles/global.css` — Tailwind v4 CSS entry with @theme placeholder
 - `web/src/env.d.ts` — TypeScript env variable declarations
 - `web/src/lib/placeholder.test.ts` — Vitest setup verification test
+- `web/public/favicon.ico` — Favicon (from create-astro)
+- `web/public/favicon.svg` — SVG Favicon (from create-astro)
 - `web/src/components/.gitkeep`
 - `web/src/content/destinations/.gitkeep`
 - `web/src/data/.gitkeep`
@@ -372,4 +376,23 @@ Claude Opus 4.6
 - `web/src/types/.gitkeep`
 - `web/src/assets/images/destinations/.gitkeep`
 - `web/public/videos/.gitkeep`
-- `.github/workflows/deploy.yml` — GitHub Actions CI/CD pipeline
+- `.github/workflows/deploy.yml` — GitHub Actions CI/CD pipeline (lint + test + build + deploy)
+- `README.md` — Updated with monorepo structure and Epic 1 status
+
+## Senior Developer Review (AI)
+
+**Review Date:** 2026-02-10
+**Review Outcome:** Approve (after fixes applied)
+**Reviewer Model:** Claude Opus 4.6
+
+### Action Items
+
+- [x] [HIGH] `<html lang="en">` → `lang="fr"` — site francophone (index.astro:5)
+- [x] [MED] `deploy.yml` missing `npm run test` — tests not run in CI
+- [x] [MED] `@eslint/js` and `globals` not in explicit devDependencies
+- [x] [MED] `.vscode/` committed to repo — added to .gitignore, removed from tracking
+- [x] [MED] Story File List missing 5 scaffolding files (favicon, README, .vscode)
+- [x] [MED] `netlify.toml` build section undocumented for monorepo context
+- [x] [LOW] Page title "Astro" → "Slow Adventures"
+- [x] [LOW] `web/README.md` replaced with project-specific README + interconnected links
+- [x] [LOW] CSP `'unsafe-inline'` acknowledged as tech debt (documented in Dev Notes)

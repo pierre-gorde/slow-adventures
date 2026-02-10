@@ -105,6 +105,14 @@ Site **one-page, mobile-first** (80%+ du trafic depuis Instagram Stories). Chaqu
 - Chargement instantané (< 2s) — un chargement lent tue le rêve
 - Concis et impactant : chaque mot compte, zéro pavé
 
+## Structure monorepo
+
+| Dossier | Description | README |
+|---|---|---|
+| [`web/`](web/) | Frontend Astro (SSG, Tailwind, GSAP) | [web/README.md](web/README.md) |
+| [`api/`](api/) | Backend (futur) | — |
+| [`docs/`](docs/) | Documentation projet | — |
+
 ## Documentation projet
 
 | Document                                                                              | Description                                     |
@@ -130,7 +138,7 @@ Site **one-page, mobile-first** (80%+ du trafic depuis Instagram Stories). Chaqu
 
 | Epic | Titre | Stories | Statut |
 | ---- | ----- | ------- | ------ |
-| 1 | Fondation & Infrastructure deployable | 3 | backlog |
+| 1 | Fondation & Infrastructure deployable | 3 | **in-progress** |
 | 2 | Experience immersive & Contenu | 6 | backlog |
 | 3 | Conversion & Booking Calendly | 3 | backlog |
 | 4 | Capture Email & Engagement | 3 | backlog |

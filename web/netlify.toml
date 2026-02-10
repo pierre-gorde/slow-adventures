@@ -1,3 +1,6 @@
+# Monorepo: le deploy se fait via GitHub Actions + netlify-cli (voir .github/workflows/deploy.yml)
+# Cette section [build] est utilisée uniquement si Netlify build est activé dans l'UI.
+# Dans ce cas, configurer base = "web" dans Netlify UI > Build settings.
 [build]
   command = "npm run build"
   publish = "dist"

@@ -121,21 +121,29 @@ Site **one-page, mobile-first** (80%+ du trafic depuis Instagram Stories). Chaqu
 - [x] Brainstorming (54 idées, business model, acquisition, pricing)
 - [x] Product Brief (vision, personas, métriques, MVP scope)
 - [x] UX Design (spec complète, mobile-first, système de communication)
-- [ ] Architecture
-- [ ] Epics & Stories
-- [ ] Readiness Check
-- [ ] Sprint Planning
-- [ ] Dev
+- [x] PRD
+- [x] Architecture
+- [x] Epics & Stories (5 epics, 17 stories)
+- [x] Sprint Planning ([sprint-status.yaml](/docs/implementation-artifacts/sprint-status.yaml))
 
-### Prochaines étapes
+### Phase Implémentation
 
-| Étape              | Workflow                                   | Agent   | Description                                                                           |
-| ------------------ | ------------------------------------------ | ------- | ------------------------------------------------------------------------------------- |
-| 1. Architecture    | `/bmad-bmm-create-architecture`            | Winston | Décisions techniques : structure Astro, Brevo API, Calendly embed, hébergement, CI/CD |
-| 2. Epics & Stories | `/bmad-bmm-create-epics-and-stories`       | John    | Transformer PRD + Architecture + UX en user stories implémentables                    |
-| 3. Readiness Check | `/bmad-bmm-check-implementation-readiness` | Winston | Valider que tout est aligné avant de coder                                            |
-| 4. Sprint Planning | `/bmad-bmm-sprint-planning`                | Bob     | Planifier l'implémentation                                                            |
-| 5. Dev             | `/bmad-bmm-dev-story`                      | Amelia  | Implémenter story par story                                                           |
+| Epic | Titre | Stories | Statut |
+| ---- | ----- | ------- | ------ |
+| 1 | Fondation & Infrastructure deployable | 3 | backlog |
+| 2 | Experience immersive & Contenu | 6 | backlog |
+| 3 | Conversion & Booking Calendly | 3 | backlog |
+| 4 | Capture Email & Engagement | 3 | backlog |
+| 5 | Analytics, Consentement & Tracking | 2 | backlog |
+
+### Cycle de dev par story
+
+```
+/bmad-bmm-create-story  →  prepare la story
+/bmad-bmm-dev-story     →  implemente la story
+/bmad-bmm-code-review   →  review adversariale
+Repeter pour la story suivante
+```
 
 ## Installation
 

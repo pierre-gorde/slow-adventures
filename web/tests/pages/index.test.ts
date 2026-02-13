@@ -106,6 +106,66 @@ describe('index.astro', () => {
     });
   });
 
+  describe('Destinations section integration', () => {
+    it('imports getCollection from astro:content', () => {
+      expect(page).toContain("import { getCollection } from 'astro:content'");
+    });
+
+    it('imports DestinationBlock component', () => {
+      expect(page).toContain(
+        "import DestinationBlock from '../components/DestinationBlock.astro'"
+      );
+    });
+
+    it('fetches destinations collection', () => {
+      expect(page).toContain("getCollection('destinations')");
+    });
+
+    it('sorts destinations by order using immutable spread', () => {
+      expect(page).toContain('[...destinations].sort(');
+      expect(page).toContain('a.data.order - b.data.order');
+    });
+
+    it('maps sorted destinations to DestinationBlock components', () => {
+      expect(page).toContain('sortedDestinations.map(');
+    });
+
+    it('wraps each DestinationBlock in SectionReveal', () => {
+      expect(page).toContain('<SectionReveal animation="fade-in">');
+      expect(page).toContain('<DestinationBlock');
+    });
+
+    it('passes image data from content collection', () => {
+      expect(page).toContain('dest.data.image');
+    });
+
+    it('passes country and description from content', () => {
+      expect(page).toContain('dest.data.country');
+      expect(page).toContain('dest.data.description');
+    });
+
+    it('passes overlayColor from content', () => {
+      expect(page).toContain('dest.data.overlayColor');
+    });
+
+    it('generates descriptive imageAlt from country name', () => {
+      expect(page).toContain('Paysage de ${dest.data.country}');
+    });
+  });
+
+  describe('section rendering order', () => {
+    it('renders sections in order: Hero → Elena → Destinations → Processus', () => {
+      const heroIdx = page.indexOf('<HeroSection');
+      const elenaIdx = page.indexOf('<ElenaSection');
+      const destIdx = page.indexOf('sortedDestinations.map(');
+      const processIdx = page.indexOf('Du rêve à la réalité');
+      expect(heroIdx).toBeGreaterThan(-1);
+      expect(elenaIdx).toBeGreaterThan(heroIdx);
+      expect(destIdx).toBeGreaterThan(elenaIdx);
+      expect(processIdx).toBeGreaterThan(destIdx);
+    });
+  });
+
   describe('Processus section integration', () => {
     it('imports SectionReveal component', () => {
       expect(page).toContain(

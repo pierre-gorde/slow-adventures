@@ -1,13 +1,20 @@
 ---
 import { getImage } from 'astro:assets';
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroSection from '../components/HeroSection.astro';
 import ElenaSection from '../components/ElenaSection.astro';
+import DestinationBlock from '../components/DestinationBlock.astro';
 import SectionReveal from '../components/SectionReveal.astro';
 import ProcessStep from '../components/ProcessStep.astro';
 import heroPoster from '../assets/images/hero-poster.webp';
 import elenaPhoto from '../assets/images/elena.webp';
 import { processSteps } from '../data/processSteps';
+
+const destinations = await getCollection('destinations');
+const sortedDestinations = [...destinations].sort(
+  (a, b) => a.data.order - b.data.order
+);
 
 const optimizedPoster = await getImage({
   src: heroPoster,
@@ -35,6 +42,19 @@ const optimizedPoster = await getImage({
       description="Passionnée des Amériques depuis plus de 10 ans, je crée des voyages immersifs et sur-mesure qui vous connectent à l'essence de chaque destination. Mon approche : écouter vos rêves, les transformer en itinéraires uniques grâce à mes contacts locaux et mon expertise terrain."
       ctaHref="#contact"
     />
+    {
+      sortedDestinations.map((dest) => (
+        <SectionReveal animation="fade-in">
+          <DestinationBlock
+            imageSrc={dest.data.image}
+            imageAlt={`Paysage de ${dest.data.country}`}
+            country={dest.data.country}
+            description={dest.data.description}
+            overlayColor={dest.data.overlayColor}
+          />
+        </SectionReveal>
+      ))
+    }
     <section class="bg-creme sa-section-padding">
       <div class="max-w-5xl mx-auto">
         <h2

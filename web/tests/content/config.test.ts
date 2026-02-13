@@ -59,8 +59,8 @@ describe('content/config.ts', () => {
 describe('destinations content files', () => {
   const destDir = resolve(__dirname, '../../src/content/destinations');
   const expectedFiles = [
+    'west-coast-usa.md',
     'perou-sacre.md',
-    'colombie-cafetera.md',
     'costa-rica-pura-vida.md',
     'patagonie-sauvage.md',
   ];

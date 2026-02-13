@@ -11,7 +11,15 @@ const { number, title, description, icon } = Astro.props;
 
 <li class="flex flex-col items-center text-center md:items-start md:text-left">
   <div class="flex items-center gap-3 mb-3">
-    {icon && <span class="w-8 h-8 text-terracotta" set:html={icon} />}
+    {
+      icon && (
+        <span
+          class="w-8 h-8 text-terracotta"
+          aria-hidden="true"
+          set:html={icon}
+        />
+      )
+    }
     <span class="text-terracotta font-serif text-4xl font-bold">{number}</span>
   </div>
   <h3 class="font-serif text-xl text-warm-black mb-2">{title}</h3>

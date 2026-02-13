@@ -30,40 +30,51 @@ const optimizedPoster = await getImage({
 ---
 
 <BaseLayout
-  title="Slow Adventures — Voyages immersifs aux Amériques"
-  description="Création de voyages immersifs et sur-mesure aux Amériques. Discovery call gratuite de 20 minutes."
+  title="Slow Adventures — Voyages sur mesure exclusivement aux Amériques"
+  description="Création de voyages sur mesure exclusivement aux Amériques. Discovery call gratuite de 30 minutes."
   heroPreloadImage={optimizedPoster.src}
 >
-  <main id="main">
+  <header>
     <HeroSection
       posterSrc={heroPoster}
       videoSrc="/videos/hero.mp4"
       title="Slow Adventures"
-      subtitle="Voyages immersifs aux Amériques"
+      subtitle="Voyages sur mesure exclusivement aux Amériques"
     />
+  </header>
+  <main id="main">
     <ElenaSection
+      id="elena"
       imageSrc={elenaPhoto}
       imageAlt="Elena, créatrice de voyages immersifs aux Amériques"
-      title="Rencontrez Elena"
-      description="Passionnée des Amériques depuis plus de 10 ans, je crée des voyages immersifs et sur-mesure qui vous connectent à l'essence de chaque destination. Mon approche : écouter vos rêves, les transformer en itinéraires uniques grâce à mes contacts locaux et mon expertise terrain."
+      title="Hola, Hello, Olà"
+      description="Moi c'est Elena, et je suis passionnée des Amériques depuis des années. J'ai créé SlowAdventures pour prôner la vision d'un voyage plus immersif, 100% personnalisé, sur mesure, bref un voyage qui te ressemble vraiment et qui te connecte à l'essence de chaque destination. Mon approche : écouter tes rêves, puis les transformer en itinéraires uniques grâce à mes contacts locaux et mon expertise terrain. Si tu veux un voyage fluide, authentique, et surtout sans te prendre la tête avec l'organisation… tu es au bon endroit."
       ctaHref="#contact"
     />
-    {
-      sortedDestinations.map((dest) => (
-        <SectionReveal animation="fade-in">
-          <DestinationBlock
-            imageSrc={dest.data.image}
-            imageAlt={`Paysage de ${dest.data.country}`}
-            country={dest.data.country}
-            description={dest.data.description}
-            overlayColor={dest.data.overlayColor}
-          />
-        </SectionReveal>
-      ))
-    }
-    <section class="bg-creme sa-section-padding">
+    <section id="destinations" aria-labelledby="heading-destinations">
+      <h2 id="heading-destinations" class="sr-only">Nos destinations</h2>
+      {
+        sortedDestinations.map((dest) => (
+          <SectionReveal animation="fade-in">
+            <DestinationBlock
+              imageSrc={dest.data.image}
+              imageAlt={`Paysage de ${dest.data.country}`}
+              country={dest.data.country}
+              description={dest.data.description}
+              overlayColor={dest.data.overlayColor}
+            />
+          </SectionReveal>
+        ))
+      }
+    </section>
+    <section
+      id="processus"
+      aria-labelledby="heading-processus"
+      class="bg-creme sa-section-padding"
+    >
       <div class="max-w-5xl mx-auto">
         <h2
+          id="heading-processus"
           class="font-serif text-3xl md:text-4xl text-warm-black text-center mb-12"
         >
           Du rêve à la réalité
@@ -86,7 +97,11 @@ const optimizedPoster = await getImage({
         </SectionReveal>
       </div>
     </section>
-    <section id="temoignages" class="relative min-h-[70vh] overflow-hidden">
+    <section
+      id="temoignages"
+      aria-labelledby="heading-temoignages"
+      class="relative min-h-[70vh] overflow-hidden"
+    >
       <Image
         src={testimonialsBg}
         alt=""
@@ -99,9 +114,10 @@ const optimizedPoster = await getImage({
       <div class="absolute inset-0 bg-ambre/60"></div>
       <div class="relative z-10 sa-section-padding max-w-5xl mx-auto">
         <h2
+          id="heading-temoignages"
           class="font-serif text-3xl md:text-4xl text-white text-center mb-12"
         >
-          Ce qu'ils en disent
+          Ils ont vécu SlowAdventures
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {
@@ -121,18 +137,23 @@ const optimizedPoster = await getImage({
             href="#contact"
             variant="outline"
             size="small"
-            text="Réserver ma discovery call"
+            text="Réserve ton discovery call ici"
             desktopOnly={true}
           />
         </div>
       </div>
     </section>
-    <section id="tarifs" class="bg-creme sa-section-padding">
+    <section
+      id="tarifs"
+      aria-labelledby="heading-tarifs"
+      class="bg-creme sa-section-padding"
+    >
       <div class="max-w-3xl mx-auto">
         <h2
+          id="heading-tarifs"
           class="font-serif text-3xl md:text-4xl text-warm-black text-center mb-12"
         >
-          Transparence totale
+          Ici, on est transparent
         </h2>
         <SectionReveal animation="stagger">
           <dl class="space-y-6">

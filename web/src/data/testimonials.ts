@@ -14,13 +14,13 @@ export const testimonials: TestimonialData[] = [
   {
     quote:
       "Elena a tout organisé au-delà de nos attentes. Chaque jour était une nouvelle découverte, et les contacts locaux qu'elle a sur place font toute la différence.",
-    name: 'Antoine & Sophie',
-    tripContext: 'Colombie, 10 jours',
+    name: 'Antoine et Sophie',
+    tripContext: 'Costa Rica, 12 jours',
   },
   {
     quote:
       'Le meilleur investissement voyage de ma vie. Un itinéraire parfaitement équilibré entre aventure et détente, avec des moments inoubliables.',
-    name: 'Nathalie',
-    tripContext: 'Costa Rica, 12 jours',
+    name: 'Richard',
+    tripContext: 'New-York, 6 jours',
   },
 ];

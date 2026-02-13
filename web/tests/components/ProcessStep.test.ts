@@ -67,5 +67,9 @@ describe('ProcessStep.astro', () => {
       expect(component).toContain('icon');
       expect(component).toContain('set:html');
     });
+
+    it('has aria-hidden="true" on icon span for screen readers', () => {
+      expect(component).toContain('aria-hidden="true"');
+    });
   });
 });

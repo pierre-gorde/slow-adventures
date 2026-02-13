@@ -94,6 +94,24 @@ describe('global.css design tokens', () => {
     });
   });
 
+  describe(':focus-visible global accessibility styles', () => {
+    it('defines :focus-visible with terracotta outline', () => {
+      expect(css).toContain(':focus-visible');
+      expect(css).toContain('outline: 2px solid var(--color-terracotta)');
+    });
+
+    it('defines :focus-visible with outline-offset: 4px', () => {
+      expect(css).toContain('outline-offset: 4px');
+    });
+
+    it('removes outline on mouse focus via :focus:not(:focus-visible)', () => {
+      expect(css).toContain(':focus:not(:focus-visible)');
+      expect(css).toMatch(
+        /:focus:not\(:focus-visible\)\s*\{[^}]*outline:\s*none/
+      );
+    });
+  });
+
   describe('.sa-section-padding utility class', () => {
     it('defines .sa-section-padding', () => {
       expect(css).toContain('.sa-section-padding');

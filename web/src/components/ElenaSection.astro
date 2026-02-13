@@ -5,6 +5,7 @@ import SectionReveal from './SectionReveal.astro';
 import CTAButton from './CTAButton.astro';
 
 interface Props {
+  id?: string;
   imageSrc: ImageMetadata;
   imageAlt: string;
   title: string;
@@ -12,10 +13,14 @@ interface Props {
   ctaHref: string;
 }
 
-const { imageSrc, imageAlt, title, description, ctaHref } = Astro.props;
+const { id, imageSrc, imageAlt, title, description, ctaHref } = Astro.props;
 ---
 
-<section class="bg-warm-black sa-section-padding">
+<section
+  id={id}
+  aria-labelledby="heading-elena"
+  class="bg-warm-black sa-section-padding"
+>
   <div
     class="max-w-4xl mx-auto flex flex-col items-center text-center lg:flex-row lg:items-center lg:text-left lg:gap-16"
   >
@@ -32,7 +37,12 @@ const { imageSrc, imageAlt, title, description, ctaHref } = Astro.props;
     </SectionReveal>
     <SectionReveal animation="fade-in" delay={200}>
       <div class="mt-8 lg:mt-0">
-        <h2 class="font-serif text-3xl md:text-4xl text-white mb-4">{title}</h2>
+        <h2
+          id="heading-elena"
+          class="font-serif text-3xl md:text-4xl text-white mb-4"
+        >
+          {title}
+        </h2>
         <p class="font-sans text-white/90 text-lg leading-relaxed mb-8">
           {description}
         </p>

@@ -9,7 +9,7 @@ interface Props {
 }
 
 const {
-  text = 'Confiez-nous ton prochain rêve',
+  text = 'Confie-moi ton prochain rêve',
   subtext,
   href,
   size = 'default',
@@ -35,9 +35,8 @@ const visibilityClass = desktopOnly ? 'hidden lg:inline-block' : '';
   href={href}
   data-calendly-trigger
   class:list={[
-    'inline-block rounded-full font-sans font-semibold text-center transition-all duration-300',
-    'hover:scale-[1.02] hover:shadow-[0_8px_32px_rgba(192,96,62,0.15)]',
-    'focus:outline-2 focus:outline-terracotta focus:outline-offset-4',
+    'inline-block rounded-full font-sans font-semibold text-center motion-safe:transition-all motion-safe:duration-300',
+    'motion-safe:hover:scale-[1.02] motion-safe:hover:shadow-[0_8px_32px_rgba(192,96,62,0.15)]',
     sizeClasses,
     variantClasses,
     visibilityClass,

@@ -6,21 +6,26 @@ const currentYear = new Date().getFullYear();
   <div
     class="max-w-[640px] mx-auto px-6 flex flex-col items-center gap-4 lg:flex-row lg:justify-center lg:gap-6"
   >
-    <a
-      href="/mentions-legales"
-      class="text-warm-gray text-sm hover:underline transition-colors hover:text-warm-black"
-      >Mentions légales</a
+    <nav
+      aria-label="Liens du pied de page"
+      class="flex flex-col items-center gap-4 lg:flex-row lg:gap-6"
     >
-    <a
-      href="/politique-confidentialite"
-      class="text-warm-gray text-sm hover:underline transition-colors hover:text-warm-black"
-      >Politique de confidentialité</a
-    >
-    <a
-      href="mailto:contact@slowadventures.fr"
-      class="text-warm-gray text-sm hover:underline transition-colors hover:text-warm-black"
-      >contact@slowadventures.fr</a
-    >
+      <a
+        href="/mentions-legales"
+        class="text-warm-gray text-sm hover:underline transition-colors hover:text-warm-black min-h-11 inline-flex items-center"
+        >Mentions légales</a
+      >
+      <a
+        href="/politique-confidentialite"
+        class="text-warm-gray text-sm hover:underline transition-colors hover:text-warm-black min-h-11 inline-flex items-center"
+        >Politique de confidentialité</a
+      >
+      <a
+        href="mailto:contact@slowadventures.fr"
+        class="text-warm-gray text-sm hover:underline transition-colors hover:text-warm-black min-h-11 inline-flex items-center"
+        >contact@slowadventures.fr</a
+      >
+    </nav>
     <span class="text-warm-gray text-sm"
       >&copy; {currentYear} Slow Adventures</span
     >

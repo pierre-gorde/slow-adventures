@@ -12,7 +12,7 @@ interface Props {
 const { posterSrc, videoSrc, title, subtitle } = Astro.props;
 ---
 
-<section class="hero" aria-label="Hero — introduction visuelle">
+<section class="hero" aria-label="Section d'accueil — introduction visuelle">
   <div class="hero__media">
     <Image
       src={posterSrc}
@@ -110,6 +110,12 @@ const { posterSrc, videoSrc, title, subtitle } = Astro.props;
     margin-top: 1rem;
     opacity: 0.9;
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero__video {
+      transition: none;
+    }
+  }
 </style>
 
 <script>
@@ -148,6 +154,19 @@ const { posterSrc, videoSrc, title, subtitle } = Astro.props;
   }
 
   initHero();
+
+  // Resume video when page regains visibility (bfcache restore, tab switch on mobile)
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState !== 'visible') return;
+    const video = document.querySelector<HTMLVideoElement>('.hero__video');
+    if (!video || !video.paused || !video.querySelector('source')) return;
+    video
+      .play()
+      .then(() => {
+        video.classList.add('is-playing');
+      })
+      .catch(() => {});
+  });
 </script>
 
 <script>
@@ -179,4 +198,11 @@ const { posterSrc, videoSrc, title, subtitle } = Astro.props;
   }
 
   initParallax();
+
+  // Recalculate ScrollTrigger positions on bfcache restore (mobile browsers)
+  window.addEventListener('pageshow', (event) => {
+    if ((event as PageTransitionEvent).persisted) {
+      ScrollTrigger.refresh();
+    }
+  });
 </script>

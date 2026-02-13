@@ -17,6 +17,15 @@ describe('Footer.astro', () => {
     it('has aria-label for accessibility', () => {
       expect(footer).toContain('aria-label="Pied de page"');
     });
+
+    it('wraps links in a <nav> element', () => {
+      expect(footer).toContain('<nav');
+      expect(footer).toContain('</nav>');
+    });
+
+    it('has aria-label on nav element', () => {
+      expect(footer).toContain('aria-label="Liens du pied de page"');
+    });
   });
 
   describe('links', () => {
@@ -96,6 +105,27 @@ describe('Footer.astro', () => {
 
     it('has transition on links', () => {
       expect(footer).toContain('transition-colors');
+    });
+  });
+
+  describe('focus accessibility — global focus-visible inheritance', () => {
+    it('does NOT have outline: none on any link', () => {
+      expect(footer).not.toMatch(/outline:\s*none/);
+    });
+
+    it('does NOT have outline: 0 on any link', () => {
+      expect(footer).not.toMatch(/outline:\s*0/);
+    });
+  });
+
+  describe('touch targets — 44px minimum', () => {
+    it('links have min-h-11 for 44px touch target', () => {
+      expect(footer).toContain('min-h-11');
+    });
+
+    it('links use inline-flex items-center for vertical centering', () => {
+      expect(footer).toContain('inline-flex');
+      expect(footer).toContain('items-center');
     });
   });
 

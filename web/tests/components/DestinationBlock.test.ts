@@ -105,6 +105,20 @@ describe('DestinationBlock.astro', () => {
     });
   });
 
+  describe('accessibility — aria-labelledby', () => {
+    it('has aria-labelledby on the section', () => {
+      expect(component).toContain('aria-labelledby={headingId}');
+    });
+
+    it('has dynamic id on the h2 based on country', () => {
+      expect(component).toContain('id={headingId}');
+    });
+
+    it('generates headingId from country name', () => {
+      expect(component).toMatch(/headingId.*country\.toLowerCase\(\)\.replace/);
+    });
+  });
+
   describe('text content', () => {
     it('renders country in an h2', () => {
       expect(component).toMatch(/<h2[\s>]/);

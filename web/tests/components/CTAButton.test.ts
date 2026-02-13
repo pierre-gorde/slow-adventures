@@ -17,7 +17,7 @@ describe('CTAButton.astro', () => {
   describe('Props interface', () => {
     it('defines text prop with default value', () => {
       expect(component).toContain('text');
-      expect(component).toContain('Confiez-nous ton prochain rêve');
+      expect(component).toContain('Confie-moi ton prochain rêve');
     });
 
     it('defines subtext as optional prop', () => {
@@ -99,29 +99,33 @@ describe('CTAButton.astro', () => {
     });
   });
 
-  describe('hover effects', () => {
-    it('has hover box-shadow with terracotta color', () => {
-      expect(component).toMatch(/hover:.*shadow/);
+  describe('hover effects with motion-safe', () => {
+    it('has motion-safe hover box-shadow with terracotta color', () => {
+      expect(component).toContain(
+        'motion-safe:hover:shadow-[0_8px_32px_rgba(192,96,62,0.15)]'
+      );
     });
 
-    it('has hover scale transform', () => {
-      expect(component).toContain('hover:scale-[1.02]');
-    });
-  });
-
-  describe('focus accessibility', () => {
-    it('has focus outline with terracotta color', () => {
-      expect(component).toMatch(/focus.*outline/);
-    });
-
-    it('has focus outline offset', () => {
-      expect(component).toContain('outline-offset');
+    it('has motion-safe hover scale transform', () => {
+      expect(component).toContain('motion-safe:hover:scale-[1.02]');
     });
   });
 
-  describe('transition', () => {
-    it('has transition duration of 300ms', () => {
-      expect(component).toContain('duration-300');
+  describe('focus accessibility — global focus-visible', () => {
+    it('does NOT have inline focus outline classes (handled by global.css)', () => {
+      expect(component).not.toContain('focus:outline-2');
+      expect(component).not.toContain('focus:outline-terracotta');
+      expect(component).not.toContain('focus:outline-offset-4');
+    });
+  });
+
+  describe('transition with motion-safe', () => {
+    it('has motion-safe:transition-all', () => {
+      expect(component).toContain('motion-safe:transition-all');
+    });
+
+    it('has motion-safe:duration-300', () => {
+      expect(component).toContain('motion-safe:duration-300');
     });
   });
 });

@@ -130,6 +130,30 @@ describe('BaseLayout.astro', () => {
     });
   });
 
+  describe('skip-to-content link (accessibility)', () => {
+    it('has a skip-to-content link targeting #main', () => {
+      expect(layout).toContain('href="#main"');
+      expect(layout).toContain('Aller au contenu');
+    });
+
+    it('skip-to-content is hidden by default with sr-only', () => {
+      expect(layout).toMatch(/class="sr-only.*focus:not-sr-only/);
+    });
+
+    it('skip-to-content becomes visible on focus', () => {
+      expect(layout).toContain('focus:not-sr-only');
+      expect(layout).toContain('focus:absolute');
+    });
+
+    it('skip-to-content is the first child of body (before slot)', () => {
+      const bodyIdx = layout.indexOf('<body');
+      const skipIdx = layout.indexOf('href="#main"');
+      const slotIdx = layout.indexOf('<slot />');
+      expect(skipIdx).toBeGreaterThan(bodyIdx);
+      expect(skipIdx).toBeLessThan(slotIdx);
+    });
+  });
+
   describe('body structure', () => {
     it('has html lang="fr"', () => {
       expect(layout).toContain('lang="fr"');

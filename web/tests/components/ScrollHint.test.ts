@@ -96,5 +96,11 @@ describe('ScrollHint.astro', () => {
       expect(component).toContain('prefers-reduced-motion: reduce');
       expect(component).toContain('animation: none');
     });
+
+    it('disables fade-out transition on reduced-motion', () => {
+      expect(component).toMatch(
+        /prefers-reduced-motion:\s*reduce[\s\S]*?\.scroll-hint[\s\S]*?transition:\s*none/
+      );
+    });
   });
 });

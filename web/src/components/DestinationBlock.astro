@@ -23,9 +23,13 @@ const {
 
 const overlayClass =
   overlayColor === 'terracotta' ? 'bg-terracotta/55' : 'bg-sauge/55';
+const headingId = `heading-${country.toLowerCase().replace(/\s+/g, '-')}`;
 ---
 
-<section class="relative min-h-[50vh] overflow-hidden">
+<section
+  aria-labelledby={headingId}
+  class="relative min-h-[50vh] overflow-hidden"
+>
   <Image
     src={imageSrc}
     alt={imageAlt}
@@ -39,7 +43,10 @@ const overlayClass =
   <div
     class="relative z-10 flex flex-col justify-end items-center h-full min-h-[50vh] text-center px-6 pb-10 md:pb-16"
   >
-    <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl text-white mb-4">
+    <h2
+      id={headingId}
+      class="font-serif text-4xl md:text-5xl lg:text-6xl text-white mb-4"
+    >
       {country}
     </h2>
     <p

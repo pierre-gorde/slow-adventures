@@ -17,7 +17,7 @@ describe('index.astro', () => {
   });
 
   it('uses BaseLayout with description prop', () => {
-    expect(page).toContain('Création de voyages immersifs');
+    expect(page).toContain('Création de voyages sur mesure');
   });
 
   it('contains a main element with id', () => {
@@ -36,8 +36,14 @@ describe('index.astro', () => {
       );
     });
 
-    it('renders HeroSection inside main', () => {
+    it('renders HeroSection inside a <header> element', () => {
+      expect(page).toContain('<header>');
       expect(page).toContain('<HeroSection');
+      const headerIdx = page.indexOf('<header>');
+      const heroIdx = page.indexOf('<HeroSection');
+      const headerCloseIdx = page.indexOf('</header>');
+      expect(heroIdx).toBeGreaterThan(headerIdx);
+      expect(heroIdx).toBeLessThan(headerCloseIdx);
     });
 
     it('passes poster image as posterSrc', () => {
@@ -53,7 +59,7 @@ describe('index.astro', () => {
     });
 
     it('passes subtitle', () => {
-      expect(page).toContain('subtitle="Voyages immersifs aux Amériques"');
+      expect(page).toContain('subtitle="Voyages sur mesure exclusivement aux Amériques"');
     });
 
     it('imports hero poster from assets', () => {
@@ -98,7 +104,7 @@ describe('index.astro', () => {
     });
 
     it('passes title and description props', () => {
-      expect(page).toContain('title="Rencontrez Elena"');
+      expect(page).toContain('title="Hola, Hello, Olà"');
     });
 
     it('passes ctaHref prop', () => {
@@ -153,14 +159,62 @@ describe('index.astro', () => {
     });
   });
 
+  describe('section IDs for accessibility and anchoring', () => {
+    it('passes id="elena" prop to ElenaSection', () => {
+      expect(page).toContain('id="elena"');
+    });
+
+    it('has id="destinations" section wrapping DestinationBlocks', () => {
+      expect(page).toContain('id="destinations"');
+    });
+
+    it('has sr-only heading "Nos destinations" for screen readers', () => {
+      expect(page).toContain('class="sr-only">Nos destinations</h2>');
+    });
+
+    it('has id="processus" on the process section', () => {
+      expect(page).toContain('id="processus"');
+    });
+
+    it('has id="temoignages" on the testimonials section', () => {
+      expect(page).toContain('id="temoignages"');
+    });
+
+    it('has id="tarifs" on the pricing section', () => {
+      expect(page).toContain('id="tarifs"');
+    });
+  });
+
+  describe('aria-labelledby on all sections', () => {
+    it('destinations section has aria-labelledby="heading-destinations"', () => {
+      expect(page).toContain('aria-labelledby="heading-destinations"');
+      expect(page).toContain('id="heading-destinations"');
+    });
+
+    it('processus section has aria-labelledby="heading-processus"', () => {
+      expect(page).toContain('aria-labelledby="heading-processus"');
+      expect(page).toContain('id="heading-processus"');
+    });
+
+    it('temoignages section has aria-labelledby="heading-temoignages"', () => {
+      expect(page).toContain('aria-labelledby="heading-temoignages"');
+      expect(page).toContain('id="heading-temoignages"');
+    });
+
+    it('tarifs section has aria-labelledby="heading-tarifs"', () => {
+      expect(page).toContain('aria-labelledby="heading-tarifs"');
+      expect(page).toContain('id="heading-tarifs"');
+    });
+  });
+
   describe('section rendering order', () => {
     it('renders sections in order: Hero → Elena → Destinations → Processus → Témoignages → Pricing', () => {
       const heroIdx = page.indexOf('<HeroSection');
       const elenaIdx = page.indexOf('<ElenaSection');
       const destIdx = page.indexOf('sortedDestinations.map(');
       const processIdx = page.indexOf('Du rêve à la réalité');
-      const testimonialsIdx = page.indexOf("Ce qu'ils en disent");
-      const pricingIdx = page.indexOf('Transparence totale');
+      const testimonialsIdx = page.indexOf('Ils ont vécu SlowAdventures');
+      const pricingIdx = page.indexOf('Ici, on est transparent');
       expect(heroIdx).toBeGreaterThan(-1);
       expect(elenaIdx).toBeGreaterThan(heroIdx);
       expect(destIdx).toBeGreaterThan(elenaIdx);
@@ -231,8 +285,8 @@ describe('index.astro', () => {
       expect(page).toContain("from '../assets/images/testimonials-bg.webp'");
     });
 
-    it('has h2 title "Ce qu\'ils en disent"', () => {
-      expect(page).toContain("Ce qu'ils en disent");
+    it('has h2 title "Ils ont vécu SlowAdventures"', () => {
+      expect(page).toContain('Ils ont vécu SlowAdventures');
     });
 
     it('uses background image with overlay ambre at 60%', () => {
@@ -290,8 +344,8 @@ describe('index.astro', () => {
       expect(page).toContain("from '../data/pricing'");
     });
 
-    it('has h2 title "Transparence totale"', () => {
-      expect(page).toContain('Transparence totale');
+    it('has h2 title "Ici, on est transparent"', () => {
+      expect(page).toContain('Ici, on est transparent');
     });
 
     it('has id="tarifs" for anchor navigation', () => {

@@ -31,8 +31,8 @@ describe('HeroSection.astro', () => {
       expect(component).toContain('<section class="hero"');
     });
 
-    it('has aria-label on the hero section', () => {
-      expect(component).toContain('aria-label=');
+    it('has aria-label in French on the hero section', () => {
+      expect(component).toContain('aria-label="Section d\'accueil');
     });
 
     it('contains an <h1> for the title', () => {
@@ -229,6 +229,26 @@ describe('HeroSection.astro', () => {
     it('has cleanup function that kills ScrollTriggers', () => {
       expect(component).toContain('ScrollTrigger.getAll()');
       expect(component).toContain('.kill()');
+    });
+  });
+
+  describe('reduced-motion CSS for video transition', () => {
+    it('has prefers-reduced-motion media query in <style> block', () => {
+      expect(component).toMatch(
+        /prefers-reduced-motion:\s*reduce[\s\S]*?\.hero__video[\s\S]*?transition:\s*none/
+      );
+    });
+  });
+
+  describe('bfcache resume — video and ScrollTrigger', () => {
+    it('listens for visibilitychange to resume video', () => {
+      expect(component).toContain("addEventListener('visibilitychange'");
+      expect(component).toContain('document.visibilityState');
+    });
+
+    it('listens for pageshow to refresh ScrollTrigger on bfcache restore', () => {
+      expect(component).toContain("addEventListener('pageshow'");
+      expect(component).toContain('ScrollTrigger.refresh()');
     });
   });
 

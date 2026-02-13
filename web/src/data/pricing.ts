@@ -8,17 +8,18 @@ export const pricingRows: PricingData[] = [
   {
     label: 'Discovery Call',
     price: 'Gratuit',
-    description: '20 minutes pour faire connaissance et comprendre vos envies',
-  },
-  {
-    label: "Création d'itinéraire",
-    price: 'À partir de 300 €',
-    description: 'Itinéraire sur-mesure 100% personnalisé avec contacts locaux',
-  },
-  {
-    label: 'Accompagnement complet',
-    price: 'Sur devis',
     description:
-      'De la planification à l\u0027accompagnement terrain pendant le voyage',
+      '30 min pour faire connaissance et comprendre tes envies (et aussi ce que tu ne veux pas)',
+  },
+  {
+    label: 'Création de ton itinéraire',
+    price: 'À partir de 300 €',
+    description:
+      'Je crée ton voyage 100% sur mesure et personnalisé en relation avec mes contacts locaux',
+  },
+  {
+    label: 'Une demande spéciale ?',
+    price: 'Sur devis',
+    description: 'Voyages de noce, groupes, événements — on en discute ensemble',
   },
 ];

@@ -27,13 +27,13 @@ describe('build output validation', () => {
 
     it('renders dynamic title', () => {
       expect(html).toContain(
-        '<title>Slow Adventures — Voyages immersifs aux Amériques</title>'
+        '<title>Slow Adventures — Voyages sur mesure exclusivement aux Amériques</title>'
       );
     });
 
     it('renders meta description', () => {
       expect(html).toContain(
-        'content="Création de voyages immersifs et sur-mesure aux Amériques. Discovery call gratuite de 20 minutes."'
+        'content="Création de voyages sur mesure exclusivement aux Amériques. Discovery call gratuite de 30 minutes."'
       );
     });
 

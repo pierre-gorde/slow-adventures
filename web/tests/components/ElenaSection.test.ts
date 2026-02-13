@@ -102,6 +102,24 @@ describe('ElenaSection.astro', () => {
     });
   });
 
+  describe('accessibility — aria-labelledby', () => {
+    it('has aria-labelledby="heading-elena" on the section', () => {
+      expect(component).toContain('aria-labelledby="heading-elena"');
+    });
+
+    it('has id="heading-elena" on the h2', () => {
+      expect(component).toContain('id="heading-elena"');
+    });
+
+    it('accepts optional id prop', () => {
+      expect(component).toMatch(/id\?:\s*string/);
+    });
+
+    it('applies id prop to section element', () => {
+      expect(component).toContain('id={id}');
+    });
+  });
+
   describe('Image component usage', () => {
     it('uses Astro Image component with loading lazy', () => {
       expect(component).toContain('loading="lazy"');

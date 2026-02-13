@@ -61,7 +61,7 @@ describe('index.astro', () => {
     });
 
     it('uses getImage for poster preload optimization', () => {
-      expect(page).toContain("import { getImage } from 'astro:assets'");
+      expect(page).toContain("import { Image, getImage } from 'astro:assets'");
       expect(page).toContain('getImage(');
     });
 
@@ -154,15 +154,19 @@ describe('index.astro', () => {
   });
 
   describe('section rendering order', () => {
-    it('renders sections in order: Hero → Elena → Destinations → Processus', () => {
+    it('renders sections in order: Hero → Elena → Destinations → Processus → Témoignages → Pricing', () => {
       const heroIdx = page.indexOf('<HeroSection');
       const elenaIdx = page.indexOf('<ElenaSection');
       const destIdx = page.indexOf('sortedDestinations.map(');
       const processIdx = page.indexOf('Du rêve à la réalité');
+      const testimonialsIdx = page.indexOf("Ce qu'ils en disent");
+      const pricingIdx = page.indexOf('Transparence totale');
       expect(heroIdx).toBeGreaterThan(-1);
       expect(elenaIdx).toBeGreaterThan(heroIdx);
       expect(destIdx).toBeGreaterThan(elenaIdx);
       expect(processIdx).toBeGreaterThan(destIdx);
+      expect(testimonialsIdx).toBeGreaterThan(processIdx);
+      expect(pricingIdx).toBeGreaterThan(testimonialsIdx);
     });
   });
 
@@ -209,6 +213,115 @@ describe('index.astro', () => {
 
     it('renders ProcessStep component', () => {
       expect(page).toContain('<ProcessStep');
+    });
+  });
+
+  describe('Témoignages section integration', () => {
+    it('imports TestimonialCard component', () => {
+      expect(page).toContain(
+        "import TestimonialCard from '../components/TestimonialCard.astro'"
+      );
+    });
+
+    it('imports testimonials data', () => {
+      expect(page).toContain("from '../data/testimonials'");
+    });
+
+    it('imports testimonials background image', () => {
+      expect(page).toContain("from '../assets/images/testimonials-bg.webp'");
+    });
+
+    it('has h2 title "Ce qu\'ils en disent"', () => {
+      expect(page).toContain("Ce qu'ils en disent");
+    });
+
+    it('uses background image with overlay ambre at 60%', () => {
+      expect(page).toContain('bg-ambre/60');
+    });
+
+    it('has id="temoignages" for anchor navigation', () => {
+      expect(page).toContain('id="temoignages"');
+    });
+
+    it('uses min-h-[70vh] for section height', () => {
+      expect(page).toContain('min-h-[70vh]');
+    });
+
+    it('wraps each TestimonialCard in SectionReveal fade-up', () => {
+      expect(page).toContain('animation="fade-up"');
+      expect(page).toContain('<TestimonialCard');
+    });
+
+    it('maps testimonials data', () => {
+      expect(page).toContain('testimonials.map(');
+    });
+
+    it('passes quote, name, tripContext props', () => {
+      expect(page).toContain('quote={t.quote}');
+      expect(page).toContain('name={t.name}');
+      expect(page).toContain('tripContext={t.tripContext}');
+    });
+
+    it('includes CTAButton with outline variant and desktopOnly', () => {
+      expect(page).toContain('variant="outline"');
+      expect(page).toContain('desktopOnly={true}');
+    });
+
+    it('uses Image component for background with lazy loading', () => {
+      expect(page).toContain('src={testimonialsBg}');
+      expect(page).toContain('loading="lazy"');
+    });
+
+    it('uses responsive grid for cards', () => {
+      expect(page).toContain('grid-cols-1');
+      expect(page).toContain('md:grid-cols-2');
+      expect(page).toContain('lg:grid-cols-3');
+    });
+  });
+
+  describe('Pricing section integration', () => {
+    it('imports PricingRow component', () => {
+      expect(page).toContain(
+        "import PricingRow from '../components/PricingRow.astro'"
+      );
+    });
+
+    it('imports pricingRows data', () => {
+      expect(page).toContain("from '../data/pricing'");
+    });
+
+    it('has h2 title "Transparence totale"', () => {
+      expect(page).toContain('Transparence totale');
+    });
+
+    it('has id="tarifs" for anchor navigation', () => {
+      expect(page).toContain('id="tarifs"');
+    });
+
+    it('uses bg-creme background', () => {
+      expect(page).toContain('bg-creme');
+    });
+
+    it('uses SectionReveal with stagger animation for pricing', () => {
+      expect(page).toContain('animation="stagger"');
+    });
+
+    it('uses <dl> definition list for pricing', () => {
+      expect(page).toMatch(/<dl[\s>]/);
+    });
+
+    it('maps pricingRows data', () => {
+      expect(page).toContain('pricingRows.map(');
+    });
+
+    it('passes label, price, description props', () => {
+      expect(page).toContain('label={row.label}');
+      expect(page).toContain('price={row.price}');
+      expect(page).toContain('description={row.description}');
+    });
+
+    it('uses max-w-3xl for pricing layout', () => {
+      expect(page).toContain('max-w-3xl');
     });
   });
 });

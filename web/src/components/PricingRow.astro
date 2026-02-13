@@ -1,0 +1,27 @@
+---
+interface Props {
+  label: string;
+  price: string;
+  description?: string;
+}
+
+const { label, price, description } = Astro.props;
+---
+
+<div
+  class="flex flex-wrap items-baseline gap-2 py-4 border-b border-warm-black/10"
+>
+  <dt
+    class="font-sans font-semibold text-warm-black text-lg flex-1 inline-flex items-baseline gap-2 after:content-[''] after:flex-1 after:border-b after:border-dotted after:border-warm-gray/40"
+  >
+    {label}
+  </dt>
+  <dd class="font-serif text-2xl text-terracotta font-bold">{price}</dd>
+  {
+    description && (
+      <dd class="w-full font-sans text-warm-gray text-sm mt-1">
+        {description}
+      </dd>
+    )
+  }
+</div>

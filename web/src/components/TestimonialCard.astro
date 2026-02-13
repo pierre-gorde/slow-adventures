@@ -1,0 +1,21 @@
+---
+interface Props {
+  quote: string;
+  name: string;
+  tripContext: string;
+}
+
+const { quote, name, tripContext } = Astro.props;
+---
+
+<article class="text-center">
+  <blockquote
+    class="font-serif text-lg md:text-xl italic text-white leading-relaxed mb-4"
+  >
+    <p>&laquo;&nbsp;{quote}&nbsp;&raquo;</p>
+  </blockquote>
+  <footer>
+    <cite class="font-sans font-semibold text-white not-italic">{name}</cite>
+    <p class="font-sans text-white/80 text-sm mt-1">{tripContext}</p>
+  </footer>
+</article>

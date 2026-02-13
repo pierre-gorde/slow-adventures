@@ -1,5 +1,5 @@
 ---
-import { getImage } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroSection from '../components/HeroSection.astro';
@@ -7,9 +7,15 @@ import ElenaSection from '../components/ElenaSection.astro';
 import DestinationBlock from '../components/DestinationBlock.astro';
 import SectionReveal from '../components/SectionReveal.astro';
 import ProcessStep from '../components/ProcessStep.astro';
+import TestimonialCard from '../components/TestimonialCard.astro';
+import PricingRow from '../components/PricingRow.astro';
+import CTAButton from '../components/CTAButton.astro';
 import heroPoster from '../assets/images/hero-poster.webp';
 import elenaPhoto from '../assets/images/elena.webp';
+import testimonialsBg from '../assets/images/testimonials-bg.webp';
 import { processSteps } from '../data/processSteps';
+import { testimonials } from '../data/testimonials';
+import { pricingRows } from '../data/pricing';
 
 const destinations = await getCollection('destinations');
 const sortedDestinations = [...destinations].sort(
@@ -77,6 +83,69 @@ const optimizedPoster = await getImage({
               ))
             }
           </ol>
+        </SectionReveal>
+      </div>
+    </section>
+    <section id="temoignages" class="relative min-h-[70vh] overflow-hidden">
+      <Image
+        src={testimonialsBg}
+        alt=""
+        widths={[768, 1440, 2880]}
+        sizes="100vw"
+        loading="lazy"
+        decoding="async"
+        class="absolute inset-0 w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-ambre/60"></div>
+      <div class="relative z-10 sa-section-padding max-w-5xl mx-auto">
+        <h2
+          class="font-serif text-3xl md:text-4xl text-white text-center mb-12"
+        >
+          Ce qu'ils en disent
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {
+            testimonials.map((t) => (
+              <SectionReveal animation="fade-up">
+                <TestimonialCard
+                  quote={t.quote}
+                  name={t.name}
+                  tripContext={t.tripContext}
+                />
+              </SectionReveal>
+            ))
+          }
+        </div>
+        <div class="text-center mt-12">
+          <CTAButton
+            href="#contact"
+            variant="outline"
+            size="small"
+            text="Réserver ma discovery call"
+            desktopOnly={true}
+          />
+        </div>
+      </div>
+    </section>
+    <section id="tarifs" class="bg-creme sa-section-padding">
+      <div class="max-w-3xl mx-auto">
+        <h2
+          class="font-serif text-3xl md:text-4xl text-warm-black text-center mb-12"
+        >
+          Transparence totale
+        </h2>
+        <SectionReveal animation="stagger">
+          <dl class="space-y-6">
+            {
+              pricingRows.map((row) => (
+                <PricingRow
+                  label={row.label}
+                  price={row.price}
+                  description={row.description}
+                />
+              ))
+            }
+          </dl>
         </SectionReveal>
       </div>
     </section>

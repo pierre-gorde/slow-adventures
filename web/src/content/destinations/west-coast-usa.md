@@ -1,6 +1,6 @@
 ---
 country: 'West Coast USA'
-description: 'Idéale si tu aimes la liberté et les grands espaces, la West Coast te fait vibrer entre Los Angeles, San Francisco et les paysages majestueux des parcs nationaux.'
+description: 'Idéal si tu aimes la liberté et les grands espaces, la West Coast te fait vibrer entre Los Angeles, San Francisco et les paysages majestueux des parcs nationaux.'
 image: '../../assets/images/destinations/west-coast-usa.webp'
 overlayColor: 'sauge'
 order: 1

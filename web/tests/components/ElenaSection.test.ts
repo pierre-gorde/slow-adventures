@@ -63,7 +63,7 @@ describe('ElenaSection.astro', () => {
     });
 
     it('has white border on photo', () => {
-      expect(component).toContain('border-white');
+      expect(component).toContain('border-bleu');
     });
 
     it('has border-4 width', () => {

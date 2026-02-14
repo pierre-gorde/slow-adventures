@@ -27,13 +27,13 @@ describe('build output validation', () => {
 
     it('renders dynamic title', () => {
       expect(html).toContain(
-        '<title>Slow Adventures — Voyages sur mesure exclusivement aux Amériques</title>'
+        '<title>Slow Adventures — Voyages immersifs et sur mesure exclusivement aux Amériques</title>'
       );
     });
 
     it('renders meta description', () => {
       expect(html).toContain(
-        'content="Création de voyages sur mesure exclusivement aux Amériques. Discovery call gratuite de 30 minutes."'
+        'content="Création de voyages immersifs et sur mesure exclusivement aux Amériques. Discovery call gratuit de 30 minutes."'
       );
     });
 
@@ -66,8 +66,8 @@ describe('build output validation', () => {
     it('renders Google Fonts links', () => {
       expect(html).toContain('fonts.googleapis.com');
       expect(html).toContain('fonts.gstatic.com');
-      expect(html).toContain('Lora');
-      expect(html).toContain('Plus+Jakarta+Sans');
+      expect(html).toContain('Stardos+Stencil');
+      expect(html).toContain('Bree+Serif');
     });
 
     it('renders body with Tailwind base classes', () => {

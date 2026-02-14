@@ -17,7 +17,7 @@ describe('index.astro', () => {
   });
 
   it('uses BaseLayout with description prop', () => {
-    expect(page).toContain('Création de voyages sur mesure');
+    expect(page).toContain('Création de voyages immersifs et sur mesure');
   });
 
   it('contains a main element with id', () => {
@@ -60,7 +60,7 @@ describe('index.astro', () => {
 
     it('passes subtitle', () => {
       expect(page).toContain(
-        'subtitle="Voyages sur mesure exclusivement aux Amériques"'
+        'subtitle="Voyages immersifs et sur mesure exclusivement aux Amériques"'
       );
     });
 
@@ -106,7 +106,7 @@ describe('index.astro', () => {
     });
 
     it('passes title and description props', () => {
-      expect(page).toContain('title="Hola, Hello, Olà"');
+      expect(page).toContain('title="Hello, Hola, Olà"');
     });
 
     it('passes ctaHref with PUBLIC_CALENDLY_URL', () => {
@@ -485,8 +485,8 @@ describe('index.astro', () => {
       expect(ctaSection).toContain('animation="scale-in"');
     });
 
-    it('has h2 title "Ton prochain voyage commence ici"', () => {
-      expect(page).toContain('Ton prochain voyage commence ici');
+    it('has h2 title "Ton prochain rêve commence ici"', () => {
+      expect(page).toContain('Ton prochain rêve commence ici');
     });
 
     it('has CTAButton with variant="solid" and size="default"', () => {

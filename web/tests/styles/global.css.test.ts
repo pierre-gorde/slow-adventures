@@ -31,12 +31,12 @@ describe('global.css design tokens', () => {
   });
 
   describe('@theme font families', () => {
-    it('defines --font-family-serif with Lora', () => {
-      expect(css).toMatch(/--font-family-serif:.*Lora/);
+    it('defines --font-family-serif with Stardos Stencil', () => {
+      expect(css).toMatch(/--font-family-serif:.*Stardos Stencil/);
     });
 
-    it('defines --font-family-sans with Plus Jakarta Sans', () => {
-      expect(css).toMatch(/--font-family-sans:.*Plus Jakarta Sans/);
+    it('defines --font-family-sans with Bree Serif', () => {
+      expect(css).toMatch(/--font-family-sans:.*Bree Serif/);
     });
   });
 

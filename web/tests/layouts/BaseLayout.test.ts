@@ -67,9 +67,9 @@ describe('BaseLayout.astro', () => {
       expect(layout).toContain('<noscript>');
     });
 
-    it('loads Google Fonts with Lora and Plus Jakarta Sans', () => {
-      expect(layout).toContain('family=Lora:wght@600');
-      expect(layout).toContain('family=Plus+Jakarta+Sans:wght@400;500;600');
+    it('loads Google Fonts with Stardos Stencil and Bree Serif', () => {
+      expect(layout).toContain('family=Stardos+Stencil:wght@400;700');
+      expect(layout).toContain('family=Bree+Serif');
       expect(layout).toContain('display=swap');
     });
   });

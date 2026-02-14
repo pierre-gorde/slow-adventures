@@ -98,7 +98,33 @@
 </section>
 
 <script>
-  import { subscribeToNewsletter } from '../lib/brevo';
+  const BREVO_ENDPOINT = 'https://api.brevo.com/v3/contacts';
+  const BREVO_LIST_ID = 2;
+  const BREVO_API_KEY = import.meta.env.PUBLIC_BREVO_API_KEY;
+
+  async function subscribeToNewsletter(
+    email: string
+  ): Promise<{ success: boolean }> {
+    try {
+      const response = await fetch(BREVO_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'api-key': BREVO_API_KEY,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          listIds: [BREVO_LIST_ID],
+          updateEnabled: true,
+        }),
+      });
+      if (!response.ok) throw new Error(`Brevo API error: ${response.status}`);
+      return { success: true };
+    } catch (error) {
+      console.error('[slow-adventures]', error);
+      return { success: false };
+    }
+  }
 
   const form = document.getElementById('email-form') as HTMLFormElement | null;
   const input = document.getElementById(

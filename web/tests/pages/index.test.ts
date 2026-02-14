@@ -404,6 +404,36 @@ describe('index.astro', () => {
     });
   });
 
+  describe('CalendlyModal integration', () => {
+    it('imports CalendlyModal component', () => {
+      expect(page).toContain(
+        "import CalendlyModal from '../components/CalendlyModal.astro'"
+      );
+    });
+
+    it('renders CalendlyModal component', () => {
+      expect(page).toContain('<CalendlyModal');
+    });
+
+    it('places CalendlyModal after </main> (outside main content)', () => {
+      const mainCloseIdx = page.indexOf('</main>');
+      const modalIdx = page.indexOf('<CalendlyModal');
+      expect(modalIdx).toBeGreaterThan(mainCloseIdx);
+    });
+
+    it('places CalendlyModal before StickyMobileCTA', () => {
+      const modalIdx = page.indexOf('<CalendlyModal');
+      const stickyIdx = page.indexOf('<StickyMobileCTA');
+      expect(modalIdx).toBeLessThan(stickyIdx);
+    });
+
+    it('places CalendlyModal before </BaseLayout>', () => {
+      const modalIdx = page.indexOf('<CalendlyModal');
+      const layoutCloseIdx = page.indexOf('</BaseLayout>');
+      expect(modalIdx).toBeLessThan(layoutCloseIdx);
+    });
+  });
+
   describe('StickyMobileCTA integration', () => {
     it('imports StickyMobileCTA component', () => {
       expect(page).toContain(

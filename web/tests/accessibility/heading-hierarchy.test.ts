@@ -72,6 +72,12 @@ describe('Heading hierarchy & semantic HTML (WCAG 1.3.1, 3.1.1)', () => {
     it('index.astro has h2 for "Ici, on est transparent" (Tarifs)', () => {
       expect(indexPage).toContain('Ici, on est transparent');
     });
+
+    it('index.astro has h2 for "Ton prochain voyage commence ici" (CTA finale)', () => {
+      expect(indexPage).toContain('Ton prochain voyage commence ici');
+      const ctaSection = indexPage.slice(indexPage.indexOf('id="cta-final"'));
+      expect(ctaSection).toMatch(/<h2[\s\S]*?Ton prochain voyage commence ici/);
+    });
   });
 
   describe('h3 sub-elements', () => {

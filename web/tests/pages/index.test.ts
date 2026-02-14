@@ -59,7 +59,9 @@ describe('index.astro', () => {
     });
 
     it('passes subtitle', () => {
-      expect(page).toContain('subtitle="Voyages sur mesure exclusivement aux Amériques"');
+      expect(page).toContain(
+        'subtitle="Voyages sur mesure exclusivement aux Amériques"'
+      );
     });
 
     it('imports hero poster from assets', () => {
@@ -107,8 +109,9 @@ describe('index.astro', () => {
       expect(page).toContain('title="Hola, Hello, Olà"');
     });
 
-    it('passes ctaHref prop', () => {
-      expect(page).toContain('ctaHref=');
+    it('passes ctaHref with PUBLIC_CALENDLY_URL', () => {
+      expect(page).toContain('ctaHref={import.meta.env.PUBLIC_CALENDLY_URL}');
+      expect(page).not.toContain('ctaHref="#contact"');
     });
   });
 
@@ -183,6 +186,10 @@ describe('index.astro', () => {
     it('has id="tarifs" on the pricing section', () => {
       expect(page).toContain('id="tarifs"');
     });
+
+    it('has id="cta-final" on the CTA finale section', () => {
+      expect(page).toContain('id="cta-final"');
+    });
   });
 
   describe('aria-labelledby on all sections', () => {
@@ -205,22 +212,29 @@ describe('index.astro', () => {
       expect(page).toContain('aria-labelledby="heading-tarifs"');
       expect(page).toContain('id="heading-tarifs"');
     });
+
+    it('cta-final section has aria-labelledby="heading-cta-final"', () => {
+      expect(page).toContain('aria-labelledby="heading-cta-final"');
+      expect(page).toContain('id="heading-cta-final"');
+    });
   });
 
   describe('section rendering order', () => {
-    it('renders sections in order: Hero → Elena → Destinations → Processus → Témoignages → Pricing', () => {
+    it('renders sections in order: Hero → Elena → Destinations → Processus → Témoignages → Pricing → CTA finale', () => {
       const heroIdx = page.indexOf('<HeroSection');
       const elenaIdx = page.indexOf('<ElenaSection');
       const destIdx = page.indexOf('sortedDestinations.map(');
       const processIdx = page.indexOf('Du rêve à la réalité');
       const testimonialsIdx = page.indexOf('Ils ont vécu SlowAdventures');
       const pricingIdx = page.indexOf('Ici, on est transparent');
+      const ctaFinalIdx = page.indexOf('id="cta-final"');
       expect(heroIdx).toBeGreaterThan(-1);
       expect(elenaIdx).toBeGreaterThan(heroIdx);
       expect(destIdx).toBeGreaterThan(elenaIdx);
       expect(processIdx).toBeGreaterThan(destIdx);
       expect(testimonialsIdx).toBeGreaterThan(processIdx);
       expect(pricingIdx).toBeGreaterThan(testimonialsIdx);
+      expect(ctaFinalIdx).toBeGreaterThan(pricingIdx);
     });
   });
 
@@ -321,6 +335,17 @@ describe('index.astro', () => {
       expect(page).toContain('desktopOnly={true}');
     });
 
+    it('CTAButton uses PUBLIC_CALENDLY_URL, not #contact', () => {
+      const temoignagesSection = page.slice(
+        page.indexOf('id="temoignages"'),
+        page.indexOf('id="tarifs"')
+      );
+      expect(temoignagesSection).toContain(
+        'href={import.meta.env.PUBLIC_CALENDLY_URL}'
+      );
+      expect(temoignagesSection).not.toContain('href="#contact"');
+    });
+
     it('uses Image component for background with lazy loading', () => {
       expect(page).toContain('src={testimonialsBg}');
       expect(page).toContain('loading="lazy"');
@@ -376,6 +401,58 @@ describe('index.astro', () => {
 
     it('uses max-w-3xl for pricing layout', () => {
       expect(page).toContain('max-w-3xl');
+    });
+  });
+
+  describe('Section CTA finale integration', () => {
+    it('has section with id="cta-final"', () => {
+      expect(page).toContain('id="cta-final"');
+    });
+
+    it('has aria-labelledby="heading-cta-final" and matching heading id', () => {
+      expect(page).toContain('aria-labelledby="heading-cta-final"');
+      expect(page).toContain('id="heading-cta-final"');
+    });
+
+    it('uses bg-warm-black background', () => {
+      const ctaSection = page.slice(page.indexOf('id="cta-final"'));
+      expect(ctaSection).toContain('bg-warm-black');
+    });
+
+    it('uses sa-section-padding', () => {
+      const ctaSection = page.slice(page.indexOf('id="cta-final"'));
+      expect(ctaSection).toContain('sa-section-padding');
+    });
+
+    it('uses SectionReveal with scale-in animation', () => {
+      const ctaSection = page.slice(page.indexOf('id="cta-final"'));
+      expect(ctaSection).toContain('animation="scale-in"');
+    });
+
+    it('has h2 title "Ton prochain voyage commence ici"', () => {
+      expect(page).toContain('Ton prochain voyage commence ici');
+    });
+
+    it('has CTAButton with variant="solid" and size="default"', () => {
+      const ctaSection = page.slice(page.indexOf('id="cta-final"'));
+      expect(ctaSection).toContain('variant="solid"');
+      expect(ctaSection).toContain('size="default"');
+    });
+
+    it('has CTAButton with PUBLIC_CALENDLY_URL href', () => {
+      const ctaSection = page.slice(page.indexOf('id="cta-final"'));
+      expect(ctaSection).toContain(
+        'href={import.meta.env.PUBLIC_CALENDLY_URL}'
+      );
+    });
+
+    it('has subtext "30 min, gratuit, sans engagement"', () => {
+      expect(page).toContain('subtext="30 min, gratuit, sans engagement"');
+    });
+
+    it('does NOT have desktopOnly on CTA finale button', () => {
+      const ctaSection = page.slice(page.indexOf('id="cta-final"'));
+      expect(ctaSection).not.toContain('desktopOnly');
     });
   });
 });

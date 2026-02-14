@@ -20,6 +20,7 @@ export const pricingRows: PricingData[] = [
   {
     label: 'Une demande spéciale ?',
     price: 'Sur devis',
-    description: 'Voyages de noce, groupes, événements — on en discute ensemble',
+    description:
+      'Voyages de noce, groupes, événements — on en discute ensemble',
   },
 ];

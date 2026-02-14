@@ -49,7 +49,7 @@ const optimizedPoster = await getImage({
       imageAlt="Elena, créatrice de voyages immersifs aux Amériques"
       title="Hola, Hello, Olà"
       description="Moi c'est Elena, et je suis passionnée des Amériques depuis des années. J'ai créé SlowAdventures pour prôner la vision d'un voyage plus immersif, 100% personnalisé, sur mesure, bref un voyage qui te ressemble vraiment et qui te connecte à l'essence de chaque destination. Mon approche : écouter tes rêves, puis les transformer en itinéraires uniques grâce à mes contacts locaux et mon expertise terrain. Si tu veux un voyage fluide, authentique, et surtout sans te prendre la tête avec l'organisation… tu es au bon endroit."
-      ctaHref="#contact"
+      ctaHref={import.meta.env.PUBLIC_CALENDLY_URL}
     />
     <section id="destinations" aria-labelledby="heading-destinations">
       <h2 id="heading-destinations" class="sr-only">Nos destinations</h2>
@@ -134,10 +134,11 @@ const optimizedPoster = await getImage({
         </div>
         <div class="text-center mt-12">
           <CTAButton
-            href="#contact"
+            href={import.meta.env.PUBLIC_CALENDLY_URL}
             variant="outline"
             size="small"
             text="Réserve ton discovery call ici"
+            subtext=""
             desktopOnly={true}
           />
         </div>
@@ -167,6 +168,28 @@ const optimizedPoster = await getImage({
               ))
             }
           </dl>
+        </SectionReveal>
+      </div>
+    </section>
+    <section
+      id="cta-final"
+      aria-labelledby="heading-cta-final"
+      class="bg-warm-black sa-section-padding"
+    >
+      <div class="max-w-3xl mx-auto text-center">
+        <SectionReveal animation="scale-in">
+          <h2
+            id="heading-cta-final"
+            class="font-serif text-3xl md:text-4xl lg:text-5xl text-white mb-8"
+          >
+            Ton prochain voyage commence ici
+          </h2>
+          <CTAButton
+            href={import.meta.env.PUBLIC_CALENDLY_URL}
+            variant="solid"
+            size="default"
+            subtext="30 min, gratuit, sans engagement"
+          />
         </SectionReveal>
       </div>
     </section>

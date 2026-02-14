@@ -48,7 +48,7 @@ development_status:
   epic-1-retrospective: optional
 
   # Epic 2: Experience immersive & Contenu
-  epic-2: in-progress
+  epic-2: done
   2-1-module-gsap-unifie-sectionreveal: done
   2-2-herosection-video-immersive-scrollhint: done
   2-3-section-elena-section-processus: done
@@ -58,8 +58,8 @@ development_status:
   epic-2-retrospective: optional
 
   # Epic 3: Conversion & Booking Calendly
-  epic-3: backlog
-  3-1-ctabutton-section-cta-final: backlog
+  epic-3: in-progress
+  3-1-ctabutton-section-cta-final: done
   3-2-stickymobilecta: backlog
   3-3-calendlymodal-modale-de-reservation-integree: backlog
   epic-3-retrospective: optional

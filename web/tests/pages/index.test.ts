@@ -404,6 +404,30 @@ describe('index.astro', () => {
     });
   });
 
+  describe('StickyMobileCTA integration', () => {
+    it('imports StickyMobileCTA component', () => {
+      expect(page).toContain(
+        "import StickyMobileCTA from '../components/StickyMobileCTA.astro'"
+      );
+    });
+
+    it('renders StickyMobileCTA component', () => {
+      expect(page).toContain('<StickyMobileCTA');
+    });
+
+    it('places StickyMobileCTA after </main> (outside main content)', () => {
+      const mainCloseIdx = page.indexOf('</main>');
+      const stickyIdx = page.indexOf('<StickyMobileCTA');
+      expect(stickyIdx).toBeGreaterThan(mainCloseIdx);
+    });
+
+    it('places StickyMobileCTA before </BaseLayout>', () => {
+      const stickyIdx = page.indexOf('<StickyMobileCTA');
+      const layoutCloseIdx = page.indexOf('</BaseLayout>');
+      expect(stickyIdx).toBeLessThan(layoutCloseIdx);
+    });
+  });
+
   describe('Section CTA finale integration', () => {
     it('has section with id="cta-final"', () => {
       expect(page).toContain('id="cta-final"');

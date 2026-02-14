@@ -10,6 +10,7 @@ import ProcessStep from '../components/ProcessStep.astro';
 import TestimonialCard from '../components/TestimonialCard.astro';
 import PricingRow from '../components/PricingRow.astro';
 import CTAButton from '../components/CTAButton.astro';
+import StickyMobileCTA from '../components/StickyMobileCTA.astro';
 import heroPoster from '../assets/images/hero-poster.webp';
 import elenaPhoto from '../assets/images/elena.webp';
 import testimonialsBg from '../assets/images/testimonials-bg.webp';
@@ -194,4 +195,5 @@ const optimizedPoster = await getImage({
       </div>
     </section>
   </main>
+  <StickyMobileCTA />
 </BaseLayout>

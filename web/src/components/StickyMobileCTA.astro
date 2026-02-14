@@ -1,0 +1,116 @@
+---
+// StickyMobileCTA.astro — Island client:load
+// Sticky CTA bar for mobile visitors, hidden on desktop
+---
+
+<aside
+  id="sticky-mobile-cta"
+  role="complementary"
+  aria-label="Réserver une discovery call"
+  class="fixed bottom-0 left-0 right-0 z-50 lg:hidden"
+  style="opacity: 0; pointer-events: none; transform: translateY(100%);"
+>
+  <div
+    class="bg-creme/80 backdrop-blur-md px-4 py-3 shadow-[0_-2px_16px_rgba(44,40,37,0.08)]"
+  >
+    <a
+      href={import.meta.env.PUBLIC_CALENDLY_URL}
+      data-calendly-trigger
+      class="block w-full text-center bg-terracotta text-white font-sans font-semibold rounded-full py-3 min-h-[48px] leading-[48px] motion-safe:transition-all motion-safe:duration-300 active:bg-terracotta-dark"
+    >
+      Confie-moi ton prochain rêve
+    </a>
+  </div>
+</aside>
+
+<script>
+  const stickyEl = document.getElementById('sticky-mobile-cta');
+  if (stickyEl) {
+    let heroVisible = true;
+    let ctaFinalVisible = false;
+    let modalOpen = false;
+    let wasHiddenByCTAFinal = false;
+    let showTimeout: ReturnType<typeof setTimeout> | null = null;
+
+    function updateVisibility(): void {
+      const shouldShow = !heroVisible && !ctaFinalVisible && !modalOpen;
+
+      if (showTimeout) {
+        clearTimeout(showTimeout);
+        showTimeout = null;
+      }
+
+      if (shouldShow) {
+        // AC3: 300ms delay only on reappearance after CTA finale exits
+        const delay = wasHiddenByCTAFinal ? 300 : 0;
+        wasHiddenByCTAFinal = false;
+        showTimeout = setTimeout(() => {
+          stickyEl.style.opacity = '1';
+          stickyEl.style.pointerEvents = 'auto';
+          stickyEl.style.transform = 'translateY(0)';
+        }, delay);
+      } else {
+        if (ctaFinalVisible) {
+          wasHiddenByCTAFinal = true;
+        }
+        stickyEl.style.opacity = '0';
+        stickyEl.style.pointerEvents = 'none';
+        stickyEl.style.transform = 'translateY(100%)';
+      }
+    }
+
+    // Add CSS transition for smooth animations
+    stickyEl.style.transition =
+      'opacity 300ms ease-out, transform 300ms ease-out';
+
+    // Observe hero (header element)
+    const header = document.querySelector('header');
+    const ctaFinal = document.getElementById('cta-final');
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.target === header) {
+              heroVisible = entry.isIntersecting;
+            } else if (entry.target === ctaFinal) {
+              ctaFinalVisible = entry.isIntersecting;
+            }
+          }
+          updateVisibility();
+        },
+        { threshold: 0 }
+      );
+
+      if (header) {
+        observer.observe(header);
+      } else {
+        console.warn('[slow-adventures] StickyMobileCTA: <header> not found');
+        heroVisible = false;
+        updateVisibility();
+      }
+
+      if (ctaFinal) {
+        observer.observe(ctaFinal);
+      } else {
+        console.warn('[slow-adventures] StickyMobileCTA: #cta-final not found');
+      }
+
+      // Cleanup — pagehide fires reliably on mobile (unlike beforeunload)
+      window.addEventListener('pagehide', () => {
+        observer.disconnect();
+      });
+    }
+
+    // CalendlyModal integration (story 3-3, future)
+    document.addEventListener('sa:modal-open', () => {
+      modalOpen = true;
+      updateVisibility();
+    });
+
+    document.addEventListener('sa:modal-close', () => {
+      modalOpen = false;
+      updateVisibility();
+    });
+  }
+</script>

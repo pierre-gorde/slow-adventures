@@ -83,8 +83,8 @@ describe('ElenaSection.astro', () => {
   });
 
   describe('CTAButton integration', () => {
-    it('uses CTAButton with outline variant', () => {
-      expect(component).toContain('variant="outline"');
+    it('uses CTAButton with solid variant', () => {
+      expect(component).toContain('variant="solid"');
     });
 
     it('uses CTAButton with desktopOnly', () => {

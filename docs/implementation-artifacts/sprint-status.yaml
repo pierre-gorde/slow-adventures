@@ -65,8 +65,8 @@ development_status:
   epic-3-retrospective: optional
 
   # Epic 4: Capture Email & Engagement
-  epic-4: backlog
-  4-1-emailcapture-integration-brevo: backlog
+  epic-4: in-progress
+  4-1-emailcapture-integration-brevo: done
   4-2-configuration-email-confirmation-calendly: backlog
   4-3-returnvisitorbanner-detection-visiteur-retour: backlog
   epic-4-retrospective: optional

@@ -1,0 +1,161 @@
+---
+// EmailCapture.astro — Composant .astro avec <script> natif
+// Pas de client:visible — non supporté sur composants .astro en Astro 5
+---
+
+<section
+  id="email-capture"
+  aria-labelledby="heading-email-capture"
+  class="relative min-h-[50vh] flex items-center justify-center overflow-hidden bg-warm-black"
+>
+  <div
+    class="relative z-10 sa-section-padding text-center max-w-xl mx-auto"
+    data-reveal
+  >
+    <h2
+      id="heading-email-capture"
+      class="font-serif text-3xl md:text-4xl text-white mb-4"
+    >
+      Reste connecté(e) à l'aventure
+    </h2>
+
+    <form id="email-form" class="mt-8" novalidate>
+      <label for="email-input" class="sr-only">Ton adresse email</label>
+      <div
+        class="flex flex-col sm:flex-row gap-2 items-stretch sm:items-center justify-center"
+      >
+        <input
+          id="email-input"
+          type="email"
+          name="email"
+          placeholder="ton@email.com"
+          required
+          autocomplete="email"
+          aria-describedby="email-error"
+          class="w-full sm:w-auto sm:flex-1 max-w-sm px-4 py-3 rounded-round
+                 text-warm-black font-sans placeholder:text-warm-gray/60
+                 border-2 border-transparent
+                 focus:outline-none focus:border-terracotta
+                 motion-safe:transition-colors motion-safe:duration-200"
+        />
+        <button
+          id="email-submit"
+          type="submit"
+          class="px-6 py-3 min-h-[44px] bg-terracotta text-white font-sans font-semibold
+                 rounded-round motion-safe:transition-all motion-safe:duration-300
+                 hover:shadow-[0_8px_32px_rgba(192,96,62,0.15)] hover:scale-[1.02]
+                 active:bg-terracotta-dark"
+        >
+          Je reste connecté(e)
+        </button>
+        <div
+          id="email-spinner"
+          class="hidden flex items-center justify-center px-6 py-3"
+        >
+          <svg
+            class="animate-spin h-6 w-6 text-terracotta"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <circle
+              class="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              stroke-width="4"></circle>
+            <path
+              class="opacity-75"
+              fill="currentColor"
+              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+          </svg>
+        </div>
+      </div>
+      <span id="email-status" class="sr-only" aria-live="assertive"></span>
+
+      <div
+        id="email-error"
+        role="alert"
+        aria-live="polite"
+        class="hidden mt-3 text-terracotta font-sans text-sm"
+      >
+      </div>
+    </form>
+
+    <div id="email-success" class="hidden mt-8">
+      <p class="text-sauge font-sans text-lg font-medium">
+        Bienvenue dans l'aventure ! Regarde ta boîte mail.
+      </p>
+    </div>
+
+    <p id="email-rgpd" class="mt-4 text-white/60 font-sans text-xs">
+      En t'inscrivant, tu recevras nos inspirations voyage. Désabonnement en un
+      clic.
+    </p>
+  </div>
+</section>
+
+<script>
+  import { subscribeToNewsletter } from '../lib/brevo';
+
+  const form = document.getElementById('email-form') as HTMLFormElement | null;
+  const input = document.getElementById(
+    'email-input'
+  ) as HTMLInputElement | null;
+  const submitBtn = document.getElementById('email-submit');
+  const spinner = document.getElementById('email-spinner');
+  const errorDiv = document.getElementById('email-error');
+  const successDiv = document.getElementById('email-success');
+  const rgpdText = document.getElementById('email-rgpd');
+  const emailStatus = document.getElementById('email-status');
+
+  const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const email = input?.value.trim() ?? '';
+
+    if (!EMAIL_REGEX.test(email)) {
+      if (input) input.classList.add('border-terracotta');
+      if (errorDiv) {
+        errorDiv.textContent = 'Hmm, cette adresse ne semble pas valide';
+        errorDiv.classList.remove('hidden');
+      }
+      return;
+    }
+
+    if (input) input.classList.remove('border-terracotta');
+    if (errorDiv) errorDiv.classList.add('hidden');
+
+    if (submitBtn) submitBtn.classList.add('hidden');
+    if (spinner) spinner.classList.remove('hidden');
+    if (input) input.disabled = true;
+    if (emailStatus) emailStatus.textContent = 'Envoi en cours...';
+
+    const result = await subscribeToNewsletter(email);
+
+    if (result.success) {
+      if (form) form.classList.add('hidden');
+      if (rgpdText) rgpdText.classList.add('hidden');
+      if (successDiv) successDiv.classList.remove('hidden');
+      if (emailStatus) emailStatus.textContent = 'Inscription réussie';
+    } else {
+      if (spinner) spinner.classList.add('hidden');
+      if (submitBtn) submitBtn.classList.remove('hidden');
+      if (input) input.disabled = false;
+      if (errorDiv) {
+        errorDiv.textContent = "Oups, quelque chose n'a pas marché. Réessaie ?";
+        errorDiv.classList.remove('hidden');
+      }
+      if (emailStatus) emailStatus.textContent = '';
+    }
+  });
+
+  input?.addEventListener('input', () => {
+    if (input) input.classList.remove('border-terracotta');
+    if (errorDiv) errorDiv.classList.add('hidden');
+  });
+</script>

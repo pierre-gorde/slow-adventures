@@ -10,6 +10,7 @@ import ProcessStep from '../components/ProcessStep.astro';
 import TestimonialCard from '../components/TestimonialCard.astro';
 import PricingRow from '../components/PricingRow.astro';
 import CTAButton from '../components/CTAButton.astro';
+import EmailCapture from '../components/EmailCapture.astro';
 import CalendlyModal from '../components/CalendlyModal.astro';
 import StickyMobileCTA from '../components/StickyMobileCTA.astro';
 import heroPoster from '../assets/images/hero-poster.webp';
@@ -137,7 +138,7 @@ const optimizedPoster = await getImage({
         <div class="text-center mt-12">
           <CTAButton
             href={import.meta.env.PUBLIC_CALENDLY_URL}
-            variant="outline"
+            variant="solid"
             size="small"
             text="Réserve ton discovery call ici"
             subtext=""
@@ -195,6 +196,9 @@ const optimizedPoster = await getImage({
         </SectionReveal>
       </div>
     </section>
+    <SectionReveal animation="fade-in">
+      <EmailCapture />
+    </SectionReveal>
   </main>
   <CalendlyModal />
   <StickyMobileCTA />

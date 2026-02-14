@@ -220,7 +220,7 @@ describe('index.astro', () => {
   });
 
   describe('section rendering order', () => {
-    it('renders sections in order: Hero → Elena → Destinations → Processus → Témoignages → Pricing → CTA finale', () => {
+    it('renders sections in order: Hero → Elena → Destinations → Processus → Témoignages → Pricing → CTA finale → Email Capture', () => {
       const heroIdx = page.indexOf('<HeroSection');
       const elenaIdx = page.indexOf('<ElenaSection');
       const destIdx = page.indexOf('sortedDestinations.map(');
@@ -228,6 +228,7 @@ describe('index.astro', () => {
       const testimonialsIdx = page.indexOf('Ils ont vécu SlowAdventures');
       const pricingIdx = page.indexOf('Ici, on est transparent');
       const ctaFinalIdx = page.indexOf('id="cta-final"');
+      const emailCaptureIdx = page.indexOf('<EmailCapture');
       expect(heroIdx).toBeGreaterThan(-1);
       expect(elenaIdx).toBeGreaterThan(heroIdx);
       expect(destIdx).toBeGreaterThan(elenaIdx);
@@ -235,6 +236,7 @@ describe('index.astro', () => {
       expect(testimonialsIdx).toBeGreaterThan(processIdx);
       expect(pricingIdx).toBeGreaterThan(testimonialsIdx);
       expect(ctaFinalIdx).toBeGreaterThan(pricingIdx);
+      expect(emailCaptureIdx).toBeGreaterThan(ctaFinalIdx);
     });
   });
 
@@ -330,8 +332,8 @@ describe('index.astro', () => {
       expect(page).toContain('tripContext={t.tripContext}');
     });
 
-    it('includes CTAButton with outline variant and desktopOnly', () => {
-      expect(page).toContain('variant="outline"');
+    it('includes CTAButton with solid variant and desktopOnly', () => {
+      expect(page).toContain('variant="solid"');
       expect(page).toContain('desktopOnly={true}');
     });
 
@@ -507,6 +509,44 @@ describe('index.astro', () => {
     it('does NOT have desktopOnly on CTA finale button', () => {
       const ctaSection = page.slice(page.indexOf('id="cta-final"'));
       expect(ctaSection).not.toContain('desktopOnly');
+    });
+  });
+
+  describe('EmailCapture integration', () => {
+    it('imports EmailCapture component', () => {
+      expect(page).toContain(
+        "import EmailCapture from '../components/EmailCapture.astro'"
+      );
+    });
+
+    it('renders EmailCapture component', () => {
+      expect(page).toContain('<EmailCapture');
+    });
+
+    it('places EmailCapture after CTA final section (inside main)', () => {
+      const ctaFinalCloseIdx = page.lastIndexOf(
+        '</section>',
+        page.indexOf('<EmailCapture')
+      );
+      const emailIdx = page.indexOf('<EmailCapture');
+      const mainCloseIdx = page.indexOf('</main>');
+      expect(emailIdx).toBeGreaterThan(ctaFinalCloseIdx);
+      expect(emailIdx).toBeLessThan(mainCloseIdx);
+    });
+
+    it('wraps EmailCapture in SectionReveal', () => {
+      const emailIdx = page.indexOf('<EmailCapture');
+      const beforeEmail = page.slice(Math.max(0, emailIdx - 200), emailIdx);
+      expect(beforeEmail).toContain('<SectionReveal');
+    });
+
+    it('renders sections in order: CTA finale → Email Capture → </main>', () => {
+      const ctaFinalIdx = page.indexOf('id="cta-final"');
+      const emailIdx = page.indexOf('<EmailCapture');
+      const mainCloseIdx = page.indexOf('</main>');
+      expect(ctaFinalIdx).toBeGreaterThan(-1);
+      expect(emailIdx).toBeGreaterThan(ctaFinalIdx);
+      expect(mainCloseIdx).toBeGreaterThan(emailIdx);
     });
   });
 });

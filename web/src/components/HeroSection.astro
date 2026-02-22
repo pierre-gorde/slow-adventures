@@ -27,7 +27,6 @@ const { posterSrc, videoSrc, title, subtitle } = Astro.props;
       class="hero__video"
       autoplay
       muted
-      loop
       playsinline
       aria-hidden="true"
       data-src={videoSrc}
@@ -152,23 +151,17 @@ const { posterSrc, videoSrc, title, subtitle } = Astro.props;
         video.classList.remove('is-playing');
       });
 
-    // Smooth fade on loop restart
-    const FADE_DURATION = 0.8;
-    video.addEventListener('timeupdate', () => {
-      if (video.duration && video.currentTime > video.duration - FADE_DURATION) {
-        video.style.opacity = String(
-          (video.duration - video.currentTime) / FADE_DURATION
-        );
-      } else if (video.style.opacity !== '1' && video.style.opacity !== '') {
-        video.style.opacity = '1';
-      }
-    });
-
-    video.addEventListener('seeked', () => {
+    // Smooth crossfade on manual loop (no native loop attribute)
+    const FADE_MS = 800;
+    video.addEventListener('ended', () => {
+      video.style.transition = `opacity ${FADE_MS}ms ease-out`;
       video.style.opacity = '0';
-      requestAnimationFrame(() => {
+      setTimeout(() => {
+        video.currentTime = 0;
+        video.play().catch(() => {});
+        video.style.transition = `opacity ${FADE_MS}ms ease-in`;
         video.style.opacity = '1';
-      });
+      }, FADE_MS);
     });
   }
 

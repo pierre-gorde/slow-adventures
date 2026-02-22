@@ -16,12 +16,41 @@
     <a
       href={import.meta.env.PUBLIC_CALENDLY_URL}
       data-calendly-trigger
-      class="block w-full text-center bg-terracotta text-white font-sans font-semibold rounded-full py-3 min-h-[48px] leading-[48px] motion-safe:transition-all motion-safe:duration-300 active:bg-terracotta-dark"
+      class="sticky-cta-btn block w-full text-center bg-terracotta text-white font-sans font-semibold text-sm py-3 min-h-11 border-2 border-terracotta motion-safe:transition-all motion-safe:duration-300 active:bg-terracotta-dark"
     >
       Confie-moi ton prochain rêve
     </a>
   </div>
 </aside>
+
+<style>
+  .sticky-cta-btn {
+    border-radius: 2rem 2.8rem 2rem 2.8rem;
+    animation: sticky-cta-morph 6s ease-in-out infinite alternate;
+  }
+
+  @keyframes sticky-cta-morph {
+    0% {
+      border-radius: 2rem 2.8rem 2rem 2.8rem;
+    }
+    33% {
+      border-radius: 2.6rem 2rem 2.8rem 2.2rem;
+    }
+    66% {
+      border-radius: 2.2rem 2.6rem 2rem 2.8rem;
+    }
+    100% {
+      border-radius: 2.8rem 2.2rem 2.6rem 2rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sticky-cta-btn {
+      animation: none;
+      border-radius: 9999px;
+    }
+  }
+</style>
 
 <script>
   const stickyEl = document.getElementById('sticky-mobile-cta');

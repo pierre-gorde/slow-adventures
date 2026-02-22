@@ -18,7 +18,9 @@ const {
 } = Astro.props;
 
 const sizeClasses =
-  size === 'small' ? 'px-6 py-3 text-sm' : 'px-8 py-4 text-base';
+  size === 'small'
+    ? 'px-6 py-3 text-sm lg:px-8 lg:py-4 lg:text-base'
+    : 'px-8 py-4 text-base lg:px-10 lg:py-5 lg:text-lg';
 
 const variantClasses = {
   solid:
@@ -31,29 +33,57 @@ const variantClasses = {
 const visibilityClass = desktopOnly ? 'hidden lg:inline-block' : '';
 ---
 
-<a
-  href={href}
-  data-calendly-trigger
-  class:list={[
-    'cta-btn inline-block font-sans font-semibold text-center motion-safe:hover:scale-[1.02] motion-safe:hover:shadow-[0_8px_32px_rgba(192,96,62,0.15)]',
-    sizeClasses,
-    variantClasses,
-    visibilityClass,
-  ]}
->
-  {text}
-  {
-    subtext && (
-      <span class="block text-xs font-normal mt-1 opacity-80">{subtext}</span>
-    )
-  }
-</a>
+<span class="cta-wrapper inline-block relative">
+  <span class="cta-glow" aria-hidden="true"></span>
+  <a
+    href={href}
+    data-calendly-trigger
+    class:list={[
+      'cta-btn relative inline-block font-sans font-semibold text-center motion-safe:hover:scale-[1.02]',
+      sizeClasses,
+      variantClasses,
+      visibilityClass,
+    ]}
+  >
+    {text}
+    {
+      subtext && (
+        <span class="block text-xs lg:text-sm font-normal mt-1 opacity-80">
+          {subtext}
+        </span>
+      )
+    }
+  </a>
+</span>
 
 <style>
+  .cta-wrapper {
+    position: relative;
+  }
+
+  .cta-glow {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      var(--color-terracotta),
+      var(--color-ambre),
+      var(--color-sauge)
+    );
+    opacity: 0.4;
+    filter: blur(12px);
+    z-index: 0;
+    border-radius: 2rem 2.8rem 2rem 2.8rem;
+    animation: cta-glow-morph 6s ease-in-out infinite alternate;
+    transform: translate(4px, 4px);
+  }
+
   .cta-btn {
+    position: relative;
+    z-index: 1;
     border-radius: 2rem 2.8rem 2rem 2.8rem;
     animation: cta-morph 6s ease-in-out infinite alternate;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s;
   }
 
   @keyframes cta-morph {
@@ -71,8 +101,31 @@ const visibilityClass = desktopOnly ? 'hidden lg:inline-block' : '';
     }
   }
 
+  @keyframes cta-glow-morph {
+    0% {
+      border-radius: 2rem 2.8rem 2rem 2.8rem;
+      transform: translate(4px, 4px);
+    }
+    33% {
+      border-radius: 2.6rem 2rem 2.8rem 2.2rem;
+      transform: translate(6px, 2px);
+    }
+    66% {
+      border-radius: 2.2rem 2.6rem 2rem 2.8rem;
+      transform: translate(2px, 6px);
+    }
+    100% {
+      border-radius: 2.8rem 2.2rem 2.6rem 2rem;
+      transform: translate(4px, 4px);
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .cta-btn {
+      animation: none;
+      border-radius: 9999px;
+    }
+    .cta-glow {
       animation: none;
       border-radius: 9999px;
     }

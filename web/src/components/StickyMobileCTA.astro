@@ -13,18 +13,43 @@
   <div
     class="bg-creme/80 backdrop-blur-md px-4 py-3 shadow-[0_-2px_16px_rgba(44,40,37,0.08)]"
   >
-    <a
-      href={import.meta.env.PUBLIC_CALENDLY_URL}
-      data-calendly-trigger
-      class="sticky-cta-btn block w-full text-center bg-terracotta text-white font-sans font-semibold text-sm py-3 min-h-11 border-2 border-terracotta motion-safe:transition-all motion-safe:duration-300 active:bg-terracotta-dark"
-    >
-      Confie-moi ton prochain rêve
-    </a>
+    <span class="sticky-cta-wrapper relative block">
+      <span class="sticky-cta-glow" aria-hidden="true"></span>
+      <a
+        href={import.meta.env.PUBLIC_CALENDLY_URL}
+        data-calendly-trigger
+        class="sticky-cta-btn relative block w-full text-center bg-terracotta text-white font-sans font-semibold text-sm py-3 min-h-11 border-2 border-terracotta motion-safe:transition-all motion-safe:duration-300 active:bg-terracotta-dark"
+      >
+        Confie-moi ton prochain rêve
+      </a>
+    </span>
   </div>
 </aside>
 
 <style>
+  .sticky-cta-wrapper {
+    position: relative;
+  }
+
+  .sticky-cta-glow {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      var(--color-terracotta),
+      var(--color-ambre),
+      var(--color-sauge)
+    );
+    opacity: 0.25;
+    filter: blur(8px);
+    z-index: 0;
+    border-radius: 2rem 2.8rem 2rem 2.8rem;
+    animation: sticky-glow-morph 6s ease-in-out infinite alternate;
+    transform: translate(2px, 2px);
+  }
+
   .sticky-cta-btn {
+    z-index: 1;
     border-radius: 2rem 2.8rem 2rem 2.8rem;
     animation: sticky-cta-morph 6s ease-in-out infinite alternate;
   }
@@ -44,8 +69,28 @@
     }
   }
 
+  @keyframes sticky-glow-morph {
+    0% {
+      border-radius: 2rem 2.8rem 2rem 2.8rem;
+      transform: translate(2px, 2px);
+    }
+    33% {
+      border-radius: 2.6rem 2rem 2.8rem 2.2rem;
+      transform: translate(4px, 1px);
+    }
+    66% {
+      border-radius: 2.2rem 2.6rem 2rem 2.8rem;
+      transform: translate(1px, 4px);
+    }
+    100% {
+      border-radius: 2.8rem 2.2rem 2.6rem 2rem;
+      transform: translate(2px, 2px);
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
-    .sticky-cta-btn {
+    .sticky-cta-btn,
+    .sticky-cta-glow {
       animation: none;
       border-radius: 9999px;
     }

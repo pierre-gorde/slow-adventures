@@ -24,20 +24,20 @@ const { id, imageSrc, imageAlt, title, description, ctaHref } = Astro.props;
   <div
     class="max-w-6xl mx-auto flex flex-col items-center text-center lg:flex-row lg:items-center lg:text-left lg:gap-16"
   >
-    <div class="lg:flex-1">
+    <div class="lg:w-2/5">
       <SectionReveal animation="scale-in">
         <Image
           src={imageSrc}
           alt={imageAlt}
           widths={[250, 400, 600]}
-          sizes="(min-width: 1024px) 50vw, 250px"
+          sizes="(min-width: 1024px) 40vw, 250px"
           loading="lazy"
           decoding="async"
-          class="rounded-full border-4 border-bleu w-[250px] md:w-[350px] lg:w-full lg:max-w-[500px] aspect-square object-cover mx-auto lg:mx-0"
+          class="rounded-full border-4 border-bleu w-[250px] md:w-[350px] lg:w-full aspect-square object-cover mx-auto lg:mx-0"
         />
       </SectionReveal>
     </div>
-    <div class="lg:flex-1">
+    <div class="lg:w-3/5">
       <SectionReveal animation="fade-in" delay={200}>
         <div class="mt-8 lg:mt-0">
         <h2

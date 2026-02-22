@@ -152,7 +152,7 @@ const { posterSrc, videoSrc, title, subtitle } = Astro.props;
       });
 
     // Smooth loop: fade-out starts BEFORE the video ends, fade-in on restart
-    const FADE_SEC = 1.2;
+    const FADE_SEC = 2.4;
     let looping = false;
 
     video.addEventListener('timeupdate', () => {

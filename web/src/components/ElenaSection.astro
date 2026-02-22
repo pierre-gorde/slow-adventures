@@ -111,37 +111,36 @@ const { id, imageSrc, imageAlt, title, description, ctaHref } = Astro.props;
     animation: elena-photo-morph 8s ease-in-out infinite alternate;
   }
 
-  /* Subtle morph: gentle corner movement, not extreme blob */
   @keyframes elena-photo-morph {
     0% {
-      border-radius: 1rem 1.6rem 1rem 1.6rem;
+      border-radius: 1rem 3rem 1rem 3rem;
     }
     33% {
-      border-radius: 1.4rem 1rem 1.6rem 1rem;
+      border-radius: 2.5rem 1rem 3rem 1.5rem;
     }
     66% {
-      border-radius: 1.6rem 1.2rem 1rem 1.4rem;
+      border-radius: 3rem 2rem 1rem 2.5rem;
     }
     100% {
-      border-radius: 1rem 1.4rem 1.6rem 1rem;
+      border-radius: 1.5rem 2.5rem 3rem 1rem;
     }
   }
 
   @keyframes elena-frame-morph {
     0% {
-      border-radius: 1rem 1.6rem 1rem 1.6rem;
+      border-radius: 1rem 3rem 1rem 3rem;
       transform: translate(12px, 12px);
     }
     33% {
-      border-radius: 1.4rem 1rem 1.6rem 1rem;
-      transform: translate(14px, 10px);
+      border-radius: 2.5rem 1rem 3rem 1.5rem;
+      transform: translate(16px, 8px);
     }
     66% {
-      border-radius: 1.6rem 1.2rem 1rem 1.4rem;
-      transform: translate(10px, 14px);
+      border-radius: 3rem 2rem 1rem 2.5rem;
+      transform: translate(8px, 16px);
     }
     100% {
-      border-radius: 1rem 1.4rem 1.6rem 1rem;
+      border-radius: 1.5rem 2.5rem 3rem 1rem;
       transform: translate(12px, 12px);
     }
   }

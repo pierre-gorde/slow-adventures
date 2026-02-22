@@ -151,6 +151,25 @@ const { posterSrc, videoSrc, title, subtitle } = Astro.props;
       .catch(() => {
         video.classList.remove('is-playing');
       });
+
+    // Smooth fade on loop restart
+    const FADE_DURATION = 0.8;
+    video.addEventListener('timeupdate', () => {
+      if (video.duration && video.currentTime > video.duration - FADE_DURATION) {
+        video.style.opacity = String(
+          (video.duration - video.currentTime) / FADE_DURATION
+        );
+      } else if (video.style.opacity !== '1' && video.style.opacity !== '') {
+        video.style.opacity = '1';
+      }
+    });
+
+    video.addEventListener('seeked', () => {
+      video.style.opacity = '0';
+      requestAnimationFrame(() => {
+        video.style.opacity = '1';
+      });
+    });
   }
 
   initHero();

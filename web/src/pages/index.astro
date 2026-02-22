@@ -17,6 +17,7 @@ import EmailCapture from '../components/EmailCapture.astro';
 import CalendlyModal from '../components/CalendlyModal.astro';
 import StickyMobileCTA from '../components/StickyMobileCTA.astro';
 import heroPoster from '../assets/images/hero-poster.webp';
+import heroLogo from '../assets/images/logo-white.png';
 import elenaPhoto from '../assets/images/elena.webp';
 import testimonialsBg from '../assets/images/testimonials-bg.webp';
 import { processSteps } from '../data/processSteps';
@@ -44,6 +45,7 @@ const optimizedPoster = await getImage({
     <HeroSection
       posterSrc={heroPoster}
       videoSrc="/videos/hero.mp4"
+      logoSrc={heroLogo}
       title="Slow Adventures"
       subtitle="Voyages immersifs et sur mesure exclusivement aux Amériques"
     />

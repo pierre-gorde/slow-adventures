@@ -5,11 +5,12 @@ import ScrollHint from './ScrollHint.astro';
 interface Props {
   posterSrc: ImageMetadata;
   videoSrc: string;
+  logoSrc?: ImageMetadata;
   title: string;
   subtitle: string;
 }
 
-const { posterSrc, videoSrc, title, subtitle } = Astro.props;
+const { posterSrc, videoSrc, logoSrc, title, subtitle } = Astro.props;
 ---
 
 <section class="hero" aria-label="Section d'accueil — introduction visuelle">
@@ -35,6 +36,16 @@ const { posterSrc, videoSrc, title, subtitle } = Astro.props;
   </div>
   <div class="hero__overlay"></div>
   <div class="hero__content">
+    {logoSrc && (
+      <Image
+        src={logoSrc}
+        alt="Slow Adventures"
+        class="hero__logo"
+        width={280}
+        height={280}
+        loading="eager"
+      />
+    )}
     <h1 class="hero__title font-serif text-white">{title}</h1>
     <p class="hero__subtitle font-sans text-white">{subtitle}</p>
   </div>
@@ -94,6 +105,13 @@ const { posterSrc, videoSrc, title, subtitle } = Astro.props;
     text-align: center;
     padding: 0 1.5rem;
     max-width: 100%;
+  }
+
+  .hero__logo {
+    width: clamp(160px, 25vw, 280px);
+    height: auto;
+    margin: 0 auto 1.5rem;
+    display: block;
   }
 
   .hero__title {

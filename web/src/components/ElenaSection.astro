@@ -26,38 +26,176 @@ const { id, imageSrc, imageAlt, title, description, ctaHref } = Astro.props;
   >
     <div class="lg:w-2/5">
       <SectionReveal animation="scale-in">
-        <Image
-          src={imageSrc}
-          alt={imageAlt}
-          widths={[250, 400, 600]}
-          sizes="(min-width: 1024px) 40vw, 250px"
-          loading="lazy"
-          decoding="async"
-          class="rounded-full border-4 border-bleu w-[250px] md:w-[350px] lg:w-full aspect-square object-cover mx-auto lg:mx-0"
-        />
+        <div class="elena__photo-wrapper">
+          <div class="elena__frame" aria-hidden="true"></div>
+          <Image
+            src={imageSrc}
+            alt={imageAlt}
+            widths={[250, 400, 600]}
+            sizes="(min-width: 1024px) 40vw, 250px"
+            loading="lazy"
+            decoding="async"
+            class="elena__photo"
+          />
+        </div>
       </SectionReveal>
     </div>
     <div class="lg:w-3/5">
       <SectionReveal animation="fade-in" delay={200}>
         <div class="mt-8 lg:mt-0">
-        <h2
-          id="heading-elena"
-          class="font-serif text-3xl md:text-4xl text-warm-black mb-4"
-        >
-          {title}
-        </h2>
-        <p class="font-sans text-warm-black/90 text-lg leading-relaxed mb-8">
-          {description}
-        </p>
-        <CTAButton
-          href={ctaHref}
-          variant="solid"
-          size="small"
-          subtext=""
-          desktopOnly={true}
-        />
+          <h2
+            id="heading-elena"
+            class="font-serif text-3xl md:text-4xl text-warm-black mb-4"
+          >
+            {title}
+          </h2>
+          <p class="font-sans text-warm-black/90 text-lg leading-relaxed mb-8">
+            {description}
+          </p>
+          <CTAButton
+            href={ctaHref}
+            variant="solid"
+            size="small"
+            subtext=""
+            desktopOnly={true}
+          />
         </div>
       </SectionReveal>
     </div>
   </div>
 </section>
+
+<style>
+  .elena__photo-wrapper {
+    position: relative;
+    width: 250px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 768px) {
+    .elena__photo-wrapper {
+      width: 350px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .elena__photo-wrapper {
+      width: 100%;
+      margin: 0;
+    }
+  }
+
+  .elena__frame {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      var(--color-terracotta),
+      var(--color-ambre),
+      var(--color-sauge)
+    );
+    transform: translate(12px, 12px);
+    z-index: 0;
+    border-radius: 1rem;
+    animation: elena-frame-morph 8s ease-in-out infinite alternate;
+  }
+
+  .elena__photo {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    display: block;
+    border-radius: 1rem;
+    animation: elena-photo-morph 8s ease-in-out infinite alternate;
+  }
+
+  /* Subtle morph: gentle corner movement, not extreme blob */
+  @keyframes elena-photo-morph {
+    0% {
+      border-radius: 1rem 1.6rem 1rem 1.6rem;
+    }
+    33% {
+      border-radius: 1.4rem 1rem 1.6rem 1rem;
+    }
+    66% {
+      border-radius: 1.6rem 1.2rem 1rem 1.4rem;
+    }
+    100% {
+      border-radius: 1rem 1.4rem 1.6rem 1rem;
+    }
+  }
+
+  @keyframes elena-frame-morph {
+    0% {
+      border-radius: 1rem 1.6rem 1rem 1.6rem;
+      transform: translate(12px, 12px);
+    }
+    33% {
+      border-radius: 1.4rem 1rem 1.6rem 1rem;
+      transform: translate(14px, 10px);
+    }
+    66% {
+      border-radius: 1.6rem 1.2rem 1rem 1.4rem;
+      transform: translate(10px, 14px);
+    }
+    100% {
+      border-radius: 1rem 1.4rem 1.6rem 1rem;
+      transform: translate(12px, 12px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .elena__photo,
+    .elena__frame {
+      animation: none;
+      border-radius: 1rem;
+    }
+  }
+</style>
+
+<script>
+  import { gsap, ScrollTrigger } from '../lib/gsap';
+
+  function initElena() {
+    const wrapper = document.querySelector('.elena__photo-wrapper');
+    if (!wrapper) return;
+
+    const frame = wrapper.querySelector<HTMLElement>('.elena__frame');
+    const photo = wrapper.querySelector<HTMLElement>('.elena__photo');
+    if (!frame || !photo) return;
+
+    // Entrance animation
+    gsap.set(frame, { opacity: 0, x: 0, y: 0 });
+    gsap.set(photo, { y: 40, opacity: 0 });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: wrapper,
+        start: 'top 80%',
+        once: true,
+      },
+    });
+
+    tl.to(photo, { y: 0, opacity: 1, duration: 0.7, ease: 'power2.out' }).to(
+      frame,
+      { x: 12, y: 12, opacity: 1, duration: 0.5, ease: 'power2.out' },
+      '-=0.3'
+    );
+
+    // Subtle parallax on scroll: frame moves slightly
+    gsap.to(frame, {
+      yPercent: 8,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: wrapper,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 1,
+      },
+    });
+  }
+
+  initElena();
+</script>

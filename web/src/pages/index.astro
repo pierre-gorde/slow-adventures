@@ -4,9 +4,6 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroSection from '../components/HeroSection.astro';
 import ElenaSection from '../components/ElenaSection.astro';
-import ElenaSectionA from '../components/ElenaSectionA.astro';
-import ElenaSectionB from '../components/ElenaSectionB.astro';
-import ElenaSectionC from '../components/ElenaSectionC.astro';
 import DestinationBlock from '../components/DestinationBlock.astro';
 import SectionReveal from '../components/SectionReveal.astro';
 import ProcessStep from '../components/ProcessStep.astro';
@@ -51,24 +48,8 @@ const optimizedPoster = await getImage({
     />
   </header>
   <main id="main">
-    <ElenaSectionA
-      id="elena-a"
-      imageSrc={elenaPhoto}
-      imageAlt="Elena, créatrice de voyages immersifs aux Amériques"
-      title="Hello, Hola, Olà"
-      description="Moi c'est Elena. Après des mois à parcourir l'Amérique latine à sac à dos et plusieurs voyages en Amérique du Nord, j'ai créé SlowAdventures pour te proposer des voyages authentiques, fluides et 100% sur mesure. Mon approche ? Écouter tes rêves, transformer tes envies en itinéraires uniques, et t'ouvrir les portes d'expériences mémorables. Si tu veux un voyage qui te ressemble vraiment, qui te connecte à l'âme des lieux et qui te laisse des souvenirs gravés pour toujours… tu es au bon endroit."
-      ctaHref={import.meta.env.PUBLIC_CALENDLY_URL}
-    />
-    <ElenaSectionB
-      id="elena-b"
-      imageSrc={elenaPhoto}
-      imageAlt="Elena, créatrice de voyages immersifs aux Amériques"
-      title="Hello, Hola, Olà"
-      description="Moi c'est Elena. Après des mois à parcourir l'Amérique latine à sac à dos et plusieurs voyages en Amérique du Nord, j'ai créé SlowAdventures pour te proposer des voyages authentiques, fluides et 100% sur mesure. Mon approche ? Écouter tes rêves, transformer tes envies en itinéraires uniques, et t'ouvrir les portes d'expériences mémorables. Si tu veux un voyage qui te ressemble vraiment, qui te connecte à l'âme des lieux et qui te laisse des souvenirs gravés pour toujours… tu es au bon endroit."
-      ctaHref={import.meta.env.PUBLIC_CALENDLY_URL}
-    />
-    <ElenaSectionC
-      id="elena-c"
+    <ElenaSection
+      id="elena"
       imageSrc={elenaPhoto}
       imageAlt="Elena, créatrice de voyages immersifs aux Amériques"
       title="Hello, Hola, Olà"

@@ -7,12 +7,6 @@ export interface TestimonialData {
 export const testimonials: TestimonialData[] = [
   {
     quote:
-      "Un voyage qui m'a transformée. Elena a su comprendre exactement ce que je cherchais et m'a emmenée dans des endroits que je n'aurais jamais trouvés seule.",
-    name: 'Camille',
-    tripContext: 'Pérou, 2 semaines',
-  },
-  {
-    quote:
       "Elena a tout organisé au-delà de nos attentes. Chaque jour était une nouvelle découverte, et le fait qu'elle nous assiste par WhatsApp pendant tout le séjour est une vraie valeur ajoutée !",
     name: 'Antoine et Sophie',
     tripContext: 'Costa Rica, 12 jours',

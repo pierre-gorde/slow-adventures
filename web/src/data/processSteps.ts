@@ -16,13 +16,13 @@ export const processSteps: ProcessStepData[] = [
     number: 2,
     title: 'Ton rêve prend vie',
     description:
-      "Création complète de ton itinéraire personnalisé : recherches, sélection des hébergements, recommandations d'expériences, conseils pratiques et élaboration de ton road book.",
+      "Création complète de ton itinéraire personnalisé\u00A0: recherches, sélection des hébergements, recommandations d'expériences, conseils pratiques et élaboration de ton road book.",
   },
   {
     number: 3,
     title: 'Prépare ton sac',
     description:
-      'Une fois ton programme validé ensemble, tu recevras ton road book (dématérialisé et physique) quelques semaines avant ton départ !',
+      'Une fois ton programme validé ensemble, tu recevras ton road book (dématérialisé et physique) quelques semaines avant ton départ\u00A0!',
   },
   {
     number: 4,

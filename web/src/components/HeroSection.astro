@@ -151,8 +151,8 @@ const { posterSrc, videoSrc, title, subtitle } = Astro.props;
         video.classList.remove('is-playing');
       });
 
-    // Smooth loop: fade-out starts BEFORE the video ends, fade-in on restart
-    const FADE_SEC = 4.8;
+    // Smooth loop: gentle fade near end, never fully transparent
+    const FADE_SEC = 1.5;
     let looping = false;
 
     video.addEventListener('timeupdate', () => {
@@ -163,7 +163,7 @@ const { posterSrc, videoSrc, title, subtitle } = Astro.props;
       ) {
         looping = true;
         video.style.transition = `opacity ${FADE_SEC}s ease-in-out`;
-        video.style.opacity = '0';
+        video.style.opacity = '0.3';
       }
     });
 

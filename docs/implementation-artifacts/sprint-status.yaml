@@ -58,16 +58,16 @@ development_status:
   epic-2-retrospective: optional
 
   # Epic 3: Conversion & Booking Calendly
-  epic-3: in-progress
+  epic-3: done
   3-1-ctabutton-section-cta-final: done
   3-2-stickymobilecta: done
   3-3-calendlymodal-modale-de-reservation-integree: done
-  epic-3-retrospective: optional
+  epic-3-retrospective: done
 
   # Epic 4: Capture Email & Engagement
   epic-4: in-progress
   4-1-emailcapture-integration-brevo: done
-  4-2-configuration-email-confirmation-calendly: in-progress
+  4-2-configuration-email-confirmation-calendly: done
   4-3-returnvisitorbanner-detection-visiteur-retour: backlog
   epic-4-retrospective: optional
 

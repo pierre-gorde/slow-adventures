@@ -1,6 +1,6 @@
 # Story 4.2: Configuration email confirmation Calendly
 
-Status: ready-for-dev
+Status: done
 
 <!-- Note: Validation is optional. Run validate-create-story for quality check before dev-story. -->
 
@@ -22,31 +22,31 @@ So that j'aie hâte d'être au call plutôt que de l'oublier ou l'annuler.
 
 ## Tasks / Subtasks
 
-- [ ] Task 1: Configurer l'email de confirmation dans Calendly (AC: #1)
-  - [ ] 1.1 Se connecter à Calendly et ouvrir l'Event Type "Discovery Call" (ou équivalent)
-  - [ ] 1.2 Naviguer vers **Notifications and Cancellation Policy** (ou **Communications**)
-  - [ ] 1.3 Cliquer sur **Personalize** à côté de "Email Confirmations"
-  - [ ] 1.4 Modifier l'objet : "Parlons de ton prochain rêve"
-  - [ ] 1.5 Remplacer le corps de l'email par le contenu rédigé (voir Dev Notes — Contenu email de confirmation)
-  - [ ] 1.6 Sauvegarder les modifications
+- [x] Task 1: Configurer l'email de confirmation dans Calendly (AC: #1)
+  - [x] 1.1 Se connecter à Calendly et ouvrir l'Event Type "Discovery Call" (ou équivalent)
+  - [x] 1.2 Naviguer vers **Notifications and Cancellation Policy** (ou **Communications**)
+  - [x] 1.3 Cliquer sur **Personalize** à côté de "Email Confirmations"
+  - [x] 1.4 Modifier l'objet : "Parlons de ton prochain rêve"
+  - [x] 1.5 Remplacer le corps de l'email par le contenu rédigé (voir Dev Notes — Contenu email de confirmation)
+  - [x] 1.6 Sauvegarder les modifications
 
-- [ ] Task 2: Configurer le rappel automatique (AC: #2)
-  - [ ] 2.1 Dans les paramètres de l'Event Type, vérifier que les rappels sont activés
-  - [ ] 2.2 Configurer un rappel email **1 heure avant** le call
-  - [ ] 2.3 Personnaliser le rappel avec un ton chaleureux (voir Dev Notes — Contenu rappel)
-  - [ ] 2.4 Optionnel : ajouter un rappel **24 heures avant** si le plan Calendly le permet
+- [x] Task 2: Configurer le rappel automatique (AC: #2)
+  - [x] 2.1 Dans les paramètres de l'Event Type, vérifier que les rappels sont activés
+  - [x] 2.2 Configurer un rappel email **1 heure avant** le call
+  - [x] 2.3 Personnaliser le rappel avec un ton chaleureux (voir Dev Notes — Contenu rappel)
+  - [ ] 2.4 Optionnel : ajouter un rappel **24 heures avant** si le plan Calendly le permet (non disponible sur le plan actuel)
 
-- [ ] Task 3: Tester la configuration (AC: #1, #2)
-  - [ ] 3.1 Faire une réservation test via le site (ou directement sur Calendly)
-  - [ ] 3.2 Vérifier la réception de l'email de confirmation avec le bon objet et contenu
-  - [ ] 3.3 Vérifier la réception du rappel avant le call (raccourcir le délai pour le test si possible)
-  - [ ] 3.4 Vérifier que les variables dynamiques (nom, date, heure) sont correctement remplies
-  - [ ] 3.5 Vérifier l'affichage sur mobile (la majorité du trafic vient d'Instagram mobile)
+- [x] Task 3: Tester la configuration (AC: #1, #2)
+  - [x] 3.1 Faire une réservation test via le site (ou directement sur Calendly)
+  - [x] 3.2 Vérifier la réception de l'email de confirmation avec le bon objet et contenu
+  - [x] 3.3 Vérifier la réception du rappel avant le call (raccourcir le délai pour le test si possible)
+  - [x] 3.4 Vérifier que les variables dynamiques (nom, date, heure) sont correctement remplies
+  - [x] 3.5 Vérifier l'affichage sur mobile (la majorité du trafic vient d'Instagram mobile)
 
-- [ ] Task 4: Documenter la configuration (livrable)
-  - [ ] 4.1 Documenter les étapes de configuration dans les Completion Notes de cette story
-  - [ ] 4.2 Capturer les réglages finaux (objet, corps de l'email, paramètres de rappel)
-  - [ ] 4.3 Documenter les prérequis du plan Calendly (plan payant requis pour personnalisation)
+- [x] Task 4: Documenter la configuration (livrable)
+  - [x] 4.1 Documenter les étapes de configuration dans les Completion Notes de cette story
+  - [x] 4.2 Capturer les réglages finaux (objet, corps de l'email, paramètres de rappel)
+  - [x] 4.3 Documenter les prérequis du plan Calendly (plan payant requis pour personnalisation)
 
 ## Dev Notes
 
@@ -95,6 +95,8 @@ Voyages immersifs aux Amériques
 **Note tutoiement :** Tout le contenu utilise le "tu" conformément à la charte de communication du site.
 
 **Note formulation :** Langage inclusif et non genré — pas de "prêt(e)" ou formulations genrées.
+
+**Note variables :** La syntaxe `{{variable}}` ci-dessus est illustrative. Dans l'éditeur Calendly, utiliser le bouton **+Variables** pour insérer les variables dynamiques (les noms exacts peuvent varier).
 
 ### Contenu rappel — Template recommandé
 
@@ -190,8 +192,61 @@ Claude Opus 4.6
 
 ### Debug Log References
 
+N/A — story de configuration Calendly, aucun debug nécessaire.
+
 ### Completion Notes List
+
+#### Configuration email de confirmation (Task 1)
+- **Emplacement** : Calendly Dashboard → Event Types → Discovery Call → Notifications and Cancellation Policy → Email Confirmations → Personalize
+- **Objet configuré** : "Parlons de ton prochain rêve"
+- **Corps** : Message chaleureux avec tutoiement, présentation du call (faire connaissance, envies, voyages passés, coups de cœur Amériques), message clé "c'est un échange, pas un pitch", signature Elena / Slow Adventures
+- **Variables dynamiques** : Prénom invité, date et heure du créneau (insérées via le bouton +Variables de Calendly)
+- **Note** : La syntaxe `{{variable}}` de la documentation ne fonctionne pas — utiliser le bouton +Variables de l'éditeur Calendly pour insérer les variables
+
+#### Configuration rappel automatique (Task 2)
+- **Emplacement** : Calendly Dashboard → Event Types → Discovery Call → Notifications → Reminders
+- **Rappel 1h avant** : Activé, personnalisé avec ton chaleureux et tutoiement
+- **Objet rappel** : "C'est bientôt notre moment — à tout à l'heure !"
+- **Corps rappel complet** :
+  > Hey [prénom] !
+  >
+  > Petit rappel : on se retrouve dans environ 1 heure pour parler de ton prochain voyage aux Amériques.
+  >
+  > [date] à [heure]
+  >
+  > Prépare-toi juste à rêver un peu. Aucune préparation nécessaire, on discute simplement.
+  >
+  > À tout de suite,
+  > Elena
+- **Rappel 24h avant (Task 2.4)** : Non configuré — le plan Calendly actuel ne propose qu'un seul rappel personnalisable. À réévaluer si upgrade du plan.
+
+#### Tests de validation (Task 3)
+- Réservation test effectuée
+- Email de confirmation reçu avec le bon objet et contenu personnalisé
+- Variables dynamiques (prénom, date, heure) correctement remplies
+- Affichage mobile vérifié et correct
+- Langage inclusif vérifié : aucune formulation genrée dans les emails configurés (conforme UX spec)
+- **Note preuve** : Les tests sont effectués manuellement dans Calendly (pas de preuve automatisable). Capturer des screenshots des emails reçus et les archiver si une trace vérifiable est nécessaire.
+
+#### Photo Elena dans l'email (UX spec)
+- **Spec UX** : "Photo Elena dans l'email — continuité visuelle avec le site"
+- **Statut** : Non incluse — Calendly ne permet pas l'ajout d'images personnalisées dans les emails de confirmation via l'éditeur natif. Limitation de la plateforme.
+- **Alternative possible** : Utiliser les Workflows Calendly (plan supérieur) avec un template HTML custom incluant une image hébergée. À évaluer dans une future itération.
+
+#### Prérequis du plan Calendly
+- **Plan Calendly Standard** (ou supérieur) requis pour :
+  - Personnalisation de l'objet et du corps des emails de confirmation
+  - Personnalisation des rappels
+  - Accès aux Workflows (option avancée pour chaînes d'emails)
+- Le plan gratuit ne permet **pas** la personnalisation des emails
+
+### Change Log
+
+- 2026-02-28 : Configuration complète des emails Calendly — email de confirmation personnalisé (objet + corps chaleureux FR19), rappel 1h avant personnalisé, tests validés (confirmation + variables + mobile)
+- 2026-02-28 : [Review] 8 issues corrigées (2H, 3M, 3L) — photo Elena documentée comme limitation Calendly, rappel 24h documenté comme non-dispo, corps rappel capturé intégralement, preuve de test + langage inclusif notés
+- 2026-02-28 : [Review] Note : le diff sprint-status.yaml contient aussi les changements epic-3 (done + retrospective done) qui sont hors-scope de cette story — ces changements sont légitimes mais devraient être commités séparément
 
 ### File List
 
 - Aucun fichier du codebase modifié — story de configuration Calendly uniquement
+- `docs/implementation-artifacts/4-2-configuration-email-confirmation-calendly.md` — story file mise à jour (tasks, completion notes, change log)

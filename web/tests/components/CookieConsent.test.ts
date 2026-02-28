@@ -66,39 +66,22 @@ describe('CookieConsent.astro', () => {
     });
   });
 
-  describe('chargement dynamique GA4 (AC2)', () => {
-    it('contains googletagmanager.com/gtag/js URL', () => {
-      expect(component).toContain('googletagmanager.com/gtag/js');
+  describe('GA4 delegation to analytics.ts (Story 5.2)', () => {
+    it('does NOT contain inline GA4 loading code', () => {
+      expect(component).not.toContain('googletagmanager.com/gtag/js');
+      expect(component).not.toContain('dataLayer');
     });
 
-    it('uses data-ga4-id attribute for measurement ID', () => {
-      expect(component).toContain('data-ga4-id');
+    it('does NOT contain data-ga4-id attribute (removed in 5.2)', () => {
+      expect(component).not.toContain('data-ga4-id');
     });
 
-    it('references PUBLIC_GA4_MEASUREMENT_ID in frontmatter', () => {
-      expect(component).toContain('PUBLIC_GA4_MEASUREMENT_ID');
+    it('does NOT reference PUBLIC_GA4_MEASUREMENT_ID (delegated to analytics.ts)', () => {
+      expect(component).not.toContain('PUBLIC_GA4_MEASUREMENT_ID');
     });
 
-    it('initializes dataLayer for gtag', () => {
-      expect(component).toContain('dataLayer');
-    });
-  });
-
-  describe('Google Consent Mode v2 (AC2)', () => {
-    it('contains consent API call', () => {
-      expect(component).toContain("'consent'");
-    });
-
-    it('contains analytics_storage parameter', () => {
-      expect(component).toContain('analytics_storage');
-    });
-
-    it('sets analytics_storage to denied by default', () => {
-      expect(component).toContain("analytics_storage: 'denied'");
-    });
-
-    it('updates analytics_storage to granted on consent', () => {
-      expect(component).toContain("analytics_storage: 'granted'");
+    it('documents delegation to analytics.ts in comment', () => {
+      expect(component).toContain('analytics.ts');
     });
   });
 
@@ -131,14 +114,6 @@ describe('CookieConsent.astro', () => {
   });
 
   describe('robustesse — gardes de sécurité (review fixes)', () => {
-    it('has idempotency guard for GA4 loading (ga4Loaded flag)', () => {
-      expect(component).toContain('ga4Loaded');
-    });
-
-    it('guards against empty measurement ID', () => {
-      expect(component).toContain('!measurementId');
-    });
-
     it('handles corrupted localStorage by removing sa_consent', () => {
       expect(component).toContain("localStorage.removeItem('sa_consent')");
     });

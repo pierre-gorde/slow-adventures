@@ -99,6 +99,9 @@ const jsonLd = {
     <slot />
     <Footer />
     <CookieConsent />
+    <script>
+      import '../lib/analytics';
+    </script>
     <script is:inline>
       // Fallback CSS pour [data-reveal] quand GSAP n'est pas encore chargé
       if ('IntersectionObserver' in window) {

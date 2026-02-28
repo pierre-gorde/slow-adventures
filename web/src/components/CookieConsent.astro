@@ -1,7 +1,7 @@
 ---
-// CookieConsent.astro — Bannière consentement cookies + chargement conditionnel GA4
+// CookieConsent.astro — Bannière consentement cookies
 // Composant .astro avec <script> natif (pas de client:load)
-const ga4Id = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID;
+// GA4 loading delegated to src/lib/analytics.ts (Story 5.2)
 ---
 
 <div
@@ -10,7 +10,6 @@ const ga4Id = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID;
   aria-label="Bannière de consentement cookies"
   aria-describedby="cookie-consent-text"
   aria-modal="false"
-  data-ga4-id={ga4Id}
   class="sa-consent fixed bottom-0 left-0 right-0 z-50 bg-warm-black/95 text-creme font-sans px-6 py-4 md:px-12 md:py-6"
   hidden
 >
@@ -77,38 +76,10 @@ const ga4Id = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID;
   const refuseBtn = document.getElementById('cookie-refuse');
 
   if (container && acceptBtn && refuseBtn) {
-    const ga4Id = container.dataset.ga4Id ?? '';
-    let ga4Loaded = false;
-
-    function loadGA4(measurementId: string): void {
-      if (!measurementId || ga4Loaded) return;
-      ga4Loaded = true;
-      const script = document.createElement('script');
-      script.async = true;
-      script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
-      document.head.appendChild(script);
-
-      (window as Record<string, unknown>).dataLayer =
-        (window as Record<string, unknown>).dataLayer ?? [];
-      function gtag(...args: unknown[]): void {
-        ((window as Record<string, unknown>).dataLayer as unknown[]).push(args);
-      }
-      gtag('js', new Date());
-      gtag('consent', 'default', {
-        analytics_storage: 'denied',
-        ad_storage: 'denied',
-        ad_user_data: 'denied',
-        ad_personalization: 'denied',
-      });
-      gtag('consent', 'update', { analytics_storage: 'granted' });
-      gtag('config', measurementId);
-    }
-
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     function showBanner(): void {
       container.removeAttribute('hidden');
-      // Force reflow pour que la transition CSS joue après suppression de hidden
       void container.offsetHeight;
       container.classList.add('sa-consent-visible');
       acceptBtn.focus();
@@ -117,7 +88,6 @@ const ga4Id = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID;
     function hideBanner(): void {
       container.classList.remove('sa-consent-visible');
       container.classList.add('sa-consent-exit');
-      // Synchroniser le délai avec prefers-reduced-motion (transition: none → pas d'attente)
       setTimeout(() => {
         container.setAttribute('hidden', '');
       }, prefersReducedMotion ? 0 : 300);
@@ -127,17 +97,10 @@ const ga4Id = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID;
       const stored = localStorage.getItem('sa_consent');
 
       if (stored === null) {
-        // Pas de choix enregistré — afficher la bannière
         showBanner();
-      } else {
-        // Choix existant — appliquer silencieusement
-        const consent = JSON.parse(stored);
-        if (consent?.analytics === true) {
-          loadGA4(ga4Id);
-        }
       }
+      // Existing consent — analytics.ts handles GA4 loading
     } catch {
-      // localStorage corrompu ou indisponible — nettoyer et réafficher la bannière
       try { localStorage.removeItem('sa_consent'); } catch { /* localStorage indisponible */ }
       showBanner();
     }
@@ -153,7 +116,6 @@ const ga4Id = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID;
             detail: { analytics: true },
           })
         );
-        loadGA4(ga4Id);
         hideBanner();
       } catch (error) {
         console.error('[slow-adventures]', error);

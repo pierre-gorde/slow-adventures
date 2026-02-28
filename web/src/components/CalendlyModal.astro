@@ -86,6 +86,8 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL;
 </div>
 
 <script>
+  import { trackCalendlyComplete } from '../lib/analytics';
+
   const overlay = document.getElementById('calendly-overlay');
   const modal = document.getElementById('calendly-modal');
   const iframe = document.getElementById(
@@ -250,6 +252,13 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL;
   document.addEventListener('keydown', (e) => {
     if (overlay && !overlay.classList.contains('hidden')) {
       handleKeydown(e);
+    }
+  });
+
+  // === Calendly booking complete tracking (Story 5.2) ===
+  window.addEventListener('message', (e) => {
+    if (e.data?.event === 'calendly.event_scheduled') {
+      trackCalendlyComplete();
     }
   });
 </script>

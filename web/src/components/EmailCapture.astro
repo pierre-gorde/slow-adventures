@@ -99,6 +99,7 @@
 
 <script>
   import { subscribeToNewsletter } from '../lib/brevo';
+  import { trackEmailCapture } from '../lib/analytics';
 
   const form = document.getElementById('email-form') as HTMLFormElement | null;
   const input = document.getElementById(
@@ -138,6 +139,7 @@
     const result = await subscribeToNewsletter(email);
 
     if (result.success) {
+      trackEmailCapture();
       if (form) form.classList.add('hidden');
       if (rgpdText) rgpdText.classList.add('hidden');
       if (successDiv) successDiv.classList.remove('hidden');

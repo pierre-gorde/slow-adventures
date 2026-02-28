@@ -65,9 +65,10 @@ describe('ReturnVisitorBanner.astro', () => {
     });
   });
 
-  describe('scroll trigger (AC2)', () => {
-    it('uses IntersectionObserver to detect hero scroll', () => {
-      expect(component).toContain('IntersectionObserver');
+  describe('instant display (AC2)', () => {
+    it('shows toast immediately without scroll trigger', () => {
+      expect(component).not.toContain('IntersectionObserver');
+      expect(component).toContain("banner.removeAttribute('hidden')");
     });
   });
 

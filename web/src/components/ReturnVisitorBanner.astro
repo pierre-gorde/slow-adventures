@@ -84,50 +84,34 @@
           }
           messageEl.textContent = message;
 
-          // Observer le hero (header) pour déclencher l'affichage
-          const header = document.querySelector('header');
-          if (header && 'IntersectionObserver' in window) {
-            const observer = new IntersectionObserver(
-              (entries) => {
-                for (const entry of entries) {
-                  if (!entry.isIntersecting) {
-                    // Hero scrollé hors vue — afficher le toast
-                    banner.removeAttribute('hidden');
-                    void banner.offsetHeight;
-                    banner.classList.add('sa-toast-visible');
-                    observer.disconnect();
+          // Afficher le toast immédiatement
+          banner.removeAttribute('hidden');
+          void banner.offsetHeight;
+          banner.classList.add('sa-toast-visible');
 
-                    // Fonction dismiss
-                    let dismissed = false;
-                    const dismiss = () => {
-                      if (dismissed) return;
-                      dismissed = true;
-                      banner.classList.remove('sa-toast-visible');
-                      banner.classList.add('sa-toast-exit');
-                      setTimeout(() => {
-                        banner.setAttribute('hidden', '');
-                      }, 300);
-                      sessionStorage.setItem('sa_banner_dismissed', 'true');
-                    };
+          // Fonction dismiss
+          let dismissed = false;
+          const dismiss = () => {
+            if (dismissed) return;
+            dismissed = true;
+            banner.classList.remove('sa-toast-visible');
+            banner.classList.add('sa-toast-exit');
+            setTimeout(() => {
+              banner.setAttribute('hidden', '');
+            }, 300);
+            sessionStorage.setItem('sa_banner_dismissed', 'true');
+          };
 
-                    // Auto-dismiss après 5 secondes + dismiss au clic/Escape
-                    setTimeout(dismiss, 5000);
-                    banner.addEventListener('click', dismiss, { once: true });
-                    document.addEventListener(
-                      'keydown',
-                      (e) => {
-                        if (e.key === 'Escape') dismiss();
-                      },
-                      { once: true }
-                    );
-                  }
-                }
-              },
-              { threshold: 0 }
-            );
-
-            observer.observe(header);
-          }
+          // Auto-dismiss après 5 secondes + dismiss au clic/Escape
+          setTimeout(dismiss, 5000);
+          banner.addEventListener('click', dismiss, { once: true });
+          document.addEventListener(
+            'keydown',
+            (e) => {
+              if (e.key === 'Escape') dismiss();
+            },
+            { once: true }
+          );
         }
       }
     } catch (error) {

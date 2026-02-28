@@ -128,8 +128,8 @@ describe('build output validation', () => {
 
     it('renders footer with contact email', () => {
       const html = readFileSync(resolve(distDir, 'index.html'), 'utf-8');
-      expect(html).toContain('contact@slowadventures.fr');
-      expect(html).toContain('mailto:contact@slowadventures.fr');
+      expect(html).toContain('elena.ld83@gmail.com');
+      expect(html).toContain('mailto:elena.ld83@gmail.com');
     });
 
     it('renders footer with copyright', () => {

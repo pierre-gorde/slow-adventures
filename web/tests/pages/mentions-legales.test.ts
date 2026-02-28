@@ -56,7 +56,7 @@ describe('mentions-legales.astro', () => {
 
     it('contains contact email', () => {
       expect(page).toContain('mailto:');
-      expect(page).toContain('contact@slowadventures.fr');
+      expect(page).toContain('elena.ld83@gmail.com');
     });
 
     it('contains publication director', () => {

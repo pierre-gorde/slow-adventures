@@ -1,32 +1,33 @@
 /**
  * Messages du ReturnVisitorBanner — différenciés par nombre de visites.
- * Visites 2-10 : message séquentiel unique par visite.
- * Visites 11+  : message aléatoire parmi rotatingMessages.
+ * Visites 2-11 : message séquentiel unique par visite.
+ * Visites 12+  : message aléatoire parmi rotatingMessages.
  */
 
-/** Messages séquentiels — index 0 = visite 2, index 8 = visite 10 */
+/** Messages séquentiels — index 0 = visite 2, index 9 = visite 11 */
 export const sequentialMessages: string[] = [
-  'Content de te revoir\u00a0!',
-  'Te revoilà\u00a0! L\u2019aventure t\u2019appelle, on dirait\u2026',
-  'Encore toi\u00a0! Ça fait plaisir.',
-  'Le voyage commence dans la tête\u2026 et tu es déjà en route.',
-  'On dirait que quelque chose ici te fait rêver\u2026',
-  'Fidèle au rendez-vous\u00a0! Ton prochain voyage se dessine\u00a0?',
-  'Tu reviens souvent\u2026 c\u2019est un signe, non\u00a0?',
-  'À force de revenir, on va finir par devenir amis\u00a0!',
-  '10e visite\u00a0! Elena t\u2019attend pour une discussion, sans engagement.',
+  'Tiens, te revoilà\u00a0! 👀',
+  'Encore toi, curieux(se)\u00a0? 😊',
+  'On se retrouve en visio\u00a0? 💻',
+  'Tu passes encore par là\u00a0! 🔄',
+  'Prêt(e) à parler de ton voyage\u00a0? ✈️',
+  'De retour pour un tour\u00a0? 🎢',
+  'On continue de faire du repérage\u00a0? 🗺️',
+  'Toujours intéressé(e)\u00a0? 💡',
+  'Et si on bloquait une date pour en discuter\u00a0? 📅',
+  'Tu reviens souvent… ne laisse pas ton voyage attendre\u00a0! ⏳',
 ];
 
-/** Messages en rotation aléatoire pour les visiteurs fidèles (visite 11+) */
+/** Messages en rotation aléatoire pour les visiteurs fidèles (visite 12+) */
 export const rotatingMessages: string[] = [
-  'Le monde est vaste, ton rêve aussi.',
-  'Un café et une carte\u2026 c\u2019est tout ce qu\u2019il faut pour commencer.',
-  'Chaque voyage commence par un premier pas. Prêt(e)\u00a0?',
-  'Les plus beaux souvenirs commencent par un «\u00a0et si\u2026\u00a0»',
-  'Tu mérites cette aventure.',
-  'Quelque part, un guide local t\u2019attend déjà.',
-  'L\u2019Amérique latine a un secret pour toi.',
-  'Pas besoin de tout planifier. C\u2019est pour ça qu\u2019Elena est là.',
-  'Le prochain coucher de soleil pourrait être le tien.',
-  'Ton prochain voyage ne demande qu\u2019à exister.',
+  'Tiens, un(e) habitué(e)\u00a0! 🏡',
+  'On réserve ensemble ton moment\u00a0? 💛',
+  'Ton rêve de voyage mérite qu\u2019on en parle\u00a0! 🌍',
+  'Tu hésites encore\u00a0? On peut en parler maintenant\u00a0! 🕒',
+  'Alors, prêt(e) à réaliser ton voyage de rêve\u00a0? 🚀',
+  'Ça fait plusieurs visites… il est temps de passer à l\u2019action\u00a0! 🔥',
+  'Ne laisse pas ton projet de côté, bloquons un créneau\u00a0! 💚',
+  'Plus que quelques clics et ton voyage prend vie\u00a0! ✨',
+  'Dernière chance avant que ton créneau se remplisse\u00a0! ⚡',
+  'Allez, on confirme ton rendez-vous et on fait avancer ton rêve\u00a0! 🏁',
 ];

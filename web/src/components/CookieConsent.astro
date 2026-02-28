@@ -1,0 +1,175 @@
+---
+// CookieConsent.astro — Bannière consentement cookies + chargement conditionnel GA4
+// Composant .astro avec <script> natif (pas de client:load)
+const ga4Id = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID;
+---
+
+<div
+  id="cookie-consent"
+  role="dialog"
+  aria-label="Bannière de consentement cookies"
+  aria-describedby="cookie-consent-text"
+  aria-modal="false"
+  data-ga4-id={ga4Id}
+  class="sa-consent fixed bottom-0 left-0 right-0 z-50 bg-warm-black/95 text-creme font-sans px-6 py-4 md:px-12 md:py-6"
+  hidden
+>
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+    <p id="cookie-consent-text" class="text-sm leading-relaxed md:mr-8">
+      Ce site utilise des cookies analytiques (Google Analytics) pour améliorer ton expérience.
+      Aucune donnée personnelle n'est collectée sans ton accord.
+      <a href="/politique-confidentialite" class="text-creme underline hover:text-terracotta transition-colors">
+        En savoir plus
+      </a>
+    </p>
+    <div class="flex items-center gap-4 shrink-0">
+      <button
+        id="cookie-accept"
+        type="button"
+        class="bg-terracotta text-white font-sans text-sm font-semibold px-6 py-2.5 rounded-lg min-h-[44px] min-w-[44px] hover:bg-terracotta/90 transition-colors cursor-pointer"
+      >
+        Accepter
+      </button>
+      <button
+        id="cookie-refuse"
+        type="button"
+        class="text-creme/70 text-sm underline min-h-[44px] min-w-[44px] hover:text-creme transition-colors cursor-pointer"
+      >
+        Refuser
+      </button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .sa-consent {
+    opacity: 0;
+    transform: translateY(100%);
+    transition:
+      opacity 400ms ease-out,
+      transform 400ms ease-out;
+  }
+
+  .sa-consent-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .sa-consent-exit {
+    opacity: 0;
+    transform: translateY(100%);
+    transition:
+      opacity 300ms ease-out,
+      transform 300ms ease-out;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sa-consent,
+    .sa-consent-exit {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  const container = document.getElementById('cookie-consent');
+  const acceptBtn = document.getElementById('cookie-accept');
+  const refuseBtn = document.getElementById('cookie-refuse');
+
+  if (container && acceptBtn && refuseBtn) {
+    const ga4Id = container.dataset.ga4Id ?? '';
+    let ga4Loaded = false;
+
+    function loadGA4(measurementId: string): void {
+      if (!measurementId || ga4Loaded) return;
+      ga4Loaded = true;
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+      document.head.appendChild(script);
+
+      (window as Record<string, unknown>).dataLayer =
+        (window as Record<string, unknown>).dataLayer ?? [];
+      function gtag(...args: unknown[]): void {
+        ((window as Record<string, unknown>).dataLayer as unknown[]).push(args);
+      }
+      gtag('js', new Date());
+      gtag('consent', 'default', {
+        analytics_storage: 'denied',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+      });
+      gtag('consent', 'update', { analytics_storage: 'granted' });
+      gtag('config', measurementId);
+    }
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function showBanner(): void {
+      container.removeAttribute('hidden');
+      // Force reflow pour que la transition CSS joue après suppression de hidden
+      void container.offsetHeight;
+      container.classList.add('sa-consent-visible');
+      acceptBtn.focus();
+    }
+
+    function hideBanner(): void {
+      container.classList.remove('sa-consent-visible');
+      container.classList.add('sa-consent-exit');
+      // Synchroniser le délai avec prefers-reduced-motion (transition: none → pas d'attente)
+      setTimeout(() => {
+        container.setAttribute('hidden', '');
+      }, prefersReducedMotion ? 0 : 300);
+    }
+
+    try {
+      const stored = localStorage.getItem('sa_consent');
+
+      if (stored === null) {
+        // Pas de choix enregistré — afficher la bannière
+        showBanner();
+      } else {
+        // Choix existant — appliquer silencieusement
+        const consent = JSON.parse(stored);
+        if (consent?.analytics === true) {
+          loadGA4(ga4Id);
+        }
+      }
+    } catch {
+      // localStorage corrompu ou indisponible — nettoyer et réafficher la bannière
+      try { localStorage.removeItem('sa_consent'); } catch { /* localStorage indisponible */ }
+      showBanner();
+    }
+
+    acceptBtn.addEventListener('click', () => {
+      try {
+        localStorage.setItem(
+          'sa_consent',
+          JSON.stringify({ analytics: true })
+        );
+        document.dispatchEvent(
+          new CustomEvent('sa:consent-accepted', {
+            detail: { analytics: true },
+          })
+        );
+        loadGA4(ga4Id);
+        hideBanner();
+      } catch (error) {
+        console.error('[slow-adventures]', error);
+      }
+    });
+
+    refuseBtn.addEventListener('click', () => {
+      try {
+        localStorage.setItem(
+          'sa_consent',
+          JSON.stringify({ analytics: false })
+        );
+        hideBanner();
+      } catch (error) {
+        console.error('[slow-adventures]', error);
+      }
+    });
+  }
+</script>

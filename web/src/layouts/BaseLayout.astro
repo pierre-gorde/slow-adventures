@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import Footer from '../components/Footer.astro';
+import CookieConsent from '../components/CookieConsent.astro';
 
 interface Props {
   title: string;
@@ -97,6 +98,7 @@ const jsonLd = {
     </a>
     <slot />
     <Footer />
+    <CookieConsent />
     <script is:inline>
       // Fallback CSS pour [data-reveal] quand GSAP n'est pas encore chargé
       if ('IntersectionObserver' in window) {

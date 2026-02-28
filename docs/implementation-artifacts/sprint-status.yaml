@@ -72,7 +72,7 @@ development_status:
   epic-4-retrospective: done
 
   # Epic 5: Analytics, Consentement & Tracking
-  epic-5: backlog
-  5-1-cookieconsent-chargement-conditionnel-ga4: backlog
+  epic-5: in-progress
+  5-1-cookieconsent-chargement-conditionnel-ga4: done
   5-2-module-analytics-evenements-tracking: backlog
   epic-5-retrospective: optional

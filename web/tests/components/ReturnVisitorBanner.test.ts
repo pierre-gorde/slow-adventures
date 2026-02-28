@@ -104,18 +104,43 @@ describe('ReturnVisitorBanner.astro', () => {
     });
   });
 
+  describe('toast design (floating toast)', () => {
+    it('is fixed positioned with z-50', () => {
+      expect(component).toContain('fixed');
+      expect(component).toContain('z-50');
+    });
+
+    it('has rounded-xl and shadow-lg for toast look', () => {
+      expect(component).toContain('rounded-xl');
+      expect(component).toContain('shadow-lg');
+    });
+
+    it('has backdrop-blur for glass effect', () => {
+      expect(component).toContain('backdrop-blur');
+    });
+
+    it('is centered at top with left-1/2 and translateX', () => {
+      expect(component).toContain('left-1/2');
+      expect(component).toContain('translateX(-50%)');
+    });
+
+    it('has max-w-sm for compact width', () => {
+      expect(component).toContain('max-w-sm');
+    });
+  });
+
   describe('CSS transitions (AC2, AC3)', () => {
-    it('has sa-banner-enter class with fade-in 400ms', () => {
-      expect(component).toContain('sa-banner-enter');
+    it('has sa-toast class with slide-down 400ms', () => {
+      expect(component).toContain('sa-toast');
       expect(component).toContain('400ms');
     });
 
-    it('has sa-banner-visible class', () => {
-      expect(component).toContain('sa-banner-visible');
+    it('has sa-toast-visible class', () => {
+      expect(component).toContain('sa-toast-visible');
     });
 
-    it('has sa-banner-exit class with fade-out 300ms', () => {
-      expect(component).toContain('sa-banner-exit');
+    it('has sa-toast-exit class with 300ms', () => {
+      expect(component).toContain('sa-toast-exit');
       expect(component).toContain('300ms');
     });
   });

@@ -1,5 +1,5 @@
 ---
-// ReturnVisitorBanner.astro — Banner de bienvenue visiteur retour
+// ReturnVisitorBanner.astro — Toast flottant visiteur retour
 // Composant .astro avec <script> natif (pas de client:load)
 ---
 
@@ -7,30 +7,37 @@
   id="return-visitor-banner"
   role="status"
   aria-live="polite"
-  class="sa-banner-enter bg-creme-dark/90 text-warm-black font-sans px-6 py-4 text-center text-sm md:text-base cursor-pointer"
+  class="sa-toast fixed top-4 left-1/2 z-50 max-w-sm w-[calc(100%-2rem)] rounded-xl bg-creme/90 backdrop-blur-md text-warm-black font-sans px-5 py-3 text-center text-sm md:text-base shadow-lg cursor-pointer"
   hidden
 >
   <span id="return-visitor-message"></span>
 </div>
 
 <style>
-  .sa-banner-enter {
+  .sa-toast {
+    transform: translateX(-50%) translateY(-120%);
     opacity: 0;
-    transition: opacity 400ms ease-in;
+    transition:
+      transform 400ms cubic-bezier(0.34, 1.56, 0.64, 1),
+      opacity 400ms ease-out;
   }
 
-  .sa-banner-visible {
+  .sa-toast-visible {
+    transform: translateX(-50%) translateY(0);
     opacity: 1;
   }
 
-  .sa-banner-exit {
+  .sa-toast-exit {
+    transform: translateX(-50%) translateY(-120%);
     opacity: 0;
-    transition: opacity 300ms ease-out;
+    transition:
+      transform 300ms ease-in,
+      opacity 300ms ease-in;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .sa-banner-enter,
-    .sa-banner-exit {
+    .sa-toast,
+    .sa-toast-exit {
       transition: none;
     }
   }
@@ -84,11 +91,10 @@
               (entries) => {
                 for (const entry of entries) {
                   if (!entry.isIntersecting) {
-                    // Hero scrollé hors vue — afficher le banner
+                    // Hero scrollé hors vue — afficher le toast
                     banner.removeAttribute('hidden');
-                    // Force reflow pour garantir la transition
                     void banner.offsetHeight;
-                    banner.classList.add('sa-banner-visible');
+                    banner.classList.add('sa-toast-visible');
                     observer.disconnect();
 
                     // Fonction dismiss
@@ -96,9 +102,8 @@
                     const dismiss = () => {
                       if (dismissed) return;
                       dismissed = true;
-                      banner.classList.remove('sa-banner-visible');
-                      banner.classList.remove('sa-banner-enter');
-                      banner.classList.add('sa-banner-exit');
+                      banner.classList.remove('sa-toast-visible');
+                      banner.classList.add('sa-toast-exit');
                       setTimeout(() => {
                         banner.setAttribute('hidden', '');
                       }, 300);

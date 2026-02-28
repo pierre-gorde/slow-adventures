@@ -2,263 +2,68 @@
 const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL;
 ---
 
-<!-- Overlay + modale — masqué par défaut -->
-<div
-  id="calendly-overlay"
-  class="fixed inset-0 z-[60] hidden"
-  style="height: 100dvh; height: -webkit-fill-available;"
-  aria-hidden="true"
-  data-calendly-url={calendlyUrl}
->
-  <!-- Overlay fond -->
-  <div
-    class="absolute inset-0 bg-warm-black/70 backdrop-blur-sm"
-    data-overlay-bg
-  >
-  </div>
+<!-- Calendly popup widget — CSS + JS chargés async -->
+<link
+  rel="preload"
+  href="https://assets.calendly.com/assets/external/widget.css"
+  as="style"
+  onload="this.rel='stylesheet'"
+/>
+<noscript>
+  <link
+    rel="stylesheet"
+    href="https://assets.calendly.com/assets/external/widget.css"
+  />
+</noscript>
+<script
+  is:inline
+  src="https://assets.calendly.com/assets/external/widget.js"
+  async></script>
 
-  <!-- Container modale -->
-  <div
-    id="calendly-modal"
-    role="dialog"
-    aria-modal="true"
-    aria-label="Réserver une discovery call"
-    class:list={[
-      'relative z-10 flex flex-col bg-white overflow-hidden',
-      'absolute inset-0 h-full',
-      'lg:inset-auto lg:absolute lg:top-1/2 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2',
-      'lg:w-full lg:max-w-2xl lg:h-[85vh] lg:rounded-soft lg:shadow-xl',
-    ]}
-  >
-    <!-- Header avec bouton fermer -->
-    <div class="flex items-center justify-end p-2 lg:p-4 shrink-0">
-      <button
-        id="calendly-close"
-        type="button"
-        aria-label="Fermer"
-        class="flex items-center justify-center w-11 h-11 text-warm-gray rounded-full motion-safe:transition-colors motion-safe:duration-200 hover:bg-creme-dark"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          aria-hidden="true"
-        >
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
-      </button>
-    </div>
-
-    <!-- Iframe Calendly -->
-    <iframe
-      id="calendly-iframe"
-      title="Calendly - Réserver une discovery call"
-      class="flex-1 w-full border-0"
-      style="min-width: 320px; min-height: 0;"
-      allow="payment"></iframe>
-
-    <!-- Message d'erreur (masqué par défaut) -->
-    <div
-      id="calendly-error"
-      role="alert"
-      class="hidden flex-1 flex flex-col items-center justify-center p-8 text-center"
-    >
-      <p class="text-warm-black font-sans text-lg mb-4">
-        Le service est temporairement indisponible.
-      </p>
-      <a
-        href={calendlyUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="text-terracotta font-sans font-medium underline underline-offset-4 motion-safe:transition-colors motion-safe:duration-200 hover:text-terracotta-dark"
-      >
-        Réserver directement sur Calendly
-      </a>
-    </div>
-  </div>
-</div>
+<div id="calendly-config" data-calendly-url={calendlyUrl} hidden></div>
 
 <script>
   import { trackCalendlyComplete } from '../lib/analytics';
 
-  const overlay = document.getElementById('calendly-overlay');
-  const modal = document.getElementById('calendly-modal');
-  const iframe = document.getElementById(
-    'calendly-iframe'
-  ) as HTMLIFrameElement | null;
-  const closeBtn = document.getElementById('calendly-close');
-  const errorDiv = document.getElementById('calendly-error');
-  const overlayBg = overlay?.querySelector(
-    '[data-overlay-bg]'
-  ) as HTMLElement | null;
+  const CALENDLY_URL =
+    document.getElementById('calendly-config')?.dataset.calendlyUrl ?? '';
 
-  let triggerElement: HTMLElement | null = null;
-  let savedScrollY = 0;
-  let loadTimeout: ReturnType<typeof setTimeout> | null = null;
-  let isOpen = false;
-  let isClosing = false;
-
-  const prefersReducedMotion = window.matchMedia(
-    '(prefers-reduced-motion: reduce)'
-  ).matches;
-  const CALENDLY_URL = overlay?.dataset.calendlyUrl ?? '';
-
-  // === Ouverture ===
-  function openModal(trigger: HTMLElement): void {
-    if (!overlay || !modal || isOpen) return;
-    isOpen = true;
-
-    triggerElement = trigger;
-    savedScrollY = window.scrollY;
-
-    // Charger l'iframe
-    if (iframe) iframe.src = CALENDLY_URL;
-
-    // Afficher l'overlay
-    overlay.classList.remove('hidden');
-    overlay.setAttribute('aria-hidden', 'false');
-
-    // Scroll lock (pattern iOS-safe)
-    document.body.style.overflow = 'hidden';
-    document.body.style.position = 'fixed';
-    document.body.style.top = `-${savedScrollY}px`;
-    document.body.style.width = '100%';
-
-    // Animation slide-up
-    if (!prefersReducedMotion) {
-      modal.style.transform = 'translateY(100%)';
-      requestAnimationFrame(() => {
-        modal.style.transition = 'transform 400ms ease-out';
-        modal.style.transform = 'translateY(0)';
-      });
-      // Focus après fin de l'animation slide-up
-      setTimeout(() => closeBtn?.focus(), 400);
-    } else {
-      closeBtn?.focus();
-    }
-
-    // Timeout iframe (10s)
-    loadTimeout = setTimeout(() => {
-      if (iframe) iframe.classList.add('hidden');
-      errorDiv?.classList.remove('hidden');
-      console.error('[slow-adventures]', 'Calendly iframe load timeout');
-    }, 10_000);
-
-    // Annuler le timer si l'iframe charge
-    if (iframe) {
-      iframe.onload = () => {
-        if (loadTimeout) clearTimeout(loadTimeout);
-      };
-    }
-
-    // Dispatcher CustomEvent
-    document.dispatchEvent(new CustomEvent('sa:modal-open'));
-  }
-
-  // === Fermeture ===
-  function closeModal(): void {
-    if (!overlay || !modal || isClosing || !isOpen) return;
-    isClosing = true;
-
-    const finish = (): void => {
-      // Nettoyer iframe
-      if (iframe) {
-        iframe.src = 'about:blank';
-        iframe.classList.remove('hidden');
-      }
-      if (loadTimeout) clearTimeout(loadTimeout);
-
-      // Masquer
-      overlay.classList.add('hidden');
-      overlay.setAttribute('aria-hidden', 'true');
-      errorDiv?.classList.add('hidden');
-
-      // Reset animation
-      modal.style.transition = '';
-      modal.style.transform = '';
-      modal.style.opacity = '';
-
-      // Restaurer scroll
-      document.body.style.overflow = '';
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
-      window.scrollTo(0, savedScrollY);
-
-      // Restaurer focus
-      triggerElement?.focus();
-      triggerElement = null;
-
-      // Reset state
-      isOpen = false;
-      isClosing = false;
-
-      // Dispatcher CustomEvent
-      document.dispatchEvent(new CustomEvent('sa:modal-close'));
-    };
-
-    if (!prefersReducedMotion) {
-      modal.style.transition = 'opacity 300ms ease-out';
-      modal.style.opacity = '0';
-      setTimeout(finish, 300);
-    } else {
-      finish();
-    }
-  }
-
-  // === Focus trap ===
-  function handleKeydown(e: KeyboardEvent): void {
-    if (e.key === 'Escape') {
-      closeModal();
-      return;
-    }
-    if (e.key !== 'Tab' || !modal) return;
-
-    const focusableElements = modal.querySelectorAll<HTMLElement>(
-      'button, [href], iframe, [tabindex]:not([tabindex="-1"])'
-    );
-    const first = focusableElements[0];
-    const last = focusableElements[focusableElements.length - 1];
-
-    if (e.shiftKey && document.activeElement === first) {
-      e.preventDefault();
-      last?.focus();
-    } else if (!e.shiftKey && document.activeElement === last) {
-      e.preventDefault();
-      first?.focus();
-    }
-  }
-
-  // === Interception clics sur [data-calendly-trigger] ===
+  // Interception clics sur [data-calendly-trigger] → popup Calendly
   document
     .querySelectorAll<HTMLElement>('[data-calendly-trigger]')
     .forEach((trigger) => {
       trigger.addEventListener('click', (e) => {
         e.preventDefault();
-        openModal(trigger);
+
+        // Attendre que le script Calendly soit chargé
+        const win = window as unknown as {
+          Calendly?: {
+            initPopupWidget: (opts: { url: string }) => void;
+          };
+        };
+
+        if (win.Calendly) {
+          win.Calendly.initPopupWidget({
+            url: CALENDLY_URL + '?hide_gdpr_banner=1',
+          });
+          document.dispatchEvent(new CustomEvent('sa:modal-open'));
+        } else {
+          // Fallback : ouvrir dans un nouvel onglet
+          window.open(CALENDLY_URL, '_blank');
+        }
       });
     });
 
-  // === Event listeners ===
-  closeBtn?.addEventListener('click', closeModal);
-  overlayBg?.addEventListener('click', closeModal);
-  document.addEventListener('keydown', (e) => {
-    if (overlay && !overlay.classList.contains('hidden')) {
-      handleKeydown(e);
-    }
-  });
-
-  // === Calendly booking complete tracking (Story 5.2) ===
+  // Tracking réservation complète + fermeture popup
   window.addEventListener('message', (e) => {
     if (e.data?.event === 'calendly.event_scheduled') {
       trackCalendlyComplete();
+    }
+    if (
+      e.data?.event === 'calendly.close_event' ||
+      e.data?.event === 'calendly.event_scheduled'
+    ) {
+      document.dispatchEvent(new CustomEvent('sa:modal-close'));
     }
   });
 </script>

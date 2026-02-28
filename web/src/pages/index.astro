@@ -13,6 +13,7 @@ import CTAButton from '../components/CTAButton.astro';
 import EmailCapture from '../components/EmailCapture.astro';
 import CalendlyModal from '../components/CalendlyModal.astro';
 import StickyMobileCTA from '../components/StickyMobileCTA.astro';
+import ReturnVisitorBanner from '../components/ReturnVisitorBanner.astro';
 import ScrollProgress from '../components/ScrollProgress.astro';
 import heroPoster from '../assets/images/hero-poster.webp';
 import heroLogo from '../assets/images/logo-white.png';
@@ -49,6 +50,7 @@ const optimizedPoster = await getImage({
     />
   </header>
   <main id="main">
+    <ReturnVisitorBanner />
     <ElenaSection
       id="elena"
       imageSrc={elenaPhoto}

@@ -45,7 +45,7 @@ development_status:
   1-1-initialisation-projet-pipeline-de-deploiement: done
   1-2-design-tokens-baselayout-seo: done
   1-3-pages-legales-footer-conformite: done
-  epic-1-retrospective: optional
+  epic-1-retrospective: done
 
   # Epic 2: Experience immersive & Contenu
   epic-2: done
@@ -55,7 +55,7 @@ development_status:
   2-4-destinations-content-collections-destinationblock: done
   2-5-temoignages-pricing: done
   2-6-accessibilite-transversale-navigation-clavier: done
-  epic-2-retrospective: optional
+  epic-2-retrospective: done
 
   # Epic 3: Conversion & Booking Calendly
   epic-3: done
@@ -65,11 +65,11 @@ development_status:
   epic-3-retrospective: done
 
   # Epic 4: Capture Email & Engagement
-  epic-4: in-progress
+  epic-4: done
   4-1-emailcapture-integration-brevo: done
   4-2-configuration-email-confirmation-calendly: done
-  4-3-returnvisitorbanner-detection-visiteur-retour: backlog
-  epic-4-retrospective: optional
+  4-3-returnvisitorbanner-detection-visiteur-retour: done
+  epic-4-retrospective: done
 
   # Epic 5: Analytics, Consentement & Tracking
   epic-5: backlog

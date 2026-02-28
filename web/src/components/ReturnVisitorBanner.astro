@@ -1,0 +1,132 @@
+---
+// ReturnVisitorBanner.astro — Banner de bienvenue visiteur retour
+// Composant .astro avec <script> natif (pas de client:load)
+---
+
+<div
+  id="return-visitor-banner"
+  role="status"
+  aria-live="polite"
+  class="sa-banner-enter bg-creme-dark/90 text-warm-black font-sans px-6 py-4 text-center text-sm md:text-base cursor-pointer"
+  hidden
+>
+  <span id="return-visitor-message"></span>
+</div>
+
+<style>
+  .sa-banner-enter {
+    opacity: 0;
+    transition: opacity 400ms ease-in;
+  }
+
+  .sa-banner-visible {
+    opacity: 1;
+  }
+
+  .sa-banner-exit {
+    opacity: 0;
+    transition: opacity 300ms ease-out;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sa-banner-enter,
+    .sa-banner-exit {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  import {
+    sequentialMessages,
+    rotatingMessages,
+  } from '../data/returnVisitorMessages';
+
+  const banner = document.getElementById('return-visitor-banner');
+  const messageEl = document.getElementById('return-visitor-message');
+
+  if (banner && messageEl) {
+    try {
+      const visited = localStorage.getItem('sa_visited');
+
+      if (!visited) {
+        // Premier visiteur — stocker flags, pas de banner
+        localStorage.setItem('sa_visited', 'true');
+        localStorage.setItem('sa_visit_count', '1');
+        localStorage.setItem(
+          'sa_first_visit_date',
+          new Date().toISOString()
+        );
+      } else {
+        // Visiteur retour — incrémenter compteur
+        const count =
+          parseInt(localStorage.getItem('sa_visit_count') ?? '1', 10) + 1;
+        localStorage.setItem('sa_visit_count', String(count));
+
+        // Vérifier si déjà dismiss cette session
+        if (!sessionStorage.getItem('sa_banner_dismissed')) {
+          // Sélectionner message selon le nombre de visites
+          let message: string;
+          if (count >= 2 && count <= 10) {
+            message = sequentialMessages[count - 2];
+          } else {
+            message =
+              rotatingMessages[
+                Math.floor(Math.random() * rotatingMessages.length)
+              ];
+          }
+          messageEl.textContent = message;
+
+          // Observer le hero (header) pour déclencher l'affichage
+          const header = document.querySelector('header');
+          if (header && 'IntersectionObserver' in window) {
+            const observer = new IntersectionObserver(
+              (entries) => {
+                for (const entry of entries) {
+                  if (!entry.isIntersecting) {
+                    // Hero scrollé hors vue — afficher le banner
+                    banner.removeAttribute('hidden');
+                    // Force reflow pour garantir la transition
+                    void banner.offsetHeight;
+                    banner.classList.add('sa-banner-visible');
+                    observer.disconnect();
+
+                    // Fonction dismiss
+                    let dismissed = false;
+                    const dismiss = () => {
+                      if (dismissed) return;
+                      dismissed = true;
+                      banner.classList.remove('sa-banner-visible');
+                      banner.classList.remove('sa-banner-enter');
+                      banner.classList.add('sa-banner-exit');
+                      setTimeout(() => {
+                        banner.setAttribute('hidden', '');
+                      }, 300);
+                      sessionStorage.setItem('sa_banner_dismissed', 'true');
+                    };
+
+                    // Auto-dismiss après 5 secondes + dismiss au clic/Escape
+                    setTimeout(dismiss, 5000);
+                    banner.addEventListener('click', dismiss, { once: true });
+                    document.addEventListener(
+                      'keydown',
+                      (e) => {
+                        if (e.key === 'Escape') dismiss();
+                      },
+                      { once: true }
+                    );
+                  }
+                }
+              },
+              { threshold: 0 }
+            );
+
+            observer.observe(header);
+          }
+        }
+      }
+    } catch (error) {
+      console.error('[slow-adventures]', error);
+    }
+  }
+</script>

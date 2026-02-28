@@ -35,6 +35,8 @@ jobs:
 
       - name: 🏗️ Construire le site
         run: npm run build
+        env:
+          PUBLIC_BREVO_API_KEY: ${{ secrets.PUBLIC_BREVO_API_KEY }}
 
       - name: 🌐 Publier sur Netlify
         run: npx netlify-cli deploy --prod --dir=dist

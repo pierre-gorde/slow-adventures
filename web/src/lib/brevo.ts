@@ -2,7 +2,7 @@ import type { BrevoResult } from '../types/index';
 
 const BREVO_ENDPOINT = 'https://api.brevo.com/v3/contacts';
 // ID de la liste Brevo « Newsletter Slow Adventures » — configurable dans Brevo > Contacts > Listes
-const BREVO_LIST_ID = 2;
+const BREVO_LIST_ID = 5;
 
 export async function subscribeToNewsletter(
   email: string

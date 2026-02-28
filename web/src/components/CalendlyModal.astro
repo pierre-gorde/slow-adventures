@@ -6,6 +6,7 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL;
 <div
   id="calendly-overlay"
   class="fixed inset-0 z-[60] hidden"
+  style="height: 100dvh; height: -webkit-fill-available;"
   aria-hidden="true"
   data-calendly-url={calendlyUrl}
 >
@@ -24,13 +25,13 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL;
     aria-label="Réserver une discovery call"
     class:list={[
       'relative z-10 flex flex-col bg-white overflow-hidden',
-      'absolute inset-0',
+      'absolute inset-0 h-full',
       'lg:inset-auto lg:absolute lg:top-1/2 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2',
       'lg:w-full lg:max-w-2xl lg:h-[85vh] lg:rounded-soft lg:shadow-xl',
     ]}
   >
     <!-- Header avec bouton fermer -->
-    <div class="flex items-center justify-end p-3 lg:p-4">
+    <div class="flex items-center justify-end p-2 lg:p-4 shrink-0">
       <button
         id="calendly-close"
         type="button"
@@ -60,7 +61,7 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL;
       id="calendly-iframe"
       title="Calendly - Réserver une discovery call"
       class="flex-1 w-full border-0"
-      style="min-width: 320px;"
+      style="min-width: 320px; min-height: 0;"
       allow="payment"></iframe>
 
     <!-- Message d'erreur (masqué par défaut) -->

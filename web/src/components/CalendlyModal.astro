@@ -28,27 +28,46 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL;
   const CALENDLY_URL =
     document.getElementById('calendly-config')?.dataset.calendlyUrl ?? '';
 
+  type CalendlyWindow = Window & {
+    Calendly?: {
+      initPopupWidget: (opts: { url: string }) => void;
+    };
+  };
+
+  function waitForCalendly(timeout = 5000): Promise<boolean> {
+    const win = window as unknown as CalendlyWindow;
+    if (win.Calendly) return Promise.resolve(true);
+
+    return new Promise((resolve) => {
+      const start = Date.now();
+      const check = setInterval(() => {
+        if (win.Calendly) {
+          clearInterval(check);
+          resolve(true);
+        } else if (Date.now() - start > timeout) {
+          clearInterval(check);
+          resolve(false);
+        }
+      }, 100);
+    });
+  }
+
   // Interception clics sur [data-calendly-trigger] → popup Calendly
   document
     .querySelectorAll<HTMLElement>('[data-calendly-trigger]')
     .forEach((trigger) => {
-      trigger.addEventListener('click', (e) => {
+      trigger.addEventListener('click', async (e) => {
         e.preventDefault();
 
-        // Attendre que le script Calendly soit chargé
-        const win = window as unknown as {
-          Calendly?: {
-            initPopupWidget: (opts: { url: string }) => void;
-          };
-        };
+        const ready = await waitForCalendly();
+        const win = window as unknown as CalendlyWindow;
 
-        if (win.Calendly) {
+        if (ready && win.Calendly) {
           win.Calendly.initPopupWidget({
             url: CALENDLY_URL + '?hide_gdpr_banner=1',
           });
           document.dispatchEvent(new CustomEvent('sa:modal-open'));
         } else {
-          // Fallback : ouvrir dans un nouvel onglet
           window.open(CALENDLY_URL, '_blank');
         }
       });

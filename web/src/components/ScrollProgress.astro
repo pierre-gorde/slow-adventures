@@ -1,0 +1,164 @@
+---
+
+---
+
+<nav class="scroll-progress" aria-label="Progression dans la page" aria-hidden="true">
+  <div class="scroll-progress__track">
+    <span class="scroll-progress__dot" data-section="elena"></span>
+    <span class="scroll-progress__dot" data-section="destinations"></span>
+    <span class="scroll-progress__dot" data-section="processus"></span>
+    <span class="scroll-progress__dot" data-section="temoignages"></span>
+    <span class="scroll-progress__dot" data-section="tarifs"></span>
+    <span class="scroll-progress__dot" data-section="cta-final"></span>
+  </div>
+</nav>
+
+<style>
+  .scroll-progress {
+    position: fixed;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 40;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+  }
+
+  .scroll-progress.is-visible {
+    opacity: 1;
+  }
+
+  .scroll-progress__track {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .scroll-progress__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-warm-gray);
+    opacity: 0.3;
+    transition:
+      opacity 0.4s ease,
+      transform 0.4s ease,
+      background 0.4s ease,
+      box-shadow 0.4s ease;
+  }
+
+  .scroll-progress__dot.is-active {
+    opacity: 1;
+    transform: scale(1.6);
+    background: var(--color-terracotta);
+    box-shadow: 0 0 8px rgba(192, 96, 62, 0.5);
+    animation: dot-glow 2.5s ease-in-out infinite;
+  }
+
+  .scroll-progress__dot.is-passed {
+    opacity: 0.6;
+    background: var(--color-ambre);
+  }
+
+  @keyframes dot-glow {
+    0%,
+    100% {
+      box-shadow: 0 0 6px rgba(192, 96, 62, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 12px rgba(192, 96, 62, 0.7);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .scroll-progress {
+      right: 0.5rem;
+    }
+
+    .scroll-progress__track {
+      gap: 0.5rem;
+    }
+
+    .scroll-progress__dot {
+      width: 5px;
+      height: 5px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-progress__dot {
+      transition: none;
+    }
+
+    .scroll-progress__dot.is-active {
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  function initScrollProgress() {
+    const nav = document.querySelector<HTMLElement>('.scroll-progress');
+    if (!nav) return;
+
+    const dots = nav.querySelectorAll<HTMLElement>('.scroll-progress__dot');
+    const sectionIds = Array.from(dots).map((d) => d.dataset.section ?? '');
+    const sections = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter(Boolean) as HTMLElement[];
+
+    if (sections.length === 0) return;
+
+    let ticking = false;
+
+    function update() {
+      const scrollY = window.scrollY;
+      const viewH = window.innerHeight;
+
+      if (scrollY > viewH * 0.8) {
+        nav!.classList.add('is-visible');
+      } else {
+        nav!.classList.remove('is-visible');
+      }
+
+      const screenCenter = scrollY + viewH * 0.5;
+      let activeIdx = -1;
+      let minDist = Infinity;
+
+      sections.forEach((sec, i) => {
+        const rect = sec.getBoundingClientRect();
+        const sectionCenter = scrollY + rect.top + rect.height * 0.5;
+        const dist = Math.abs(screenCenter - sectionCenter);
+        if (dist < minDist) {
+          minDist = dist;
+          activeIdx = i;
+        }
+      });
+
+      dots.forEach((dot, i) => {
+        dot.classList.remove('is-active', 'is-passed');
+        if (i === activeIdx) {
+          dot.classList.add('is-active');
+        } else if (i < activeIdx) {
+          dot.classList.add('is-passed');
+        }
+      });
+
+      ticking = false;
+    }
+
+    function onScroll() {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    update();
+  }
+
+  initScrollProgress();
+</script>

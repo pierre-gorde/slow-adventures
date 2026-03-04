@@ -64,30 +64,14 @@ const optimizedPoster = await getImage({
       aria-labelledby="heading-destinations-intro"
       class="bg-creme sa-section-padding"
     >
-      <div class="max-w-3xl mx-auto text-center">
-        <SectionReveal animation="fade-up" delay={0}>
-          <h2
-            id="heading-destinations-intro"
-            class="font-serif text-3xl md:text-4xl text-warm-black mb-6"
-          >
-            Ton rêve prend vie
-          </h2>
-        </SectionReveal>
-        <SectionReveal animation="fade-up" delay={150}>
-          <p class="font-sans text-warm-black/80 text-lg leading-relaxed mb-4">
-            Création complète de ton itinéraire personnalisé&nbsp;: recherches,
-            sélection des hébergements, recommandations d'expériences, conseils
-            pratiques et élaboration de ton road book.
-          </p>
-        </SectionReveal>
-        <SectionReveal animation="fade-up" delay={300}>
-          <p class="font-sans text-warm-gray text-base leading-relaxed">
-            Je conçois et structure ton itinéraire sur-mesure&nbsp;; tu réserves
-            ensuite directement, en toute liberté, via les liens que je te
-            transmets.
-          </p>
-        </SectionReveal>
-      </div>
+      <SectionReveal animation="fade-up">
+        <h2
+          id="heading-destinations-intro"
+          class="font-serif text-3xl md:text-4xl text-warm-black text-center"
+        >
+          Des rêves pour t'inspirer
+        </h2>
+      </SectionReveal>
     </section>
     <section id="destinations" aria-labelledby="heading-destinations">
       <h2 id="heading-destinations" class="sr-only">Nos destinations</h2>

@@ -32,5 +32,5 @@ export interface PricingData {
 }
 
 export type BrevoResult =
-  | { success: true; id: number }
+  | { success: true; id?: number }
   | { success: false; error: string };

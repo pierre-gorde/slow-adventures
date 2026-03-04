@@ -29,6 +29,10 @@ export async function subscribeToNewsletter(
       );
     }
 
+    // 204 No Content = contact ajouté sans body
+    if (response.status === 204) {
+      return { success: true };
+    }
     const data = (await response.json()) as { id: number };
     return { success: true, id: data.id };
   } catch (error) {

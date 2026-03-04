@@ -59,21 +59,49 @@ const optimizedPoster = await getImage({
       description="Moi c'est Elena. Après des mois à parcourir l'Amérique latine à sac à dos et plusieurs voyages en Amérique du Nord, j'ai créé SlowAdventures pour te proposer des voyages authentiques, fluides et 100% sur mesure. Mon approche&nbsp;? Écouter tes rêves, transformer tes envies en itinéraires uniques, et t'ouvrir les portes d'expériences mémorables. Si tu veux un voyage qui te ressemble vraiment, qui te connecte à l'âme des lieux et qui te laisse des souvenirs gravés pour toujours… tu es au bon endroit."
       ctaHref={import.meta.env.PUBLIC_CALENDLY_URL}
     />
+    <section
+      id="destinations-intro"
+      aria-labelledby="heading-destinations-intro"
+      class="bg-creme sa-section-padding"
+    >
+      <SectionReveal animation="fade-up">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2
+            id="heading-destinations-intro"
+            class="font-serif text-3xl md:text-4xl text-warm-black mb-6"
+          >
+            Ton rêve prend vie
+          </h2>
+          <p class="font-sans text-warm-black/80 text-lg leading-relaxed mb-4">
+            Création complète de ton itinéraire personnalisé&nbsp;: recherches,
+            sélection des hébergements, recommandations d'expériences, conseils
+            pratiques et élaboration de ton road book.
+          </p>
+          <p class="font-sans text-warm-gray text-base leading-relaxed">
+            Je conçois et structure ton itinéraire sur-mesure&nbsp;; tu réserves
+            ensuite directement, en toute liberté, via les liens que je te
+            transmets.
+          </p>
+        </div>
+      </SectionReveal>
+    </section>
     <section id="destinations" aria-labelledby="heading-destinations">
       <h2 id="heading-destinations" class="sr-only">Nos destinations</h2>
-      {
-        sortedDestinations.map((dest) => (
-          <SectionReveal animation="fade-in">
-            <DestinationBlock
-              imageSrc={dest.data.image}
-              imageAlt={`Paysage de ${dest.data.country}`}
-              country={dest.data.country}
-              description={dest.data.description}
-              overlayColor={dest.data.overlayColor}
-            />
-          </SectionReveal>
-        ))
-      }
+      <div class="grid grid-cols-1 md:grid-cols-2">
+        {
+          sortedDestinations.map((dest) => (
+            <SectionReveal animation="fade-in">
+              <DestinationBlock
+                imageSrc={dest.data.image}
+                imageAlt={`Paysage de ${dest.data.country}`}
+                country={dest.data.country}
+                description={dest.data.description}
+                overlayColor={dest.data.overlayColor}
+              />
+            </SectionReveal>
+          ))
+        }
+      </div>
     </section>
     <section
       id="processus"

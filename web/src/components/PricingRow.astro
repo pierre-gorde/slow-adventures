@@ -2,10 +2,10 @@
 interface Props {
   label: string;
   price: string;
-  description?: string;
+  descriptions?: string[];
 }
 
-const { label, price, description } = Astro.props;
+const { label, price, descriptions } = Astro.props;
 ---
 
 <div
@@ -18,9 +18,11 @@ const { label, price, description } = Astro.props;
   </dt>
   <dd class="font-serif text-2xl text-terracotta font-bold">{price}</dd>
   {
-    description && (
-      <dd class="w-full font-sans text-warm-gray text-sm mt-1">
-        {description}
+    descriptions && descriptions.length > 0 && (
+      <dd class="w-full font-sans text-warm-gray text-sm mt-1 space-y-2">
+        {descriptions.map((text) => (
+          <p>{text}</p>
+        ))}
       </dd>
     )
   }

@@ -1,4 +1,4 @@
-// web/src/lib/analytics.ts — Module GA4 centralisé (FR23-27)
+// web/src/lib/analytics.ts — Module GA4 centralisé
 
 // --- Global type declarations ---
 declare global {
@@ -22,7 +22,7 @@ function safeGtag(...args: unknown[]): void {
   }
 }
 
-// --- Load GA4 dynamically ---
+// --- Load GA4 ---
 function loadGA4(measurementId: string): void {
   if (!measurementId || ga4Loaded) return;
   if (!/^G-[A-Z0-9]+$/.test(measurementId)) {
@@ -30,9 +30,6 @@ function loadGA4(measurementId: string): void {
     return;
   }
   ga4Loaded = true;
-
-  // Grant analytics consent (defaults already set in init)
-  window.gtag('consent', 'update', { analytics_storage: 'granted' });
 
   // Inject gtag.js script
   const script = document.createElement('script');
@@ -115,52 +112,23 @@ function initCTATracking(): void {
   });
 }
 
-// --- UTM auto-extraction ---
-function initUTMTracking(): void {
-  trackUTM();
-}
-
 // --- Auto-initialization ---
 function init(): void {
   const measurementId = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID ?? '';
 
-  // Google Consent Mode v2 — set defaults at page load (before GA4 loading)
+  // Initialize dataLayer + gtag
   window.dataLayer = window.dataLayer || [];
   window.gtag = function gtag(...args: unknown[]) {
     window.dataLayer.push(args);
   };
-  window.gtag('consent', 'default', {
-    analytics_storage: 'denied',
-    ad_storage: 'denied',
-    ad_user_data: 'denied',
-    ad_personalization: 'denied',
-  });
 
-  // Check existing consent in localStorage
-  try {
-    const stored = localStorage.getItem('sa_consent');
-    if (stored) {
-      const consent = JSON.parse(stored);
-      if (consent?.analytics === true) {
-        loadGA4(measurementId);
-      }
-    }
-  } catch {
-    // Corrupted localStorage — ignore silently
-  }
-
-  // Listen for consent event (verify detail per architecture spec)
-  document.addEventListener('sa:consent-accepted', ((e: CustomEvent) => {
-    if (e.detail?.analytics) {
-      loadGA4(measurementId);
-      trackUTM();
-    }
-  }) as EventListener);
+  // Load GA4 immediately
+  loadGA4(measurementId);
 
   // Initialize tracking features
   initScrollTracking();
   initCTATracking();
-  initUTMTracking();
+  trackUTM();
 }
 
 init();

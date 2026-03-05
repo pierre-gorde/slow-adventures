@@ -86,8 +86,8 @@ describe('DestinationBlock.astro', () => {
       expect(component).toContain('widths=');
     });
 
-    it('specifies sizes="100vw"', () => {
-      expect(component).toContain('sizes="100vw"');
+    it('specifies responsive sizes for 2-column grid', () => {
+      expect(component).toContain('sizes="(min-width: 768px) 50vw, 100vw"');
     });
   });
 

@@ -56,12 +56,8 @@ describe('CookieConsent.astro', () => {
     });
   });
 
-  describe('CustomEvent dispatch (AC2)', () => {
-    it('dispatches sa:consent-accepted CustomEvent', () => {
-      expect(component).toContain('sa:consent-accepted');
-    });
-
-    it('CustomEvent includes analytics: true in detail', () => {
+  describe('consent storage (AC2)', () => {
+    it('stores analytics: true on accept', () => {
       expect(component).toContain('analytics: true');
     });
   });

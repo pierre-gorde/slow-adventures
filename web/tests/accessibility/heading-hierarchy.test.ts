@@ -61,8 +61,8 @@ describe('Heading hierarchy & semantic HTML (WCAG 1.3.1, 3.1.1)', () => {
       expect(destinationBlock).toMatch(/<h2[\s>]/);
     });
 
-    it('index.astro has h2 for "Du rêve à la réalité" (Processus)', () => {
-      expect(indexPage).toContain('Du rêve à la réalité');
+    it('index.astro has h2 for "La construction de TON aventure" (Processus)', () => {
+      expect(indexPage).toContain('La construction de TON aventure');
     });
 
     it('index.astro has h2 for "Ils ont vécu SlowAdventures" (Témoignages)', () => {

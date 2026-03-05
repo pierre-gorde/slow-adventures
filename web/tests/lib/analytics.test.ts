@@ -219,60 +219,24 @@ describe('analytics.ts — loadGA4', () => {
     expect(script).not.toBeNull();
   });
 
-  it('calls consent update with analytics_storage granted', () => {
-    __test__.loadGA4('G-TEST123');
-    expect(mockGtag).toHaveBeenCalledWith('consent', 'update', { analytics_storage: 'granted' });
-  });
 });
 
-describe('analytics.ts — Google Consent Mode v2 (source verification)', () => {
-  it('sets consent defaults at init (before GA4 loading)', () => {
+describe('analytics.ts — GA4 loads immediately', () => {
+  it('init code calls loadGA4 directly', () => {
     const source = readFileSync(
       resolve(__dirname, '../../src/lib/analytics.ts'),
       'utf-8'
     );
-    // Consent defaults are set in init(), before loadGA4 is called
-    expect(source).toContain("'consent', 'default'");
-    expect(source).toContain("analytics_storage: 'denied'");
-    expect(source).toContain("ad_storage: 'denied'");
-    expect(source).toContain("ad_user_data: 'denied'");
-    expect(source).toContain("ad_personalization: 'denied'");
-  });
-});
-
-describe('analytics.ts — Consent initialization logic', () => {
-  it('loadGA4 can be triggered after consent (simulating event handler)', () => {
-    expect(__test__.ga4Loaded).toBe(false);
-    __test__.loadGA4('G-TEST123');
-    expect(__test__.ga4Loaded).toBe(true);
-  });
-
-  it('init code checks localStorage for existing consent', () => {
-    const source = readFileSync(
-      resolve(__dirname, '../../src/lib/analytics.ts'),
-      'utf-8'
-    );
-    expect(source).toContain("localStorage.getItem('sa_consent')");
-    expect(source).toContain("consent?.analytics === true");
-  });
-
-  it('init code listens for sa:consent-accepted and checks detail.analytics', () => {
-    const source = readFileSync(
-      resolve(__dirname, '../../src/lib/analytics.ts'),
-      'utf-8'
-    );
-    expect(source).toContain("'sa:consent-accepted'");
-    expect(source).toContain('e.detail?.analytics');
     expect(source).toContain('loadGA4(measurementId)');
   });
 
-  it('consent handler re-attempts UTM tracking after loading GA4', () => {
+  it('does not gate GA4 loading behind consent', () => {
     const source = readFileSync(
       resolve(__dirname, '../../src/lib/analytics.ts'),
       'utf-8'
     );
-    // After loadGA4 in consent handler, trackUTM is called
-    expect(source).toMatch(/loadGA4\(measurementId\);\s*\n\s*trackUTM\(\)/);
+    expect(source).not.toContain("localStorage.getItem('sa_consent')");
+    expect(source).not.toContain("'sa:consent-accepted'");
   });
 });
 

@@ -224,7 +224,7 @@ describe('index.astro', () => {
       const heroIdx = page.indexOf('<HeroSection');
       const elenaIdx = page.indexOf('<ElenaSection');
       const destIdx = page.indexOf('sortedDestinations.map(');
-      const processIdx = page.indexOf('Du rêve à la réalité');
+      const processIdx = page.indexOf('La construction de TON aventure');
       const testimonialsIdx = page.indexOf('Ils ont vécu SlowAdventures');
       const pricingIdx = page.indexOf('Ici, on est transparent');
       const ctaFinalIdx = page.indexOf('id="cta-final"');
@@ -265,8 +265,8 @@ describe('index.astro', () => {
       expect(page).toContain('sa-section-padding');
     });
 
-    it('has h2 title "Du rêve à la réalité"', () => {
-      expect(page).toContain('Du rêve à la réalité');
+    it('has h2 title "La construction de TON aventure"', () => {
+      expect(page).toContain('La construction de TON aventure');
     });
 
     it('uses SectionReveal with stagger animation', () => {
@@ -356,7 +356,6 @@ describe('index.astro', () => {
     it('uses responsive grid for cards', () => {
       expect(page).toContain('grid-cols-1');
       expect(page).toContain('md:grid-cols-2');
-      expect(page).toContain('lg:grid-cols-3');
     });
   });
 
@@ -395,10 +394,10 @@ describe('index.astro', () => {
       expect(page).toContain('pricingRows.map(');
     });
 
-    it('passes label, price, description props', () => {
+    it('passes label, price, descriptions props', () => {
       expect(page).toContain('label={row.label}');
       expect(page).toContain('price={row.price}');
-      expect(page).toContain('description={row.description}');
+      expect(page).toContain('descriptions={row.descriptions}');
     });
 
     it('uses max-w-3xl for pricing layout', () => {

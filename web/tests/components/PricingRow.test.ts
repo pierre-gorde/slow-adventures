@@ -23,8 +23,8 @@ describe('PricingRow.astro', () => {
       expect(component).toContain('price');
     });
 
-    it('defines description as optional prop', () => {
-      expect(component).toMatch(/description\?/);
+    it('defines descriptions as optional prop', () => {
+      expect(component).toMatch(/descriptions\?/);
     });
   });
 
@@ -82,13 +82,13 @@ describe('PricingRow.astro', () => {
     });
   });
 
-  describe('conditional description', () => {
+  describe('conditional descriptions', () => {
     it('uses && guard for conditional rendering', () => {
-      expect(component).toContain('description &&');
+      expect(component).toContain('descriptions &&');
     });
 
-    it('renders description in a <dd> element', () => {
-      expect(component).toMatch(/<dd[\s\S]*?\{description\}/);
+    it('renders descriptions in a <dd> element', () => {
+      expect(component).toMatch(/<dd[\s\S]*?descriptions\.map/);
     });
   });
 
@@ -101,8 +101,8 @@ describe('PricingRow.astro', () => {
       expect(component).toContain('{price}');
     });
 
-    it('renders description text', () => {
-      expect(component).toContain('{description}');
+    it('renders descriptions via map', () => {
+      expect(component).toContain('descriptions.map');
     });
   });
 });

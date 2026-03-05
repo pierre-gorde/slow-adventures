@@ -111,11 +111,6 @@
           'sa_consent',
           JSON.stringify({ analytics: true })
         );
-        document.dispatchEvent(
-          new CustomEvent('sa:consent-accepted', {
-            detail: { analytics: true },
-          })
-        );
         hideBanner();
       } catch (error) {
         console.error('[slow-adventures]', error);

@@ -28,10 +28,12 @@ const { posterSrc, videoSrc, logoSrc, title, subtitle } = Astro.props;
       class="hero__video"
       autoplay
       muted
+      loop
       playsinline
+      preload="auto"
       aria-hidden="true"
-      data-src={videoSrc}
     >
+      <source src={videoSrc} type="video/mp4" />
     </video>
   </div>
   <div class="hero__overlay"></div>
@@ -152,56 +154,24 @@ const { posterSrc, videoSrc, logoSrc, title, subtitle } = Astro.props;
       return;
     }
 
-    const src = video.dataset.src ?? '';
-    if (!src) return;
-
-    const source = document.createElement('source');
-    source.src = src;
-    source.type = 'video/mp4';
-    video.appendChild(source);
-    video.load();
+    // Safari needs an explicit play() call even with autoplay attribute
     video
       .play()
       .then(() => {
         video.classList.add('is-playing');
       })
       .catch(() => {
-        video.classList.remove('is-playing');
+        // Autoplay blocked — poster stays visible
       });
-
-    // Smooth loop: short fade-out near end, quick fade-in on restart
-    const FADE_OUT = 0.8;
-    const FADE_IN = 0.5;
-    let looping = false;
-
-    video.addEventListener('timeupdate', () => {
-      if (
-        !looping &&
-        video.duration &&
-        video.currentTime > video.duration - FADE_OUT
-      ) {
-        looping = true;
-        video.style.transition = `opacity ${FADE_OUT}s ease-out`;
-        video.style.opacity = '0.3';
-      }
-    });
-
-    video.addEventListener('ended', () => {
-      video.currentTime = 0;
-      video.play().catch(() => {});
-      video.style.transition = `opacity ${FADE_IN}s ease-in`;
-      video.style.opacity = '1';
-      looping = false;
-    });
   }
 
   initHero();
 
-  // Resume video when page regains visibility (bfcache restore, tab switch on mobile)
+  // Resume video when page regains visibility (bfcache restore, tab switch)
   document.addEventListener('visibilitychange', function () {
     if (document.visibilityState !== 'visible') return;
     const video = document.querySelector<HTMLVideoElement>('.hero__video');
-    if (!video || !video.paused || !video.querySelector('source')) return;
+    if (!video || !video.paused) return;
     video
       .play()
       .then(() => {

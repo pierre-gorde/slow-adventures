@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'web/**'
+      - '.github/workflows/deploy.yml'
 
 jobs:
   verification-et-mise-en-ligne:
@@ -35,11 +36,9 @@ jobs:
 
       - name: 🏗️ Construire le site
         run: npm run build
-        env:
-          PUBLIC_BREVO_API_KEY: ${{ secrets.PUBLIC_BREVO_API_KEY }}
 
       - name: 🌐 Publier sur Netlify
-        run: npx netlify-cli deploy --prod --dir=dist
+        run: npx netlify-cli deploy --prod
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}

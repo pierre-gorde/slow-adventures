@@ -1,4 +1,5 @@
-// web/src/lib/analytics.ts — Module GA4 centralisé
+// web/src/lib/analytics.ts — Events custom GA4
+// Le script gtag.js est chargé directement dans BaseLayout.astro <head>
 
 // --- Global type declarations ---
 declare global {
@@ -8,37 +9,17 @@ declare global {
   }
 }
 
-// --- Internal state (ES module singleton) ---
-let ga4Loaded = false;
+// --- Internal state ---
 const trackedSections = new Set<string>();
 
 // --- Safe gtag wrapper ---
 function safeGtag(...args: unknown[]): void {
-  if (!ga4Loaded || typeof window.gtag !== 'function') return;
+  if (typeof window.gtag !== 'function') return;
   try {
     window.gtag(...args);
   } catch (error) {
     console.warn('[slow-adventures]', error);
   }
-}
-
-// --- Load GA4 ---
-function loadGA4(measurementId: string): void {
-  if (!measurementId || ga4Loaded) return;
-  if (!/^G-[A-Z0-9]+$/.test(measurementId)) {
-    console.warn('[slow-adventures]', `Invalid GA4 measurement ID: ${measurementId}`);
-    return;
-  }
-  ga4Loaded = true;
-
-  // Inject gtag.js script
-  const script = document.createElement('script');
-  script.async = true;
-  script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
-  document.head.appendChild(script);
-
-  window.gtag('js', new Date());
-  window.gtag('config', measurementId);
 }
 
 // --- Exported tracking functions ---
@@ -53,7 +34,6 @@ export function trackCTAClick(label?: string): void {
 
 export function trackScrollDepth(section: string): void {
   if (trackedSections.has(section)) return;
-  if (!ga4Loaded) return;
   trackedSections.add(section);
   safeGtag('event', 'scroll_depth', { section });
 }
@@ -113,37 +93,6 @@ function initCTATracking(): void {
 }
 
 // --- Auto-initialization ---
-function init(): void {
-  const measurementId = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID ?? '';
-
-  // Initialize dataLayer + gtag
-  window.dataLayer = window.dataLayer || [];
-  window.gtag = function gtag(...args: unknown[]) {
-    window.dataLayer.push(args);
-  };
-
-  // Load GA4 immediately
-  loadGA4(measurementId);
-
-  // Initialize tracking features
-  initScrollTracking();
-  initCTATracking();
-  trackUTM();
-}
-
-init();
-
-// --- Test helpers (stripped from production builds by Vite) ---
-export const __test__ = import.meta.env.DEV
-  ? {
-      get ga4Loaded() {
-        return ga4Loaded;
-      },
-      resetState() {
-        ga4Loaded = false;
-        trackedSections.clear();
-      },
-      loadGA4,
-      safeGtag,
-    }
-  : undefined;
+initScrollTracking();
+initCTATracking();
+trackUTM();

@@ -1,14 +1,26 @@
 ---
 country: 'Brésil intense'
 description: "Des chutes d'Iguazú à l'Amazonie, le Brésil te fait voyager entre mégapoles vibrantes, plages mythiques et une nature aux dimensions vertigineuses."
-image: 'https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=1600&h=900&fit=crop&q=80'
+image: 'https://images.unsplash.com/photo-1614949260630-1d8a27791215?w=1600&h=900&fit=crop&q=80'
 overlayColor: 'sauge'
 order: 17
 featured: false
 region: 'amerique-du-sud'
 title: 'Voyage au Brésil sur mesure — Travel Planning Slow Adventures'
 metaDescription: 'Voyage Brésil sur mesure avec Elena, travel planner Amériques. Iguazú, Amazonie, Rio — un itinéraire intense taillé pour toi.'
-keywords: ['Chutes spectaculaires', 'Amazonie immense', 'Plages mythiques', 'Musique et culture', 'Nature démesurée', 'Villes vibrantes', 'Aventure tropicale', 'Moments suspendus', 'Diversité infinie', 'Évasion totale']
+keywords:
+  [
+    'Chutes spectaculaires',
+    'Amazonie immense',
+    'Plages mythiques',
+    'Musique et culture',
+    'Nature démesurée',
+    'Villes vibrantes',
+    'Aventure tropicale',
+    'Moments suspendus',
+    'Diversité infinie',
+    'Évasion totale',
+  ]
 ---
 
 Le Brésil, c'est un voyage qui se vit avec tous les sens : sentir la brume des chutes d'Iguazú sur ton visage, entendre le rythme de la samba dans les rues de Rio, naviguer sur l'Amazone en écoutant la forêt respirer, et goûter une açaí bowl les pieds dans le sable… Chaque instant éveille la curiosité et émerveille.

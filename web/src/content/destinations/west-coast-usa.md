@@ -12,6 +12,8 @@ gallery:
   - '../../assets/images/destinations/gallery/west-coast/wc-7.webp'
 overlayColor: 'sauge'
 order: 1
+featured: true
+region: 'amerique-du-nord'
 title: 'Road trip West Coast USA sur mesure — Travel Planning Slow Adventures'
 metaDescription: 'Road trip West Coast USA sur mesure avec Elena, travel planner Amériques. Route 1, Big Sur, parcs nationaux — un itinéraire taillé pour ta liberté.'
 keywords: ['Liberté totale', 'Routes infinies', 'Couchers de soleil irréels', 'Sensation de grandeur', 'Aventure sans limite', 'Déconnexion sauvage', 'Vibes californiennes', 'Moments hors du temps', 'Road trip mythiques', 'Frissons devant la nature']

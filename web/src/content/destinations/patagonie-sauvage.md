@@ -11,6 +11,8 @@ gallery:
   - '../../assets/images/destinations/gallery/patagonie/pat-6.webp'
 overlayColor: 'sauge'
 order: 3
+featured: true
+region: 'amerique-du-sud'
 title: 'Road trip en Patagonie sur mesure — Travel Planning Slow Adventures'
 metaDescription: 'Road trip Patagonie sur mesure avec Elena, travel planner Amériques. Torres del Paine, Perito Moreno, El Chaltén — un itinéraire au bout du monde.'
 keywords: ['Glaciers et fjords', 'Montagnes majestueuses', 'Lacs turquoise', 'Steppes infinies', 'Faune sauvage', 'Randonnées spectaculaires', 'Moments suspendus', 'Nature brute', 'Aventure et liberté', 'Évasion totale']

@@ -9,5 +9,11 @@ export default defineConfig({
   site: process.env.SITE_URL || 'https://slowadventures.fr',
   adapter: netlify(),
   integrations: [sitemap(), robotsTxt()],
+  image: {
+    remotePatterns: [
+      { protocol: 'https', hostname: 'images.unsplash.com' },
+      { protocol: 'https', hostname: 'plus.unsplash.com' },
+    ],
+  },
   vite: { plugins: [tailwindcss()] },
 });

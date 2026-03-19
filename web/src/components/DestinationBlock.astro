@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 
 interface Props {
-  imageSrc: ImageMetadata;
+  imageSrc: ImageMetadata | string;
   imageAlt: string;
   country: string;
   description: string;
@@ -20,6 +20,7 @@ const {
   learnMoreHref,
 } = Astro.props;
 
+const isUrl = typeof imageSrc === 'string';
 const overlayClass =
   overlayColor === 'terracotta' ? 'bg-terracotta/55' : 'bg-sauge/55';
 const headingId = `heading-${country.toLowerCase().replace(/\s+/g, '-')}`;
@@ -34,15 +35,25 @@ const headingId = `heading-${country.toLowerCase().replace(/\s+/g, '-')}`;
         'dest-card group relative block min-h-[50vh] overflow-hidden',
       ]}
     >
-      <Image
-        src={imageSrc}
-        alt={imageAlt}
-        widths={[768, 1440, 2880]}
-        sizes="(min-width: 768px) 50vw, 100vw"
-        loading="lazy"
-        decoding="async"
-        class="dest-card__img absolute inset-0 w-full h-full object-cover"
-      />
+      {isUrl ? (
+        <img
+          src={imageSrc as string}
+          alt={imageAlt}
+          loading="lazy"
+          decoding="async"
+          class="dest-card__img absolute inset-0 w-full h-full object-cover"
+        />
+      ) : (
+        <Image
+          src={imageSrc as ImageMetadata}
+          alt={imageAlt}
+          widths={[768, 1440, 2880]}
+          sizes="(min-width: 768px) 50vw, 100vw"
+          loading="lazy"
+          decoding="async"
+          class="dest-card__img absolute inset-0 w-full h-full object-cover"
+        />
+      )}
       <div class:list={['absolute inset-0', overlayClass]} />
       <div class="relative z-10 flex flex-col justify-center items-center h-full min-h-[50vh] text-center px-6">
         <h2
@@ -64,15 +75,25 @@ const headingId = `heading-${country.toLowerCase().replace(/\s+/g, '-')}`;
       aria-labelledby={headingId}
       class="relative min-h-[50vh] overflow-hidden"
     >
-      <Image
-        src={imageSrc}
-        alt={imageAlt}
-        widths={[768, 1440, 2880]}
-        sizes="(min-width: 768px) 50vw, 100vw"
-        loading="lazy"
-        decoding="async"
-        class="absolute inset-0 w-full h-full object-cover"
-      />
+      {isUrl ? (
+        <img
+          src={imageSrc as string}
+          alt={imageAlt}
+          loading="lazy"
+          decoding="async"
+          class="absolute inset-0 w-full h-full object-cover"
+        />
+      ) : (
+        <Image
+          src={imageSrc as ImageMetadata}
+          alt={imageAlt}
+          widths={[768, 1440, 2880]}
+          sizes="(min-width: 768px) 50vw, 100vw"
+          loading="lazy"
+          decoding="async"
+          class="absolute inset-0 w-full h-full object-cover"
+        />
+      )}
       <div class:list={['absolute inset-0', overlayClass]} />
       <div class="relative z-10 flex flex-col justify-center items-center h-full min-h-[50vh] text-center px-6">
         <h2

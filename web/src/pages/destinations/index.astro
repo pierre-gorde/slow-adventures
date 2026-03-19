@@ -1,0 +1,403 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DestinationCard from '../../components/DestinationCard.astro';
+import CTAButton from '../../components/CTAButton.astro';
+import CalendlyModal from '../../components/CalendlyModal.astro';
+import SectionReveal from '../../components/SectionReveal.astro';
+import { regionOrder, regionLabels } from '../../data/regions';
+
+const destinations = await getCollection('destinations');
+const sorted = [...destinations].sort((a, b) => a.data.order - b.data.order);
+
+const grouped = regionOrder
+  .map((r) => ({
+    region: r,
+    label: regionLabels[r],
+    destinations: sorted.filter((d) => d.data.region === r),
+  }))
+  .filter((g) => g.destinations.length > 0);
+
+const total = sorted.length;
+const allSlugs = sorted.map((d) => d.slug);
+
+const collectionLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Toutes les destinations — Slow Adventures',
+  description: `Découvre les ${total} destinations des Amériques proposées par Slow Adventures.`,
+  url: Astro.url.toString(),
+};
+---
+
+<BaseLayout
+  title={`Nos ${total} destinations aux Amériques — Slow Adventures`}
+  description={`Du Canada à la Patagonie en passant par les Caraïbes, explore les ${total} destinations sur mesure de Slow Adventures.`}
+  extraLd={collectionLd}
+>
+  <main id="main">
+    <!-- ═══════════════════════════════════════════════
+         MINI-HERO
+    ═══════════════════════════════════════════════ -->
+    <section class="dest-listing-hero bg-creme-dark" aria-label="En-tête destinations">
+      <div class="max-w-4xl mx-auto text-center px-6">
+        <p class="font-sans text-warm-black/50 text-xs uppercase tracking-[0.25em] mb-4">
+          Slow Adventures
+        </p>
+        <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl text-warm-black leading-tight mb-3">
+          <span id="counter" data-target={total}>0</span> aventures t'attendent
+        </h1>
+        <p class="font-sans text-warm-gray text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-10">
+          Du Canada à la Patagonie, en passant par les Caraïbes — chaque destination est une invitation au voyage sur mesure.
+        </p>
+
+        <!-- Search + Shuffle -->
+        <div class="flex items-center gap-3 max-w-lg mx-auto">
+          <div class="relative flex-1">
+            <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-warm-black/30 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+            </svg>
+            <input
+              type="text"
+              id="dest-page-search"
+              class="w-full pl-12 pr-4 py-3 rounded-full bg-white shadow-sm border border-warm-black/8 font-sans text-base text-warm-black placeholder:text-warm-black/35 outline-none focus:ring-2 focus:ring-terracotta/30 focus:border-terracotta/30"
+              placeholder="Rechercher un pays..."
+              autocomplete="off"
+            />
+          </div>
+          <button
+            type="button"
+            id="shuffle-btn"
+            class="shuffle-btn shrink-0 flex items-center gap-2 px-5 py-3 rounded-full bg-terracotta text-white font-sans text-sm shadow-sm hover:bg-terracotta-dark transition-colors cursor-pointer"
+            data-slugs={JSON.stringify(allSlugs)}
+            aria-label="Destination aléatoire"
+          >
+            <svg class="w-4 h-4 shuffle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5" />
+            </svg>
+            <span class="hidden sm:inline">Choisis pour moi</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         MOBILE: Region filter chips
+    ═══════════════════════════════════════════════ -->
+    <div class="md:hidden bg-creme sticky top-14 z-20 border-b border-warm-black/5">
+      <div class="flex gap-2 px-4 py-3 overflow-x-auto scrollbar-hide" id="region-chips">
+        <button
+          type="button"
+          class="region-chip region-chip--active shrink-0 font-sans text-sm px-4 py-2 rounded-full transition-colors"
+          data-region="all"
+        >
+          Toutes
+        </button>
+        {grouped.map((g) => (
+          <button
+            type="button"
+            class="region-chip shrink-0 font-sans text-sm px-4 py-2 rounded-full transition-colors"
+            data-region={g.region}
+          >
+            {g.label}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+         DESTINATION GRID
+    ═══════════════════════════════════════════════ -->
+    <section class="bg-creme" aria-label="Liste des destinations">
+      <div class="max-w-6xl mx-auto px-4 md:px-8 py-8 md:py-12">
+        <div id="dest-list-container">
+            {grouped.map((group) => (
+              <div class="dest-region-group mb-12" data-region={group.region}>
+                <h2 class="font-serif text-xl md:text-2xl text-warm-black mb-6 pb-2 border-b-2 border-terracotta/15">
+                  {group.label}
+                </h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+                  {group.destinations.map((d) => (
+                    <DestinationCard
+                      imageSrc={d.data.image}
+                      imageAlt={`Paysage de ${d.data.country}`}
+                      country={d.data.country}
+                      description={d.data.description}
+                      href={`/destinations/${d.slug}/`}
+                      featured={d.data.featured}
+                      slug={d.slug}
+                      keywords={d.data.keywords ?? []}
+                      overlayColor={d.data.overlayColor}
+                    />
+                  ))}
+                </div>
+              </div>
+            ))}
+            <p
+              id="dest-page-no-result"
+              class="hidden font-sans text-warm-black/40 text-center py-12"
+            >
+              Aucune destination trouvée
+            </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         CTA SECTION
+    ═══════════════════════════════════════════════ -->
+    <section
+      class="dest-cta-band sa-section-padding text-center"
+      aria-labelledby="dest-listing-cta-heading"
+    >
+      <SectionReveal animation="scale-in">
+        <div class="max-w-2xl mx-auto">
+          <p class="font-sans text-white/70 text-xs uppercase tracking-[0.2em] mb-5">
+            Travel Planning sur mesure
+          </p>
+          <h2
+            id="dest-listing-cta-heading"
+            class="font-serif text-3xl md:text-4xl text-white mb-5"
+          >
+            Une destination te fait rêver ?
+          </h2>
+          <p class="font-sans text-white/85 text-lg mb-10 leading-relaxed">
+            Dis-moi tes envies, tes contraintes, tes rêves — je m'occupe du reste.
+          </p>
+          <CTAButton
+            href={import.meta.env.PUBLIC_CALENDLY_URL}
+            variant="outline"
+            text="Confie-moi ton prochain rêve"
+            subtext="30 min, gratuit, sans engagement"
+          />
+        </div>
+      </SectionReveal>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         BACK LINK
+    ═══════════════════════════════════════════════ -->
+    <div class="text-center py-8 bg-creme">
+      <a
+        href="/"
+        aria-label="Retour à l'accueil"
+        class="inline-flex items-center gap-2 font-sans text-warm-black/60 hover:text-terracotta transition-colors text-sm"
+      >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M19 12H5M5 12l7 7M5 12l7-7"></path>
+        </svg>
+        Retour à l'accueil
+      </a>
+    </div>
+  </main>
+  <CalendlyModal />
+</BaseLayout>
+
+<style>
+  /* Hero */
+  .dest-listing-hero {
+    padding: 8rem 1.5rem 3rem;
+  }
+
+  @media (min-width: 768px) {
+    .dest-listing-hero {
+      padding: 10rem 3rem 4rem;
+    }
+  }
+
+  /* CTA band */
+  .dest-cta-band {
+    background: linear-gradient(
+      135deg,
+      var(--color-terracotta) 0%,
+      var(--color-ambre) 60%,
+      color-mix(in srgb, var(--color-ambre) 70%, var(--color-sauge)) 100%
+    );
+  }
+
+  /* Region chips */
+  .region-chip {
+    background: color-mix(in srgb, var(--color-warm-black) 5%, transparent);
+    color: var(--color-warm-black);
+  }
+
+  .region-chip--active {
+    background: var(--color-terracotta);
+    color: white;
+  }
+
+  /* Shuffle button */
+  .shuffle-btn:active .shuffle-icon {
+    animation: spin-shuffle 0.5s ease;
+  }
+
+  @keyframes spin-shuffle {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  /* Card flash */
+  :global(.dest-mini--flash) {
+    animation: card-flash 1.2s ease;
+  }
+
+  @keyframes card-flash {
+    0% { box-shadow: 0 0 0 0 rgba(192, 96, 62, 0.5); }
+    30% { box-shadow: 0 0 0 4px rgba(192, 96, 62, 0.3); }
+    100% { box-shadow: none; }
+  }
+
+  /* Hide scrollbar on chips */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :global(.dest-mini--flash),
+    .shuffle-btn:active .shuffle-icon {
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from '../../lib/gsap';
+
+  // ── Counter animation ──
+  const counterEl = document.getElementById('counter');
+  if (counterEl) {
+    const target = parseInt(counterEl.dataset.target ?? '0', 10);
+    const obj = { val: 0 };
+    gsap.to(obj, {
+      val: target,
+      duration: 1.6,
+      ease: 'power2.out',
+      delay: 0.3,
+      onUpdate: () => {
+        counterEl.textContent = Math.round(obj.val).toString();
+      },
+    });
+  }
+
+  // ── Stagger animation on cards ──
+  const allCards = document.querySelectorAll<HTMLElement>('.dest-card');
+  if (allCards.length > 0) {
+    gsap.set(allCards, { opacity: 0, y: 30 });
+    gsap.to(allCards, {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+      stagger: 0.04,
+      ease: 'power2.out',
+      delay: 0.5,
+    });
+  }
+
+  // ── Search + Filter logic ──
+  const searchInput = document.getElementById('dest-page-search') as HTMLInputElement | null;
+  const cards = document.querySelectorAll<HTMLElement>('.dest-card');
+  const regionGroups = document.querySelectorAll<HTMLElement>('.dest-region-group');
+  const noResult = document.getElementById('dest-page-no-result');
+  const regionChips = document.querySelectorAll<HTMLElement>('.region-chip');
+
+  const normalize = (s: string) =>
+    s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
+
+  let activeRegion = 'all';
+
+  function applyFilters() {
+    const query = normalize(searchInput?.value ?? '');
+    let visibleCount = 0;
+    const toShow: HTMLElement[] = [];
+    const toHide: HTMLElement[] = [];
+
+    cards.forEach((card) => {
+      const country = normalize(card.dataset.country ?? '');
+      const cardRegion = card.closest<HTMLElement>('.dest-region-group')?.dataset.region ?? '';
+      const matchesSearch = !query || country.includes(query);
+      const matchesRegion = activeRegion === 'all' || cardRegion === activeRegion;
+      const show = matchesSearch && matchesRegion;
+      if (show) {
+        toShow.push(card);
+        visibleCount++;
+      } else {
+        toHide.push(card);
+      }
+    });
+
+    // Animate out hidden cards, animate in visible ones
+    gsap.to(toHide, {
+      opacity: 0,
+      scale: 0.95,
+      duration: 0.2,
+      stagger: 0.02,
+      onComplete: () => {
+        toHide.forEach((c) => (c.style.display = 'none'));
+        // Then show matching
+        toShow.forEach((c) => (c.style.display = ''));
+        gsap.fromTo(
+          toShow,
+          { opacity: 0, y: 15 },
+          { opacity: 1, y: 0, duration: 0.35, stagger: 0.03, ease: 'power2.out' },
+        );
+      },
+    });
+
+    // Show/hide region headers
+    regionGroups.forEach((group) => {
+      const hasVisible = Array.from(
+        group.querySelectorAll<HTMLElement>('.dest-card'),
+      ).some((c) => {
+        const country = normalize(c.dataset.country ?? '');
+        const matchesSearch = !query || country.includes(query);
+        const matchesRegion = activeRegion === 'all' || group.dataset.region === activeRegion;
+        return matchesSearch && matchesRegion;
+      });
+      group.style.display = hasVisible ? '' : 'none';
+    });
+
+    if (noResult) {
+      noResult.classList.toggle('hidden', visibleCount > 0);
+    }
+  }
+
+  // Search input
+  searchInput?.addEventListener('input', applyFilters);
+
+  // Region chips (mobile)
+  regionChips.forEach((chip) => {
+    chip.addEventListener('click', () => {
+      regionChips.forEach((c) => c.classList.remove('region-chip--active'));
+      chip.classList.add('region-chip--active');
+      activeRegion = chip.dataset.region ?? 'all';
+      applyFilters();
+    });
+  });
+
+  // ── Shuffle button ──
+  const shuffleBtn = document.getElementById('shuffle-btn');
+  if (shuffleBtn) {
+    const slugs: string[] = JSON.parse(shuffleBtn.dataset.slugs ?? '[]');
+    const icon = shuffleBtn.querySelector('.shuffle-icon');
+
+    shuffleBtn.addEventListener('click', () => {
+      if (slugs.length === 0) return;
+
+      // Spin icon
+      if (icon) {
+        gsap.fromTo(icon, { rotation: 0 }, { rotation: 720, duration: 0.6, ease: 'power2.inOut' });
+      }
+
+      // Short delay for the animation feel, then redirect
+      setTimeout(() => {
+        const randomSlug = slugs[Math.floor(Math.random() * slugs.length)];
+        window.location.href = `/destinations/${randomSlug}/`;
+      }, 650);
+    });
+  }
+</script>

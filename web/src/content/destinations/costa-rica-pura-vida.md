@@ -11,6 +11,8 @@ gallery:
   - '../../assets/images/destinations/gallery/costa-rica/cr-6.webp'
 overlayColor: 'terracotta'
 order: 4
+featured: true
+region: 'amerique-centrale'
 title: 'Voyage au Costa Rica sur mesure — Travel Planning Slow Adventures'
 metaDescription: 'Voyage Costa Rica sur mesure avec Elena, travel planner Amériques. Volcans, forêts tropicales, plages — un itinéraire pura vida taillé pour toi.'
 keywords: ['Volcans et forêts tropicales', 'Plages sauvages', 'Faune exotique', 'Cascades et rivières', 'Nature luxuriante', 'Aventure sensorielle', 'Rencontres authentiques', 'Moments suspendus', 'Découverte des animaux', 'Évasion totale']

@@ -11,6 +11,8 @@ gallery:
   - '../../assets/images/destinations/gallery/perou/pe-6.webp'
 overlayColor: 'terracotta'
 order: 2
+featured: true
+region: 'amerique-du-sud'
 title: 'Voyage au Pérou sur mesure — Travel Planning Slow Adventures'
 metaDescription: 'Voyage Pérou sur mesure avec Elena, travel planner Amériques. Machu Picchu, Cusco, lac Titicaca — un itinéraire inca taillé pour toi.'
 keywords: ['Mystères des Andes', 'Cités perdues', 'Rencontres authentiques', 'Lacs et sommets majestueux', 'Routes anciennes des Incas', 'Nature spectaculaire', 'Culture vibrante', 'Moments suspendus', 'Aventure hors du temps', 'Évasion totale']

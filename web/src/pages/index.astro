@@ -24,9 +24,9 @@ import { testimonials } from '../data/testimonials';
 import { pricingRows } from '../data/pricing';
 
 const destinations = await getCollection('destinations');
-const sortedDestinations = [...destinations].sort(
-  (a, b) => a.data.order - b.data.order
-);
+const sortedDestinations = [...destinations]
+  .filter((d) => d.data.featured)
+  .sort((a, b) => a.data.order - b.data.order);
 
 const optimizedPoster = await getImage({
   src: heroPoster,
@@ -87,6 +87,14 @@ const faqItems: FaqItem[] = [
     acceptedAnswer: {
       '@type': 'Answer',
       text: "Slow Adventures n'est pas une agence de voyage. Elena est une travel planner indépendante : elle ne vend pas de packages prédéfinis, ne touche pas de commissions sur les hébergements, et ne travaille pas avec des catalogues. Chaque voyage est construit à partir de zéro selon tes envies, ton budget et ton rythme. L'accompagnement inclut un suivi par WhatsApp pendant tout le séjour.",
+    },
+  },
+  {
+    '@type': 'Question',
+    name: "Pourquoi le Honduras et Haïti n'apparaissent-ils pas dans les destinations ?",
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: "Le Honduras et Haïti présentent des risques sécuritaires importants pour les voyageurs indépendants. Pour ces destinations, Elena recommande de passer par une agence locale spécialisée qui assure un encadrement renforcé sur place. La sécurité de ses voyageurs est la priorité absolue de Slow Adventures.",
     },
   },
   {
@@ -162,6 +170,17 @@ const faqLd = {
             </SectionReveal>
           ))
         }
+      </div>
+      <div class="bg-creme-dark text-center py-8">
+        <a
+          href="/destinations/"
+          class="inline-flex items-center gap-2 font-sans text-warm-black/60 hover:text-terracotta transition-colors text-sm group"
+        >
+          Voir toutes les destinations
+          <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
       </div>
     </section>
     <section

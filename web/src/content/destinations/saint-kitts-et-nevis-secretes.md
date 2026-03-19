@@ -1,6 +1,7 @@
 ---
+draft: true
 country: 'Saint-Kitts-et-Nevis secrètes'
-description: "Des forteresses coloniales au volcan Liamuiga, Saint-Kitts-et-Nevis te fait voyager entre histoire fascinante, nature volcanique et plages secrètes encore préservées."
+description: 'Des forteresses coloniales au volcan Liamuiga, Saint-Kitts-et-Nevis te fait voyager entre histoire fascinante, nature volcanique et plages secrètes encore préservées.'
 image: 'https://images.unsplash.com/photo-1633107782766-bd7c8507ce41?w=1600&h=900&fit=crop&q=80'
 overlayColor: 'terracotta'
 order: 32
@@ -8,7 +9,19 @@ featured: false
 region: 'caraibes'
 title: 'Voyage à Saint-Kitts-et-Nevis sur mesure — Travel Planning Slow Adventures'
 metaDescription: 'Voyage Saint-Kitts-et-Nevis sur mesure avec Elena, travel planner. Volcan, forteresse, plages — un itinéraire secret taillé pour toi.'
-keywords: ['Forteresse coloniale', 'Volcan Liamuiga', 'Plages secrètes', 'Histoire fascinante', 'Nature volcanique', 'Îles préservées', 'Aventure intimiste', 'Moments suspendus', 'Caraïbes authentiques', 'Évasion totale']
+keywords:
+  [
+    'Forteresse coloniale',
+    'Volcan Liamuiga',
+    'Plages secrètes',
+    'Histoire fascinante',
+    'Nature volcanique',
+    'Îles préservées',
+    'Aventure intimiste',
+    'Moments suspendus',
+    'Caraïbes authentiques',
+    'Évasion totale',
+  ]
 ---
 
 Saint-Kitts-et-Nevis, c'est un voyage qui se vit avec tous les sens : contempler la forteresse de Brimstone Hill dominant l'océan, sentir le souffle du vent au sommet du volcan Liamuiga, marcher sur des plages de sable noir où personne ne passe, et goûter du rhum vieilli sur l'île depuis des générations… Chaque instant éveille la curiosité et émerveille.

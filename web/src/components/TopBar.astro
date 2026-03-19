@@ -2,7 +2,14 @@
 import { getCollection } from 'astro:content';
 import { regionOrder, regionLabels } from '../data/regions';
 
-const destinations = await getCollection('destinations');
+interface Props {
+  dark?: boolean;
+}
+
+const { dark = false } = Astro.props;
+
+const allDestinations = await getCollection('destinations');
+const destinations = allDestinations.filter((d) => !d.data.draft);
 const sorted = [...destinations].sort((a, b) => a.data.order - b.data.order);
 
 const grouped = regionOrder
@@ -19,7 +26,7 @@ const isHome = currentPath === '/' || currentPath === '';
 
 <nav
   id="topbar"
-  class="topbar fixed top-0 left-0 right-0 z-40 transition-all duration-300"
+  class={`topbar fixed top-0 left-0 right-0 z-40 transition-all duration-300${dark ? ' topbar--dark' : ''}`}
   aria-label="Navigation principale"
 >
   <div class="topbar__inner flex items-center justify-between px-5 py-3 md:px-8">
@@ -285,6 +292,33 @@ const isHome = currentPath === '/' || currentPath === '';
   .topbar__dropdown-link--active {
     background: color-mix(in srgb, var(--color-terracotta) 6%, transparent);
     color: var(--color-terracotta);
+  }
+
+  /* ── Dark variant (pages without dark hero) ── */
+  .topbar--dark .topbar__logo {
+    color: var(--color-warm-black);
+  }
+
+  .topbar--dark .topbar__link {
+    color: color-mix(in srgb, var(--color-warm-black) 60%, transparent);
+  }
+
+  .topbar--dark .topbar__link:hover,
+  .topbar--dark .topbar__link--active {
+    color: var(--color-terracotta);
+  }
+
+  .topbar--dark .topbar__cta {
+    color: var(--color-terracotta);
+    border-color: var(--color-terracotta);
+  }
+
+  .topbar--dark .topbar__cta:hover {
+    background: color-mix(in srgb, var(--color-terracotta) 8%, transparent);
+  }
+
+  .topbar--dark .topbar__bar {
+    background: var(--color-warm-black);
   }
 
   /* ── Scrolled state ── */

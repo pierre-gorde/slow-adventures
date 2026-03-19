@@ -1,6 +1,7 @@
 ---
+draft: true
 country: 'Suriname mystérieux'
-description: "Des forêts impénétrables aux villages marrons et amérindiens, le Suriname te fait voyager dans un monde à part, entre cultures métissées et nature sauvage intacte."
+description: 'Des forêts impénétrables aux villages marrons et amérindiens, le Suriname te fait voyager dans un monde à part, entre cultures métissées et nature sauvage intacte.'
 image: 'https://images.unsplash.com/photo-1444466194851-3b0c9f181f3d?w=1600&h=900&fit=crop&q=80'
 overlayColor: 'sauge'
 order: 15
@@ -8,7 +9,19 @@ featured: false
 region: 'amerique-du-sud'
 title: 'Voyage au Suriname sur mesure — Travel Planning Slow Adventures'
 metaDescription: 'Voyage Suriname sur mesure avec Elena, travel planner Amériques. Forêt amazonienne, cultures métissées — un itinéraire mystérieux taillé pour toi.'
-keywords: ['Forêt amazonienne', 'Cultures métissées', 'Villages marrons', 'Nature intacte', 'Rivières sauvages', 'Aventure pionnière', 'Biodiversité rare', 'Moments suspendus', 'Exploration unique', 'Évasion totale']
+keywords:
+  [
+    'Forêt amazonienne',
+    'Cultures métissées',
+    'Villages marrons',
+    'Nature intacte',
+    'Rivières sauvages',
+    'Aventure pionnière',
+    'Biodiversité rare',
+    'Moments suspendus',
+    'Exploration unique',
+    'Évasion totale',
+  ]
 ---
 
 Le Suriname, c'est un voyage qui se vit avec tous les sens : naviguer sur des rivières couleur café au milieu de la jungle, entendre les tambours des communautés marronnes, goûter une cuisine qui mélange Inde, Indonésie, Afrique et Amazonie, et ressentir le mystère d'une forêt qui couvre 90% du pays… Chaque instant éveille la curiosité et émerveille.

@@ -1,6 +1,7 @@
 ---
+draft: true
 country: 'Trinité-et-Tobago métissée'
-description: "Du carnaval explosif aux récifs de Tobago, Trinité-et-Tobago te fait voyager entre cultures métissées, forêts tropicales et une biodiversité caribéenne exceptionnelle."
+description: 'Du carnaval explosif aux récifs de Tobago, Trinité-et-Tobago te fait voyager entre cultures métissées, forêts tropicales et une biodiversité caribéenne exceptionnelle.'
 image: 'https://images.unsplash.com/photo-1594005039392-53c38b667641?w=1600&h=900&fit=crop&q=80'
 overlayColor: 'sauge'
 order: 27
@@ -8,7 +9,19 @@ featured: false
 region: 'caraibes'
 title: 'Voyage à Trinité-et-Tobago sur mesure — Travel Planning Slow Adventures'
 metaDescription: 'Voyage Trinité-et-Tobago sur mesure avec Elena, travel planner Amériques. Carnaval, récifs, nature — un itinéraire métissé taillé pour toi.'
-keywords: ['Carnaval explosif', 'Récifs coralliens', 'Cultures métissées', 'Forêt tropicale', 'Oiseaux rares', 'Steelpan et soca', 'Aventure nature', 'Moments suspendus', 'Biodiversité unique', 'Évasion totale']
+keywords:
+  [
+    'Carnaval explosif',
+    'Récifs coralliens',
+    'Cultures métissées',
+    'Forêt tropicale',
+    'Oiseaux rares',
+    'Steelpan et soca',
+    'Aventure nature',
+    'Moments suspendus',
+    'Biodiversité unique',
+    'Évasion totale',
+  ]
 ---
 
 Trinité-et-Tobago, c'est un voyage qui se vit avec tous les sens : entendre les steelpans résonner dans les rues pendant le carnaval, plonger au-dessus des récifs de Tobago, observer des colibris dans la forêt tropicale, et goûter un doubles épicé au bord de la route… Chaque instant éveille la curiosité et émerveille.

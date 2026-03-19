@@ -1,0 +1,45 @@
+---
+import SectionReveal from './SectionReveal.astro';
+import { faqItems } from '../data/faq';
+---
+
+<section
+  id="faq"
+  aria-labelledby="heading-faq"
+  class="bg-creme sa-section-padding"
+>
+  <div class="max-w-3xl mx-auto">
+    <SectionReveal animation="fade-up">
+      <h2
+        id="heading-faq"
+        class="font-serif text-3xl md:text-4xl text-warm-black text-center mb-12"
+      >
+        FAQ
+      </h2>
+      <div class="divide-y divide-warm-black/10">
+        {
+          faqItems.map((item) => (
+            <details class="group py-1">
+              <summary class="flex justify-between items-center py-4 cursor-pointer list-none font-serif text-lg text-warm-black hover:text-terracotta transition-colors">
+                <span>{item.name}</span>
+                <span class="ml-4 shrink-0 text-terracotta transition-transform duration-200 group-open:rotate-180">
+                  ▾
+                </span>
+              </summary>
+              <p class="pb-5 text-warm-black/70 leading-relaxed">
+                {item.acceptedAnswer.text}
+              </p>
+            </details>
+          ))
+        }
+      </div>
+    </SectionReveal>
+  </div>
+</section>
+
+<style>
+  summary::marker,
+  summary::-webkit-details-marker {
+    display: none;
+  }
+</style>

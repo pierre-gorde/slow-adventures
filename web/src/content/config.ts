@@ -4,6 +4,7 @@ const destinations = defineCollection({
   type: 'content',
   schema: ({ image }) =>
     z.object({
+      draft: z.boolean().default(false),
       country: z.string(),
       description: z.string(),
       image: z.union([image(), z.string()]),

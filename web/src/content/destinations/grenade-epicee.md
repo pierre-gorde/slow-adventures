@@ -1,4 +1,5 @@
 ---
+draft: true
 country: 'Grenade épicée'
 description: "De la noix de muscade aux plages volcaniques, la Grenade te fait voyager sur l'île aux épices, entre plantations parfumées, cascades cachées et eaux turquoise."
 image: 'https://images.unsplash.com/photo-1734362754408-7e3a01211f2f?w=1600&h=900&fit=crop&q=80'
@@ -7,8 +8,20 @@ order: 31
 featured: false
 region: 'caraibes'
 title: 'Voyage à la Grenade sur mesure — Travel Planning Slow Adventures'
-metaDescription: "Voyage Grenade sur mesure avec Elena, travel planner Amériques. Épices, plages volcaniques, cascades — un itinéraire épicé taillé pour toi."
-keywords: ['Île aux épices', 'Noix de muscade', 'Plages volcaniques', 'Cascades cachées', 'Plantations parfumées', 'Plongée sous-marine', 'Aventure sensorielle', 'Moments suspendus', 'Authenticité créole', 'Évasion totale']
+metaDescription: 'Voyage Grenade sur mesure avec Elena, travel planner Amériques. Épices, plages volcaniques, cascades — un itinéraire épicé taillé pour toi.'
+keywords:
+  [
+    'Île aux épices',
+    'Noix de muscade',
+    'Plages volcaniques',
+    'Cascades cachées',
+    'Plantations parfumées',
+    'Plongée sous-marine',
+    'Aventure sensorielle',
+    'Moments suspendus',
+    'Authenticité créole',
+    'Évasion totale',
+  ]
 ---
 
 La Grenade, c'est un voyage qui se vit avec tous les sens : respirer l'arôme de la noix de muscade dans une plantation, goûter du chocolat cultivé sur l'île, plonger au-dessus du parc de sculptures sous-marines, et sentir le sable volcanique sous tes pieds sur des plages désertes… Chaque instant éveille la curiosité et émerveille.

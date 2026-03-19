@@ -12,6 +12,7 @@ interface Props {
   ogImage?: string;
   heroPreloadImage?: string;
   extraLd?: JsonLdSchema;
+  darkNav?: boolean;
 }
 
 const {
@@ -20,6 +21,7 @@ const {
   ogImage = '/og-image.jpg',
   heroPreloadImage,
   extraLd,
+  darkNav = false,
 } = Astro.props;
 const siteUrl = Astro.site ?? new URL('https://slowadventures.fr');
 const ogImageUrl = new URL(ogImage, siteUrl);
@@ -183,7 +185,7 @@ const jsonLd = {
     >
       Aller au contenu
     </a>
-    <TopBar />
+    <TopBar dark={darkNav} />
     <slot />
     <Footer />
     <CookieConsent />

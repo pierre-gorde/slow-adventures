@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import { Image, getImage } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 import { marked } from 'marked';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CTAButton from '../../components/CTAButton.astro';
@@ -11,7 +12,8 @@ import ScrollHint from '../../components/ScrollHint.astro';
 import DestinationGallery from '../../components/DestinationGallery.astro';
 
 export async function getStaticPaths() {
-  const destinations = await getCollection('destinations');
+  const allDestinations = await getCollection('destinations');
+  const destinations = allDestinations.filter((d) => !d.data.draft);
   return destinations.map((entry) => ({
     params: { slug: entry.slug },
     props: { entry },
@@ -28,7 +30,7 @@ const isUrlImage = typeof entry.data.image === 'string';
 const optimizedHero = isUrlImage
   ? null
   : await getImage({ src: entry.data.image, width: 1440, format: 'webp' });
-const heroSrc = isUrlImage ? (entry.data.image as string) : optimizedHero!.src;
+const heroSrc = isUrlImage ? (entry.data.image as string) : optimizedHero?.src ?? '';
 
 const gallery = entry.data.gallery ?? [];
 const hasGallery = gallery.length > 0;
@@ -116,7 +118,7 @@ const touristDestinationLd = {
         />
       ) : (
         <Image
-          src={entry.data.image}
+          src={entry.data.image as ImageMetadata}
           alt={`Paysage de ${entry.data.country}`}
           widths={[768, 1440, 2880]}
           sizes="100vw"

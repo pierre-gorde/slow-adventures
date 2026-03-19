@@ -1,4 +1,5 @@
 ---
+draft: true
 country: 'Antigua-et-Barbuda azur'
 description: "Avec 365 plages et des eaux d'un bleu profond, Antigua-et-Barbuda te fait voyager entre histoire navale, récifs coralliens et une tranquillité insulaire rare."
 image: 'https://images.unsplash.com/photo-1582300857444-5ddd87c86797?w=1600&h=900&fit=crop&q=80'
@@ -8,7 +9,19 @@ featured: false
 region: 'caraibes'
 title: 'Voyage à Antigua-et-Barbuda sur mesure — Travel Planning Slow Adventures'
 metaDescription: 'Voyage Antigua-et-Barbuda sur mesure avec Elena, travel planner Amériques. 365 plages, voile, récifs — un itinéraire azur taillé pour toi.'
-keywords: ['365 plages', 'Voile et navigation', 'Récifs coralliens', 'Histoire navale', 'Eaux azur', 'Tranquillité insulaire', 'Aventure marine', 'Moments suspendus', 'Paradis caraïbe', 'Évasion totale']
+keywords:
+  [
+    '365 plages',
+    'Voile et navigation',
+    'Récifs coralliens',
+    'Histoire navale',
+    'Eaux azur',
+    'Tranquillité insulaire',
+    'Aventure marine',
+    'Moments suspendus',
+    'Paradis caraïbe',
+    'Évasion totale',
+  ]
 ---
 
 Antigua-et-Barbuda, c'est un voyage qui se vit avec tous les sens : sentir le vent alizé gonfler les voiles au large, plonger dans des eaux d'un bleu qui n'existe nulle part ailleurs, marcher sur des plages de sable blanc où tu es seul au monde, et contempler le port historique de Nelson's Dockyard au coucher du soleil… Chaque instant éveille la curiosité et émerveille.

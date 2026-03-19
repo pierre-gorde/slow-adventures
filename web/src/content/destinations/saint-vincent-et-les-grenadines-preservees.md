@@ -1,6 +1,7 @@
 ---
+draft: true
 country: 'Saint-Vincent-et-les-Grenadines préservées'
-description: "Des îles des Grenadines aux volcans de Saint-Vincent, cet archipel te fait voyager entre navigation de rêve, plages désertes et une authenticité caribéenne intacte."
+description: 'Des îles des Grenadines aux volcans de Saint-Vincent, cet archipel te fait voyager entre navigation de rêve, plages désertes et une authenticité caribéenne intacte.'
 image: 'https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?w=1600&h=900&fit=crop&q=80'
 overlayColor: 'sauge'
 order: 33
@@ -8,7 +9,19 @@ featured: false
 region: 'caraibes'
 title: 'Voyage à Saint-Vincent-et-les-Grenadines sur mesure — Travel Planning Slow Adventures'
 metaDescription: 'Voyage Saint-Vincent-et-les-Grenadines sur mesure avec Elena, travel planner. Grenadines, voile, volcans — un itinéraire préservé.'
-keywords: ['Grenadines de rêve', 'Navigation et voile', 'Plages désertes', 'Volcans actifs', 'Récifs coralliens', 'Authenticité intacte', 'Aventure nautique', 'Moments suspendus', 'Îles préservées', 'Évasion totale']
+keywords:
+  [
+    'Grenadines de rêve',
+    'Navigation et voile',
+    'Plages désertes',
+    'Volcans actifs',
+    'Récifs coralliens',
+    'Authenticité intacte',
+    'Aventure nautique',
+    'Moments suspendus',
+    'Îles préservées',
+    'Évasion totale',
+  ]
 ---
 
 Saint-Vincent-et-les-Grenadines, c'est un voyage qui se vit avec tous les sens : naviguer entre des îles où le temps s'arrête, plonger dans des eaux cristallines au-dessus de récifs vivants, sentir le vent dans les voiles sous un ciel immense, et marcher sur des plages de sable blanc où tu es seul au monde… Chaque instant éveille la curiosité et émerveille.

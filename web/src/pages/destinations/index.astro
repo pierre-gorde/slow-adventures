@@ -7,7 +7,8 @@ import CalendlyModal from '../../components/CalendlyModal.astro';
 import SectionReveal from '../../components/SectionReveal.astro';
 import { regionOrder, regionLabels } from '../../data/regions';
 
-const destinations = await getCollection('destinations');
+const allDestinations = await getCollection('destinations');
+const destinations = allDestinations.filter((d) => !d.data.draft);
 const sorted = [...destinations].sort((a, b) => a.data.order - b.data.order);
 
 const grouped = regionOrder
@@ -34,6 +35,7 @@ const collectionLd = {
   title={`Nos ${total} destinations aux Amériques — Slow Adventures`}
   description={`Du Canada à la Patagonie en passant par les Caraïbes, explore les ${total} destinations sur mesure de Slow Adventures.`}
   extraLd={collectionLd}
+  darkNav
 >
   <main id="main">
     <!-- ═══════════════════════════════════════════════

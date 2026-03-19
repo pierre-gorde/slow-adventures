@@ -1,4 +1,5 @@
 ---
+draft: true
 country: 'Dominique nature'
 description: "Des sources chaudes aux cascades en pleine jungle, la Dominique te fait voyager au cœur de l'île nature des Caraïbes, entre volcans, forêts primaires et fonds marins préservés."
 image: 'https://images.unsplash.com/photo-1575221165108-1c5d11ee1c51?w=1600&h=900&fit=crop&q=80'
@@ -7,8 +8,20 @@ order: 30
 featured: false
 region: 'caraibes'
 title: 'Voyage à la Dominique sur mesure — Travel Planning Slow Adventures'
-metaDescription: "Voyage Dominique sur mesure avec Elena, travel planner Amériques. Volcans, cascades, plongée — un itinéraire nature taillé pour toi."
-keywords: ['Île nature', 'Volcans et sources chaudes', 'Cascades spectaculaires', 'Forêt primaire', 'Plongée volcanique', 'Boiling Lake', 'Aventure sauvage', 'Moments suspendus', 'Écotourisme', 'Évasion totale']
+metaDescription: 'Voyage Dominique sur mesure avec Elena, travel planner Amériques. Volcans, cascades, plongée — un itinéraire nature taillé pour toi.'
+keywords:
+  [
+    'Île nature',
+    'Volcans et sources chaudes',
+    'Cascades spectaculaires',
+    'Forêt primaire',
+    'Plongée volcanique',
+    'Boiling Lake',
+    'Aventure sauvage',
+    'Moments suspendus',
+    'Écotourisme',
+    'Évasion totale',
+  ]
 ---
 
 La Dominique, c'est un voyage qui se vit avec tous les sens : sentir la vapeur sulfureuse du Boiling Lake, entendre les cascades rugir dans la jungle, plonger au-dessus de cheminées volcaniques sous-marines, et respirer l'air pur d'une forêt primaire qui couvre l'île entière… Chaque instant éveille la curiosité et émerveille.

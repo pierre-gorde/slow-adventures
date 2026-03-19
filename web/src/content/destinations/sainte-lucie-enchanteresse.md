@@ -1,6 +1,7 @@
 ---
+draft: true
 country: 'Sainte-Lucie enchanteresse'
-description: "Des Pitons majestueux aux sources sulfureuses, Sainte-Lucie te fait voyager entre volcans, forêts tropicales et plages de rêve au cœur des Petites Antilles."
+description: 'Des Pitons majestueux aux sources sulfureuses, Sainte-Lucie te fait voyager entre volcans, forêts tropicales et plages de rêve au cœur des Petites Antilles.'
 image: 'https://images.unsplash.com/photo-1724219214421-66ac6b5c5a06?w=1600&h=900&fit=crop&q=80'
 overlayColor: 'terracotta'
 order: 28
@@ -8,7 +9,19 @@ featured: false
 region: 'caraibes'
 title: 'Voyage à Sainte-Lucie sur mesure — Travel Planning Slow Adventures'
 metaDescription: 'Voyage Sainte-Lucie sur mesure avec Elena, travel planner Amériques. Pitons, volcans, plages — un itinéraire enchanteur taillé pour toi.'
-keywords: ['Pitons majestueux', 'Sources sulfureuses', 'Forêt tropicale', 'Plages de rêve', 'Volcans actifs', 'Cacao et épices', 'Aventure volcanique', 'Moments suspendus', 'Beauté naturelle', 'Évasion totale']
+keywords:
+  [
+    'Pitons majestueux',
+    'Sources sulfureuses',
+    'Forêt tropicale',
+    'Plages de rêve',
+    'Volcans actifs',
+    'Cacao et épices',
+    'Aventure volcanique',
+    'Moments suspendus',
+    'Beauté naturelle',
+    'Évasion totale',
+  ]
 ---
 
 Sainte-Lucie, c'est un voyage qui se vit avec tous les sens : admirer les Pitons surgir de la mer comme deux géants de pierre, sentir le soufre des sources chaudes volcaniques, plonger dans des eaux turquoise au pied des montagnes, et goûter du cacao fraîchement récolté dans une plantation… Chaque instant éveille la curiosité et émerveille.

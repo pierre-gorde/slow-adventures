@@ -160,6 +160,10 @@ describe('index.astro', () => {
     it('generates descriptive imageAlt from country name', () => {
       expect(page).toContain('Paysage de ${dest.data.country}');
     });
+
+    it('passes learnMoreHref linking to individual destination page', () => {
+      expect(page).toContain('learnMoreHref={`/destinations/${dest.slug}/`}');
+    });
   });
 
   describe('section IDs for accessibility and anchoring', () => {
@@ -546,6 +550,119 @@ describe('index.astro', () => {
       expect(ctaFinalIdx).toBeGreaterThan(-1);
       expect(emailIdx).toBeGreaterThan(ctaFinalIdx);
       expect(mainCloseIdx).toBeGreaterThan(emailIdx);
+    });
+  });
+
+  describe('FAQ section visible', () => {
+    it('has section with id="faq"', () => {
+      expect(page).toContain('id="faq"');
+    });
+
+    it('has aria-labelledby="heading-faq" and matching heading id', () => {
+      expect(page).toContain('aria-labelledby="heading-faq"');
+      expect(page).toContain('id="heading-faq"');
+    });
+
+    it('has h2 "Questions fréquentes"', () => {
+      expect(page).toContain('Questions fréquentes');
+    });
+
+    it('uses <details>/<summary> for accordion', () => {
+      expect(page).toMatch(/<details/);
+      expect(page).toMatch(/<summary/);
+    });
+
+    it('iterates faqItems with .map()', () => {
+      expect(page).toContain('faqItems.map(');
+    });
+
+    it('renders question name and answer text from faqItems', () => {
+      expect(page).toContain('item.name');
+      expect(page).toContain('item.acceptedAnswer.text');
+    });
+
+    it('chevron uses group-open:rotate-180 for open/close indicator', () => {
+      expect(page).toContain('group-open:rotate-180');
+    });
+
+    it('FAQ section is placed after EmailCapture and inside main', () => {
+      const emailIdx = page.indexOf('<EmailCapture');
+      const faqIdx = page.indexOf('id="faq"');
+      const mainCloseIdx = page.indexOf('</main>');
+      expect(faqIdx).toBeGreaterThan(emailIdx);
+      expect(faqIdx).toBeLessThan(mainCloseIdx);
+    });
+  });
+
+  describe('FAQ Schema JSON-LD', () => {
+    it('declares a faqLd variable in the frontmatter', () => {
+      expect(page).toContain('faqLd');
+    });
+
+    it('faqLd has @type FAQPage', () => {
+      expect(page).toContain("'@type': 'FAQPage'");
+    });
+
+    it('faqLd has a mainEntity array', () => {
+      expect(page).toContain('mainEntity:');
+    });
+
+    it('faqLd contains at least 5 Question entries', () => {
+      const matches = page.match(/'@type': 'Question'/g);
+      expect(matches).not.toBeNull();
+      expect((matches ?? []).length).toBeGreaterThanOrEqual(5);
+    });
+
+    it('every Question has a name field', () => {
+      const questionBlocks = page.split("'@type': 'Question'").slice(1);
+      expect(questionBlocks.length).toBeGreaterThanOrEqual(5);
+      questionBlocks.forEach((block) => {
+        expect(block).toMatch(/name:/);
+      });
+    });
+
+    it('every Question has an acceptedAnswer with text', () => {
+      const answerMatches = page.match(/'@type': 'Answer'/g);
+      expect(answerMatches).not.toBeNull();
+      expect((answerMatches ?? []).length).toBeGreaterThanOrEqual(5);
+      expect(page).toContain('text:');
+    });
+
+    it('passes extraLd={faqLd} to BaseLayout', () => {
+      expect(page).toContain('extraLd={faqLd}');
+    });
+
+    it('faqLd strings use double quotes (no typographic apostrophes in single-quoted strings)', () => {
+      // Vérifie qu'aucune string single-quotée ne contient une apostrophe typographique
+      const singleQuotedWithTypoApostrophe = /(?<![=:,\s])'[^']*\u2019[^']*'/;
+      expect(page).not.toMatch(singleQuotedWithTypoApostrophe);
+    });
+
+    it('covers the Discovery Call topic', () => {
+      expect(page).toContain('Discovery Call');
+    });
+
+    it('covers pricing information', () => {
+      expect(page).toContain('300');
+    });
+
+    it('uses "travel planner" wording, not "agence"', () => {
+      // Dans le contexte FAQ, le wording doit être travel planner
+      const faqItemsStart = page.indexOf('faqItems');
+      const faqItemsContent = page.slice(faqItemsStart, faqItemsStart + 5000);
+      expect(faqItemsContent).toContain('travel planner');
+    });
+
+    it('faqLd declares @context https://schema.org', () => {
+      expect(page).toContain("'@context': 'https://schema.org'");
+    });
+
+    it('every Question has a properly structured acceptedAnswer with @type Answer', () => {
+      const questionBlocks = page.split("'@type': 'Question'").slice(1);
+      expect(questionBlocks.length).toBeGreaterThanOrEqual(5);
+      questionBlocks.forEach((block) => {
+        expect(block).toContain("'@type': 'Answer'");
+      });
     });
   });
 });

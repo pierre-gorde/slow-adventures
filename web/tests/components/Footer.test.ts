@@ -62,12 +62,12 @@ describe('Footer.astro', () => {
   });
 
   describe('design tokens', () => {
-    it('uses bg-creme-dark background', () => {
-      expect(footer).toContain('bg-creme-dark');
+    it('uses bg-warm-black background', () => {
+      expect(footer).toContain('bg-warm-black');
     });
 
-    it('uses text-warm-gray for text color', () => {
-      expect(footer).toContain('text-warm-gray');
+    it('uses text-white/60 for text color', () => {
+      expect(footer).toContain('text-white/60');
     });
 
     it('uses text-sm for font size', () => {

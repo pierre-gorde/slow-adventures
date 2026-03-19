@@ -49,16 +49,48 @@ const { id, imageSrc, imageAlt, title, description, ctaHref } = Astro.props;
           >
             {title}
           </h2>
-          <p class="font-sans text-warm-black/90 text-lg leading-relaxed mb-8">
+          <p class="font-sans text-warm-black/90 text-lg leading-relaxed mb-6">
             {description}
           </p>
-          <CTAButton
-            href={ctaHref}
-            variant="solid"
-            size="small"
-            subtext=""
-            desktopOnly={true}
-          />
+          <div>
+            <CTAButton
+              href={ctaHref}
+              variant="solid"
+              size="small"
+              subtext=""
+              desktopOnly={true}
+            />
+          </div>
+          <a
+            href="https://www.instagram.com/slow_adventures_/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram Elena — @slow_adventures_"
+            class="inline-flex items-center gap-2 text-terracotta hover:text-terracotta/70 transition-colors font-sans text-sm mt-5"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.75"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <circle cx="12" cy="12" r="4"></circle>
+              <circle
+                cx="17.5"
+                cy="6.5"
+                r="0.5"
+                fill="currentColor"
+                stroke="none"></circle>
+            </svg>
+            @slow_adventures_
+          </a>
         </div>
       </SectionReveal>
     </div>
@@ -155,7 +187,7 @@ const { id, imageSrc, imageAlt, title, description, ctaHref } = Astro.props;
 </style>
 
 <script>
-  import { gsap, ScrollTrigger } from '../lib/gsap';
+  import { gsap } from '../lib/gsap';
 
   function initElena() {
     const wrapper = document.querySelector('.elena__photo-wrapper');

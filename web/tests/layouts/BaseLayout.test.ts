@@ -24,6 +24,10 @@ describe('BaseLayout.astro', () => {
     it('defines optional heroPreloadImage prop', () => {
       expect(layout).toMatch(/heroPreloadImage\?:\s*string/);
     });
+
+    it('defines optional extraLd prop', () => {
+      expect(layout).toMatch(/extraLd\?:/);
+    });
   });
 
   describe('head meta tags', () => {
@@ -124,9 +128,9 @@ describe('BaseLayout.astro', () => {
       expect(layout).toContain('application/ld+json');
     });
 
-    it('includes LocalBusiness and TravelAgency types', () => {
-      expect(layout).toContain('LocalBusiness');
-      expect(layout).toContain('TravelAgency');
+    it('includes ProfessionalService and TravelAgency types', () => {
+      expect(layout).toContain("'ProfessionalService'");
+      expect(layout).toContain("'TravelAgency'");
     });
   });
 
@@ -212,6 +216,27 @@ describe('BaseLayout.astro', () => {
   describe('noscript fallbacks', () => {
     it('ensures [data-reveal] elements are visible without JavaScript', () => {
       expect(layout).toContain('opacity: 1 !important');
+    });
+  });
+
+  describe('extraLd JSON-LD injection', () => {
+    it('renders conditional second JSON-LD script when extraLd is provided', () => {
+      expect(layout).toContain('extraLd &&');
+    });
+
+    it('uses JSON.stringify to serialize extraLd', () => {
+      expect(layout).toContain('JSON.stringify(extraLd)');
+    });
+
+    it('sanitizes output against </script> injection', () => {
+      expect(layout).toContain('JSON.stringify(extraLd).replace(');
+    });
+
+    it('injects extraLd after the main JSON-LD script', () => {
+      const mainLdIdx = layout.indexOf('JSON.stringify(jsonLd)');
+      const extraLdIdx = layout.indexOf('JSON.stringify(extraLd)');
+      expect(mainLdIdx).toBeGreaterThan(-1);
+      expect(extraLdIdx).toBeGreaterThan(mainLdIdx);
     });
   });
 

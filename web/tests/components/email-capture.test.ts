@@ -149,8 +149,8 @@ describe('EmailCapture.astro', () => {
       expect(component).toContain('ton@email.com');
     });
 
-    it('uses bg-warm-black for dark background', () => {
-      expect(component).toContain('bg-warm-black');
+    it('uses bg-creme for light background', () => {
+      expect(component).toContain('bg-creme');
     });
 
     it('has data-reveal attribute for SectionReveal animation', () => {

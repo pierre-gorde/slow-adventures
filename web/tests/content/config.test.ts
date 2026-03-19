@@ -47,6 +47,18 @@ describe('content/config.ts', () => {
     it('defines order as z.number()', () => {
       expect(config).toContain('order: z.number()');
     });
+
+    it('defines optional title as z.string().optional()', () => {
+      expect(config).toContain('title: z.string().optional()');
+    });
+
+    it('defines optional metaDescription as z.string().max(160).optional()', () => {
+      expect(config).toContain('metaDescription: z.string().max(160).optional()');
+    });
+
+    it('defines optional keywords as z.array(z.string()).optional()', () => {
+      expect(config).toContain('keywords: z.array(z.string()).optional()');
+    });
   });
 
   describe('schema uses Astro image helper', () => {
@@ -96,8 +108,30 @@ describe('destinations content files', () => {
       });
 
       it('has markdown body content', () => {
-        const body = content.split('---')[2]?.trim() ?? '';
+        const body = content.replace(/^---[\s\S]*?\n---\n?/, '').trim();
         expect(body.length).toBeGreaterThan(10);
+      });
+
+      it('has frontmatter with title field for SEO', () => {
+        expect(content).toMatch(/^---[\s\S]*title:[\s\S]*---/);
+      });
+
+      it('has frontmatter with metaDescription field (max 160 chars)', () => {
+        expect(content).toMatch(/^---[\s\S]*metaDescription:[\s\S]*---/);
+        const metaMatch = content.match(/metaDescription:\s*['"]([^'"]+)['"]/);
+        if (metaMatch) {
+          expect(metaMatch[1].length).toBeLessThanOrEqual(160);
+        }
+      });
+
+      it('has frontmatter with keywords array', () => {
+        expect(content).toMatch(/^---[\s\S]*keywords:[\s\S]*---/);
+      });
+
+      it('has at least 400 words in body content', () => {
+        const body = content.replace(/^---[\s\S]*?\n---\n?/, '').trim();
+        const wordCount = body.split(/\s+/).filter((w) => w.length > 0).length;
+        expect(wordCount).toBeGreaterThanOrEqual(400);
       });
     });
   });

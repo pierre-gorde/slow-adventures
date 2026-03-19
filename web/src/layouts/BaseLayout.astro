@@ -3,11 +3,14 @@ import '../styles/global.css';
 import Footer from '../components/Footer.astro';
 import CookieConsent from '../components/CookieConsent.astro';
 
+type JsonLdSchema = { '@context': string; '@type': string; [key: string]: unknown };
+
 interface Props {
   title: string;
   description: string;
   ogImage?: string;
   heroPreloadImage?: string;
+  extraLd?: JsonLdSchema;
 }
 
 const {
@@ -15,25 +18,87 @@ const {
   description,
   ogImage = '/og-image.jpg',
   heroPreloadImage,
+  extraLd,
 } = Astro.props;
 const siteUrl = Astro.site ?? new URL('https://slowadventures.fr');
 const ogImageUrl = new URL(ogImage, siteUrl);
 const canonicalUrl = Astro.url;
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': ['LocalBusiness', 'TravelAgency'],
+  '@type': ['ProfessionalService', 'TravelAgency'],
   name: 'Slow Adventures',
-  description: 'Création de voyages immersifs aux Amériques',
+  description:
+    "Slow Adventures est un service de travel planning créé par Elena. Elena conçoit des voyages immersifs et sur mesure dans tous les pays des Amériques — du Canada à la Patagonie en passant par les Caraïbes et l'Amérique centrale.",
   url: siteUrl.toString(),
   image: new URL('/og-image.jpg', siteUrl).toString(),
+  logo: new URL('/favicon.svg', siteUrl).toString(),
   founder: {
     '@type': 'Person',
     name: 'Elena',
+    jobTitle: 'Travel Planner — Amériques',
   },
   areaServed: {
     '@type': 'Place',
     name: 'Amériques',
+    description: 'Tous les pays des Amériques : Amérique du Nord, Amérique centrale, Caraïbes, Amérique du Sud',
   },
+  knowsAbout: [
+    'travel planning sur mesure',
+    'voyages immersifs',
+    'itinéraires personnalisés',
+    'Amériques du Nord et du Sud',
+    'Amérique centrale',
+    'Caraïbes',
+    'road trip',
+    'tourisme slow travel',
+  ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Services Slow Adventures',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        name: 'Discovery Call',
+        description:
+          "30 minutes pour se connaître, cerner vos rêves et poser les bases d'un voyage personnalisé.",
+        price: '0',
+        priceCurrency: 'EUR',
+        url: siteUrl.toString(),
+      },
+      {
+        '@type': 'Offer',
+        name: "Création d'itinéraire sur mesure",
+        description:
+          "Itinéraire personnalisé complet pour un voyage immersif aux Amériques, ajusté jusqu'à 100% de satisfaction.",
+        priceSpecification: {
+          '@type': 'PriceSpecification',
+          minPrice: '300',
+          priceCurrency: 'EUR',
+        },
+        url: siteUrl.toString(),
+      },
+    ],
+  },
+  review: [
+    {
+      '@type': 'Review',
+      author: { '@type': 'Person', name: 'Antoine et Sophie' },
+      reviewBody:
+        "Elena a tout organisé au-delà de nos attentes. Chaque jour était une nouvelle découverte, et le fait qu'elle nous assiste par WhatsApp pendant tout le séjour est une vraie valeur ajoutée !",
+      name: 'Costa Rica, 12 jours',
+    },
+    {
+      '@type': 'Review',
+      author: { '@type': 'Person', name: 'Richard' },
+      reviewBody:
+        "6 jours à NYC incroyables ! Entre la vue depuis l'Empire State Building, la balade dans Central Park et le coucher de soleil sur le Brooklyn Bridge, chaque moment était magique.",
+      name: 'New-York, 6 jours',
+    },
+  ],
+  sameAs: [
+    'https://www.instagram.com/slow_adventures_/',
+    'https://www.linkedin.com/company/slow-adventures',
+  ],
 };
 ---
 
@@ -87,7 +152,8 @@ const jsonLd = {
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageUrl.toString()} />
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd).replace(/<\/script>/gi, '<\\/script>')} />
+    {extraLd && <script is:inline type="application/ld+json" set:html={JSON.stringify(extraLd).replace(/<\/script>/gi, '<\\/script>')} />}
     <!-- Microsoft Clarity -->
     <script is:inline>
       (function(c,l,a,r,i,t,y){

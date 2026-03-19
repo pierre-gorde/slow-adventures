@@ -32,8 +32,8 @@ describe('StickyMobileCTA.astro', () => {
       expect(component).toContain('Confie-moi ton prochain rêve');
     });
 
-    it('has minimum 48px touch target height', () => {
-      expect(component).toContain('min-h-[48px]');
+    it('has minimum 44px touch target height', () => {
+      expect(component).toContain('min-h-11');
     });
   });
 

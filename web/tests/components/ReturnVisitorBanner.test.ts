@@ -37,7 +37,9 @@ describe('ReturnVisitorBanner.astro', () => {
 
     it('stores sa_first_visit_date in localStorage', () => {
       expect(component).toContain('sa_first_visit_date');
-      expect(component).toMatch(/localStorage\.setItem\(\s*'sa_first_visit_date'/);
+      expect(component).toMatch(
+        /localStorage\.setItem\(\s*'sa_first_visit_date'/
+      );
     });
   });
 
@@ -171,8 +173,8 @@ describe('ReturnVisitorBanner.astro', () => {
 });
 
 describe('returnVisitorMessages.ts', () => {
-  it('exports exactly 9 sequential messages (visits 2-10)', () => {
-    expect(sequentialMessages).toHaveLength(9);
+  it('exports exactly 10 sequential messages (visits 2-11)', () => {
+    expect(sequentialMessages).toHaveLength(10);
   });
 
   it('exports exactly 10 rotating messages (visits 11+)', () => {

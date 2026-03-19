@@ -9,6 +9,9 @@ const destinations = defineCollection({
       image: image(),
       overlayColor: z.enum(['terracotta', 'sauge']),
       order: z.number(),
+      title: z.string().optional(),
+      metaDescription: z.string().max(160).optional(),
+      keywords: z.array(z.string()).optional(),
     }),
 });
 

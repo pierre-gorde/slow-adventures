@@ -46,8 +46,8 @@ describe('DestinationBlock.astro', () => {
       expect(component).toContain("import { Image } from 'astro:assets'");
     });
 
-    it('imports CTAButton component', () => {
-      expect(component).toContain('CTAButton');
+    it('imports Image from astro:assets only (no CTAButton — card is the link)', () => {
+      expect(component).not.toContain('CTAButton');
     });
   });
 
@@ -138,9 +138,16 @@ describe('DestinationBlock.astro', () => {
   });
 
   describe('conditional learn more link', () => {
-    it('conditionally renders CTAButton with ghost variant', () => {
+    it('rend la card entière comme un <a> quand learnMoreHref est fourni', () => {
       expect(component).toContain('learnMoreHref');
-      expect(component).toContain('variant="ghost"');
+      expect(component).toContain('<a');
+      expect(component).toContain('href={learnMoreHref}');
+    });
+
+    it('applique un effet zoom hover sur l image via CSS', () => {
+      expect(component).toContain('dest-card__img');
+      expect(component).toContain('dest-card:hover');
+      expect(component).toContain('scale(');
     });
   });
 });

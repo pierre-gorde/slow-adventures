@@ -58,8 +58,8 @@ describe('build output validation', () => {
 
     it('renders JSON-LD Schema.org with correct types', () => {
       expect(html).toContain('application/ld+json');
-      expect(html).toContain('LocalBusiness');
       expect(html).toContain('TravelAgency');
+      expect(html).toContain('ProfessionalService');
       expect(html).toContain('https://slowadventures.fr/');
     });
 
@@ -78,6 +78,26 @@ describe('build output validation', () => {
 
     it('renders main element', () => {
       expect(html).toContain('<main id="main">');
+    });
+
+    it('renders FAQPage JSON-LD schema', () => {
+      expect(html).toContain('"@type":"FAQPage"');
+      expect(html).toContain('"@type":"Question"');
+      expect(html).toContain('"@type":"Answer"');
+    });
+
+    it('FAQPage contains at least 5 Question entries in rendered HTML', () => {
+      const matches = html.match(/"@type":"Question"/g);
+      expect(matches).not.toBeNull();
+      expect((matches ?? []).length).toBeGreaterThanOrEqual(5);
+    });
+
+    it('all JSON-LD scripts contain valid parseable JSON', () => {
+      const jsonLdBlocks = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];
+      expect(jsonLdBlocks.length).toBeGreaterThanOrEqual(2);
+      jsonLdBlocks.forEach(([, content]) => {
+        expect(() => JSON.parse(content)).not.toThrow();
+      });
     });
   });
 

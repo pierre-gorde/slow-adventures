@@ -8,9 +8,9 @@ const component = readFileSync(
 );
 
 describe('ElenaSection.astro', () => {
-  describe('component is static (0 JS)', () => {
-    it('does NOT contain a <script> tag', () => {
-      expect(component).not.toMatch(/<script[\s>]/);
+  describe('component uses GSAP animations', () => {
+    it('contains a <script> tag for GSAP entrance animation', () => {
+      expect(component).toMatch(/<script[\s>]/);
     });
   });
 
@@ -51,23 +51,23 @@ describe('ElenaSection.astro', () => {
     });
   });
 
-  describe('dark overlay background', () => {
-    it('uses bg-warm-black for dark background', () => {
-      expect(component).toContain('bg-warm-black');
+  describe('section background', () => {
+    it('uses bg-creme for light background', () => {
+      expect(component).toContain('bg-creme');
     });
   });
 
   describe('photo styling', () => {
-    it('uses rounded-full for circular photo', () => {
-      expect(component).toContain('rounded-full');
+    it('uses elena__photo class for photo styling', () => {
+      expect(component).toContain('elena__photo');
     });
 
-    it('has white border on photo', () => {
-      expect(component).toContain('border-bleu');
+    it('has animated frame element', () => {
+      expect(component).toContain('elena__frame');
     });
 
-    it('has border-4 width', () => {
-      expect(component).toContain('border-4');
+    it('uses border-radius via CSS (not Tailwind border utilities)', () => {
+      expect(component).toContain('border-radius: 1rem');
     });
   });
 
@@ -126,15 +126,16 @@ describe('ElenaSection.astro', () => {
     });
 
     it('specifies responsive sizes', () => {
-      expect(component).toContain('(min-width: 1024px) 400px, 250px');
+      expect(component).toContain('(min-width: 1024px) 40vw, 250px');
     });
   });
 
   describe('responsive design', () => {
     it('has responsive image sizing across all breakpoints', () => {
-      expect(component).toContain('w-[250px]');
-      expect(component).toContain('md:w-[350px]');
-      expect(component).toContain('lg:w-[400px]');
+      // Responsive sizing handled via CSS in <style> block
+      expect(component).toContain('width: 250px');
+      expect(component).toContain('width: 350px');
+      expect(component).toContain('min-width: 1024px');
     });
 
     it('switches to horizontal layout on desktop', () => {

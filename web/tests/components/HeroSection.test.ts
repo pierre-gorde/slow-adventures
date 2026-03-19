@@ -114,8 +114,8 @@ describe('HeroSection.astro', () => {
       expect(component).toMatch(/<video[\s\S]*?aria-hidden="true"/);
     });
 
-    it('stores video source in data-src', () => {
-      expect(component).toContain('data-src={videoSrc}');
+    it('stores video source in <source> element', () => {
+      expect(component).toContain('src={videoSrc}');
     });
 
     it('uses object-fit: cover with center for zoom-center effect', () => {
@@ -178,8 +178,9 @@ describe('HeroSection.astro', () => {
       expect(component).toContain('transition: opacity 1s ease-in-out');
     });
 
-    it('creates source element dynamically with video/mp4 type', () => {
-      expect(component).toContain("source.type = 'video/mp4'");
+    it('creates source element with video/mp4 type', () => {
+      // Source is declared statically in HTML with type="video/mp4"
+      expect(component).toContain('type="video/mp4"');
     });
   });
 

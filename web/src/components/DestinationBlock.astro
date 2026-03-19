@@ -1,7 +1,6 @@
 ---
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
-import CTAButton from './CTAButton.astro';
 
 interface Props {
   imageSrc: ImageMetadata;
@@ -26,41 +25,82 @@ const overlayClass =
 const headingId = `heading-${country.toLowerCase().replace(/\s+/g, '-')}`;
 ---
 
-<section
-  aria-labelledby={headingId}
-  class="relative min-h-[50vh] overflow-hidden"
->
-  <Image
-    src={imageSrc}
-    alt={imageAlt}
-    widths={[768, 1440, 2880]}
-    sizes="(min-width: 768px) 50vw, 100vw"
-    loading="lazy"
-    decoding="async"
-    class="absolute inset-0 w-full h-full object-cover"
-  />
-  <div class:list={['absolute inset-0', overlayClass]}></div>
-  <div
-    class="relative z-10 flex flex-col justify-center items-center h-full min-h-[50vh] text-center px-6"
-  >
-    <h2
-      id={headingId}
-      class="font-serif text-4xl md:text-5xl lg:text-6xl text-white mb-4"
-    >
-      {country}
-    </h2>
-    <p
+{
+  learnMoreHref ? (
+    <a
+      href={learnMoreHref}
+      aria-labelledby={headingId}
       class:list={[
-        'font-sans text-white/90 text-lg md:text-xl max-w-2xl leading-relaxed',
-        learnMoreHref && 'mb-6',
+        'dest-card group relative block min-h-[50vh] overflow-hidden',
       ]}
     >
-      {description}
-    </p>
-    {
-      learnMoreHref && (
-        <CTAButton href={learnMoreHref} variant="ghost" text="En savoir plus" />
-      )
+      <Image
+        src={imageSrc}
+        alt={imageAlt}
+        widths={[768, 1440, 2880]}
+        sizes="(min-width: 768px) 50vw, 100vw"
+        loading="lazy"
+        decoding="async"
+        class="dest-card__img absolute inset-0 w-full h-full object-cover"
+      />
+      <div class:list={['absolute inset-0', overlayClass]} />
+      <div class="relative z-10 flex flex-col justify-center items-center h-full min-h-[50vh] text-center px-6">
+        <h2
+          id={headingId}
+          class="font-serif text-4xl md:text-5xl lg:text-6xl text-white mb-4"
+        >
+          {country}
+        </h2>
+        <p class="font-sans text-white/90 text-lg md:text-xl max-w-2xl leading-relaxed">
+          {description}
+        </p>
+        <span class="dest-card__cta mt-6 inline-block border border-white/70 text-white/90 text-sm px-6 py-2 rounded-sm transition-all duration-300 group-hover:bg-white group-hover:text-warm-black group-hover:border-white">
+          En savoir plus
+        </span>
+      </div>
+    </a>
+  ) : (
+    <section
+      aria-labelledby={headingId}
+      class="relative min-h-[50vh] overflow-hidden"
+    >
+      <Image
+        src={imageSrc}
+        alt={imageAlt}
+        widths={[768, 1440, 2880]}
+        sizes="(min-width: 768px) 50vw, 100vw"
+        loading="lazy"
+        decoding="async"
+        class="absolute inset-0 w-full h-full object-cover"
+      />
+      <div class:list={['absolute inset-0', overlayClass]} />
+      <div class="relative z-10 flex flex-col justify-center items-center h-full min-h-[50vh] text-center px-6">
+        <h2
+          id={headingId}
+          class="font-serif text-4xl md:text-5xl lg:text-6xl text-white mb-4"
+        >
+          {country}
+        </h2>
+        <p class="font-sans text-white/90 text-lg md:text-xl max-w-2xl leading-relaxed">
+          {description}
+        </p>
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .dest-card__img {
+    transition: transform 0.6s ease;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .dest-card__img {
+      transition: none;
     }
-  </div>
-</section>
+  }
+
+  .dest-card:hover .dest-card__img {
+    transform: scale(1.06);
+  }
+</style>

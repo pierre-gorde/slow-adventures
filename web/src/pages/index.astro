@@ -33,12 +33,84 @@ const optimizedPoster = await getImage({
   width: 1440,
   format: 'webp',
 });
+
+type FaqItem = {
+  '@type': 'Question';
+  name: string;
+  acceptedAnswer: { '@type': 'Answer'; text: string };
+};
+
+const faqItems: FaqItem[] = [
+  {
+    '@type': 'Question',
+    name: "Qu'est-ce que Slow Adventures ?",
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: "Slow Adventures est un service de travel planning indépendant créé par Elena. Elena conçoit des voyages immersifs et sur mesure dans tous les pays des Amériques — du Canada à la Patagonie en passant par les Caraïbes et l'Amérique centrale. Ce n'est pas une agence de voyage : c'est un accompagnement personnalisé, de la première conversation jusqu'au retour.",
+    },
+  },
+  {
+    '@type': 'Question',
+    name: 'Quelles destinations proposez-vous ?',
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: "Slow Adventures est spécialisé dans tous les pays des Amériques : Costa Rica, Pérou, Patagonie (Argentine et Chili), West Coast USA, Mexique, Colombie, Équateur, Bolivie, Canada, et bien d'autres. Si la destination est sur le continent américain, Elena peut construire ton itinéraire.",
+    },
+  },
+  {
+    '@type': 'Question',
+    name: "Combien coûte la création d'un itinéraire sur mesure ?",
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: "La création d'un itinéraire sur mesure commence à partir de 300 €. Un acompte de 100 € permet de lancer la création (déduit du prix final). Le tarif exact dépend de la durée et de la complexité du voyage — il est défini et annoncé lors du Discovery Call gratuit.",
+    },
+  },
+  {
+    '@type': 'Question',
+    name: 'Comment fonctionne le Discovery Call ?',
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: "Le Discovery Call est un appel gratuit de 30 minutes avec Elena. C'est l'occasion de se connaître, de cerner tes rêves de voyage, ce qui te fait vibrer, et de poser les bases d'un itinéraire qui te ressemble vraiment. Aucun engagement, aucune obligation.",
+    },
+  },
+  {
+    '@type': 'Question',
+    name: 'En combien de temps mon itinéraire est-il prêt ?',
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: "Après le Discovery Call et la confirmation de l'acompte, l'itinéraire est généralement livré sous 1 à 2 semaines. Des ajustements sont ensuite proposés pour qu'il corresponde à 100 % à tes attentes avant la version finale.",
+    },
+  },
+  {
+    '@type': 'Question',
+    name: 'Quelle est la différence entre Slow Adventures et une agence de voyage ?',
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: "Slow Adventures n'est pas une agence de voyage. Elena est une travel planner indépendante : elle ne vend pas de packages prédéfinis, ne touche pas de commissions sur les hébergements, et ne travaille pas avec des catalogues. Chaque voyage est construit à partir de zéro selon tes envies, ton budget et ton rythme. L'accompagnement inclut un suivi par WhatsApp pendant tout le séjour.",
+    },
+  },
+  {
+    '@type': 'Question',
+    name: 'Slow Adventures propose-t-il uniquement les Amériques ?',
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: 'Oui, Slow Adventures est exclusivement spécialisé dans les Amériques. Cette spécialisation permet à Elena de connaître ces destinations en profondeur : les meilleures adresses, les périodes idéales, les erreurs à éviter, et les expériences hors des sentiers battus que les guides classiques ne mentionnent pas.',
+    },
+  },
+];
+
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems,
+};
 ---
 
 <BaseLayout
   title="Slow Adventures — Voyages immersifs et sur mesure exclusivement aux Amériques"
   description="Création de voyages immersifs et sur mesure exclusivement aux Amériques. Discovery call gratuit de 30 minutes."
   heroPreloadImage={optimizedPoster.src}
+  extraLd={faqLd}
 >
   <header>
     <HeroSection
@@ -56,7 +128,7 @@ const optimizedPoster = await getImage({
       imageSrc={elenaPhoto}
       imageAlt="Elena, créatrice de voyages immersifs aux Amériques"
       title="Hello, Hola, Olà"
-      description="Moi c'est Elena. Après des mois à parcourir l'Amérique latine à sac à dos et plusieurs voyages en Amérique du Nord, j'ai créé SlowAdventures pour te proposer des voyages authentiques, fluides et 100% sur mesure. Mon approche&nbsp;? Écouter tes rêves, transformer tes envies en itinéraires uniques, et t'ouvrir les portes d'expériences mémorables. Si tu veux un voyage qui te ressemble vraiment, qui te connecte à l'âme des lieux et qui te laisse des souvenirs gravés pour toujours… tu es au bon endroit."
+      description="Moi c'est Elena. Après des mois à parcourir l'Amérique latine à sac à dos et plusieurs voyages en Amérique du Nord, j'ai créé SlowAdventures pour te proposer des voyages authentiques, fluides et 100% sur mesure. Mon approche ? Écouter tes rêves, transformer tes envies en itinéraires uniques, et t'ouvrir les portes d'expériences mémorables. Si tu veux un voyage qui te ressemble vraiment, qui te connecte à l'âme des lieux et qui te laisse des souvenirs gravés pour toujours… tu es au bon endroit."
       ctaHref={import.meta.env.PUBLIC_CALENDLY_URL}
     />
     <section
@@ -85,6 +157,7 @@ const optimizedPoster = await getImage({
                 country={dest.data.country}
                 description={dest.data.description}
                 overlayColor={dest.data.overlayColor}
+                learnMoreHref={`/destinations/${dest.slug}/`}
               />
             </SectionReveal>
           ))
@@ -220,6 +293,39 @@ const optimizedPoster = await getImage({
     <SectionReveal animation="fade-in">
       <EmailCapture />
     </SectionReveal>
+    <section
+      id="faq"
+      aria-labelledby="heading-faq"
+      class="bg-creme sa-section-padding"
+    >
+      <div class="max-w-3xl mx-auto">
+        <SectionReveal animation="fade-up">
+          <h2
+            id="heading-faq"
+            class="font-serif text-3xl md:text-4xl text-warm-black text-center mb-12"
+          >
+            Questions fréquentes
+          </h2>
+          <div class="divide-y divide-warm-black/10">
+            {
+              faqItems.map((item) => (
+                <details class="group py-1">
+                  <summary class="flex justify-between items-center py-4 cursor-pointer list-none font-serif text-lg text-warm-black hover:text-terracotta transition-colors">
+                    <span>{item.name}</span>
+                    <span class="ml-4 shrink-0 text-terracotta transition-transform duration-200 group-open:rotate-180">
+                      ▾
+                    </span>
+                  </summary>
+                  <p class="pb-5 text-warm-black/70 leading-relaxed">
+                    {item.acceptedAnswer.text}
+                  </p>
+                </details>
+              ))
+            }
+          </div>
+        </SectionReveal>
+      </div>
+    </section>
   </main>
   <CalendlyModal />
   <StickyMobileCTA />

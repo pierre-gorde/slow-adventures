@@ -6,7 +6,7 @@
 <aside
   id="sticky-mobile-cta"
   role="complementary"
-  aria-label="Réserver une discovery call"
+  aria-label="Confie-moi ton prochain rêve"
   class="fixed bottom-0 left-0 right-0 z-50 lg:hidden"
   style="opacity: 0; pointer-events: none; transform: translateY(100%);"
 >
@@ -99,8 +99,9 @@
 </style>
 
 <script>
-  const stickyEl = document.getElementById('sticky-mobile-cta');
-  if (stickyEl) {
+  const maybeStickyEl = document.getElementById('sticky-mobile-cta');
+  if (maybeStickyEl) {
+    const stickyEl = maybeStickyEl;
     let heroVisible = true;
     let ctaFinalVisible = false;
     let modalOpen = false;

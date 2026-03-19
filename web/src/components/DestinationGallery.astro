@@ -116,14 +116,14 @@ const allSrcs = allOptimized.map((o) => o.src);
     aria-live="polite"
   ></div>
 
-  <!-- Previous (hidden on mobile — swipe instead) -->
+  <!-- Previous -->
   <button
     type="button"
     id="lightbox-prev"
-    class="hidden md:block absolute left-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors p-3 z-10 cursor-pointer"
+    class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors p-2 md:p-3 z-10 cursor-pointer"
     aria-label="Photo précédente"
   >
-    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <svg class="w-7 h-7 md:w-9 md:h-9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M15 18l-6-6 6-6" />
     </svg>
   </button>
@@ -142,14 +142,14 @@ const allSrcs = allOptimized.map((o) => o.src);
     />
   </div>
 
-  <!-- Next (hidden on mobile — swipe instead) -->
+  <!-- Next -->
   <button
     type="button"
     id="lightbox-next"
-    class="hidden md:block absolute right-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors p-3 z-10 cursor-pointer"
+    class="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors p-2 md:p-3 z-10 cursor-pointer"
     aria-label="Photo suivante"
   >
-    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <svg class="w-7 h-7 md:w-9 md:h-9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M9 18l6-6-6-6" />
     </svg>
   </button>

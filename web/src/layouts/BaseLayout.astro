@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Footer from '../components/Footer.astro';
 import CookieConsent from '../components/CookieConsent.astro';
+import TopBar from '../components/TopBar.astro';
 
 type JsonLdSchema = { '@context': string; '@type': string; [key: string]: unknown };
 
@@ -178,6 +179,7 @@ const jsonLd = {
     >
       Aller au contenu
     </a>
+    <TopBar />
     <slot />
     <Footer />
     <CookieConsent />

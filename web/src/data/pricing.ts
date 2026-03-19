@@ -6,7 +6,7 @@ export interface PricingData {
 
 export const pricingRows: PricingData[] = [
   {
-    label: 'Discovery Call',
+    label: 'Appel d\u00e9couverte',
     price: 'Gratuit',
     descriptions: [
       '30 min pour se conna\u00eetre, cerner tes r\u00eaves et ce qui te fait vibrer\u2026 et poser les bases d\u2019un voyage qui sera vraiment le tien.',

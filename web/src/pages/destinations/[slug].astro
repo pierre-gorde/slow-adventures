@@ -121,27 +121,6 @@ const touristDestinationLd = {
       >
       </div>
 
-      <a
-        href="/#destinations"
-        class="dest-hero__back absolute top-6 left-6 z-20 inline-flex items-center gap-2 text-white/75 hover:text-white transition-colors font-sans text-sm"
-        aria-label="Retour aux destinations"
-      >
-        <svg
-          width="16"
-          height="16"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          aria-hidden="true"
-        >
-          <path d="M19 12H5M5 12l7 7M5 12l7-7"></path>
-        </svg>
-        Toutes les destinations
-      </a>
-
       <div
         class="dest-hero__content relative z-10 flex flex-col justify-end items-center text-center px-6 pb-28"
       >
@@ -260,7 +239,7 @@ const touristDestinationLd = {
           <CTAButton
             href={import.meta.env.PUBLIC_CALENDLY_URL}
             variant="outline"
-            text="Réserver un Discovery Call"
+            text="Confie-moi ton prochain rêve"
             subtext="30 min, gratuit, sans engagement"
           />
         </div>
@@ -312,11 +291,6 @@ const touristDestinationLd = {
     opacity: 0;
     transform: translateY(32px);
     animation: hero-entrance 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
-  }
-
-  .dest-hero__back {
-    opacity: 0;
-    animation: hero-entrance 0.6s ease-out 0.5s forwards;
   }
 
   @keyframes hero-entrance {
@@ -422,8 +396,7 @@ const touristDestinationLd = {
 
   /* ── Reduced motion ── */
   @media (prefers-reduced-motion: reduce) {
-    .dest-hero__text,
-    .dest-hero__back {
+    .dest-hero__text {
       animation: none;
       opacity: 1;
       transform: none;

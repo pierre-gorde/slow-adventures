@@ -2,11 +2,13 @@
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import { Image, getImage } from 'astro:assets';
+import { marked } from 'marked';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CTAButton from '../../components/CTAButton.astro';
 import CalendlyModal from '../../components/CalendlyModal.astro';
 import SectionReveal from '../../components/SectionReveal.astro';
 import ScrollHint from '../../components/ScrollHint.astro';
+import DestinationGallery from '../../components/DestinationGallery.astro';
 
 export async function getStaticPaths() {
   const destinations = await getCollection('destinations');
@@ -18,7 +20,6 @@ export async function getStaticPaths() {
 
 type Props = { entry: CollectionEntry<'destinations'> };
 const { entry } = Astro.props;
-const { Content } = await entry.render();
 
 const pageTitle = entry.data.title ?? `${entry.data.country} — Slow Adventures`;
 const pageDescription = entry.data.metaDescription ?? entry.data.description;
@@ -28,6 +29,44 @@ const optimizedHero = await getImage({
   width: 1440,
   format: 'webp',
 });
+
+const gallery = entry.data.gallery ?? [];
+const hasGallery = gallery.length > 0;
+
+/* ── Parse markdown body into designed sections ── */
+const rawBody = entry.body;
+const parts = rawBody.split(/^## /m);
+const introMd = parts[0].trim();
+const introHtml = marked.parse(introMd);
+
+interface ContentSection {
+  title: string;
+  html: string;
+  bg: 'white' | 'cream';
+}
+
+const sectionBg: { pattern: RegExp; bg: 'white' | 'cream' }[] = [
+  { pattern: /pourquoi/i, bg: 'cream' },
+  { pattern: /ce qui t.attend/i, bg: 'white' },
+  { pattern: /quand partir/i, bg: 'cream' },
+  { pattern: /combien de temps/i, bg: 'white' },
+  { pattern: /ce que je construis/i, bg: 'cream' },
+];
+
+const sections: ContentSection[] = [];
+for (const part of parts.slice(1)) {
+  const lines = part.split('\n');
+  const title = lines[0].replace(/\s*$/, '');
+  const body = lines.slice(1).join('\n').trim();
+  const html = marked.parse(body) as string;
+
+  const meta = sectionBg.find((m) => m.pattern.test(title));
+  sections.push({
+    title,
+    html,
+    bg: meta?.bg ?? 'white',
+  });
+}
 
 const touristDestinationLd = {
   '@context': 'https://schema.org',
@@ -76,14 +115,12 @@ const touristDestinationLd = {
         decoding="async"
         class="dest-hero__img absolute inset-0 w-full h-full object-cover"
       />
-      <!-- Gradient overlay -->
       <div
         class="absolute inset-0 bg-linear-to-b from-warm-black/55 via-warm-black/15 to-warm-black/75"
         aria-hidden="true"
       >
       </div>
 
-      <!-- Back nav -->
       <a
         href="/#destinations"
         class="dest-hero__back absolute top-6 left-6 z-20 inline-flex items-center gap-2 text-white/75 hover:text-white transition-colors font-sans text-sm"
@@ -105,7 +142,6 @@ const touristDestinationLd = {
         Toutes les destinations
       </a>
 
-      <!-- Hero text — bottom-anchored -->
       <div
         class="dest-hero__content relative z-10 flex flex-col justify-end items-center text-center px-6 pb-28"
       >
@@ -136,40 +172,73 @@ const touristDestinationLd = {
     ═══════════════════════════════════════════════ -->
     {
       entry.data.keywords && entry.data.keywords.length > 0 && (
-        <section
-          class="bg-creme px-6 py-10 md:px-12 md:py-14"
+        <div
+          class="bg-creme px-6 py-6 md:px-12 md:py-8"
           aria-label="Thèmes du voyage"
         >
-          <SectionReveal animation="fade-in">
-            <div class="max-w-4xl mx-auto flex flex-wrap justify-center gap-3">
-              {entry.data.keywords.map((keyword) => (
-                <span class="dest-keyword font-sans text-sm px-4 py-2 rounded-full text-warm-black/80 bg-white border border-warm-black/10">
-                  {keyword}
-                </span>
-              ))}
-            </div>
+          <div class="max-w-4xl mx-auto flex flex-wrap justify-center gap-2">
+            {entry.data.keywords.map((keyword) => (
+              <span class="font-sans text-xs px-3 py-1.5 rounded-full text-warm-black/50 bg-warm-black/4">
+                {keyword}
+              </span>
+            ))}
+          </div>
+        </div>
+      )
+    }
+
+    <!-- ═══════════════════════════════════════════════
+         PHOTO GALLERY (conditionnel)
+    ═══════════════════════════════════════════════ -->
+    {
+      hasGallery && (
+        <DestinationGallery images={gallery} country={entry.data.country} />
+      )
+    }
+
+    <!-- ═══════════════════════════════════════════════
+         INTRO PARAGRAPH
+    ═══════════════════════════════════════════════ -->
+    {
+      introHtml && (
+        <section class="bg-white sa-section-padding" aria-label="Introduction">
+          <SectionReveal animation="fade-up">
+            <div class="max-w-3xl mx-auto dest-intro" set:html={introHtml} />
           </SectionReveal>
         </section>
       )
     }
 
     <!-- ═══════════════════════════════════════════════
-         CONTENT SECTION
+         CONTENT SECTIONS (parsed from markdown h2)
     ═══════════════════════════════════════════════ -->
-    <section class="bg-white sa-section-padding" aria-label="Guide destination">
-      <SectionReveal animation="fade-up">
-        <article class="max-w-3xl mx-auto destination-content">
-          <Content />
-        </article>
-      </SectionReveal>
-    </section>
+    {
+      sections.map((section) => (
+        <section
+          class={`sa-section-padding ${section.bg === 'cream' ? 'bg-creme' : 'bg-white'}`}
+          aria-label={section.title}
+        >
+          <SectionReveal animation="fade-up">
+            <div class="max-w-3xl mx-auto">
+              <h2 class="dest-section__header font-serif text-2xl md:text-3xl text-warm-black leading-tight mb-8 pb-3">
+                {section.title}
+              </h2>
+              <div
+                class="dest-section__body destination-content"
+                set:html={section.html}
+              />
+            </div>
+          </SectionReveal>
+        </section>
+      ))
+    }
 
     <!-- ═══════════════════════════════════════════════
-         ELENA BAND — gradient terracotta / ambre
+         CTA SECTION — Discovery Call
     ═══════════════════════════════════════════════ -->
     <section
-      class="dest-elena-band sa-section-padding text-center"
-      aria-labelledby="dest-elena-heading"
+      class="dest-cta-band sa-section-padding text-center"
+      aria-labelledby="dest-cta-heading"
     >
       <SectionReveal animation="scale-in">
         <div class="max-w-2xl mx-auto">
@@ -179,14 +248,14 @@ const touristDestinationLd = {
             Travel Planning sur mesure
           </p>
           <h2
-            id="dest-elena-heading"
+            id="dest-cta-heading"
             class="font-serif text-3xl md:text-4xl text-white mb-5"
           >
-            Je construis cet itinéraire pour toi
+            Prêt(e) à partir ?
           </h2>
           <p class="font-sans text-white/85 text-lg mb-10 leading-relaxed">
-            Chaque voyage est unique. Dis-moi tes envies, tes contraintes, tes
-            rêves — je m'occupe du reste.
+            Dis-moi tes envies, tes contraintes, tes rêves — je m'occupe du
+            reste.
           </p>
           <CTAButton
             href={import.meta.env.PUBLIC_CALENDLY_URL}
@@ -257,47 +326,28 @@ const touristDestinationLd = {
     }
   }
 
-  /* ── Keywords chips ── */
-  .dest-keyword {
-    transition: background-color 0.2s ease;
-  }
+  /* ── Keywords chips — discret, pas interactif ── */
 
-  .dest-keyword:hover {
-    background-color: color-mix(in srgb, var(--color-terracotta) 8%, white);
-  }
-
-  /* ── Elena band gradient ── */
-  .dest-elena-band {
-    background: linear-gradient(
-      135deg,
-      var(--color-terracotta) 0%,
-      var(--color-ambre) 60%,
-      color-mix(in srgb, var(--color-ambre) 70%, var(--color-sauge)) 100%
-    );
-  }
-
-  /* ── Content prose ── */
-  .destination-content :global(h2) {
-    font-family: var(--font-bree);
-    font-size: 1.75rem;
-    color: var(--color-warm-black);
-    margin-top: 3rem;
+  /* ── Intro paragraph — lead style ── */
+  .dest-intro :global(p) {
+    font-family: var(--font-sans);
+    font-size: 1.2rem;
+    line-height: 1.9;
+    color: color-mix(in srgb, var(--color-warm-black) 85%, transparent);
     margin-bottom: 1rem;
-    line-height: 1.3;
-    padding-top: 0.5rem;
-    border-top: 2px solid
+  }
+
+  .dest-intro :global(p:first-of-type) {
+    font-size: 1.3rem;
+  }
+
+  /* ── Section headers ── */
+  .dest-section__header {
+    border-bottom: 2px solid
       color-mix(in srgb, var(--color-terracotta) 15%, transparent);
   }
 
-  .destination-content :global(h3) {
-    font-family: var(--font-bree);
-    font-size: 1.2rem;
-    color: var(--color-terracotta);
-    margin-top: 2rem;
-    margin-bottom: 0.75rem;
-    line-height: 1.4;
-  }
-
+  /* ── Section body — prose ── */
   .destination-content :global(p) {
     margin-bottom: 1.25rem;
     line-height: 1.85;
@@ -308,13 +358,27 @@ const touristDestinationLd = {
   .destination-content :global(ul),
   .destination-content :global(ol) {
     margin-bottom: 1.25rem;
-    padding-left: 1.5rem;
+    padding-left: 0;
+    list-style: none;
   }
 
   .destination-content :global(li) {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
     line-height: 1.75;
     color: var(--color-warm-black);
+    padding-left: 1.75rem;
+    position: relative;
+  }
+
+  .destination-content :global(li)::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--color-terracotta) 50%, transparent);
   }
 
   .destination-content :global(strong) {
@@ -337,11 +401,23 @@ const touristDestinationLd = {
     text-underline-offset: 3px;
   }
 
-  /* First paragraph lead style */
-  .destination-content :global(p:first-of-type) {
-    font-size: 1.175rem;
-    color: color-mix(in srgb, var(--color-warm-black) 90%, transparent);
-    line-height: 1.9;
+  .destination-content :global(h3) {
+    font-family: var(--font-bree);
+    font-size: 1.15rem;
+    color: var(--color-terracotta);
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+  }
+
+  /* ── CTA band ── */
+  .dest-cta-band {
+    background: linear-gradient(
+      135deg,
+      var(--color-terracotta) 0%,
+      var(--color-ambre) 60%,
+      color-mix(in srgb, var(--color-ambre) 70%, var(--color-sauge)) 100%
+    );
   }
 
   /* ── Reduced motion ── */
@@ -358,7 +434,6 @@ const touristDestinationLd = {
 <script>
   import { gsap, ScrollTrigger } from '../../lib/gsap';
 
-  // Subtle parallax on hero image while scrolling
   const heroImg = document.querySelector<HTMLElement>('.dest-hero__img');
   if (heroImg) {
     gsap.to(heroImg, {
@@ -373,7 +448,6 @@ const touristDestinationLd = {
     });
   }
 
-  // Cleanup on page transitions (View Transitions API)
   document.addEventListener('astro:before-swap', () => {
     ScrollTrigger.getAll().forEach((st) => st.kill());
   });

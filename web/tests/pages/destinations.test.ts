@@ -136,9 +136,9 @@ describe('[slug].astro — page dynamique destinations', () => {
   });
 
   describe('contenu de la page', () => {
-    it('rend le corps markdown via <Content />', () => {
-      expect(page).toContain('await entry.render()');
-      expect(page).toContain('<Content />');
+    it('parse le markdown en sections via marked', () => {
+      expect(page).toContain("import { marked } from 'marked'");
+      expect(page).toContain('entry.body');
     });
 
     it("utilise <Image> avec loading='eager' pour le hero", () => {
@@ -150,9 +150,9 @@ describe('[slug].astro — page dynamique destinations', () => {
       expect(page).toContain('{entry.data.country}');
     });
 
-    it('contient un article avec les classes de prose', () => {
-      expect(page).toContain('<article');
+    it('contient les sections de contenu avec destination-content', () => {
       expect(page).toContain('destination-content');
+      expect(page).toContain('dest-section__header');
     });
 
     it('contient un CTAButton "Réserver un Discovery Call"', () => {

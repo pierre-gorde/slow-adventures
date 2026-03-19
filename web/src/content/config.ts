@@ -7,6 +7,7 @@ const destinations = defineCollection({
       country: z.string(),
       description: z.string(),
       image: image(),
+      gallery: z.array(image()).optional(),
       overlayColor: z.enum(['terracotta', 'sauge']),
       order: z.number(),
       title: z.string().optional(),

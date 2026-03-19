@@ -1,7 +1,7 @@
 ---
 country: 'Paraguay méconnu'
 description: "Des missions jésuites aux plaines du Chaco, le Paraguay te fait voyager dans un pays authentique, entre culture guarani vivante, nature sauvage et hospitalité sincère."
-image: 'https://images.unsplash.com/photo-1614949260630-1d8a27791215?w=1600&h=900&fit=crop&q=80'
+image: 'https://images.unsplash.com/photo-1585318822320-300abf39f65d?w=1600&h=900&fit=crop&q=80'
 overlayColor: 'sauge'
 order: 19
 featured: false

@@ -1,0 +1,718 @@
+---
+import '../styles/global.css';
+import { Image } from 'astro:assets';
+import CalendlyModal from '../components/CalendlyModal.astro';
+import heroImage from '../assets/images/nuit-etoilee-hero.webp';
+import elenaImage from '../assets/images/elena.webp';
+
+const title = 'Slow Adventures — Voyages sur mesure aux Amériques';
+const description =
+  "Découvre Slow Adventures : des voyages immersifs et sur mesure à travers les Amériques, pensés par Elena, travel planner passionnée.";
+const siteUrl = Astro.site ?? new URL('https://slowadventures.fr');
+const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL;
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Stardos+Stencil:wght@400;700&family=Bree+Serif&display=swap"
+      onload="this.rel='stylesheet'"
+    />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Stardos+Stencil:wght@400;700&family=Bree+Serif&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    {import.meta.env.PROD && (
+      <>
+        <script is:inline>
+          (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+          })(window,document,"clarity","script","vuosqkypn0");
+        </script>
+        <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-4NYCND6NTZ"></script>
+        <script is:inline>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-4NYCND6NTZ');
+        </script>
+      </>
+    )}
+  </head>
+  <body class="lp-body">
+    <!-- ═══════════════════════════════════════════════
+         NAVBAR — Logo only
+    ═══════════════════════════════════════════════ -->
+    <nav class="lp-nav" aria-label="Navigation">
+      <a href="/" class="lp-nav__logo font-serif">Slow Adventures</a>
+    </nav>
+
+    <main>
+      <!-- ═══════════════════════════════════════════════
+           HERO — Full screen
+      ═══════════════════════════════════════════════ -->
+      <section class="lp-hero" aria-label="Introduction">
+        <Image
+          src={heroImage}
+          alt="Ciel étoilé au-dessus des Amériques"
+          widths={[800, 1200, 1920]}
+          sizes="100vw"
+          loading="eager"
+          decoding="async"
+          class="lp-hero__img"
+        />
+        <div class="lp-hero__overlay" aria-hidden="true"></div>
+        <div class="lp-hero__content" data-lp-reveal>
+          <p class="lp-eyebrow" data-lp-reveal>Travel Planner · Amériques</p>
+          <h1 class="lp-hero__title" data-lp-reveal>
+            Ce genre de moment,<br /><em>tu mérites de le vivre.</em>
+          </h1>
+          <p class="lp-hero__subtitle" data-lp-reveal>
+            Je suis Elena. Je transforme tes envies d'ailleurs en voyages sur mesure, pensés rien que pour toi.
+          </p>
+        </div>
+        <div class="lp-scroll-hint" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 5v14M5 12l7 7 7-7" />
+          </svg>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════
+           ELENA — Qui suis-je ?
+      ═══════════════════════════════════════════════ -->
+      <section class="lp-section" aria-labelledby="lp-elena-heading">
+        <div class="lp-container lp-elena" data-lp-reveal>
+          <div class="lp-elena__photo-col">
+            <div class="lp-elena__frame-wrapper">
+              <div class="lp-elena__frame" aria-hidden="true"></div>
+              <Image
+                src={elenaImage}
+                alt="Elena, travel planner Slow Adventures"
+                widths={[300, 500]}
+                sizes="(min-width: 768px) 40vw, 280px"
+                loading="lazy"
+                decoding="async"
+                class="lp-elena__photo"
+              />
+            </div>
+          </div>
+          <div class="lp-elena__text-col">
+            <p class="lp-eyebrow">Qui suis-je ?</p>
+            <h2 id="lp-elena-heading" class="lp-heading">
+              Elena, passionnée des Amériques
+            </h2>
+            <p class="lp-text">
+              Depuis des années, je parcours le continent américain — du Yukon à la Patagonie, des plages caribéennes aux volcans d'Amérique centrale. Chaque voyage m'a appris quelque chose : les meilleures adresses ne sont jamais dans les guides, et les vrais moments de bonheur arrivent quand on sort des sentiers battus.
+            </p>
+            <p class="lp-text">
+              Aujourd'hui, je mets cette expérience à ton service. Je ne vends pas de packages : je construis ton voyage à partir de tes envies, ton rythme et ton budget. Et je reste à tes côtés par WhatsApp pendant tout le séjour, pour que chaque journée soit exactement comme tu l'avais imaginée — en mieux.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════
+           COMMENT CA MARCHE — 3 étapes
+      ═══════════════════════════════════════════════ -->
+      <section class="lp-section" aria-labelledby="lp-steps-heading">
+        <div class="lp-container lp-steps-wrapper" data-lp-reveal>
+          <p class="lp-eyebrow text-center">Comment ça marche</p>
+          <h2 id="lp-steps-heading" class="lp-heading text-center">
+            Un voyage qui te ressemble,<br />du premier appel au retour
+          </h2>
+          <div class="lp-steps">
+            <div class="lp-step" data-lp-reveal>
+              <span class="lp-step__number">01</span>
+              <h3 class="lp-step__title">On se parle</h3>
+              <p class="lp-text">
+                Un appel de 30 minutes, gratuit et sans engagement. On apprend à se connaître, tu me racontes tes rêves de voyage, et on pose ensemble les bases de ton itinéraire.
+              </p>
+            </div>
+            <div class="lp-step" data-lp-reveal>
+              <span class="lp-step__number">02</span>
+              <h3 class="lp-step__title">Ton itinéraire prend vie</h3>
+              <p class="lp-text">
+                Je construis un voyage sur mesure, jour par jour : hébergements triés sur le volet, expériences authentiques, logistique pensée dans les moindres détails. Tu valides, on ajuste si besoin.
+              </p>
+            </div>
+            <div class="lp-step" data-lp-reveal>
+              <span class="lp-step__number">03</span>
+              <h3 class="lp-step__title">Tu pars, l'esprit libre</h3>
+              <p class="lp-text">
+                Roadbook en main, tu vis ton voyage pleinement. Et si un imprévu survient, je suis joignable par WhatsApp pour t'aider en temps réel, du décollage au retour.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════
+           TEMOIGNAGES
+      ═══════════════════════════════════════════════ -->
+      <section class="lp-section" aria-labelledby="lp-testimonials-heading">
+        <div class="lp-container" data-lp-reveal>
+          <p class="lp-eyebrow text-center">Ils sont partis avec Slow Adventures</p>
+          <h2 id="lp-testimonials-heading" class="lp-heading text-center sr-only">
+            Témoignages
+          </h2>
+          <div class="lp-testimonials">
+            <blockquote class="lp-testimonial" data-lp-reveal>
+              <span class="lp-testimonial__quote" aria-hidden="true">"</span>
+              <p class="lp-text">
+                On avait passé des semaines à chercher des infos sur le Costa Rica sans savoir par où commencer. Elena a tout pris en main : en une semaine, on avait un itinéraire qui collait parfaitement à nos envies. Sur place, chaque jour était une surprise — les adresses qu'elle nous a trouvées, on ne les aurait jamais dénichées seuls. Et savoir qu'elle était dispo sur WhatsApp si on avait un doute, ça change tout.
+              </p>
+              <footer class="lp-testimonial__author">
+                <strong>Antoine & Sophie</strong>
+                <span>Costa Rica, 12 jours</span>
+              </footer>
+            </blockquote>
+            <blockquote class="lp-testimonial" data-lp-reveal>
+              <span class="lp-testimonial__quote" aria-hidden="true">"</span>
+              <p class="lp-text">
+                Je pensais bien connaître New York, mais Elena m'a fait découvrir une ville complètement différente. Des rooftops cachés de Brooklyn aux diners authentiques du Queens, en passant par un concert de jazz à Harlem un dimanche après-midi… J'ai vécu 6 jours intenses, sans jamais avoir l'impression de courir. Son planning était millimétré mais laissait de la place à l'imprévu. Exactement ce que je cherchais.
+              </p>
+              <footer class="lp-testimonial__author">
+                <strong>Richard</strong>
+                <span>New York, 6 jours</span>
+              </footer>
+            </blockquote>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════
+           CTA FINAL
+      ═══════════════════════════════════════════════ -->
+      <section class="lp-section lp-cta-section" aria-labelledby="lp-cta-heading">
+        <div class="lp-container text-center" data-lp-reveal>
+          <h2 id="lp-cta-heading" class="lp-heading lp-cta__title">
+            Ton prochain rêve<br /><em>commence ici.</em>
+          </h2>
+          <p class="lp-text lp-cta__subtitle">
+            30 minutes, gratuites, sans engagement.
+          </p>
+          <a
+            href={calendlyUrl}
+            data-calendly-trigger
+            class="lp-cta-btn"
+          >
+            <span class="lp-cta-btn__text">Réserve ton Discovery Call</span>
+          </a>
+          <p class="lp-cta__note">Aucune carte bancaire · Aucun engagement</p>
+        </div>
+      </section>
+    </main>
+
+    <CalendlyModal />
+
+    <!-- ═══════════════════════════════════════════════
+         ANIMATIONS
+    ═══════════════════════════════════════════════ -->
+    <script>
+      // Staggered hero entrance
+      const heroEls = document.querySelectorAll('.lp-hero__content [data-lp-reveal]');
+      heroEls.forEach((el, i) => {
+        const htmlEl = el as HTMLElement;
+        htmlEl.style.opacity = '0';
+        htmlEl.style.transform = 'translateY(24px)';
+        setTimeout(() => {
+          htmlEl.style.transition = 'opacity 0.7s ease-out, transform 0.7s ease-out';
+          htmlEl.style.opacity = '1';
+          htmlEl.style.transform = 'translateY(0)';
+        }, 400 + i * 200);
+      });
+
+      // IO-based fadeUp for sections
+      const revealEls = document.querySelectorAll<HTMLElement>(
+        'main > section [data-lp-reveal]:not(.lp-hero__content [data-lp-reveal])'
+      );
+
+      revealEls.forEach((el) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+      });
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const el = entry.target as HTMLElement;
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+                observer.unobserve(el);
+              }
+            });
+          },
+          { threshold: 0.15 }
+        );
+        revealEls.forEach((el) => observer.observe(el));
+      } else {
+        revealEls.forEach((el) => {
+          el.style.opacity = '1';
+          el.style.transform = 'none';
+        });
+      }
+    </script>
+  </body>
+</html>
+
+<style>
+  /* ══════════════════════════════════════════
+     LANDING PAGE — CUSTOM TOKENS
+  ══════════════════════════════════════════ */
+  :root {
+    --lp-bg: #0a0e1a;
+    --lp-text: #f5f0e8;
+    --lp-gold: #c9a96e;
+    --lp-gold-light: #e8cfa0;
+    --lp-text-secondary: rgba(245, 240, 232, 0.72);
+    --lp-border: rgba(201, 169, 110, 0.15);
+  }
+
+  /* ── Global ── */
+  .lp-body {
+    background: var(--lp-bg);
+    color: var(--lp-text);
+    font-family: var(--font-family-sans);
+    overflow-x: hidden;
+  }
+
+  .lp-container {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .lp-section {
+    padding: 5rem 0;
+  }
+
+  @media (min-width: 768px) {
+    .lp-section {
+      padding: 7rem 0;
+    }
+  }
+
+  .lp-eyebrow {
+    font-family: var(--font-family-sans);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--lp-gold);
+    margin-bottom: 1rem;
+  }
+
+  .lp-heading {
+    font-family: var(--font-family-serif);
+    font-size: 1.85rem;
+    font-weight: 400;
+    line-height: 1.25;
+    color: var(--lp-text);
+    margin-bottom: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .lp-heading {
+      font-size: 2.5rem;
+    }
+  }
+
+  .lp-heading em {
+    font-style: italic;
+    color: var(--lp-gold-light);
+  }
+
+  .lp-text {
+    font-family: var(--font-family-sans);
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--lp-text-secondary);
+    margin-bottom: 1rem;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+
+  /* ── NAV ── */
+  .lp-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 40;
+    padding: 1rem 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .lp-nav {
+      padding: 1.25rem 2.5rem;
+    }
+  }
+
+  .lp-nav__logo {
+    font-size: 1.1rem;
+    color: var(--lp-text);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: opacity 0.2s;
+  }
+
+  .lp-nav__logo:hover {
+    opacity: 0.7;
+  }
+
+  /* ── HERO ── */
+  .lp-hero {
+    position: relative;
+    min-height: 100dvh;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .lp-hero__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+  .lp-hero__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(10, 14, 26, 0.45) 0%,
+        rgba(10, 14, 26, 0.3) 50%,
+        rgba(10, 14, 26, 0.85) 85%,
+        var(--lp-bg) 100%
+      );
+  }
+
+  .lp-hero__content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 680px;
+    padding: 0 1.5rem;
+  }
+
+  .lp-hero__title {
+    font-family: var(--font-family-serif);
+    font-size: 2.2rem;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--lp-text);
+    margin-bottom: 1.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .lp-hero__title {
+      font-size: 3.5rem;
+    }
+  }
+
+  .lp-hero__title em {
+    font-style: italic;
+    color: var(--lp-gold-light);
+  }
+
+  .lp-hero__subtitle {
+    font-family: var(--font-family-sans);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--lp-text-secondary);
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 768px) {
+    .lp-hero__subtitle {
+      font-size: 1.15rem;
+    }
+  }
+
+  /* Scroll hint */
+  .lp-scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    color: var(--lp-gold);
+    opacity: 0.6;
+    animation: lp-pulse 2.5s ease-in-out infinite;
+  }
+
+  @keyframes lp-pulse {
+    0%, 100% { opacity: 0.4; transform: translateX(-50%) translateY(0); }
+    50% { opacity: 0.8; transform: translateX(-50%) translateY(8px); }
+  }
+
+  /* ── ELENA ── */
+  .lp-elena {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .lp-elena {
+      flex-direction: row;
+      gap: 4rem;
+      align-items: flex-start;
+    }
+  }
+
+  .lp-elena__photo-col {
+    flex-shrink: 0;
+  }
+
+  .lp-elena__frame-wrapper {
+    position: relative;
+    width: 250px;
+  }
+
+  @media (min-width: 768px) {
+    .lp-elena__frame-wrapper {
+      width: 320px;
+    }
+  }
+
+  .lp-elena__frame {
+    position: absolute;
+    inset: 0;
+    border: 1px solid var(--lp-gold);
+    opacity: 0.25;
+    border-radius: 0.75rem;
+    transform: translate(10px, 10px);
+  }
+
+  .lp-elena__photo {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: 0.75rem;
+    display: block;
+  }
+
+  .lp-elena__text-col {
+    text-align: center;
+  }
+
+  @media (min-width: 768px) {
+    .lp-elena__text-col {
+      text-align: left;
+      flex: 1;
+    }
+  }
+
+  /* ── STEPS ── */
+  .lp-steps-wrapper .lp-heading {
+    margin-bottom: 3rem;
+  }
+
+  .lp-steps {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .lp-steps {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+    }
+  }
+
+  .lp-step {
+    border-top: 1px solid var(--lp-border);
+    padding-top: 1.5rem;
+  }
+
+  .lp-step__number {
+    font-family: var(--font-family-serif);
+    font-size: 0.85rem;
+    color: var(--lp-gold);
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+
+  .lp-step__title {
+    font-family: var(--font-family-serif);
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--lp-text);
+    margin-bottom: 0.75rem;
+  }
+
+  /* ── TESTIMONIALS ── */
+  .lp-testimonials {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-top: 2.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .lp-testimonials {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .lp-testimonial {
+    border: 1px solid var(--lp-border);
+    border-radius: 0.75rem;
+    padding: 2rem 1.5rem;
+    position: relative;
+  }
+
+  .lp-testimonial__quote {
+    position: absolute;
+    top: 0.75rem;
+    left: 1.25rem;
+    font-family: var(--font-family-serif);
+    font-size: 3.5rem;
+    color: var(--lp-gold);
+    opacity: 0.25;
+    line-height: 1;
+  }
+
+  .lp-testimonial .lp-text {
+    margin-top: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .lp-testimonial__author {
+    margin-top: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .lp-testimonial__author strong {
+    font-family: var(--font-family-sans);
+    font-size: 0.9rem;
+    color: var(--lp-text);
+  }
+
+  .lp-testimonial__author span {
+    font-family: var(--font-family-sans);
+    font-size: 0.8rem;
+    color: var(--lp-gold);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── CTA SECTION ── */
+  .lp-cta-section {
+    padding-bottom: 5rem;
+  }
+
+  .lp-cta__title {
+    font-size: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .lp-cta__title {
+      font-size: 3rem;
+    }
+  }
+
+  .lp-cta__subtitle {
+    font-size: 1.1rem;
+    color: var(--lp-text-secondary);
+    margin-bottom: 2rem;
+  }
+
+  .lp-cta-btn {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    font-family: var(--font-family-sans);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--lp-bg);
+    background: linear-gradient(135deg, var(--lp-gold), var(--lp-gold-light));
+    padding: 1rem 2.5rem;
+    border-radius: 9999px;
+    text-decoration: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    cursor: pointer;
+  }
+
+  .lp-cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(201, 169, 110, 0.3);
+  }
+
+  .lp-cta-btn:active {
+    transform: translateY(0);
+  }
+
+  .lp-cta-btn__text {
+    position: relative;
+    z-index: 1;
+  }
+
+  .lp-cta__note {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: var(--lp-text-secondary);
+    opacity: 0.7;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── Reduced motion ── */
+  @media (prefers-reduced-motion: reduce) {
+    .lp-scroll-hint {
+      animation: none;
+    }
+  }
+</style>

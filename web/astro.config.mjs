@@ -8,7 +8,10 @@ import netlify from '@astrojs/netlify';
 export default defineConfig({
   site: process.env.SITE_URL || 'https://slowadventures.fr',
   adapter: netlify(),
-  integrations: [sitemap(), robotsTxt()],
+  integrations: [
+    sitemap({ filter: (page) => !page.includes('/decouvrir') }),
+    robotsTxt(),
+  ],
   image: {
     remotePatterns: [
       { protocol: 'https', hostname: 'images.unsplash.com' },

@@ -1,53 +1,53 @@
 ---
 country: 'Argentine du Nord'
-description: "Des quebradas flamboyantes de Salta aux vignobles de Cafayate, le Nord argentin te fait voyager entre déserts ocre, villages coloniaux et traditions gauchos, loin de tout."
+description: "De Buenos Aires aux chutes d'Iguazú, en passant par les Salinas Grandes et Purmamarca, le Nord argentin te fait voyager entre mégapole vibrante, quebradas flamboyantes et cascades mythiques."
 image: 'https://images.unsplash.com/photo-1599094792743-7df3e8870800?w=1600&h=900&fit=crop&q=80'
 overlayColor: 'terracotta'
 order: 24
 featured: false
 region: 'amerique-du-sud'
 title: "Voyage dans le Nord de l'Argentine sur mesure — Travel Planning Slow Adventures"
-metaDescription: "Voyage Nord Argentine sur mesure avec Elena, travel planner Amériques. Salta, Jujuy, Cafayate, Quebrada de Humahuaca — un itinéraire andin taillé pour toi."
-keywords: ['Quebradas flamboyantes', 'Vignobles d altitude', 'Culture gaucho', 'Déserts ocre', 'Villages coloniaux', 'Andes argentines', 'Route des vins', 'Moments suspendus', 'Aventure hors du temps', 'Évasion totale']
+metaDescription: "Voyage Nord Argentine sur mesure avec Elena, travel planner Amériques. Buenos Aires, Salta, Jujuy, Iguazú — un itinéraire andin taillé pour toi."
+keywords: ['Chutes d Iguazú', 'Buenos Aires', 'Salinas Grandes', 'Purmamarca', 'Quebrada de Humahuaca', 'Salta coloniale', 'Andes argentines', 'Moments suspendus', 'Aventure hors du temps', 'Évasion totale']
 ---
 
-Le Nord argentin, c'est un voyage qui se vit avec tous les sens : contempler les strates rouges, oranges et violettes de la Quebrada de Humahuaca au lever du soleil, respirer l'air sec et pur des Andes à 4 000 mètres, goûter un torrontés glacé face aux vignobles de Cafayate, et sentir la poussière des chemins de terre qui serpentent entre les cactus géants… Chaque instant éveille la curiosité et émerveille.
+L'Argentine du Nord, c'est un voyage qui se vit avec tous les sens : sentir l'énergie de Buenos Aires dans les milongas de San Telmo, contempler l'immensité blanche des Salinas Grandes à 3 400 mètres, se perdre dans les ruelles colorées de Purmamarca face au Cerro de los Siete Colores, et recevoir la brume des chutes d'Iguazú en plein visage… Chaque étape éveille la curiosité et émerveille.
 
-## Pourquoi le Nord argentin ne s'improvise pas ? 🇦🇷
+## Pourquoi ce voyage ne s'improvise pas ? 🇦🇷
 
-On pourrait croire que le Nord de l'Argentine est facile à explorer : les routes sont spectaculaires, les villes coloniales accueillantes, et les paysages omniprésents. Et pourtant, c'est exactement l'inverse.
+On pourrait croire que cet itinéraire est simple : Buenos Aires, un vol vers le nord, puis Iguazú. Et pourtant, c'est exactement l'inverse.
 
-C'est un voyage où chaque choix change tout : le sens du circuit, les distances (souvent sous-estimées), l'altitude qui grimpe vite, les routes de montagne qui demandent de l'expérience, et les saisons qui transforment complètement les paysages. Mal pensé, tu passes des heures sur des routes interminables et tu rates les lumières magiques sur les quebradas. Bien construit, tu vis une immersion totale dans l'un des territoires les plus spectaculaires d'Amérique du Sud.
+C'est un voyage où chaque choix change tout : l'ordre des étapes, les vols internes (indispensables vu les distances), l'altitude qui grimpe vite entre Salta et Jujuy, et la saison qui transforme complètement les paysages. Mal pensé, tu perds des jours en transits inutiles et tu rates les lumières magiques sur les quebradas. Bien construit, tu vis une immersion totale entre la sophistication de Buenos Aires, la majesté des Andes et la puissance brute d'Iguazú.
 
-De Salta à Jujuy, Quebrada de Humahuaca ou Quebrada de las Flechas, route 40 ou Cuesta del Obispo, vignobles ou salars, nuits en estancia ou bodega… il n'y a pas UN Nord argentin, mais des dizaines de façons de le vivre.
+De Buenos Aires à Salta, de San Salvador de Jujuy aux chutes, en passant par les Salinas Grandes et la Quebrada de Humahuaca… il n'y a pas UN Nord argentin, mais des dizaines de façons de le vivre.
 
 ## Ce qui t'attend ? ✨
 
-- Traverser la Quebrada de Humahuaca et ses montagnes arc-en-ciel (Cerro de los Siete Colores)
-- Rouler sur la mythique Ruta 40 entre cactus cardón géants et vallées perdues
-- Déguster les vins de Cafayate dans les vignobles les plus hauts du monde
-- Découvrir Purmamarca, Tilcara et leurs marchés artisanaux colorés
-- Explorer les Salinas Grandes, un désert de sel immaculé à 3 400 mètres
-- Vivre la culture gaucho dans une estancia traditionnelle du Valle Calchaquí
+- Vibrer au rythme de Buenos Aires : tango à San Telmo, steaks à Palermo, street art à La Boca
+- Découvrir Salta la Linda, sa cathédrale rose et ses peñas où l'on chante le folklore
+- Traverser les Salinas Grandes, un désert de sel immaculé à perte de vue
+- Se prendre une claque de couleurs à Purmamarca, au pied du Cerro de los Siete Colores
+- Remonter la Quebrada de Humahuaca et ses montagnes arc-en-ciel classées UNESCO
+- Recevoir les embruns des chutes d'Iguazú, l'une des merveilles naturelles du monde
 
 ## Quand partir ? 🤔
 
-Le Nord argentin se visite presque toute l'année, mais la saison change tout.
+L'itinéraire Buenos Aires – Salta/Jujuy – Iguazú se visite presque toute l'année, mais la saison change tout.
 
-- **Avril à novembre** : saison sèche — ciel bleu intense, lumières incroyables sur les quebradas, nuits fraîches en altitude
-- **Mai à septembre** : période idéale — journées douces, pas de pluie, routes praticables partout
-- **Décembre à mars** : saison des pluies — routes de montagne parfois coupées, éboulements possibles, mais paysages d'un vert éclatant
+- **Avril à novembre** : saison sèche dans le nord — ciel bleu intense, lumières parfaites sur les quebradas, températures agréables à Buenos Aires
+- **Mai à septembre** : période idéale — journées douces partout, pas de pluie à Salta/Jujuy, débit spectaculaire des chutes après les pluies d'été
+- **Décembre à mars** : été austral — Buenos Aires chaud et vivant, mais pluies possibles dans le nord et routes de montagne parfois coupées
 
-**À savoir** : les distances sont trompeuses — une route de 200 km en montagne peut prendre 4 à 5 heures. L'altitude monte vite (jusqu'à 4 200 m aux Salinas Grandes), prévoir une acclimatation progressive.
+**À savoir** : les distances sont énormes — Buenos Aires/Salta c'est 2h de vol. Salta/Iguazú aussi. Les vols internes sont indispensables et se réservent à l'avance. L'altitude monte vite autour de Jujuy (jusqu'à 4 200 m aux Salinas Grandes), prévoir une acclimatation progressive.
 
 ## Combien de temps partir ? 👀
 
-- **7 à 10 jours** : les essentiels (Salta, Quebrada de Humahuaca, Cafayate)
-- **12 à 16 jours** : version complète avec Cachi, Quebrada de las Flechas, Salinas Grandes et estancias
-- **+16 jours** : immersion totale avec extension vers la Puna, les villages reculés de la frontière bolivienne ou descente vers Mendoza par la Ruta 40
+- **10 à 12 jours** : les essentiels (Buenos Aires 3j, Salta/Jujuy 4j, Iguazú 3j)
+- **14 à 18 jours** : version complète avec Cafayate, Quebrada de las Flechas, Tilcara et plus de temps à Buenos Aires
+- **+18 jours** : immersion totale avec extension Mendoza ou Patagonie
 
 ## Ce que je construis pour toi ? 💚
 
-C'est une destination où chaque détail compte : le sens du circuit pour profiter des meilleures lumières, les routes à éviter selon la saison, l'acclimatation à l'altitude, les estancias et bodegas qui ne se trouvent dans aucun guide…
+C'est un itinéraire où la logistique fait toute la différence : l'enchaînement des vols internes, le bon nombre de jours à chaque étape, l'acclimatation à l'altitude, les bonnes adresses à Buenos Aires loin des pièges à touristes…
 
-Je conçois un itinéraire sur-mesure, pensé pour que tu profites à 100% : hébergements sélectionnés entre estancias et lodges de charme, dégustations privées, routes panoramiques optimisées… et un roadbook clair pour vivre ton voyage pleinement, sans te poser de questions.
+Je conçois un voyage sur-mesure, pensé pour que tu profites à 100% : hôtels de charme sélectionnés, restaurants et milongas authentiques à BA, excursions privées dans les quebradas, timing parfait pour Iguazú… et un roadbook clair pour vivre ton voyage pleinement, sans te poser de questions.

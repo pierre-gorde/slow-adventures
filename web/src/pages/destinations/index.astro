@@ -50,7 +50,7 @@ const collectionLd = {
           <span id="counter" data-target={total}>0</span> aventures t'attendent
         </h1>
         <p class="font-sans text-warm-gray text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-10">
-          Du Canada à la Patagonie, en passant par les Caraïbes — chaque destination est une invitation au voyage sur mesure.
+          Du Canada à la Patagonie, en passant par les Caraïbes : chaque voyage est une immersion pensée pour toi.
         </p>
 
         <!-- Search + Shuffle -->
@@ -268,7 +268,7 @@ const collectionLd = {
 </style>
 
 <script>
-  import { gsap } from '../../lib/gsap';
+  import { gsap, ScrollTrigger } from '../../lib/gsap';
 
   // ── Counter animation ──
   const counterEl = document.getElementById('counter');
@@ -345,7 +345,14 @@ const collectionLd = {
         gsap.fromTo(
           toShow,
           { opacity: 0, y: 15 },
-          { opacity: 1, y: 0, duration: 0.35, stagger: 0.03, ease: 'power2.out' },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.35,
+            stagger: 0.03,
+            ease: 'power2.out',
+            onComplete: () => ScrollTrigger.refresh(),
+          },
         );
       },
     });

@@ -716,6 +716,39 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL;
     letter-spacing: 0.04em;
   }
 
+  /* ── TopBar scrolled override for dark page ── */
+  .lp-body :global(.topbar--scrolled) {
+    background: rgba(10, 14, 26, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .lp-body :global(.topbar--scrolled .topbar__logo) {
+    color: var(--lp-text);
+  }
+
+  .lp-body :global(.topbar--scrolled .topbar__link) {
+    color: rgba(245, 240, 232, 0.65);
+  }
+
+  .lp-body :global(.topbar--scrolled .topbar__link:hover) {
+    color: var(--lp-gold);
+  }
+
+  .lp-body :global(.topbar--scrolled .topbar__cta) {
+    color: var(--lp-gold);
+    border-color: var(--lp-gold);
+  }
+
+  .lp-body :global(.topbar--scrolled .topbar__cta:hover) {
+    background: rgba(201, 169, 110, 0.1);
+  }
+
+  .lp-body :global(.topbar--scrolled .topbar__bar) {
+    background: var(--lp-text);
+  }
+
   /* ── Reduced motion ── */
   @media (prefers-reduced-motion: reduce) {
     .lp-scroll-hint {

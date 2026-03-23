@@ -10,10 +10,10 @@ const css = readFileSync(
 describe('global.css design tokens', () => {
   describe('@theme color tokens', () => {
     const colors: Record<string, string> = {
-      terracotta: '#c0603e',
-      'terracotta-light': '#d4856a',
-      'terracotta-dark': '#a04e30',
-      'terracotta-muted': '#c9a08e',
+      terracotta: '#a65330',
+      'terracotta-light': '#c47258',
+      'terracotta-dark': '#8a4225',
+      'terracotta-muted': '#b8907c',
       bleu: '#1696ff',
       creme: '#fff9f3',
       'creme-dark': '#f5ede3',

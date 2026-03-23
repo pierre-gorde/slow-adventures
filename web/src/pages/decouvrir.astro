@@ -134,13 +134,6 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL;
             <p class="lp-text">
               Aujourd'hui, je mets cette experience a ton service. Je ne vends pas de packages : je construis ton voyage a partir de tes envies, ton rythme et ton budget. Et je reste a tes cotes par WhatsApp pendant tout le sejour, pour que chaque journee soit exactement comme tu l'avais imaginee — en mieux.
             </p>
-            <a
-              href={calendlyUrl}
-              data-calendly-trigger
-              class="lp-cta-btn lp-cta-btn--inline"
-            >
-              <span class="lp-cta-btn__text">Parlons de ton voyage</span>
-            </a>
           </div>
         </div>
       </section>
@@ -190,28 +183,6 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL;
       </section>
 
       <!-- ═══════════════════════════════════════════════
-           CTA — Ton prochain reve
-      ═══════════════════════════════════════════════ -->
-      <section class="lp-section lp-cta-section" aria-labelledby="lp-cta-heading">
-        <div class="lp-container text-center" data-lp-reveal>
-          <h2 id="lp-cta-heading" class="lp-heading lp-cta__title font-serif">
-            Ton prochain reve<br /><em>commence ici.</em>
-          </h2>
-          <p class="lp-text lp-cta__subtitle">
-            30 minutes, gratuites, sans engagement.
-          </p>
-          <a
-            href={calendlyUrl}
-            data-calendly-trigger
-            class="lp-cta-btn"
-          >
-            <span class="lp-cta-btn__text">Reserve ton Discovery Call</span>
-          </a>
-          <p class="lp-cta__note">Aucune carte bancaire · Aucun engagement</p>
-        </div>
-      </section>
-
-      <!-- ═══════════════════════════════════════════════
            TEMOIGNAGES
       ═══════════════════════════════════════════════ -->
       <section class="lp-section" aria-labelledby="lp-testimonials-heading">
@@ -242,16 +213,28 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL;
               </footer>
             </blockquote>
           </div>
-          <div class="text-center" style="margin-top: 3rem;">
-            <a
-              href={calendlyUrl}
-              data-calendly-trigger
-              class="lp-cta-btn"
-            >
-              <span class="lp-cta-btn__text">Confie-moi ton prochain reve</span>
-            </a>
-            <p class="lp-cta__note">30 min · Gratuit · Sans engagement</p>
-          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════
+           CTA — Ton prochain reve
+      ═══════════════════════════════════════════════ -->
+      <section class="lp-section lp-cta-section" aria-labelledby="lp-cta-heading">
+        <div class="lp-container text-center" data-lp-reveal>
+          <h2 id="lp-cta-heading" class="lp-heading lp-cta__title font-serif">
+            Ton prochain reve<br /><em>commence ici.</em>
+          </h2>
+          <p class="lp-text lp-cta__subtitle">
+            30 minutes, gratuites, sans engagement.
+          </p>
+          <a
+            href={calendlyUrl}
+            data-calendly-trigger
+            class="lp-cta-btn"
+          >
+            <span class="lp-cta-btn__text">Reserve ton Discovery Call</span>
+          </a>
+          <p class="lp-cta__note">Aucune carte bancaire · Aucun engagement</p>
         </div>
       </section>
     </main>

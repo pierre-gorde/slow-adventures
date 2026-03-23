@@ -2,24 +2,6 @@
 const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL;
 ---
 
-<!-- Calendly popup widget — CSS + JS chargés async -->
-<link
-  rel="preload"
-  href="https://assets.calendly.com/assets/external/widget.css"
-  as="style"
-  onload="this.rel='stylesheet'"
-/>
-<noscript>
-  <link
-    rel="stylesheet"
-    href="https://assets.calendly.com/assets/external/widget.css"
-  />
-</noscript>
-<script
-  is:inline
-  src="https://assets.calendly.com/assets/external/widget.js"
-  async></script>
-
 <div id="calendly-config" data-calendly-url={calendlyUrl} hidden></div>
 
 <script>
@@ -34,32 +16,50 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL;
     };
   };
 
-  function waitForCalendly(timeout = 5000): Promise<boolean> {
-    const win = window as unknown as CalendlyWindow;
-    if (win.Calendly) return Promise.resolve(true);
+  let calendlyLoaded = false;
+
+  function loadCalendlyAssets(): Promise<boolean> {
+    if (calendlyLoaded) return Promise.resolve(true);
 
     return new Promise((resolve) => {
-      const start = Date.now();
-      const check = setInterval(() => {
-        if (win.Calendly) {
-          clearInterval(check);
-          resolve(true);
-        } else if (Date.now() - start > timeout) {
-          clearInterval(check);
-          resolve(false);
-        }
-      }, 100);
+      // Load CSS
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'https://assets.calendly.com/assets/external/widget.css';
+      document.head.appendChild(link);
+
+      // Load JS
+      const script = document.createElement('script');
+      script.src = 'https://assets.calendly.com/assets/external/widget.js';
+      script.async = true;
+      script.onload = () => {
+        calendlyLoaded = true;
+        // Wait a tick for Calendly to initialize
+        const start = Date.now();
+        const check = setInterval(() => {
+          const win = window as unknown as CalendlyWindow;
+          if (win.Calendly) {
+            clearInterval(check);
+            resolve(true);
+          } else if (Date.now() - start > 5000) {
+            clearInterval(check);
+            resolve(false);
+          }
+        }, 50);
+      };
+      script.onerror = () => resolve(false);
+      document.head.appendChild(script);
     });
   }
 
-  // Interception clics sur [data-calendly-trigger] → popup Calendly
+  // Interception clics sur [data-calendly-trigger] -> popup Calendly
   document
     .querySelectorAll<HTMLElement>('[data-calendly-trigger]')
     .forEach((trigger) => {
       trigger.addEventListener('click', async (e) => {
         e.preventDefault();
 
-        const ready = await waitForCalendly();
+        const ready = await loadCalendlyAssets();
         const win = window as unknown as CalendlyWindow;
 
         if (ready && win.Calendly) {
@@ -73,7 +73,7 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL;
       });
     });
 
-  // Tracking réservation complète + fermeture popup
+  // Tracking reservation complete + fermeture popup
   window.addEventListener('message', (e) => {
     if (e.data?.event === 'calendly.event_scheduled') {
       trackCalendlyComplete();

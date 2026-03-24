@@ -7,6 +7,7 @@ import CTAButton from '../../components/CTAButton.astro';
 import CalendlyModal from '../../components/CalendlyModal.astro';
 import SectionReveal from '../../components/SectionReveal.astro';
 import { regionOrder, regionLabels } from '../../data/regions';
+import shuffleIcon from '../../assets/images/shuffle-icon.webp';
 
 const allDestinations = await getCollection('destinations');
 const destinations = allDestinations.filter((d) => !d.data.draft);
@@ -87,9 +88,14 @@ const collectionLd = {
             data-slugs={JSON.stringify(allSlugs)}
             aria-label="Destination aléatoire"
           >
-            <svg class="w-4 h-4 shuffle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5" />
-            </svg>
+            <Image
+              src={shuffleIcon}
+              alt=""
+              width={20}
+              height={20}
+              class="w-5 h-5 shuffle-icon"
+              aria-hidden="true"
+            />
             <span class="hidden sm:inline">Choisis pour moi</span>
           </button>
         </div>

@@ -55,6 +55,14 @@ export const faqItems: FaqItem[] = [
   },
   {
     '@type': 'Question',
+    name: 'Pourquoi tu ne réserves pas à ma place ?',
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: "Slow Adventures est un service de travel planning, pas une agence de voyage. Elena conçoit ton itinéraire complet sur mesure — hébergements, activités, transports, bonnes adresses — avec un roadbook détaillé jour par jour. Ensuite, c'est toi qui réserves directement, à ton nom, ce qui te donne plus de flexibilité, de transparence sur les prix, et la liberté de modifier tes réservations si besoin. Et si tu as la moindre question pendant les réservations, Elena reste disponible par WhatsApp pour t'accompagner.",
+    },
+  },
+  {
+    '@type': 'Question',
     name: 'Slow Adventures propose-t-il uniquement les Amériques ?',
     acceptedAnswer: {
       '@type': 'Answer',

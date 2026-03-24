@@ -24,7 +24,7 @@ Du nord au sud ou par étapes, Nouvelle-Angleterre ou Floride, grandes villes ou
 ## Ce qui t'attend ? ✨
 
 - Vibrer devant la skyline de New York depuis le Brooklyn Bridge au coucher du soleil
-- Rouler à travers les forêts flamboyantes de Nouvelle-Angleterre en Indian Summer
+- Se laisser envoûter par la Nouvelle-Orléans, entre jazz, bayous et cuisine cajun
 - Arpenter les rues historiques de Boston, berceau de la révolution américaine
 - Explorer les Everglades en airboat et croiser des alligators
 - Descendre l'Overseas Highway jusqu'à Key West, route la plus au sud des USA

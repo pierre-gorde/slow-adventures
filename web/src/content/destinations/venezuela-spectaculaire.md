@@ -5,6 +5,7 @@ image: 'https://images.unsplash.com/photo-1575540782119-0bf88a2ace17?w=1600&h=90
 overlayColor: 'sauge'
 order: 13
 featured: false
+draft: true
 region: 'amerique-du-sud'
 title: 'Voyage au Venezuela sur mesure — Travel Planning Slow Adventures'
 metaDescription: 'Voyage Venezuela sur mesure avec Elena, travel planner Amériques. Salto Ángel, tepuys, Llanos — un itinéraire spectaculaire taillé pour toi.'

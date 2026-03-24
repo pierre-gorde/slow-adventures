@@ -1,25 +1,25 @@
 ---
-country: 'Guyana inexploré'
-description: "Des chutes de Kaieteur aux forêts primaires infinies, le Guyana te fait voyager dans l'un des derniers territoires sauvages de la planète, entre faune rare et communautés amérindiennes."
+country: 'Guyane inexploré'
+description: "Des chutes de Kaieteur aux forêts primaires infinies, la Guyane te fait voyager dans l'un des derniers territoires sauvages de la planète, entre faune rare et communautés amérindiennes."
 image: 'https://images.unsplash.com/photo-1595794038905-0b713525dead?w=1600&h=900&fit=crop&q=80'
 overlayColor: 'terracotta'
 order: 14
 featured: false
 region: 'amerique-du-sud'
-title: 'Voyage au Guyana sur mesure — Travel Planning Slow Adventures'
-metaDescription: 'Voyage Guyana sur mesure avec Elena, travel planner Amériques. Kaieteur, forêt primaire, faune — un itinéraire inexploré taillé pour toi.'
+title: 'Voyage en Guyane sur mesure — Travel Planning Slow Adventures'
+metaDescription: 'Voyage Guyane sur mesure avec Elena, travel planner Amériques. Kaieteur, forêt primaire, faune — un itinéraire inexploré taillé pour toi.'
 keywords: ['Forêt primaire', 'Chutes spectaculaires', 'Faune rare', 'Communautés amérindiennes', 'Aventure sauvage', 'Nature intacte', 'Exploration pionnière', 'Moments suspendus', 'Hors des sentiers battus', 'Évasion totale']
 ---
 
-Le Guyana, c'est un voyage qui se vit avec tous les sens : entendre le rugissement des chutes de Kaieteur qui plongent dans le vide, sentir l'humidité de la forêt primaire sur ta peau, observer un jaguar à travers la canopée, et naviguer sur des rivières où personne ne passe jamais… Chaque instant éveille la curiosité et émerveille.
+La Guyane, c'est un voyage qui se vit avec tous les sens : entendre le rugissement des chutes de Kaieteur qui plongent dans le vide, sentir l'humidité de la forêt primaire sur ta peau, observer un jaguar à travers la canopée, et naviguer sur des rivières où personne ne passe jamais… Chaque instant éveille la curiosité et émerveille.
 
-## Pourquoi le Guyana ne s'improvise pas ? 🇬🇾
+## Pourquoi la Guyane ne s'improvise pas ? 🇬🇾
 
-On pourrait croire que le Guyana est une destination accessible : anglophone, petit pays, nature partout. Et pourtant, c'est exactement l'inverse.
+On pourrait croire que la Guyane est une destination accessible : anglophone, petit pays, nature partout. Et pourtant, c'est exactement l'inverse.
 
 C'est un voyage où chaque choix change tout : les accès aux sites, les guides indigènes, les transports par avion ou pirogue, les saisons à respecter… Mal pensé, tu restes à Georgetown sans jamais toucher la forêt profonde. Bien construit, tu vis une expérience inoubliable dans l'un des pays les plus sauvages du monde.
 
-De la côte aux montagnes Pakaraima, chutes d'eau ou savane, forêt primaire ou villages amérindiens… il n'y a pas UN Guyana, mais des dizaines de façons de le vivre.
+De la côte aux montagnes Pakaraima, chutes d'eau ou savane, forêt primaire ou villages amérindiens… il n'y a pas UNE Guyane, mais des dizaines de façons de le vivre.
 
 ## Ce qui t'attend ? ✨
 
@@ -32,7 +32,7 @@ De la côte aux montagnes Pakaraima, chutes d'eau ou savane, forêt primaire ou 
 
 ## Quand partir ? 🤔
 
-Le Guyana a un climat tropical avec deux saisons des pluies.
+La Guyane a un climat tropical avec deux saisons des pluies.
 
 - **Février à avril** : petite saison sèche — bon compromis, moins de pluie, nature encore verte
 - **Septembre à novembre** : grande saison sèche — meilleure période pour la faune et les déplacements

@@ -5,6 +5,7 @@ image: 'https://images.unsplash.com/photo-1500759285222-a95626b934cb?w=1600&h=90
 overlayColor: 'sauge'
 order: 21
 featured: false
+draft: true
 region: 'caraibes'
 title: 'Voyage à Cuba sur mesure — Travel Planning Slow Adventures'
 metaDescription: 'Voyage Cuba sur mesure avec Elena, travel planner Amériques. La Havane, Viñales, Trinidad — un itinéraire intemporel taillé pour toi.'

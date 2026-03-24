@@ -25,10 +25,10 @@ De l'ouest à l'est ou de l'est à l'ouest, Rocheuses ou Maritimes, lacs ou glac
 
 - Admirer les eaux turquoise du lac Louise et du lac Moraine au lever du soleil
 - Traverser les Rocheuses canadiennes sur des routes panoramiques mythiques
+- Ressentir la puissance des chutes du Niagara depuis le bord du précipice
 - Observer ours, orignaux et baleines dans leur habitat naturel
 - Randonner dans des parcs nationaux aux paysages grandioses
 - Déguster du sirop d'érable et des spécialités locales dans des auberges chaleureuses
-- Vivre le silence absolu des grands espaces, loin de tout
 
 ## Quand partir ? 🤔
 

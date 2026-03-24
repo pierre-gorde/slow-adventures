@@ -25,10 +25,10 @@ De la skyline de Panama City aux îles Kuna de San Blas, Pacifique ou Caraïbes,
 
 - Traverser le canal de Panama et comprendre cette prouesse d'ingénierie
 - Naviguer entre les îles de San Blas et dormir chez les Kunas
-- Explorer le parc national de Coiba et ses fonds marins spectaculaires
+- Gravir le Volcán Barú, le point culminant du Panama, entre deux océans
 - Randonner dans les highlands de Boquete au milieu des plantations de café
+- Se perdre dans les îles de Bocas del Toro, entre surf et farniente tropical
 - Découvrir le quartier historique de Casco Viejo à Panama City
-- Vivre la rencontre entre culture indigène, coloniale et moderne
 
 ## Quand partir ? 🤔
 

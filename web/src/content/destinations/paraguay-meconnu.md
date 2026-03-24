@@ -24,10 +24,10 @@ Du Chaco sauvage aux missions jésuites, villes coloniales ou communautés indig
 ## Ce qui t'attend ? ✨
 
 - Explorer les ruines jésuites de Trinidad et Jesús, classées à l'UNESCO
-- Traverser le Chaco, l'une des dernières frontières sauvages d'Amérique du Sud
 - Découvrir Asunción, capitale méconnue au charme colonial
 - Observer la faune du Pantanal paraguayen (caïmans, capybaras, oiseaux)
 - Partager un tereré avec les communautés guarani
+- Naviguer sur le fleuve Paraguay et ses berges sauvages
 - Vivre l'expérience d'un pays où le tourisme n'existe presque pas encore
 
 ## Quand partir ? 🤔

@@ -15,7 +15,7 @@ Puerto Rico, c'est un voyage qui se vit avec tous les sens : flâner dans les ru
 
 ## Pourquoi Puerto Rico ne s'improvise pas ? 🇵🇷
 
-On pourrait croire que Puerto Rico est une destination facile : c'est petit, on y parle anglais et espagnol, pas besoin de visa pour les citoyens US, et tout semble accessible. Et pourtant, c'est exactement l'inverse.
+On pourrait croire que Puerto Rico est une destination facile : c'est petit, on y parle anglais et espagnol, et tout semble accessible. Et pourtant, c'est exactement l'inverse.
 
 C'est un voyage où chaque choix change tout : le moment de la journée pour visiter les baies bioluminescentes, la saison qui détermine l'état des routes de montagne, les spots de plongée qui changent selon les courants, et les quartiers locaux qui font toute la différence avec les zones touristiques. Mal pensé, tu restes sur la côte nord et tu rates l'âme de l'île. Bien construit, tu vis une immersion caribéenne authentique et intense.
 

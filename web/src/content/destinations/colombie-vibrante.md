@@ -24,7 +24,7 @@ De Carthagène à Medellín, côte Caraïbe ou Pacifique, zone caféière ou Ama
 ## Ce qui t'attend ? ✨
 
 - Flâner dans les ruelles colorées de Carthagène et Barichara
-- Randonner jusqu'à la Cité Perdue (Ciudad Perdida) dans la Sierra Nevada
+- Découvrir la vallée de Cocora et ses palmiers de cire vertigineux
 - Découvrir la zone caféière et torréfier ton propre café
 - Plonger dans les eaux cristallines des îles du Rosaire
 - Explorer la rivière aux cinq couleurs de Caño Cristales
@@ -37,7 +37,7 @@ La Colombie se visite toute l'année grâce à sa diversité climatique.
 - **Décembre à mars** : saison sèche sur la côte Caraïbe et dans les Andes — la plus populaire
 - **Juillet à août** : deuxième saison sèche — bonne période pour la zone caféière
 - **Avril à juin / Septembre à novembre** : saisons des pluies — averses courtes, prix plus bas, moins de touristes
-- **Juin à novembre** : meilleure période pour Caño Cristales (la rivière est à son plus beau)
+- **Juin à novembre** : meilleure période pour Caño Cristales (la rivière est magnifique)
 
 **À savoir** : le trek vers la Cité Perdue se réserve des semaines à l'avance. Les vols internes sont indispensables pour optimiser le temps.
 

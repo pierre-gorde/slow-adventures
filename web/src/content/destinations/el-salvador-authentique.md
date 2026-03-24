@@ -44,7 +44,7 @@ El Salvador se visite toute l'année, mais chaque saison change l'expérience.
 
 - **5 à 8 jours** : les essentiels (volcans, surf, Route des Fleurs)
 - **10 à 14 jours** : version complète avec sites mayas, plages reculées et villages de montagne
-- **+14 jours** : immersion totale avec extension au Guatemala ou au Honduras voisins
+- **+14 jours** : immersion totale avec extension au Guatemala voisin
 
 ## Ce que je construis pour toi ? 💚
 

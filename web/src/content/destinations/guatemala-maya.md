@@ -9,6 +9,13 @@ region: 'amerique-centrale'
 title: 'Voyage au Guatemala sur mesure — Travel Planning Slow Adventures'
 metaDescription: 'Voyage Guatemala sur mesure avec Elena, travel planner Amériques. Tikal, lac Atitlán, culture maya — un itinéraire authentique taillé pour toi.'
 keywords: ['Temples mayas', 'Lacs volcaniques', 'Marchés colorés', 'Culture vivante', 'Jungles tropicales', 'Villages authentiques', 'Aventure spirituelle', 'Moments suspendus', 'Rencontres locales', 'Évasion totale']
+gallery:
+  - '../../assets/images/destinations/gallery/guatemala/01.webp'
+  - '../../assets/images/destinations/gallery/guatemala/02.webp'
+  - '../../assets/images/destinations/gallery/guatemala/03.webp'
+  - '../../assets/images/destinations/gallery/guatemala/04.webp'
+  - '../../assets/images/destinations/gallery/guatemala/05.webp'
+  - '../../assets/images/destinations/gallery/guatemala/06.webp'
 ---
 
 Le Guatemala, c'est un voyage qui se vit avec tous les sens : entendre le murmure de la jungle autour des temples de Tikal, contempler le lac Atitlán entouré de volcans, sentir les épices sur les marchés de Chichicastenango, et croiser le regard bienveillant de communautés qui préservent des traditions millénaires… Chaque instant éveille la curiosité et émerveille.

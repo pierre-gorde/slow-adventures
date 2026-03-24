@@ -9,6 +9,14 @@ region: 'amerique-du-nord'
 title: "Road trip East Coast USA sur mesure — Travel Planning Slow Adventures"
 metaDescription: "Voyage East Coast USA sur mesure avec Elena, travel planner Amériques. New York, Boston, Floride, Nouvelle-Angleterre — un itinéraire taillé pour toi."
 keywords: ['Skylines mythiques', 'Indian Summer', 'Forêts flamboyantes', 'Plages de sable blanc', 'Culture américaine', 'Road trip historique', 'Villes emblématiques', 'Moments suspendus', 'Aventure urbaine', 'Évasion totale']
+gallery:
+  - '../../assets/images/destinations/gallery/east-coast/01.webp'
+  - '../../assets/images/destinations/gallery/east-coast/02.webp'
+  - '../../assets/images/destinations/gallery/east-coast/03.webp'
+  - '../../assets/images/destinations/gallery/east-coast/04.webp'
+  - '../../assets/images/destinations/gallery/east-coast/05.webp'
+  - '../../assets/images/destinations/gallery/east-coast/06.webp'
+  - '../../assets/images/destinations/gallery/east-coast/07.webp'
 ---
 
 L'East Coast, c'est un voyage qui se vit avec tous les sens : lever les yeux sur la skyline de Manhattan au coucher du soleil, sentir l'odeur des feuilles d'érable en automne dans le Vermont, marcher sur le sable blanc des Keys au bout de la Floride, et goûter un lobster roll dans un port de pêche du Maine… Chaque instant éveille la curiosité et émerveille.

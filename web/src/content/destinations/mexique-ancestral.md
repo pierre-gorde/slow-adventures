@@ -9,6 +9,15 @@ region: 'amerique-du-nord'
 title: 'Voyage au Mexique sur mesure — Travel Planning Slow Adventures'
 metaDescription: 'Voyage Mexique sur mesure avec Elena, travel planner Amériques. Pyramides, cenotes, gastronomie — un itinéraire ancestral taillé pour toi.'
 keywords: ['Cités anciennes', 'Cenotes cristallins', 'Gastronomie vibrante', 'Marchés colorés', 'Plages turquoise', 'Culture millénaire', 'Aventure sensorielle', 'Moments suspendus', 'Rencontres authentiques', 'Évasion totale']
+gallery:
+  - '../../assets/images/destinations/gallery/mexique/01.webp'
+  - '../../assets/images/destinations/gallery/mexique/02.webp'
+  - '../../assets/images/destinations/gallery/mexique/03.webp'
+  - '../../assets/images/destinations/gallery/mexique/04.webp'
+  - '../../assets/images/destinations/gallery/mexique/05.webp'
+  - '../../assets/images/destinations/gallery/mexique/06.webp'
+  - '../../assets/images/destinations/gallery/mexique/07.webp'
+  - '../../assets/images/destinations/gallery/mexique/08.webp'
 ---
 
 Le Mexique, c'est un voyage qui se vit avec tous les sens : sentir les épices dans l'air des marchés, admirer les couleurs vives des façades coloniales, plonger dans des cenotes d'un bleu profond, et goûter des saveurs qui explosent en bouche… Chaque instant éveille la curiosité et émerveille.

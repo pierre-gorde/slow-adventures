@@ -9,6 +9,13 @@ region: 'amerique-du-sud'
 title: "Voyage dans le Nord de l'Argentine sur mesure — Travel Planning Slow Adventures"
 metaDescription: "Voyage Nord Argentine sur mesure avec Elena, travel planner Amériques. Buenos Aires, Salta, Jujuy, Iguazú — un itinéraire andin taillé pour toi."
 keywords: ['Chutes d Iguazú', 'Buenos Aires', 'Salinas Grandes', 'Purmamarca', 'Quebrada de Humahuaca', 'Salta coloniale', 'Andes argentines', 'Moments suspendus', 'Aventure hors du temps', 'Évasion totale']
+gallery:
+  - '../../assets/images/destinations/gallery/argentine-nord/01.webp'
+  - '../../assets/images/destinations/gallery/argentine-nord/02.webp'
+  - '../../assets/images/destinations/gallery/argentine-nord/03.webp'
+  - '../../assets/images/destinations/gallery/argentine-nord/04.webp'
+  - '../../assets/images/destinations/gallery/argentine-nord/05.webp'
+  - '../../assets/images/destinations/gallery/argentine-nord/06.webp'
 ---
 
 L'Argentine du Nord, c'est un voyage qui se vit avec tous les sens : sentir l'énergie de Buenos Aires dans les milongas de San Telmo, contempler l'immensité blanche des Salinas Grandes à 3 400 mètres, se perdre dans les ruelles colorées de Purmamarca face au Cerro de los Siete Colores, et recevoir la brume des chutes d'Iguazú en plein visage… Chaque étape éveille la curiosité et émerveille.

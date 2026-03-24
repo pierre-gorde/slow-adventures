@@ -9,6 +9,13 @@ region: 'amerique-du-nord'
 title: 'Voyage au Canada sur mesure — Travel Planning Slow Adventures'
 metaDescription: 'Voyage Canada sur mesure avec Elena, travel planner Amériques. Rocheuses, lacs turquoise, faune sauvage — un itinéraire grandeur nature taillé pour toi.'
 keywords: ['Grands espaces', 'Lacs turquoise', 'Faune sauvage', 'Montagnes majestueuses', 'Forêts infinies', 'Routes panoramiques', 'Aventure nordique', 'Moments suspendus', 'Immersion nature', 'Évasion totale']
+gallery:
+  - '../../assets/images/destinations/gallery/canada/01.webp'
+  - '../../assets/images/destinations/gallery/canada/02.webp'
+  - '../../assets/images/destinations/gallery/canada/03.webp'
+  - '../../assets/images/destinations/gallery/canada/04.webp'
+  - '../../assets/images/destinations/gallery/canada/05.webp'
+  - '../../assets/images/destinations/gallery/canada/06.webp'
 ---
 
 Le Canada, c'est un voyage qui se vit avec tous les sens : respirer l'air pur des Rocheuses au petit matin, contempler les reflets des montagnes dans des lacs d'un bleu irréel, croiser un ours sur un sentier forestier, et sentir l'immensité du territoire t'envelopper… Chaque instant éveille la curiosité et émerveille.

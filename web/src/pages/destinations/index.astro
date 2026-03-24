@@ -1,11 +1,13 @@
 ---
 import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import DestinationCard from '../../components/DestinationCard.astro';
 import CTAButton from '../../components/CTAButton.astro';
 import CalendlyModal from '../../components/CalendlyModal.astro';
 import SectionReveal from '../../components/SectionReveal.astro';
 import { regionOrder, regionLabels } from '../../data/regions';
+import logoDestinations from '../../assets/images/logo-destinations.webp';
 
 const allDestinations = await getCollection('destinations');
 const destinations = allDestinations.filter((d) => !d.data.draft);
@@ -43,6 +45,17 @@ const collectionLd = {
     ═══════════════════════════════════════════════ -->
     <section class="dest-listing-hero bg-creme-dark" aria-label="En-tête destinations">
       <div class="max-w-4xl mx-auto text-center px-6">
+        <div class="flex justify-center mb-6">
+          <Image
+            src={logoDestinations}
+            alt="Slow Adventures"
+            widths={[200, 400]}
+            sizes="20vw"
+            loading="eager"
+            decoding="async"
+            class="dest-listing-logo"
+          />
+        </div>
         <p class="font-sans text-warm-black/50 text-xs uppercase tracking-[0.25em] mb-4">
           Slow Adventures
         </p>
@@ -206,6 +219,14 @@ const collectionLd = {
     .dest-listing-hero {
       padding: 10rem 3rem 4rem;
     }
+  }
+
+  .dest-listing-logo {
+    width: 20vw;
+    min-width: 100px;
+    max-width: 200px;
+    height: auto;
+    opacity: 0.15;
   }
 
   /* CTA band */

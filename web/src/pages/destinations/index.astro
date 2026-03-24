@@ -7,7 +7,7 @@ import CTAButton from '../../components/CTAButton.astro';
 import CalendlyModal from '../../components/CalendlyModal.astro';
 import SectionReveal from '../../components/SectionReveal.astro';
 import { regionOrder, regionLabels } from '../../data/regions';
-import shuffleIcon from '../../assets/images/shuffle-icon.webp';
+import shuffleIcon from '../../assets/images/shuffle-icon.png';
 
 const allDestinations = await getCollection('destinations');
 const destinations = allDestinations.filter((d) => !d.data.draft);

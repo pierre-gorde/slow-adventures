@@ -6,15 +6,27 @@ overlayColor: 'sauge'
 order: 35
 featured: false
 region: 'amerique-du-nord'
-title: "Road trip East Coast USA sur mesure — Travel Planning Slow Adventures"
-metaDescription: "Voyage East Coast USA sur mesure avec Elena, travel planner Amériques. New York, Boston, Floride, Nouvelle-Angleterre — un itinéraire taillé pour toi."
-keywords: ['Skylines mythiques', 'Indian Summer', 'Forêts flamboyantes', 'Plages de sable blanc', 'Culture américaine', 'Road trip historique', 'Villes emblématiques', 'Moments suspendus', 'Aventure urbaine', 'Évasion totale']
+title: 'Road trip East Coast USA sur mesure — Travel Planning Slow Adventures'
+metaDescription: 'Voyage East Coast USA sur mesure avec Elena, travel planner Amériques. New York, Boston, Floride, Nouvelle-Angleterre — un itinéraire taillé pour toi.'
+keywords:
+  [
+    'Skylines mythiques',
+    'Indian Summer',
+    'Forêts flamboyantes',
+    'Plages de sable blanc',
+    'Culture américaine',
+    'Road trip historique',
+    'Villes emblématiques',
+    'Moments suspendus',
+    'Aventure urbaine',
+    'Évasion totale',
+  ]
 gallery:
-  - '../../assets/images/destinations/gallery/east-coast/01.webp'
+  - '../../assets/images/destinations/gallery/east-coast/05.webp'
   - '../../assets/images/destinations/gallery/east-coast/02.webp'
   - '../../assets/images/destinations/gallery/east-coast/03.webp'
   - '../../assets/images/destinations/gallery/east-coast/04.webp'
-  - '../../assets/images/destinations/gallery/east-coast/05.webp'
+  - '../../assets/images/destinations/gallery/east-coast/01.webp'
   - '../../assets/images/destinations/gallery/east-coast/06.webp'
   - '../../assets/images/destinations/gallery/east-coast/07.webp'
 ---

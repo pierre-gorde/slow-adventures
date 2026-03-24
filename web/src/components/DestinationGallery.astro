@@ -162,12 +162,15 @@ const allSrcs = allOptimized.map((o) => o.src);
   }
 
   .lightbox-img {
-    will-change: transform;
+    will-change: transform, opacity;
+    touch-action: pan-y;
+    user-select: none;
+    -webkit-user-select: none;
   }
 </style>
 
 <script>
-  /* ── Gallery lightbox — shows ALL images (not just grid-visible ones) ── */
+  /* ── Gallery lightbox — fluid swipe + slide transitions ── */
   const gallerySection = document.querySelector<HTMLElement>('.dest-gallery');
   const galleryTrigger = document.querySelector('.dest-gallery__trigger');
   const lightbox = document.getElementById('gallery-lightbox');
@@ -178,23 +181,76 @@ const allSrcs = allOptimized.map((o) => o.src);
   const prevBtn = document.getElementById('lightbox-prev');
   const nextBtn = document.getElementById('lightbox-next');
 
-  // ALL image srcs from data attribute (includes hidden ones)
   const srcs: string[] = JSON.parse(
     gallerySection?.dataset.gallerySrcs ?? '[]',
   );
 
   let current = 0;
+  let isAnimating = false;
 
+  /* ── Preload adjacent images ── */
+  function preloadAdjacent(index: number) {
+    const prev = ((index - 1) % srcs.length + srcs.length) % srcs.length;
+    const next = (index + 1) % srcs.length;
+    [prev, next].forEach((i) => {
+      const img = new window.Image();
+      img.src = srcs[i];
+    });
+  }
+
+  /* ── Show image instantly (no animation) ── */
   function show(index: number) {
     current = ((index % srcs.length) + srcs.length) % srcs.length;
     if (lightboxImg) {
       lightboxImg.src = srcs[current];
       lightboxImg.alt = `Photo ${current + 1}`;
+      lightboxImg.style.transition = 'none';
       lightboxImg.style.transform = 'translateX(0)';
+      lightboxImg.style.opacity = '1';
     }
     if (lightboxCounter) {
       lightboxCounter.textContent = `${current + 1} / ${srcs.length}`;
     }
+    preloadAdjacent(current);
+  }
+
+  /* ── Slide to next/prev with fluid animation ── */
+  function slideTo(index: number, direction: 'left' | 'right') {
+    if (isAnimating || !lightboxImg) return;
+    isAnimating = true;
+
+    const slideOut = direction === 'left' ? '-100%' : '100%';
+    const slideIn = direction === 'left' ? '60%' : '-60%';
+
+    // Slide current image out
+    lightboxImg.style.transition = 'transform 0.25s ease-in, opacity 0.2s ease-in';
+    lightboxImg.style.transform = `translateX(${slideOut})`;
+    lightboxImg.style.opacity = '0.3';
+
+    setTimeout(() => {
+      // Change to new image, position it on the other side
+      current = ((index % srcs.length) + srcs.length) % srcs.length;
+      lightboxImg.src = srcs[current];
+      lightboxImg.alt = `Photo ${current + 1}`;
+      lightboxImg.style.transition = 'none';
+      lightboxImg.style.transform = `translateX(${slideIn})`;
+      lightboxImg.style.opacity = '0.3';
+
+      if (lightboxCounter) {
+        lightboxCounter.textContent = `${current + 1} / ${srcs.length}`;
+      }
+
+      // Force reflow then slide in
+      void lightboxImg.offsetWidth;
+      lightboxImg.style.transition = 'transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease-out';
+      lightboxImg.style.transform = 'translateX(0)';
+      lightboxImg.style.opacity = '1';
+
+      setTimeout(() => {
+        isAnimating = false;
+        preloadAdjacent(current);
+      }, 300);
+    }, 200);
   }
 
   function open(index: number) {
@@ -221,8 +277,8 @@ const allSrcs = allOptimized.map((o) => o.src);
 
   if (galleryTrigger) galleryTrigger.addEventListener('click', () => open(0));
   if (closeBtn) closeBtn.addEventListener('click', close);
-  if (prevBtn) prevBtn.addEventListener('click', () => show(current - 1));
-  if (nextBtn) nextBtn.addEventListener('click', () => show(current + 1));
+  if (prevBtn) prevBtn.addEventListener('click', () => slideTo(current - 1, 'right'));
+  if (nextBtn) nextBtn.addEventListener('click', () => slideTo(current + 1, 'left'));
 
   // Click on backdrop to close
   if (lightboxTrack) {
@@ -231,16 +287,17 @@ const allSrcs = allOptimized.map((o) => o.src);
     });
   }
 
-  /* ── Keyboard navigation (arrows + Escape) ── */
+  /* ── Keyboard navigation ── */
   document.addEventListener('keydown', (e) => {
     if (!lightbox || lightbox.classList.contains('hidden')) return;
     if (e.key === 'Escape') close();
-    if (e.key === 'ArrowLeft') show(current - 1);
-    if (e.key === 'ArrowRight') show(current + 1);
+    if (e.key === 'ArrowLeft') slideTo(current - 1, 'right');
+    if (e.key === 'ArrowRight') slideTo(current + 1, 'left');
   });
 
-  /* ── Touch swipe on mobile ── */
+  /* ── Touch swipe — fluid with velocity detection ── */
   let touchStartX = 0;
+  let touchStartTime = 0;
   let touchDeltaX = 0;
   let isSwiping = false;
 
@@ -248,10 +305,14 @@ const allSrcs = allOptimized.map((o) => o.src);
     lightboxTrack.addEventListener(
       'touchstart',
       (e: TouchEvent) => {
+        if (isAnimating) return;
         touchStartX = e.touches[0].clientX;
+        touchStartTime = Date.now();
         touchDeltaX = 0;
         isSwiping = true;
-        if (lightboxImg) lightboxImg.style.transition = 'none';
+        if (lightboxImg) {
+          lightboxImg.style.transition = 'none';
+        }
       },
       { passive: true },
     );
@@ -259,27 +320,39 @@ const allSrcs = allOptimized.map((o) => o.src);
     lightboxTrack.addEventListener(
       'touchmove',
       (e: TouchEvent) => {
-        if (!isSwiping) return;
+        if (!isSwiping || isAnimating) return;
         touchDeltaX = e.touches[0].clientX - touchStartX;
         if (lightboxImg) {
-          lightboxImg.style.transform = `translateX(${touchDeltaX}px)`;
+          // Rubber-band resistance at edges
+          const dampened = touchDeltaX * 0.85;
+          const opacity = Math.max(0.4, 1 - Math.abs(dampened) / window.innerWidth);
+          lightboxImg.style.transform = `translateX(${dampened}px)`;
+          lightboxImg.style.opacity = String(opacity);
         }
       },
       { passive: true },
     );
 
     lightboxTrack.addEventListener('touchend', () => {
-      if (!isSwiping) return;
+      if (!isSwiping || isAnimating) return;
       isSwiping = false;
-      if (lightboxImg) lightboxImg.style.transition = 'transform 0.3s ease-out';
 
-      const threshold = 60;
-      if (touchDeltaX < -threshold) {
-        show(current + 1);
-      } else if (touchDeltaX > threshold) {
-        show(current - 1);
+      const elapsed = Date.now() - touchStartTime;
+      const velocity = Math.abs(touchDeltaX) / elapsed; // px/ms
+      const threshold = 50;
+      const fastSwipe = velocity > 0.3 && Math.abs(touchDeltaX) > 20;
+
+      if (touchDeltaX < -threshold || (touchDeltaX < 0 && fastSwipe)) {
+        slideTo(current + 1, 'left');
+      } else if (touchDeltaX > threshold || (touchDeltaX > 0 && fastSwipe)) {
+        slideTo(current - 1, 'right');
       } else {
-        if (lightboxImg) lightboxImg.style.transform = 'translateX(0)';
+        // Snap back
+        if (lightboxImg) {
+          lightboxImg.style.transition = 'transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease-out';
+          lightboxImg.style.transform = 'translateX(0)';
+          lightboxImg.style.opacity = '1';
+        }
       }
     });
   }

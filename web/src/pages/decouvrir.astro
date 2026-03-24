@@ -183,6 +183,28 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL;
       </section>
 
       <!-- ═══════════════════════════════════════════════
+           CTA — Ton prochain reve
+      ═══════════════════════════════════════════════ -->
+      <section class="lp-section lp-cta-section" aria-labelledby="lp-cta-heading">
+        <div class="lp-container text-center" data-lp-reveal>
+          <h2 id="lp-cta-heading" class="lp-heading lp-cta__title font-serif">
+            Ton prochain rêve<br /><em>commence ici.</em>
+          </h2>
+          <p class="lp-text lp-cta__subtitle">
+            30 minutes, gratuites, sans engagement.
+          </p>
+          <a
+            href={calendlyUrl}
+            data-calendly-trigger
+            class="lp-cta-btn"
+          >
+            <span class="lp-cta-btn__text">Réserve ton Discovery Call</span>
+          </a>
+          <p class="lp-cta__note">Aucune carte bancaire · Aucun engagement</p>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════
            TEMOIGNAGES
       ═══════════════════════════════════════════════ -->
       <section class="lp-section" aria-labelledby="lp-testimonials-heading">
@@ -213,28 +235,6 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL;
               </footer>
             </blockquote>
           </div>
-        </div>
-      </section>
-
-      <!-- ═══════════════════════════════════════════════
-           CTA — Ton prochain reve
-      ═══════════════════════════════════════════════ -->
-      <section class="lp-section lp-cta-section" aria-labelledby="lp-cta-heading">
-        <div class="lp-container text-center" data-lp-reveal>
-          <h2 id="lp-cta-heading" class="lp-heading lp-cta__title font-serif">
-            Ton prochain rêve<br /><em>commence ici.</em>
-          </h2>
-          <p class="lp-text lp-cta__subtitle">
-            30 minutes, gratuites, sans engagement.
-          </p>
-          <a
-            href={calendlyUrl}
-            data-calendly-trigger
-            class="lp-cta-btn"
-          >
-            <span class="lp-cta-btn__text">Réserve ton Discovery Call</span>
-          </a>
-          <p class="lp-cta__note">Aucune carte bancaire · Aucun engagement</p>
         </div>
       </section>
     </main>

@@ -21,6 +21,13 @@ keywords:
     'Diversité infinie',
     'Évasion totale',
   ]
+gallery:
+  - '../../assets/images/destinations/gallery/bresil/01.webp'
+  - '../../assets/images/destinations/gallery/bresil/02.webp'
+  - '../../assets/images/destinations/gallery/bresil/03.webp'
+  - '../../assets/images/destinations/gallery/bresil/04.webp'
+  - '../../assets/images/destinations/gallery/bresil/05.webp'
+  - '../../assets/images/destinations/gallery/bresil/06.webp'
 ---
 
 Le Brésil, c'est un voyage qui se vit avec tous les sens : sentir la brume des chutes d'Iguazú sur ton visage, entendre le rythme de la samba dans les rues de Rio, naviguer sur l'Amazone en écoutant la forêt respirer, et goûter une açaí bowl les pieds dans le sable… Chaque instant éveille la curiosité et émerveille.

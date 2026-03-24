@@ -9,6 +9,13 @@ region: 'amerique-centrale'
 title: 'Voyage au Panama sur mesure — Travel Planning Slow Adventures'
 metaDescription: 'Voyage Panama sur mesure avec Elena, travel planner Amériques. Canal, San Blas, jungle — un itinéraire entre deux océans taillé pour toi.'
 keywords: ['Canal mythique', 'Îles paradisiaques', 'Jungle tropicale', 'Archipel San Blas', 'Diversité culturelle', 'Plongée tropicale', 'Contrastes urbains', 'Moments suspendus', 'Aventure entre océans', 'Évasion totale']
+gallery:
+  - '../../assets/images/destinations/gallery/panama/01.webp'
+  - '../../assets/images/destinations/gallery/panama/02.webp'
+  - '../../assets/images/destinations/gallery/panama/03.webp'
+  - '../../assets/images/destinations/gallery/panama/04.webp'
+  - '../../assets/images/destinations/gallery/panama/05.webp'
+  - '../../assets/images/destinations/gallery/panama/06.webp'
 ---
 
 Le Panama, c'est un voyage qui se vit avec tous les sens : admirer un porte-conteneurs traverser le canal légendaire, sentir le sable blanc sous tes pieds à San Blas, écouter les singes capucins dans la jungle du Darién, et goûter un ceviche frais face à l'océan Pacifique… Chaque instant éveille la curiosité et émerveille.

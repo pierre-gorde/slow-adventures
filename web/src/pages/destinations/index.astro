@@ -43,19 +43,18 @@ const collectionLd = {
     <!-- ═══════════════════════════════════════════════
          MINI-HERO
     ═══════════════════════════════════════════════ -->
-    <section class="dest-listing-hero bg-creme-dark" aria-label="En-tête destinations">
-      <div class="max-w-4xl mx-auto text-center px-6">
-        <div class="flex justify-center mb-6">
-          <Image
-            src={logoDestinations}
-            alt="Slow Adventures"
-            widths={[200, 400]}
-            sizes="20vw"
-            loading="eager"
-            decoding="async"
-            class="dest-listing-logo"
-          />
-        </div>
+    <section class="dest-listing-hero bg-creme-dark relative overflow-hidden" aria-label="En-tête destinations">
+      <Image
+        src={logoDestinations}
+        alt=""
+        widths={[200, 400]}
+        sizes="20vw"
+        loading="eager"
+        decoding="async"
+        class="dest-listing-logo"
+        aria-hidden="true"
+      />
+      <div class="max-w-4xl mx-auto text-center px-6 relative z-10">
         <p class="font-sans text-warm-black/50 text-xs uppercase tracking-[0.25em] mb-4">
           Slow Adventures
         </p>
@@ -222,11 +221,16 @@ const collectionLd = {
   }
 
   .dest-listing-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 20vw;
     min-width: 100px;
     max-width: 200px;
     height: auto;
-    opacity: 0.15;
+    opacity: 0.12;
+    pointer-events: none;
   }
 
   /* CTA band */

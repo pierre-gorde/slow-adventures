@@ -7,7 +7,6 @@ import CTAButton from '../../components/CTAButton.astro';
 import CalendlyModal from '../../components/CalendlyModal.astro';
 import SectionReveal from '../../components/SectionReveal.astro';
 import { regionOrder, regionLabels } from '../../data/regions';
-import logoDestinations from '../../assets/images/logo-destinations.webp';
 
 const allDestinations = await getCollection('destinations');
 const destinations = allDestinations.filter((d) => !d.data.draft);
@@ -55,16 +54,6 @@ const collectionLd = {
         <source src="/videos/destinations-hero.mp4" type="video/mp4" />
       </video>
       <div class="dest-listing-hero__overlay" aria-hidden="true"></div>
-      <Image
-        src={logoDestinations}
-        alt=""
-        widths={[200, 400]}
-        sizes="20vw"
-        loading="eager"
-        decoding="async"
-        class="dest-listing-logo"
-        aria-hidden="true"
-      />
       <div class="max-w-4xl mx-auto text-center px-6 relative z-10">
         <p class="font-sans text-white/60 text-xs uppercase tracking-[0.25em] mb-4">
           Slow Adventures
@@ -252,19 +241,6 @@ const collectionLd = {
     );
   }
 
-  .dest-listing-logo {
-    position: absolute;
-    bottom: calc(4rem + 50px);
-    left: 50%;
-    transform: translate(-50%, 0%);
-    width: 30vw;
-    min-width: 150px;
-    max-width: 350px;
-    height: auto;
-    opacity: 0.15;
-    pointer-events: none;
-    z-index: 2;
-  }
 
   /* CTA band */
   .dest-cta-band {

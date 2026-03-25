@@ -130,6 +130,14 @@ const isHome = currentPath === '/' || currentPath === '';
 
       <!-- Destinations group -->
       <div class="mt-3 flex-1 flex flex-col min-h-0">
+        <!-- Toutes les destinations button -->
+        <a
+          href="/destinations/"
+          class="topbar__menu-cta-outline block text-center font-sans text-sm uppercase tracking-widest py-2.5 px-4 rounded-full border border-terracotta text-terracotta transition-colors mx-3 mb-3 hover:bg-terracotta hover:text-white"
+        >
+          Toutes les destinations
+        </a>
+
         <!-- Search input -->
         <div class="relative px-3 mb-2">
           <svg class="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-warm-black/30 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -173,15 +181,6 @@ const isHome = currentPath === '/' || currentPath === '';
           </p>
         </div>
 
-        <a
-          href="/destinations/"
-          class="topbar__menu-link font-sans text-sm py-2.5 px-3 rounded-lg transition-colors text-warm-black/50 inline-flex items-center gap-1.5 mt-1"
-        >
-          Voir toutes les destinations
-          <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg>
-        </a>
       </div>
 
       <!-- CTA -->
@@ -422,6 +421,13 @@ const isHome = currentPath === '/' || currentPath === '';
     toggle.setAttribute('aria-label', 'Ouvrir le menu');
   }
 
+  // Force hero videos to always play (Safari pauses them when menu overlays)
+  function ensureVideosPlaying() {
+    document.querySelectorAll<HTMLVideoElement>('video[autoplay]').forEach((v) => {
+      if (v.paused) v.play().catch(() => {});
+    });
+  }
+
   // Toggle mobile menu
   if (toggle && topbar && menu) {
     toggle.addEventListener('click', () => {
@@ -437,8 +443,17 @@ const isHome = currentPath === '/' || currentPath === '';
       if (isOpen && searchInput) {
         setTimeout(() => searchInput.focus(), 150);
       }
+      // Keep videos playing when menu opens/closes
+      ensureVideosPlaying();
+      if (isOpen) {
+        setTimeout(ensureVideosPlaying, 300);
+        setTimeout(ensureVideosPlaying, 1000);
+      }
     });
   }
+
+  // Periodically ensure videos stay playing (Safari aggressively pauses)
+  setInterval(ensureVideosPlaying, 2000);
 
   // Scroll: transparent -> solid
   function onScroll() {

@@ -44,6 +44,7 @@ const collectionLd = {
     ═══════════════════════════════════════════════ -->
     <section class="dest-listing-hero relative overflow-hidden" aria-label="En-tête destinations">
       <video
+        id="dest-hero-video"
         class="dest-listing-hero__video"
         autoplay
         muted
@@ -54,6 +55,23 @@ const collectionLd = {
       >
         <source src="/videos/destinations-hero.mp4" type="video/mp4" />
       </video>
+      <script is:inline>
+        (function() {
+          var v = document.getElementById('dest-hero-video');
+          if (!v) return;
+          v.muted = true;
+          v.play().catch(function() {});
+          document.addEventListener('touchstart', function f() {
+            v.muted = true;
+            v.play().catch(function() {});
+            document.removeEventListener('touchstart', f);
+          }, { once: true, passive: true });
+          document.addEventListener('scroll', function f() {
+            if (v.paused) { v.muted = true; v.play().catch(function() {}); }
+            document.removeEventListener('scroll', f);
+          }, { once: true, passive: true });
+        })();
+      </script>
       <div class="dest-listing-hero__overlay" aria-hidden="true"></div>
       <div class="max-w-4xl mx-auto text-center px-6 relative z-10">
         <p class="font-sans text-white/60 text-xs uppercase tracking-[0.25em] mb-4">

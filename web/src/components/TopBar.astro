@@ -421,13 +421,6 @@ const isHome = currentPath === '/' || currentPath === '';
     toggle.setAttribute('aria-label', 'Ouvrir le menu');
   }
 
-  // Force hero videos to always play (Safari pauses them when menu overlays)
-  function ensureVideosPlaying() {
-    document.querySelectorAll<HTMLVideoElement>('video[autoplay]').forEach((v) => {
-      if (v.paused) v.play().catch(() => {});
-    });
-  }
-
   // Toggle mobile menu
   if (toggle && topbar && menu) {
     toggle.addEventListener('click', () => {
@@ -443,17 +436,8 @@ const isHome = currentPath === '/' || currentPath === '';
       if (isOpen && searchInput) {
         setTimeout(() => searchInput.focus(), 150);
       }
-      // Keep videos playing when menu opens/closes
-      ensureVideosPlaying();
-      if (isOpen) {
-        setTimeout(ensureVideosPlaying, 300);
-        setTimeout(ensureVideosPlaying, 1000);
-      }
     });
   }
-
-  // Periodically ensure videos stay playing (Safari aggressively pauses)
-  setInterval(ensureVideosPlaying, 2000);
 
   // Scroll: transparent -> solid
   function onScroll() {

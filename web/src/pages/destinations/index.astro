@@ -310,6 +310,33 @@ const collectionLd = {
 <script>
   import { gsap, ScrollTrigger } from '../../lib/gsap';
 
+  // ── Force autoplay videos (Safari blocks on navigation) ──
+  const heroVideo = document.querySelector<HTMLVideoElement>('video[autoplay]');
+  if (heroVideo) {
+    // Try immediate play
+    heroVideo.play().catch(() => {});
+
+    // Fallback: force play on first user interaction (Safari requirement)
+    const forcePlay = () => {
+      if (heroVideo.paused) heroVideo.play().catch(() => {});
+      window.removeEventListener('touchstart', forcePlay);
+      window.removeEventListener('scroll', forcePlay);
+    };
+    window.addEventListener('touchstart', forcePlay, { once: true, passive: true });
+    window.addEventListener('scroll', forcePlay, { once: true, passive: true });
+
+    // Also retry after a short delay (Safari sometimes needs a moment)
+    setTimeout(() => { if (heroVideo.paused) heroVideo.play().catch(() => {}); }, 500);
+    setTimeout(() => { if (heroVideo.paused) heroVideo.play().catch(() => {}); }, 1500);
+
+    // Resume on visibility change (bfcache / tab switch)
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible' && heroVideo.paused) {
+        heroVideo.play().catch(() => {});
+      }
+    });
+  }
+
   // ── Counter animation ──
   const counterEl = document.getElementById('counter');
   if (counterEl) {

@@ -186,14 +186,64 @@ const optimizedPoster = await getImage({
     </section>
     -->
     <section
+      id="avantages"
+      aria-labelledby="heading-avantages"
+      class="bg-creme sa-section-padding"
+    >
+      <div class="max-w-3xl mx-auto">
+        <SectionReveal animation="fade-up">
+          <h2
+            id="heading-avantages"
+            class="font-serif text-3xl md:text-4xl text-warm-black text-center mb-12"
+          >
+            Ce que Slow Adventures change (vraiment) pour toi
+          </h2>
+        </SectionReveal>
+        <SectionReveal animation="stagger">
+          <ul class="space-y-6 list-none p-0">
+            <li class="flex items-start gap-4">
+              <span class="text-terracotta text-2xl leading-none mt-0.5">✦</span>
+              <div>
+                <p class="font-sans font-semibold text-warm-black text-lg">Un voyage 100% sur mesure</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="text-terracotta text-2xl leading-none mt-0.5">✦</span>
+              <div>
+                <p class="font-sans font-semibold text-warm-black text-lg">Un gain de temps énorme</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="text-terracotta text-2xl leading-none mt-0.5">✦</span>
+              <div>
+                <p class="font-sans font-semibold text-warm-black text-lg">Moins de charge mentale</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="text-terracotta text-2xl leading-none mt-0.5">✦</span>
+              <div>
+                <p class="font-sans font-semibold text-warm-black text-lg">Plus de flexibilité</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="text-terracotta text-2xl leading-none mt-0.5">✦</span>
+              <div>
+                <p class="font-sans font-semibold text-warm-black text-lg">Tu économises par rapport à une agence de voyage classique</p>
+              </div>
+            </li>
+          </ul>
+        </SectionReveal>
+      </div>
+    </section>
+    <section
       id="tarifs"
       aria-labelledby="heading-tarifs"
-      class="bg-creme sa-section-padding"
+      class="bg-warm-black sa-section-padding"
     >
       <div class="max-w-3xl mx-auto">
         <h2
           id="heading-tarifs"
-          class="font-serif text-3xl md:text-4xl text-warm-black text-center mb-12"
+          class="font-serif text-3xl md:text-4xl text-white text-center mb-12"
         >
           Ici, on est transparent
         </h2>
@@ -205,6 +255,7 @@ const optimizedPoster = await getImage({
                   label={row.label}
                   price={row.price}
                   descriptions={row.descriptions}
+                  dark={true}
                 />
               ))
             }

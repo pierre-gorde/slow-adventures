@@ -3,23 +3,37 @@ interface Props {
   label: string;
   price: string;
   descriptions?: string[];
+  dark?: boolean;
 }
 
-const { label, price, descriptions } = Astro.props;
+const { label, price, descriptions, dark = false } = Astro.props;
 ---
 
 <div
-  class="flex flex-wrap items-baseline gap-2 py-4 border-b border-warm-black/10"
+  class:list={[
+    'flex flex-wrap items-baseline gap-2 py-4 border-b',
+    dark ? 'border-white/10' : 'border-warm-black/10',
+  ]}
 >
   <dt
-    class="font-sans font-semibold text-warm-black text-lg flex-1 inline-flex items-baseline gap-2 after:content-[''] after:flex-1 after:border-b after:border-dotted after:border-warm-gray/40"
+    class:list={[
+      'font-sans font-semibold text-lg flex-1 inline-flex items-baseline gap-2 after:content-[\'\'] after:flex-1 after:border-b after:border-dotted',
+      dark
+        ? 'text-white after:border-white/30'
+        : 'text-warm-black after:border-warm-gray/40',
+    ]}
   >
     {label}
   </dt>
   <dd class="font-serif text-2xl text-terracotta font-bold">{price}</dd>
   {
     descriptions && descriptions.length > 0 && (
-      <dd class="w-full font-sans text-warm-gray text-sm mt-1 space-y-2">
+      <dd
+        class:list={[
+          'w-full font-sans text-sm mt-1 space-y-2',
+          dark ? 'text-white/70' : 'text-warm-gray',
+        ]}
+      >
         {descriptions.map((text) => (
           <p>{text}</p>
         ))}

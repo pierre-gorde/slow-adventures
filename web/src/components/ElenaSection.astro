@@ -40,59 +40,57 @@ const { id, imageSrc, imageAlt, title, description, ctaHref } = Astro.props;
         </div>
       </SectionReveal>
     </div>
-    <div class="lg:w-3/5">
-      <SectionReveal animation="fade-in" delay={200}>
-        <div class="mt-8 lg:mt-0">
-          <h2
-            id="heading-elena"
-            class="font-serif text-3xl md:text-4xl text-warm-black mb-4"
-          >
-            {title}
-          </h2>
-          <p class="font-sans text-warm-black/90 text-lg leading-relaxed mb-6">
-            {description}
-          </p>
-          <div>
-            <CTAButton
-              href={ctaHref}
-              variant="solid"
-              size="small"
-              subtext=""
-              desktopOnly={true}
-            />
-          </div>
-          <a
-            href="https://www.instagram.com/slow_adventures_/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram Elena — @slow_adventures_"
-            class="inline-flex items-center gap-2 text-terracotta hover:text-terracotta/70 transition-colors font-sans text-sm mt-5"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.75"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-            >
-              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-              <circle cx="12" cy="12" r="4"></circle>
-              <circle
-                cx="17.5"
-                cy="6.5"
-                r="0.5"
-                fill="currentColor"
-                stroke="none"></circle>
-            </svg>
-            @slow_adventures_
-          </a>
+    <div class="lg:w-3/5" data-elena-text>
+      <div class="mt-8 lg:mt-0">
+        <h2
+          id="heading-elena"
+          class="elena-text__el font-serif text-3xl md:text-4xl text-warm-black mb-4"
+        >
+          {title}
+        </h2>
+        <p class="elena-text__el font-sans text-warm-black/90 text-lg leading-relaxed mb-6">
+          {description}
+        </p>
+        <div class="elena-text__el">
+          <CTAButton
+            href={ctaHref}
+            variant="solid"
+            size="small"
+            subtext=""
+            desktopOnly={true}
+          />
         </div>
-      </SectionReveal>
+        <a
+          href="https://www.instagram.com/slow_adventures_/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram Elena — @slow_adventures_"
+          class="elena-text__el inline-flex items-center gap-2 text-terracotta hover:text-terracotta/70 transition-colors font-sans text-sm mt-5"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.75"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <circle cx="12" cy="12" r="4"></circle>
+            <circle
+              cx="17.5"
+              cy="6.5"
+              r="0.5"
+              fill="currentColor"
+              stroke="none"></circle>
+          </svg>
+          @slow_adventures_
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -209,11 +207,31 @@ const { id, imageSrc, imageAlt, title, description, ctaHref } = Astro.props;
       },
     });
 
-    tl.to(photo, { y: 0, opacity: 1, duration: 0.7, ease: 'power2.out' }).to(
-      frame,
-      { x: 12, y: 12, opacity: 1, duration: 0.5, ease: 'power2.out' },
-      '-=0.3'
-    );
+    tl.to(photo, { y: 0, opacity: 1, duration: 0.7, ease: 'power2.out' })
+      .to(
+        frame,
+        { x: 12, y: 12, opacity: 1, duration: 0.5, ease: 'power2.out' },
+        '-=0.3'
+      );
+
+    // Text stagger entrance — aligned with page-wide conventions
+    const textContainer = document.querySelector('[data-elena-text]');
+    if (textContainer) {
+      const els = textContainer.querySelectorAll('.elena-text__el');
+      gsap.set(els, { opacity: 0, x: 40 });
+      gsap.to(els, {
+        opacity: 1,
+        x: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: textContainer,
+          start: 'top 80%',
+          once: true,
+        },
+      });
+    }
 
     // Subtle parallax on scroll: frame moves slightly
     gsap.to(frame, {

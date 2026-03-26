@@ -118,22 +118,21 @@ const optimizedPoster = await getImage({
         >
           La construction de TON aventure
         </h2>
-        <SectionReveal animation="stagger">
-          <ol
-            class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 list-none p-0"
-          >
-            {
-              processSteps.map((step) => (
-                <ProcessStep
-                  number={step.number}
-                  title={step.title}
-                  description={step.description}
-                  icon={step.icon}
-                />
-              ))
-            }
-          </ol>
-        </SectionReveal>
+        <ol
+          id="process-list"
+          class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 list-none p-0"
+        >
+          {
+            processSteps.map((step) => (
+              <ProcessStep
+                number={step.number}
+                title={step.title}
+                description={step.description}
+                icon={step.icon}
+              />
+            ))
+          }
+        </ol>
       </div>
     </section>
     <!-- Section témoignages cachée temporairement
@@ -194,47 +193,184 @@ const optimizedPoster = await getImage({
         <SectionReveal animation="fade-up">
           <h2
             id="heading-avantages"
-            class="font-serif text-3xl md:text-4xl text-warm-black text-center mb-12"
+            class="font-serif text-3xl md:text-4xl text-warm-black text-center mb-16 md:mb-20"
           >
             Ce que Slow Adventures change (vraiment) pour toi
           </h2>
         </SectionReveal>
-        <SectionReveal animation="stagger">
-          <ul class="space-y-6 list-none p-0">
-            <li class="flex items-start gap-4">
-              <span class="text-terracotta text-2xl leading-none mt-0.5">✦</span>
-              <div>
-                <p class="font-sans font-semibold text-warm-black text-lg">Un voyage 100% sur mesure</p>
-              </div>
-            </li>
-            <li class="flex items-start gap-4">
-              <span class="text-terracotta text-2xl leading-none mt-0.5">✦</span>
-              <div>
-                <p class="font-sans font-semibold text-warm-black text-lg">Un gain de temps énorme</p>
-              </div>
-            </li>
-            <li class="flex items-start gap-4">
-              <span class="text-terracotta text-2xl leading-none mt-0.5">✦</span>
-              <div>
-                <p class="font-sans font-semibold text-warm-black text-lg">Moins de charge mentale</p>
-              </div>
-            </li>
-            <li class="flex items-start gap-4">
-              <span class="text-terracotta text-2xl leading-none mt-0.5">✦</span>
-              <div>
-                <p class="font-sans font-semibold text-warm-black text-lg">Plus de flexibilité</p>
-              </div>
-            </li>
-            <li class="flex items-start gap-4">
-              <span class="text-terracotta text-2xl leading-none mt-0.5">✦</span>
-              <div>
-                <p class="font-sans font-semibold text-warm-black text-lg">Tu économises par rapport à une agence de voyage classique</p>
-              </div>
-            </li>
-          </ul>
-        </SectionReveal>
+        <ul id="avantages-list" class="space-y-8 md:space-y-10 list-none p-0">
+          <li class="avantage-item flex items-center gap-5 md:gap-6" data-avantage>
+            <span class="avantage-marker shrink-0 text-xl leading-none opacity-0 scale-75">✦</span>
+            <p class="font-sans text-lg md:text-xl font-semibold text-warm-black/20 transition-none">Un voyage 100% sur mesure</p>
+          </li>
+          <li class="avantage-item flex items-center gap-5 md:gap-6" data-avantage>
+            <span class="avantage-marker shrink-0 text-xl leading-none opacity-0 scale-75">✦</span>
+            <p class="font-sans text-lg md:text-xl font-semibold text-warm-black/20 transition-none">Un gain de temps énorme</p>
+          </li>
+          <li class="avantage-item flex items-center gap-5 md:gap-6" data-avantage>
+            <span class="avantage-marker shrink-0 text-xl leading-none opacity-0 scale-75">✦</span>
+            <p class="font-sans text-lg md:text-xl font-semibold text-warm-black/20 transition-none">Moins de charge mentale</p>
+          </li>
+          <li class="avantage-item flex items-center gap-5 md:gap-6" data-avantage>
+            <span class="avantage-marker shrink-0 text-xl leading-none opacity-0 scale-75">✦</span>
+            <p class="font-sans text-lg md:text-xl font-semibold text-warm-black/20 transition-none">Plus de flexibilité</p>
+          </li>
+          <li class="avantage-item flex items-center gap-5 md:gap-6" data-avantage>
+            <span class="avantage-marker shrink-0 text-xl leading-none opacity-0 scale-75">✦</span>
+            <p class="font-sans text-lg md:text-xl font-semibold text-warm-black/20 transition-none">Tu économises par rapport à une agence classique</p>
+          </li>
+        </ul>
       </div>
     </section>
+    <script>
+      import { gsap, ScrollTrigger } from '../lib/gsap';
+
+      /*
+       * ── Shared scroll conventions ──
+       *   scrub: 1.2   (smooth, unhurried feel)
+       *   trigger start: top 80%
+       *   ease entrances: power2.out
+       */
+
+      /* ── Avantages: text lights up terracotta ── */
+      gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+        const items = document.querySelectorAll('[data-avantage]');
+        const list = document.getElementById('avantages-list');
+        if (!items.length || !list) return;
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: list,
+            start: 'top 80%',
+            end: 'bottom 50%',
+            scrub: 1.2,
+          },
+        });
+
+        items.forEach((item, i) => {
+          const marker = item.querySelector('.avantage-marker');
+          const text = item.querySelector('p');
+          const pos = i * 0.8;
+
+          tl.fromTo(
+            text,
+            { color: 'rgba(44, 40, 37, 0.15)' },
+            { color: '#a65330', duration: 0.6, ease: 'power2.out' },
+            pos
+          );
+          tl.fromTo(
+            marker,
+            { opacity: 0, scale: 0.5 },
+            { opacity: 1, scale: 1, duration: 0.4, ease: 'back.out(2)' },
+            pos + 0.15
+          );
+        });
+
+        return () => { tl.kill(); };
+      });
+
+      /* Reduced motion: avantages */
+      gsap.matchMedia().add('(prefers-reduced-motion: reduce)', () => {
+        document.querySelectorAll('[data-avantage]').forEach((item) => {
+          const marker = item.querySelector('.avantage-marker') as HTMLElement;
+          const text = item.querySelector('p') as HTMLElement;
+          if (marker) { marker.style.opacity = '1'; marker.style.transform = 'scale(1)'; }
+          if (text) text.style.color = '#a65330';
+        });
+      });
+
+      /* ── Process steps: appear one by one, title flashes terracotta ── */
+      gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+        const steps = document.querySelectorAll('[data-process-step]');
+        const processList = document.getElementById('process-list');
+        if (!steps.length || !processList) return;
+
+        gsap.set(steps, { opacity: 0, y: 30 });
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: processList,
+            start: 'top 80%',
+            end: 'bottom 40%',
+            scrub: 1.2,
+          },
+        });
+
+        steps.forEach((step, i) => {
+          const title = step.querySelector('.process-step__title');
+          const pos = i * 1.8;
+
+          tl.to(step, {
+            opacity: 1, y: 0, duration: 0.8, ease: 'power2.out',
+          }, pos);
+
+          if (title) {
+            tl.fromTo(title,
+              { color: '#2c2825' },
+              { color: '#a65330', duration: 0.6, ease: 'power2.out' },
+              pos
+            );
+            tl.to(title,
+              { color: '#2c2825', duration: 0.6, ease: 'power2.inOut' },
+              pos + 1.2
+            );
+          }
+        });
+
+        return () => { tl.kill(); };
+      });
+
+      /* Reduced motion: process */
+      gsap.matchMedia().add('(prefers-reduced-motion: reduce)', () => {
+        gsap.set('[data-process-step]', { opacity: 1, y: 0 });
+      });
+
+      /* ── Pricing rows: labels flash terracotta one by one ── */
+      gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+        const rows = document.querySelectorAll('[data-pricing-row]');
+        const pricingList = document.getElementById('pricing-list');
+        if (!rows.length || !pricingList) return;
+
+        gsap.set(rows, { opacity: 0, y: 20 });
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: pricingList,
+            start: 'top 80%',
+            end: 'bottom 40%',
+            scrub: 1.2,
+          },
+        });
+
+        rows.forEach((row, i) => {
+          const label = row.querySelector('dt');
+          const pos = i * 1.8;
+
+          tl.to(row, {
+            opacity: 1, y: 0, duration: 0.8, ease: 'power2.out',
+          }, pos);
+
+          if (label) {
+            tl.fromTo(label,
+              { color: '#ffffff' },
+              { color: '#a65330', duration: 0.6, ease: 'power2.out' },
+              pos
+            );
+            tl.to(label,
+              { color: '#ffffff', duration: 0.6, ease: 'power2.inOut' },
+              pos + 1.2
+            );
+          }
+        });
+
+        return () => { tl.kill(); };
+      });
+
+      /* Reduced motion: pricing */
+      gsap.matchMedia().add('(prefers-reduced-motion: reduce)', () => {
+        gsap.set('[data-pricing-row]', { opacity: 1, y: 0 });
+      });
+    </script>
     <section
       id="tarifs"
       aria-labelledby="heading-tarifs"
@@ -247,20 +383,18 @@ const optimizedPoster = await getImage({
         >
           Ici, on est transparent
         </h2>
-        <SectionReveal animation="stagger">
-          <dl class="space-y-6">
-            {
-              pricingRows.map((row) => (
-                <PricingRow
-                  label={row.label}
-                  price={row.price}
-                  descriptions={row.descriptions}
-                  dark={true}
-                />
-              ))
-            }
-          </dl>
-        </SectionReveal>
+        <dl id="pricing-list" class="space-y-6">
+          {
+            pricingRows.map((row) => (
+              <PricingRow
+                label={row.label}
+                price={row.price}
+                descriptions={row.descriptions}
+                dark={true}
+              />
+            ))
+          }
+        </dl>
       </div>
     </section>
     <section

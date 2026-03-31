@@ -63,3 +63,12 @@
 .sa-section-padding {
   @apply px-6 py-16 md:px-12 md:py-24 lg:px-24 lg:py-32;
 }
+
+/* Hide scrollbar — all browsers */
+html {
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}

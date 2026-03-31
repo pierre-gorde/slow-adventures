@@ -337,14 +337,14 @@ const optimizedPoster = await getImage({
           scrollTrigger: {
             trigger: pricingList,
             start: 'top 80%',
-            end: 'bottom 40%',
+            end: 'bottom 20%',
             scrub: 1.2,
           },
         });
 
         rows.forEach((row, i) => {
           const label = row.querySelector('dt');
-          const pos = i * 1.8;
+          const pos = i * 2;
 
           tl.to(row, {
             opacity: 1, y: 0, duration: 0.8, ease: 'power2.out',
@@ -358,10 +358,13 @@ const optimizedPoster = await getImage({
             );
             tl.to(label,
               { color: '#ffffff', duration: 0.6, ease: 'power2.inOut' },
-              pos + 1.2
+              pos + 1
             );
           }
         });
+
+        // Ensure timeline extends past last return
+        tl.set({}, {}, '+=0.5');
 
         return () => { tl.kill(); };
       });

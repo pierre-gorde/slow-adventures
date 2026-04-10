@@ -40,8 +40,8 @@ describe('Footer.astro', () => {
     });
 
     it('has a mailto link for contact', () => {
-      expect(footer).toContain('href="mailto:elena.ld83@gmail.com"');
-      expect(footer).toContain('elena.ld83@gmail.com');
+      expect(footer).toContain('href="mailto:elena@slowadventures.fr"');
+      expect(footer).toContain('elena@slowadventures.fr');
     });
 
     it('uses <a> tags with descriptive text for all links', () => {

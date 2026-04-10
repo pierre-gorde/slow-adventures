@@ -10,7 +10,7 @@ export const faqItems: FaqItem[] = [
     name: "Qu'est-ce que Slow Adventures ?",
     acceptedAnswer: {
       '@type': 'Answer',
-      text: "Slow Adventures, c'est ton compagnon de voyage sur mesure. Créé par Elena, Slow Adventures conçoit des voyages immersifs et personnalisés à travers toutes les Amériques — du Canada à la Patagonie, en passant par les Caraïbes et l'Amérique centrale. Ce n'est pas une agence classique : tu es accompagné·e à chaque étape, de la première conversation jusqu'au retour, pour un voyage qui te ressemble vraiment.",
+      text: "SlowAdventures est un service de travel planning, qui s'inspire des valeurs du slow travel. Pas forcément voyager moins vite, mais autrement. Ici, on ne coche pas des cases. On prend le temps de comprendre un lieu, de rencontrer les habitants, de s'imprégner vraiment. Chaque voyage est pensé comme une expérience immersive : des itinéraires construits avec sens, des hébergements choisis avec soin, et des activités qui ont un impact positif, pour toi comme pour les destinations. L'idée n'est pas de voir plus, mais de voir mieux et de ressentir la destination. Parce qu'au fond, les plus beaux souvenirs ne viennent pas de ce qu'on a vu, mais de ce qu'on a ressenti.",
     },
   },
   {
@@ -50,7 +50,7 @@ export const faqItems: FaqItem[] = [
     name: 'Quelle est la différence entre Slow Adventures et une agence de voyage ?',
     acceptedAnswer: {
       '@type': 'Answer',
-      text: "Slow Adventures n'est pas une agence de voyage. Elena est une travel planner indépendante : elle ne vend pas de packages prédéfinis, ne touche pas de commissions sur les hébergements, et ne travaille pas avec des catalogues. Chaque voyage est construit à partir de zéro selon tes envies, ton budget et ton rythme. L'accompagnement inclut un suivi par WhatsApp pendant tout le séjour.",
+      text: "Contrairement à une agence de voyage, SlowAdventures ne vend pas de séjours tout faits, et Elena n'effectue aucune réservation à ta place. Ici, chaque voyage est imaginé sur-mesure, à partir de zéro, selon tes envies, ton budget et ton rythme. Pas de catalogue, pas de circuits standardisés, pas d'itinéraires copiés-collés. En tant que travel planner indépendante, Elena conçoit ton voyage avec toi, mais tu restes libre de réserver directement chaque prestation. Résultat : plus de flexibilité, plus de transparence, et un voyage qui te ressemble vraiment. Et surtout, tu n'es jamais seul : un accompagnement personnalisé est prévu avant et pendant le voyage, avec un suivi sur WhatsApp si besoin.",
     },
   },
   {

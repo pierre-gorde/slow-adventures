@@ -1,0 +1,426 @@
+---
+import { Image, getImage } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTAButton from '../components/CTAButton.astro';
+import CalendlyModal from '../components/CalendlyModal.astro';
+import SectionReveal from '../components/SectionReveal.astro';
+import ScrollHint from '../components/ScrollHint.astro';
+import MediaGallery from '../components/MediaGallery.astro';
+import type { MediaItem } from '../types/media';
+
+import coverImg from '../assets/images/philosophie/cover.webp';
+import img01 from '../assets/images/philosophie/01.webp';
+import img02 from '../assets/images/philosophie/02.webp';
+import img03 from '../assets/images/philosophie/03.webp';
+import img04 from '../assets/images/philosophie/04.webp';
+import img05 from '../assets/images/philosophie/05.webp';
+import img06 from '../assets/images/philosophie/06.webp';
+import img07 from '../assets/images/philosophie/07.webp';
+
+const optimizedHero = await getImage({
+  src: coverImg,
+  width: 1440,
+  format: 'webp',
+});
+
+const galleryItems: MediaItem[] = [
+  { type: 'image', src: img07 },
+  { type: 'image', src: img02 },
+  { type: 'image', src: img03 },
+  { type: 'video', src: '/videos/philosophie/video-01.mp4', poster: '/videos/philosophie/poster-01.jpg' },
+  { type: 'image', src: img04 },
+  { type: 'image', src: img05 },
+  { type: 'video', src: '/videos/philosophie/video-02.mp4', poster: '/videos/philosophie/poster-02.jpg' },
+  { type: 'image', src: img06 },
+  { type: 'image', src: img01 },
+];
+
+const keywords = [
+  'Immersion totale',
+  'Voyages sur-mesure',
+  'Loin des sentiers battus',
+  'Respect des locaux',
+  'Itinéraires pensés pour toi',
+  'Expériences authentiques',
+  'Slow travel',
+  'Hors des clous',
+  "L'essentiel, pas le superflu",
+  'Amériques only',
+];
+---
+
+<BaseLayout
+  title="Ma philosophie — Le Slow Travel par Slow Adventures"
+  description="Le Slow Travel, c'est voyager en étant vraiment là. Découvre la philosophie de Slow Adventures : immersion, authenticité, sur-mesure."
+  heroPreloadImage={optimizedHero.src}
+  ogImage={optimizedHero.src}
+>
+  <main id="main">
+    <!-- ═══ HERO FULLSCREEN ═══ -->
+    <section
+      class="philo-hero relative overflow-hidden"
+      aria-label="Ma philosophie"
+    >
+      <Image
+        src={coverImg}
+        alt="Paysage nature — philosophie Slow Adventures"
+        widths={[768, 1440, 2880]}
+        sizes="100vw"
+        loading="eager"
+        decoding="async"
+        class="philo-hero__img absolute inset-0 w-full h-full object-cover"
+      />
+      <div
+        class="absolute inset-0 bg-linear-to-b from-warm-black/55 via-warm-black/15 to-warm-black/75"
+        aria-hidden="true"
+      >
+      </div>
+
+      <div
+        class="philo-hero__content relative z-10 flex flex-col justify-end items-center text-center px-6 pb-28"
+      >
+        <div class="philo-hero__text">
+          <p
+            class="font-sans text-white/70 text-xs uppercase tracking-[0.25em] mb-4"
+          >
+            Slow Adventures · Philosophie
+          </p>
+          <h1
+            class="font-serif text-4xl md:text-6xl lg:text-7xl text-white leading-none mb-6"
+          >
+            Le slow travel, ce n'est pas ce que tu crois.
+          </h1>
+          <p
+            class="font-sans text-white/85 text-lg md:text-xl max-w-3xl leading-relaxed mx-auto"
+          >
+            Le Slow Travel, c'est pas voyager lentement. C'est pas partir 6 mois
+            avec un sac à dos. C'est pas renoncer au confort ou aux grandes
+            villes. C'est voyager en étant vraiment là, en s'imprégnant du pays,
+            c'est privilégier l'immersion à la course aux spots. 5 jours à New
+            York, ça peut être du slow travel. 3 semaines à courir d'un spot
+            Instagram à l'autre, non.
+          </p>
+        </div>
+      </div>
+
+      <ScrollHint />
+    </section>
+
+    <!-- ═══ KEYWORDS CHIPS ═══ -->
+    <div class="bg-creme px-6 py-6 md:px-12 md:py-8" aria-label="Valeurs">
+      <div class="max-w-4xl mx-auto flex flex-wrap justify-center gap-2">
+        {
+          keywords.map((kw) => (
+            <span class="font-sans text-xs px-3 py-1.5 rounded-full text-warm-black/50 bg-warm-black/4">
+              {kw}
+            </span>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- ═══ GALLERY (images + vidéos) ═══ -->
+    <MediaGallery items={galleryItems} label="Slow Adventures en images" />
+
+    <!-- ═══ POURQUOI LE SLOW TRAVEL ? ═══ -->
+    <section class="bg-creme sa-section-padding" aria-label="Pourquoi le Slow Travel">
+      <SectionReveal animation="fade-up">
+        <div class="max-w-3xl mx-auto">
+          <h2
+            class="philo-section__header font-serif text-2xl md:text-3xl text-warm-black leading-tight mb-8 pb-3"
+          >
+            Pourquoi le Slow Travel ?
+          </h2>
+          <div class="philo-content">
+            <p>
+              Depuis petite, voyager, c'est pas juste une passion : c'est ce qui
+              me définit. Une trentaine de pays plus tard, j'aurais pu continuer
+              à cocher des cases, enchaîner les destinations, accumuler les
+              "déjà vu". Mais tout a commencé à changer en Amérique latine.
+            </p>
+            <p>
+              J'ai passé plusieurs mois à voyager à travers l'Amérique du Sud et
+              l'Amérique centrale. Ce long voyage, ce n'était pas juste pour
+              visiter, c'était pour comprendre, ressentir, et surtout, apprendre
+              à me connaître. C'est là que ma passion pour les Amériques est
+              devenue une évidence.
+            </p>
+            <p>
+              Puis, quelques années plus tard, il y a eu les parcs nationaux
+              américains. Des paysages à couper le souffle, le silence,
+              l'immensité… Cette sensation d'être minuscule face à la nature. Et
+              surtout, cette claque : on peut ressentir autant d'émotions en
+              quelques jours… quand on prend vraiment le temps de s'en imprégner
+              grâce à une belle organisation.
+            </p>
+            <p>
+              C'est là que j'ai compris ce que voyager vraiment voulait dire.
+              Aujourd'hui, c'est à travers cette vision du slow travel que je
+              veux construire ta prochaine aventure : des voyages où tu n'as pas
+              l'impression de passer quelque part, mais d'y être vraiment.
+            </p>
+          </div>
+        </div>
+      </SectionReveal>
+    </section>
+
+    <!-- ═══ VOYAGER AVEC MOI ═══ -->
+    <section
+      class="bg-white sa-section-padding"
+      aria-label="Voyager avec moi"
+    >
+      <SectionReveal animation="fade-up">
+        <div class="max-w-3xl mx-auto">
+          <h2
+            class="philo-section__header font-serif text-2xl md:text-3xl text-warm-black leading-tight mb-8 pb-3"
+          >
+            Voyager avec moi, ça se passe comment ?
+          </h2>
+          <div class="philo-content">
+            <ul>
+              <li>
+                Des itinéraires pensés pour s'imprégner (pas 10 villes en 5
+                jours)
+              </li>
+              <li>
+                Des expériences locales, pas des activités touristiques
+                classiques
+              </li>
+              <li>
+                Des logements choisis pour leur âme, pas juste leur prix
+              </li>
+              <li>
+                Un accompagnement humain, pas une plateforme impersonnelle
+              </li>
+            </ul>
+          </div>
+          <div class="text-center mt-10">
+            <CTAButton
+              href={import.meta.env.PUBLIC_CALENDLY_URL}
+              variant="solid"
+              size="small"
+              subtext=""
+              desktopOnly={false}
+            />
+          </div>
+        </div>
+      </SectionReveal>
+    </section>
+
+    <!-- ═══ POURQUOI SLOW ADVENTURES ═══ -->
+    <section
+      class="bg-creme sa-section-padding"
+      aria-label="Pourquoi Slow Adventures"
+    >
+      <SectionReveal animation="fade-up">
+        <div class="max-w-3xl mx-auto">
+          <h2
+            class="philo-section__header font-serif text-2xl md:text-3xl text-warm-black leading-tight mb-8 pb-3"
+          >
+            Pourquoi Slow Adventures, et pas une agence classique ?
+          </h2>
+          <div class="philo-content">
+            <ul>
+              <li>Pas de catalogue figé</li>
+              <li>
+                Pas de tourisme de masse (on recherche l'authenticité !)
+              </li>
+              <li>Spécialisation des Amériques (Nord, Centre, Sud)</li>
+              <li>Approche plus humaine</li>
+            </ul>
+          </div>
+          <div class="flex flex-wrap justify-center gap-4 mt-10">
+            <CTAButton
+              href={import.meta.env.PUBLIC_CALENDLY_URL}
+              variant="solid"
+              size="small"
+              subtext=""
+              desktopOnly={false}
+            />
+            <a
+              href="/destinations/"
+              class="inline-flex items-center gap-3 font-sans text-base font-medium text-terracotta hover:text-white border-2 border-terracotta hover:bg-terracotta px-6 py-3 rounded-full transition-all duration-200 group"
+            >
+              Voir toutes les destinations
+              <svg
+                class="w-4 h-4 transition-transform group-hover:translate-x-1"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </SectionReveal>
+    </section>
+
+    <!-- ═══ CTA SECTION ═══ -->
+    <section
+      class="philo-cta-band sa-section-padding text-center"
+      aria-labelledby="philo-cta-heading"
+    >
+      <SectionReveal animation="scale-in">
+        <div class="max-w-2xl mx-auto">
+          <p
+            class="font-sans text-white/70 text-xs uppercase tracking-[0.2em] mb-5"
+          >
+            Travel Planning sur mesure
+          </p>
+          <h2
+            id="philo-cta-heading"
+            class="font-serif text-3xl md:text-4xl text-white mb-5"
+          >
+            Prêt(e) à voyager autrement ?
+          </h2>
+          <p class="font-sans text-white/85 text-lg mb-10 leading-relaxed">
+            Dis-moi tes envies, tes contraintes, tes rêves — je m'occupe du
+            reste.
+          </p>
+          <CTAButton
+            href={import.meta.env.PUBLIC_CALENDLY_URL}
+            variant="outline"
+            text="Confie-moi ton prochain rêve"
+            subtext="30 min, gratuit, sans engagement"
+          />
+        </div>
+      </SectionReveal>
+    </section>
+
+    <!-- ═══ BACK LINK ═══ -->
+    <div class="text-center py-8 bg-creme">
+      <a
+        href="/"
+        aria-label="Retour à l'accueil"
+        class="inline-flex items-center gap-2 font-sans text-warm-black/60 hover:text-terracotta transition-colors text-sm"
+      >
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M19 12H5M5 12l7 7M5 12l7-7"></path>
+        </svg>
+        Retour à l'accueil
+      </a>
+    </div>
+  </main>
+  <CalendlyModal />
+</BaseLayout>
+
+<style>
+  /* ── Hero ── */
+  .philo-hero {
+    min-height: 100svh;
+    min-height: 100vh;
+  }
+
+  .philo-hero__content {
+    min-height: 100svh;
+    min-height: 100vh;
+  }
+
+  .philo-hero__text {
+    opacity: 0;
+    transform: translateY(32px);
+    animation: philo-hero-entrance 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.2s
+      forwards;
+  }
+
+  @keyframes philo-hero-entrance {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* ── Section headers ── */
+  .philo-section__header {
+    border-bottom: 2px solid
+      color-mix(in srgb, var(--color-terracotta) 15%, transparent);
+  }
+
+  /* ── Prose content ── */
+  .philo-content :global(p) {
+    margin-bottom: 1.25rem;
+    line-height: 1.85;
+    color: var(--color-warm-black);
+    font-size: 1.0625rem;
+  }
+
+  .philo-content :global(ul) {
+    margin-bottom: 1.25rem;
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .philo-content :global(li) {
+    margin-bottom: 0.75rem;
+    line-height: 1.75;
+    color: var(--color-warm-black);
+    padding-left: 1.75rem;
+    position: relative;
+  }
+
+  .philo-content :global(li)::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--color-terracotta) 50%, transparent);
+  }
+
+  /* ── CTA band ── */
+  .philo-cta-band {
+    background: linear-gradient(
+      135deg,
+      var(--color-terracotta) 0%,
+      var(--color-ambre) 60%,
+      color-mix(in srgb, var(--color-ambre) 70%, var(--color-sauge)) 100%
+    );
+  }
+
+  /* ── Reduced motion ── */
+  @media (prefers-reduced-motion: reduce) {
+    .philo-hero__text {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>
+
+<script>
+  import { gsap, ScrollTrigger } from '../lib/gsap';
+
+  const heroImg = document.querySelector<HTMLElement>('.philo-hero__img');
+  if (heroImg) {
+    gsap.to(heroImg, {
+      yPercent: 20,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.philo-hero',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 1,
+      },
+    });
+  }
+
+  document.addEventListener('astro:before-swap', () => {
+    ScrollTrigger.getAll().forEach((st) => st.kill());
+  });
+</script>

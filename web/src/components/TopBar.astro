@@ -41,6 +41,17 @@ const isHome = currentPath === '/' || currentPath === '';
 
     <!-- Desktop nav -->
     <div class="hidden md:flex items-center gap-6">
+      <!-- Ma philosophie -->
+      <a
+        href="/philosophie/"
+        class:list={[
+          'topbar__link font-sans text-sm transition-colors',
+          currentPath.startsWith('/philosophie') && 'topbar__link--active',
+        ]}
+      >
+        Ma philosophie
+      </a>
+
       <!-- Destinations dropdown -->
       <div class="topbar__dropdown relative">
         <a
@@ -126,6 +137,16 @@ const isHome = currentPath === '/' || currentPath === '';
         }`}
       >
         Accueil
+      </a>
+
+      <!-- Ma philosophie -->
+      <a
+        href="/philosophie/"
+        class={`topbar__menu-link font-sans text-base py-3 px-3 rounded-lg transition-colors ${
+          currentPath.startsWith('/philosophie') ? 'topbar__menu-link--active' : ''
+        }`}
+      >
+        Ma philosophie
       </a>
 
       <!-- Destinations group -->

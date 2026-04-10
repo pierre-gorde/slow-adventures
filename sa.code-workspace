@@ -13,7 +13,7 @@
 
   "settings": {
     // ── Theme de base ───────────────────────────────────────────
-    "workbench.colorTheme": "Default Light Modern",
+    "workbench.colorTheme": "Light Modern",
     "workbench.iconTheme": "vs-seti",
     "workbench.tree.indent": 16,
     "workbench.tree.renderIndentGuides": "always",

@@ -148,8 +148,8 @@ describe('build output validation', () => {
 
     it('renders footer with contact email', () => {
       const html = readFileSync(resolve(distDir, 'index.html'), 'utf-8');
-      expect(html).toContain('elena.ld83@gmail.com');
-      expect(html).toContain('mailto:elena.ld83@gmail.com');
+      expect(html).toContain('elena@slowadventures.fr');
+      expect(html).toContain('mailto:elena@slowadventures.fr');
     });
 
     it('renders footer with copyright', () => {

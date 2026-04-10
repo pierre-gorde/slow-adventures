@@ -16,10 +16,21 @@ import StickyMobileCTA from '../components/StickyMobileCTA.astro';
 import ReturnVisitorBanner from '../components/ReturnVisitorBanner.astro';
 import ScrollProgress from '../components/ScrollProgress.astro';
 import FaqSection from '../components/FaqSection.astro';
+import HomepageCarousel from '../components/HomepageCarousel.astro';
 import heroPoster from '../assets/images/hero-poster.webp';
 import heroLogo from '../assets/images/logo-white.webp';
 import elenaPhoto from '../assets/images/elena.webp';
 import testimonialsBg from '../assets/images/testimonials-bg.webp';
+import carousel01 from '../assets/homepage-carousel/FD6593BF.jpg';
+import carousel02 from '../assets/homepage-carousel/FullSizeRender.jpg';
+import carousel03 from '../assets/homepage-carousel/IMG_0226.jpg';
+import carousel04 from '../assets/homepage-carousel/IMG_0318.jpg';
+import carousel05 from '../assets/homepage-carousel/IMG_1178.jpg';
+import carousel06 from '../assets/homepage-carousel/IMG_3431.png';
+import carousel07 from '../assets/homepage-carousel/IMG_3468.png';
+import carousel08 from '../assets/homepage-carousel/IMG_3548.png';
+import carousel09 from '../assets/homepage-carousel/IMG_6042.jpg';
+import carousel10 from '../assets/homepage-carousel/IMG_8547.jpg';
 import { processSteps } from '../data/processSteps';
 import { testimonials } from '../data/testimonials';
 import { pricingRows } from '../data/pricing';
@@ -35,6 +46,24 @@ const optimizedPoster = await getImage({
   width: 1440,
   format: 'webp',
 });
+
+/*
+ * Carousel mosaic — order maps to grid areas:
+ *  0→a (hero 2×2)  1→b (tall)  2→c (wide)  3→d (tall)  4→e (tall)
+ *  5→f (tall)       6→g (wide)  7→h (wide)  8→i (small) 9→j (small)
+ */
+const carouselImages = [
+  carousel05, // a: Groupe montagne (paysage → hero)
+  carousel02, // b: Antelope Canyon (portrait haut → tall)
+  carousel03, // c: Sunset palmiers (portrait → crop paysage wide)
+  carousel01, // d: Fille cascade (portrait → tall)
+  carousel08, // e: Plage cocotiers (portrait → tall)
+  carousel04, // f: Gars jeep (portrait → tall)
+  carousel10, // g: Iguazú (portrait → crop paysage wide)
+  carousel07, // h: Tortue eau claire (portrait → crop paysage wide)
+  carousel06, // i: Machu Picchu (portrait → small square)
+  carousel09, // j: Boston ville (portrait → small square)
+];
 ---
 
 <BaseLayout
@@ -400,6 +429,9 @@ const optimizedPoster = await getImage({
         </dl>
       </div>
     </section>
+    <SectionReveal animation="fade-in">
+      <HomepageCarousel images={carouselImages} />
+    </SectionReveal>
     <section
       id="cta-final"
       aria-labelledby="heading-cta-final"

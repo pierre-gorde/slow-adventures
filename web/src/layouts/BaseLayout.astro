@@ -195,28 +195,6 @@ const jsonLd = {
       import '../lib/analytics';
     </script>
     <script is:inline>
-      // ── DEBUG: Find overflowing elements — à retirer après diagnostic ──
-      window.addEventListener('load', function() {
-        var vw = document.documentElement.clientWidth;
-        console.log('[OVERFLOW-DEBUG] viewport clientWidth:', vw, '| body scrollWidth:', document.body.scrollWidth);
-        var all = document.body.querySelectorAll('*');
-        for (var i = 0; i < all.length; i++) {
-          var el = all[i];
-          var rect = el.getBoundingClientRect();
-          if (rect.right > vw + 1) {
-            console.warn('[OVERFLOW-DEBUG] ELEMENT OVERFLOWS →', {
-              tag: el.tagName,
-              id: el.id,
-              class: el.className.toString().substring(0, 80),
-              right: Math.round(rect.right),
-              overflow: Math.round(rect.right - vw) + 'px',
-              text: (el.textContent || '').substring(0, 40).trim()
-            });
-          }
-        }
-      });
-    </script>
-    <script is:inline>
       // Fallback CSS pour [data-reveal] quand GSAP n'est pas encore chargé
       if ('IntersectionObserver' in window) {
         const observer = new IntersectionObserver(

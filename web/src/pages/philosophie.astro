@@ -16,6 +16,8 @@ import img04 from '../assets/images/philosophie/04.webp';
 import img05 from '../assets/images/philosophie/05.webp';
 import img06 from '../assets/images/philosophie/06.webp';
 import img07 from '../assets/images/philosophie/07.webp';
+import img08 from '../assets/images/philosophie/08.webp';
+import img09 from '../assets/images/philosophie/09.webp';
 
 const optimizedHero = await getImage({
   src: coverImg,
@@ -25,13 +27,23 @@ const optimizedHero = await getImage({
 
 const galleryItems: MediaItem[] = [
   { type: 'image', src: img07 },
-  { type: 'image', src: img02 },
-  { type: 'image', src: img03 },
-  { type: 'video', src: '/videos/philosophie/video-01.mp4', poster: '/videos/philosophie/poster-01.jpg' },
-  { type: 'image', src: img04 },
+  { type: 'image', src: img09 },
   { type: 'image', src: img05 },
-  { type: 'video', src: '/videos/philosophie/video-02.mp4', poster: '/videos/philosophie/poster-02.jpg' },
+  { type: 'image', src: img03 },
+  {
+    type: 'video',
+    src: '/videos/philosophie/video-01.mp4',
+    poster: '/videos/philosophie/poster-01.jpg',
+  },
+  { type: 'image', src: img04 },
+  {
+    type: 'video',
+    src: '/videos/philosophie/video-02.mp4',
+    poster: '/videos/philosophie/poster-02.jpg',
+  },
   { type: 'image', src: img06 },
+  { type: 'image', src: img08 },
+  { type: 'image', src: img02 },
   { type: 'image', src: img01 },
 ];
 
@@ -68,7 +80,7 @@ const keywords = [
         sizes="100vw"
         loading="eager"
         decoding="async"
-        class="philo-hero__img absolute inset-0 w-full h-full object-cover"
+        class="philo-hero__img absolute inset-0 w-full h-full object-cover object-top"
       />
       <div
         class="absolute inset-0 bg-linear-to-b from-warm-black/55 via-warm-black/15 to-warm-black/75"
@@ -123,7 +135,10 @@ const keywords = [
     <MediaGallery items={galleryItems} label="Slow Adventures en images" />
 
     <!-- ═══ POURQUOI LE SLOW TRAVEL ? ═══ -->
-    <section class="bg-creme sa-section-padding" aria-label="Pourquoi le Slow Travel">
+    <section
+      class="bg-creme sa-section-padding"
+      aria-label="Pourquoi le Slow Travel"
+    >
       <SectionReveal animation="fade-up">
         <div class="max-w-3xl mx-auto">
           <h2
@@ -165,10 +180,7 @@ const keywords = [
     </section>
 
     <!-- ═══ VOYAGER AVEC MOI ═══ -->
-    <section
-      class="bg-white sa-section-padding"
-      aria-label="Voyager avec moi"
-    >
+    <section class="bg-white sa-section-padding" aria-label="Voyager avec moi">
       <SectionReveal animation="fade-up">
         <div class="max-w-3xl mx-auto">
           <h2
@@ -186,9 +198,7 @@ const keywords = [
                 Des expériences locales, pas des activités touristiques
                 classiques
               </li>
-              <li>
-                Des logements choisis pour leur âme, pas juste leur prix
-              </li>
+              <li>Des logements choisis pour leur âme, pas juste leur prix</li>
               <li>
                 Un accompagnement humain, pas une plateforme impersonnelle
               </li>
@@ -221,22 +231,27 @@ const keywords = [
           </h2>
           <div class="philo-content">
             <ul>
-              <li>Pas de catalogue figé</li>
               <li>
-                Pas de tourisme de masse (on recherche l'authenticité !)
+                Voyages conçus pour vraiment vivre les destinations, pas juste
+                les cocher
               </li>
-              <li>Spécialisation des Amériques (Nord, Centre, Sud)</li>
-              <li>Approche plus humaine</li>
+              <li>
+                Des rythmes pensés pour éviter la fatigue du touriste pressé
+              </li>
+              <li>
+                Itinéraires flexibles, adaptés à toi (pas un copier-coller)
+              </li>
+              <li>Des conseils basés sur des expériences vécues sur place</li>
+              <li>
+                Un accompagnement humain de A à Z, pas juste un document PDF
+                envoyé par mail
+              </li>
+              <li>
+                Disponibilité et suivi réels (pas un bot, une vraie personne)
+              </li>
             </ul>
           </div>
           <div class="flex flex-wrap justify-center gap-4 mt-10">
-            <CTAButton
-              href={import.meta.env.PUBLIC_CALENDLY_URL}
-              variant="solid"
-              size="small"
-              subtext=""
-              desktopOnly={false}
-            />
             <a
               href="/destinations/"
               class="inline-flex items-center gap-3 font-sans text-base font-medium text-terracotta hover:text-white border-2 border-terracotta hover:bg-terracotta px-6 py-3 rounded-full transition-all duration-200 group"
@@ -251,7 +266,7 @@ const keywords = [
                 stroke-linecap="round"
                 stroke-linejoin="round"
               >
-                <path d="M5 12h14M12 5l7 7-7 7" />
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
               </svg>
             </a>
           </div>

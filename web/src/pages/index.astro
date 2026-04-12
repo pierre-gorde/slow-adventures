@@ -1,5 +1,5 @@
 ---
-import { Image, getImage } from 'astro:assets';
+import { getImage } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroSection from '../components/HeroSection.astro';
@@ -7,7 +7,6 @@ import ElenaSection from '../components/ElenaSection.astro';
 import DestinationBlock from '../components/DestinationBlock.astro';
 import SectionReveal from '../components/SectionReveal.astro';
 import ProcessStep from '../components/ProcessStep.astro';
-import TestimonialCard from '../components/TestimonialCard.astro';
 import PricingRow from '../components/PricingRow.astro';
 import CTAButton from '../components/CTAButton.astro';
 import EmailCapture from '../components/EmailCapture.astro';
@@ -20,19 +19,16 @@ import HomepageCarousel from '../components/HomepageCarousel.astro';
 import heroPoster from '../assets/images/hero-poster.webp';
 import heroLogo from '../assets/images/logo-white.webp';
 import elenaPhoto from '../assets/images/elena.webp';
-import testimonialsBg from '../assets/images/testimonials-bg.webp';
 import carousel01 from '../assets/homepage-carousel/FD6593BF.jpg';
 import carousel02 from '../assets/homepage-carousel/FullSizeRender.jpg';
 import carousel03 from '../assets/homepage-carousel/IMG_0226.jpg';
 import carousel04 from '../assets/homepage-carousel/IMG_0318.jpg';
-import carousel05 from '../assets/homepage-carousel/IMG_1178.jpg';
 import carousel06 from '../assets/homepage-carousel/IMG_3431.png';
 import carousel07 from '../assets/homepage-carousel/IMG_3468.png';
 import carousel08 from '../assets/homepage-carousel/IMG_3548.png';
 import carousel09 from '../assets/homepage-carousel/IMG_6042.jpg';
 import carousel10 from '../assets/homepage-carousel/IMG_8547.jpg';
 import { processSteps } from '../data/processSteps';
-import { testimonials } from '../data/testimonials';
 import { pricingRows } from '../data/pricing';
 import { faqLd } from '../data/faq';
 
@@ -47,22 +43,35 @@ const optimizedPoster = await getImage({
   format: 'webp',
 });
 
-/*
- * Carousel mosaic — order maps to grid areas:
- *  0→a (hero 2×2)  1→b (tall)  2→c (wide)  3→d (tall)  4→e (tall)
- *  5→f (tall)       6→g (wide)  7→h (wide)  8→i (small) 9→j (small)
- */
-const carouselImages = [
-  carousel05, // a: Groupe montagne (paysage → hero)
-  carousel02, // b: Antelope Canyon (portrait haut → tall)
-  carousel03, // c: Sunset palmiers (portrait → crop paysage wide)
-  carousel01, // d: Fille cascade (portrait → tall)
-  carousel08, // e: Plage cocotiers (portrait → tall)
-  carousel04, // f: Gars jeep (portrait → tall)
-  carousel10, // g: Iguazú (portrait → crop paysage wide)
-  carousel07, // h: Tortue eau claire (portrait → crop paysage wide)
-  carousel06, // i: Machu Picchu (portrait → small square)
-  carousel09, // j: Boston ville (portrait → small square)
+const carouselSlides = [
+  { image: carousel01, caption: 'Iguazu — Argentine · Face aux chutes' },
+  {
+    image: carousel07,
+    caption: 'Cozumel — Mexique · Les rencontres qu’on n’oublie pas',
+  },
+  {
+    image: carousel02,
+    caption: 'Antelope Canyon — USA · Là où la lumière sculpte la roche',
+  },
+  {
+    image: carousel03,
+    caption:
+      'Los Angeles — Californie · Des palmiers et un lever de soleil doré',
+  },
+  { image: carousel04, caption: 'USA — Road trip · L’aventure, à deux' },
+  {
+    image: carousel08,
+    caption: 'Paname — Bocas del Toro · Plage de cocotiers, Caraïbes',
+  },
+  {
+    image: carousel10,
+    caption: 'Iguazu — Argentine · Quand la nature te coupe le souffle',
+  },
+  {
+    image: carousel06,
+    caption: 'Machu Picchu — Pérou · 2 430 mètres au-dessus du monde',
+  },
+  { image: carousel09, caption: 'Boston — La grandeur des buildings' },
 ];
 ---
 
@@ -88,7 +97,7 @@ const carouselImages = [
       imageSrc={elenaPhoto}
       imageAlt="Elena, créatrice de voyages immersifs aux Amériques"
       title="Hello, Hola, Olà"
-      description="Moi c'est Elena. Après des mois à parcourir l'Amérique latine à sac à dos et plusieurs voyages en Amérique du Nord, j'ai créé SlowAdventures pour te proposer des voyages authentiques, fluides et 100% sur mesure. Mon approche ? Écouter tes rêves, transformer tes envies en itinéraires uniques, et t'ouvrir les portes d'expériences mémorables. Si tu veux un voyage qui te ressemble vraiment, qui te connecte à l'âme des lieux et qui te laisse des souvenirs gravés pour toujours… tu es au bon endroit."
+      description="Moi c'est Elena. Après des mois à parcourir l'Amérique latine à sac à dos et plusieurs voyages en Amérique du Nord, j'ai créé SlowAdventures pour te proposer des voyages authentiques, fluides, 100% sur mesure et inspirés des valeurs du slow travel. Mon approche ? Écouter tes rêves, transformer tes envies en itinéraires uniques, et t'ouvrir les portes d'expériences mémorables. Si tu veux un voyage qui te ressemble vraiment, qui te connecte à l'âme des lieux et qui te laisse des souvenirs gravés pour toujours… tu es au bon endroit."
       ctaHref={import.meta.env.PUBLIC_CALENDLY_URL}
     />
     <section
@@ -129,8 +138,16 @@ const carouselImages = [
           class="inline-flex items-center gap-3 font-sans text-base font-medium text-terracotta hover:text-white border-2 border-terracotta hover:bg-terracotta px-6 py-3 rounded-full transition-all duration-200 group"
         >
           Voir toutes les destinations
-          <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M5 12h14M12 5l7 7-7 7" />
+          <svg
+            class="w-4 h-4 transition-transform group-hover:translate-x-1"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M5 12h14M12 5l7 7-7 7"></path>
           </svg>
         </a>
       </div>
@@ -228,31 +245,81 @@ const carouselImages = [
           </h2>
         </SectionReveal>
         <ul id="avantages-list" class="space-y-8 md:space-y-10 list-none p-0">
-          <li class="avantage-item flex items-center gap-5 md:gap-6" data-avantage>
-            <span class="avantage-marker shrink-0 text-xl leading-none opacity-0 scale-75">✦</span>
-            <p class="font-sans text-lg md:text-xl font-semibold text-warm-black/20 transition-none">Un voyage 100% sur mesure</p>
+          <li
+            class="avantage-item flex items-center gap-5 md:gap-6"
+            data-avantage
+          >
+            <span
+              class="avantage-marker shrink-0 text-xl leading-none opacity-0 scale-75"
+              >✦</span
+            >
+            <p
+              class="font-sans text-lg md:text-xl font-semibold text-warm-black/20 transition-none"
+            >
+              Un voyage 100% sur mesure
+            </p>
           </li>
-          <li class="avantage-item flex items-center gap-5 md:gap-6" data-avantage>
-            <span class="avantage-marker shrink-0 text-xl leading-none opacity-0 scale-75">✦</span>
-            <p class="font-sans text-lg md:text-xl font-semibold text-warm-black/20 transition-none">Un gain de temps énorme</p>
+          <li
+            class="avantage-item flex items-center gap-5 md:gap-6"
+            data-avantage
+          >
+            <span
+              class="avantage-marker shrink-0 text-xl leading-none opacity-0 scale-75"
+              >✦</span
+            >
+            <p
+              class="font-sans text-lg md:text-xl font-semibold text-warm-black/20 transition-none"
+            >
+              Un gain de temps énorme
+            </p>
           </li>
-          <li class="avantage-item flex items-center gap-5 md:gap-6" data-avantage>
-            <span class="avantage-marker shrink-0 text-xl leading-none opacity-0 scale-75">✦</span>
-            <p class="font-sans text-lg md:text-xl font-semibold text-warm-black/20 transition-none">Moins de charge mentale</p>
+          <li
+            class="avantage-item flex items-center gap-5 md:gap-6"
+            data-avantage
+          >
+            <span
+              class="avantage-marker shrink-0 text-xl leading-none opacity-0 scale-75"
+              >✦</span
+            >
+            <p
+              class="font-sans text-lg md:text-xl font-semibold text-warm-black/20 transition-none"
+            >
+              Moins de charge mentale
+            </p>
           </li>
-          <li class="avantage-item flex items-center gap-5 md:gap-6" data-avantage>
-            <span class="avantage-marker shrink-0 text-xl leading-none opacity-0 scale-75">✦</span>
-            <p class="font-sans text-lg md:text-xl font-semibold text-warm-black/20 transition-none">Plus de flexibilité</p>
+          <li
+            class="avantage-item flex items-center gap-5 md:gap-6"
+            data-avantage
+          >
+            <span
+              class="avantage-marker shrink-0 text-xl leading-none opacity-0 scale-75"
+              >✦</span
+            >
+            <p
+              class="font-sans text-lg md:text-xl font-semibold text-warm-black/20 transition-none"
+            >
+              Plus de flexibilité
+            </p>
           </li>
-          <li class="avantage-item flex items-center gap-5 md:gap-6" data-avantage>
-            <span class="avantage-marker shrink-0 text-xl leading-none opacity-0 scale-75">✦</span>
-            <p class="font-sans text-lg md:text-xl font-semibold text-warm-black/20 transition-none">Tu économises par rapport à une agence classique</p>
+          <li
+            class="avantage-item flex items-center gap-5 md:gap-6"
+            data-avantage
+          >
+            <span
+              class="avantage-marker shrink-0 text-xl leading-none opacity-0 scale-75"
+              >✦</span
+            >
+            <p
+              class="font-sans text-lg md:text-xl font-semibold text-warm-black/20 transition-none"
+            >
+              Tu économises par rapport à une agence classique
+            </p>
           </li>
         </ul>
       </div>
     </section>
     <script>
-      import { gsap, ScrollTrigger } from '../lib/gsap';
+      import { gsap } from '../lib/gsap';
 
       /*
        * ── Shared scroll conventions ──
@@ -295,7 +362,9 @@ const carouselImages = [
           );
         });
 
-        return () => { tl.kill(); };
+        return () => {
+          tl.kill();
+        };
       });
 
       /* Reduced motion: avantages */
@@ -303,7 +372,10 @@ const carouselImages = [
         document.querySelectorAll('[data-avantage]').forEach((item) => {
           const marker = item.querySelector('.avantage-marker') as HTMLElement;
           const text = item.querySelector('p') as HTMLElement;
-          if (marker) { marker.style.opacity = '1'; marker.style.transform = 'scale(1)'; }
+          if (marker) {
+            marker.style.opacity = '1';
+            marker.style.transform = 'scale(1)';
+          }
           if (text) text.style.color = '#a65330';
         });
       });
@@ -329,24 +401,35 @@ const carouselImages = [
           const title = step.querySelector('.process-step__title');
           const pos = i * 1.8;
 
-          tl.to(step, {
-            opacity: 1, y: 0, duration: 0.8, ease: 'power2.out',
-          }, pos);
+          tl.to(
+            step,
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.8,
+              ease: 'power2.out',
+            },
+            pos
+          );
 
           if (title) {
-            tl.fromTo(title,
+            tl.fromTo(
+              title,
               { color: '#2c2825' },
               { color: '#a65330', duration: 0.6, ease: 'power2.out' },
               pos
             );
-            tl.to(title,
+            tl.to(
+              title,
               { color: '#2c2825', duration: 0.6, ease: 'power2.inOut' },
               pos + 1.2
             );
           }
         });
 
-        return () => { tl.kill(); };
+        return () => {
+          tl.kill();
+        };
       });
 
       /* Reduced motion: process */
@@ -375,17 +458,26 @@ const carouselImages = [
           const label = row.querySelector('dt');
           const pos = i * 2;
 
-          tl.to(row, {
-            opacity: 1, y: 0, duration: 0.8, ease: 'power2.out',
-          }, pos);
+          tl.to(
+            row,
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.8,
+              ease: 'power2.out',
+            },
+            pos
+          );
 
           if (label) {
-            tl.fromTo(label,
+            tl.fromTo(
+              label,
               { color: '#ffffff' },
               { color: '#a65330', duration: 0.6, ease: 'power2.out' },
               pos
             );
-            tl.to(label,
+            tl.to(
+              label,
               { color: '#ffffff', duration: 0.6, ease: 'power2.inOut' },
               pos + 1
             );
@@ -395,7 +487,9 @@ const carouselImages = [
         // Ensure timeline extends past last return
         tl.set({}, {}, '+=0.5');
 
-        return () => { tl.kill(); };
+        return () => {
+          tl.kill();
+        };
       });
 
       /* Reduced motion: pricing */
@@ -430,7 +524,7 @@ const carouselImages = [
       </div>
     </section>
     <SectionReveal animation="fade-in">
-      <HomepageCarousel images={carouselImages} />
+      <HomepageCarousel slides={carouselSlides} />
     </SectionReveal>
     <section
       id="cta-final"

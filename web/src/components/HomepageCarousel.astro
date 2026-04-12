@@ -2,350 +2,228 @@
 import { getImage } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 
-interface Props {
-  images: ImageMetadata[];
+interface SlideItem {
+  image: ImageMetadata;
+  caption: string;
 }
 
-const { images } = Astro.props;
+interface Props {
+  slides: SlideItem[];
+}
 
-/*
- * Grid areas mapping (images must be passed in this order):
- *  0 → a  (hero big)         4 → e  (tall portrait)
- *  1 → b  (tall portrait)    5 → f  (tall portrait)
- *  2 → c  (wide landscape)   6 → g  (wide landscape)
- *  3 → d  (tall portrait)    7 → h  (wide landscape)
- *                             8 → i  (small square)
- *                             9 → j  (small square)
- */
-const areas = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+const { slides } = Astro.props;
 
-/* Pre-optimize all images */
-const allOptimized = await Promise.all(
-  images.map((img) => getImage({ src: img, width: 1440, format: 'webp' })),
+const optimized = await Promise.all(
+  slides.map((s) => getImage({ src: s.image, width: 800, format: 'webp' })),
 );
-const thumbs = await Promise.all(
-  images.map((img) => getImage({ src: img, width: 800, format: 'webp' })),
-);
-const lightboxSrcs = allOptimized.map((o) => o.src);
 ---
 
 <section
   id="carrousel-voyageurs"
   aria-labelledby="heading-carrousel-voyageurs"
-  class="bg-warm-black sa-section-padding"
-  data-carousel-srcs={JSON.stringify(lightboxSrcs)}
+  class="bg-creme sa-section-padding"
 >
   <h2
     id="heading-carrousel-voyageurs"
-    class="font-serif text-3xl md:text-4xl text-white text-center mb-10"
+    class="font-serif text-3xl md:text-4xl text-warm-black text-center mb-10"
   >
-    ça pourrait être toi 💚
+    Ça pourrait être toi 💚
   </h2>
 
-  {/* ── Mosaic grid ── */}
-  <div class="mosaic max-w-6xl mx-auto">
-    {thumbs.map((thumb, i) => (
-      <button
-        type="button"
-        class="mosaic__cell group"
-        style={`grid-area: ${areas[i]}`}
-        data-carousel-index={i}
-        aria-label={`Photo ${i + 1} — cliquer pour agrandir`}
+  <div class="slider max-w-6xl mx-auto relative" id="homepage-slider">
+    <!-- Track -->
+    <div class="slider__viewport overflow-hidden">
+      <div
+        class="slider__track flex transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+        id="slider-track"
+        data-total={slides.length}
       >
-        <img
-          src={thumb.src}
-          alt={`Voyageur·se Slow Adventures — photo ${i + 1}`}
-          loading="lazy"
-          decoding="async"
-          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-        />
-      </button>
-    ))}
+        {
+          optimized.map((img, i) => (
+            <div class="slider__slide shrink-0 px-2 md:px-3">
+              <div class="overflow-hidden rounded-2xl">
+                <img
+                  src={img.src}
+                  alt={slides[i].caption}
+                  class="w-full aspect-[3/4] object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <p class="font-sans text-sm text-warm-black/50 italic text-center mt-3">
+                {slides[i].caption}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Arrow left -->
+    <button
+      type="button"
+      id="slider-prev"
+      class="slider__arrow slider__arrow--prev absolute left-[-8px] md:left-[-24px] top-[40%] -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/90 shadow-md flex items-center justify-center text-warm-black/40 hover:text-terracotta hover:shadow-lg transition-all duration-200 cursor-pointer opacity-0 pointer-events-none z-10"
+      aria-label="Photos précédentes"
+    >
+      <svg
+        class="w-5 h-5 md:w-6 md:h-6"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M15 18l-6-6 6-6" />
+      </svg>
+    </button>
+
+    <!-- Arrow right -->
+    <button
+      type="button"
+      id="slider-next"
+      class="slider__arrow slider__arrow--next absolute right-[-8px] md:right-[-24px] top-[40%] -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/90 shadow-md flex items-center justify-center text-warm-black/40 hover:text-terracotta hover:shadow-lg transition-all duration-200 cursor-pointer z-10"
+      aria-label="Photos suivantes"
+    >
+      <svg
+        class="w-5 h-5 md:w-6 md:h-6"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M9 18l6-6-6-6" />
+      </svg>
+    </button>
   </div>
 </section>
 
-<!-- ═══ Lightbox carrousel voyageurs ═══ -->
-<div
-  id="carousel-lightbox"
-  class="fixed inset-0 z-50 bg-warm-black/95 hidden"
-  role="dialog"
-  aria-modal="true"
-  aria-label="Galerie photos voyageurs"
->
-  <button
-    type="button"
-    id="carousel-lb-close"
-    class="absolute top-4 right-4 z-10 text-white/70 hover:text-white transition-colors p-2 cursor-pointer"
-    aria-label="Fermer la galerie"
-  >
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M18 6 6 18M6 6l12 12" />
-    </svg>
-  </button>
-
-  <div
-    id="carousel-lb-counter"
-    class="absolute top-5 left-6 font-sans text-white/60 text-sm z-10"
-    aria-live="polite"
-  ></div>
-
-  <button
-    type="button"
-    id="carousel-lb-prev"
-    class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors p-2 md:p-3 z-10 cursor-pointer"
-    aria-label="Photo précédente"
-  >
-    <svg class="w-7 h-7 md:w-9 md:h-9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M15 18l-6-6 6-6" />
-    </svg>
-  </button>
-
-  <div
-    id="carousel-lb-track"
-    class="absolute inset-0 flex items-center justify-center overflow-hidden touch-pan-y"
-  >
-    <img
-      id="carousel-lb-img"
-      src=""
-      alt=""
-      class="carousel-lb-img max-w-[92vw] max-h-[85vh] object-contain select-none transition-transform duration-300 ease-out"
-      draggable="false"
-    />
-  </div>
-
-  <button
-    type="button"
-    id="carousel-lb-next"
-    class="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors p-2 md:p-3 z-10 cursor-pointer"
-    aria-label="Photo suivante"
-  >
-    <svg class="w-7 h-7 md:w-9 md:h-9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M9 18l6-6-6-6" />
-    </svg>
-  </button>
-</div>
-
 <style>
-  /* ── Mobile: 2 columns, 7 rows ── */
-  .mosaic {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 140px 120px 120px 120px 140px 120px 120px;
-    gap: 4px;
-    grid-template-areas:
-      'a a'
-      'b c'
-      'b d'
-      'e f'
-      'g g'
-      'h i'
-      'h j';
+  /* 3 visible on desktop, 2 on tablet, 1 on mobile */
+  .slider__slide {
+    width: calc(100% / 3);
   }
 
-  /* ── Desktop: 5 columns, 4 rows ── */
-  @media (min-width: 768px) {
-    .mosaic {
-      grid-template-columns: repeat(5, 1fr);
-      grid-template-rows: repeat(4, 155px);
-      gap: 5px;
-      grid-template-areas:
-        'a a b c c'
-        'a a b d e'
-        'f g g d e'
-        'f h h i j';
+  @media (max-width: 767px) {
+    .slider__slide {
+      width: 80%;
     }
   }
 
-  .mosaic__cell {
-    position: relative;
-    overflow: hidden;
-    border-radius: 0.5rem;
-    cursor: pointer;
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .slider__slide {
+      width: 50%;
+    }
   }
 
-  .mosaic__cell:focus-visible {
-    outline: 2px solid var(--color-terracotta);
-    outline-offset: -2px;
+  .slider__arrow--prev.is-visible,
+  .slider__arrow--next.is-visible {
+    opacity: 1;
+    pointer-events: auto;
   }
 
-  .carousel-lb-img {
-    will-change: transform, opacity;
-    touch-action: pan-y;
-    user-select: none;
-    -webkit-user-select: none;
+  @media (prefers-reduced-motion: reduce) {
+    .slider__track {
+      transition: none;
+    }
   }
 </style>
 
 <script>
-  /* ── Homepage mosaic lightbox ── */
-  const section = document.getElementById('carrousel-voyageurs');
-  const lightbox = document.getElementById('carousel-lightbox');
-  const lbImg = document.getElementById('carousel-lb-img') as HTMLImageElement | null;
-  const lbCounter = document.getElementById('carousel-lb-counter');
-  const lbTrack = document.getElementById('carousel-lb-track');
-  const closeBtn = document.getElementById('carousel-lb-close');
-  const prevBtn = document.getElementById('carousel-lb-prev');
-  const nextBtn = document.getElementById('carousel-lb-next');
+  const track = document.getElementById('slider-track');
+  const prevBtn = document.getElementById('slider-prev');
+  const nextBtn = document.getElementById('slider-next');
 
-  const srcs: string[] = JSON.parse(
-    section?.dataset.carouselSrcs ?? '[]',
-  );
+  if (track && prevBtn && nextBtn) {
+    const total = parseInt(track.dataset.total ?? '0', 10);
+    let current = 0;
 
-  let current = 0;
-  let isAnimating = false;
-
-  function preloadAdjacent(index: number) {
-    const prev = ((index - 1) % srcs.length + srcs.length) % srcs.length;
-    const next = (index + 1) % srcs.length;
-    [prev, next].forEach((i) => {
-      const img = new window.Image();
-      img.src = srcs[i];
-    });
-  }
-
-  function show(index: number) {
-    current = ((index % srcs.length) + srcs.length) % srcs.length;
-    if (lbImg) {
-      lbImg.src = srcs[current];
-      lbImg.alt = `Photo ${current + 1}`;
-      lbImg.style.transition = 'none';
-      lbImg.style.transform = 'translateX(0)';
-      lbImg.style.opacity = '1';
+    function getVisible(): number {
+      const w = window.innerWidth;
+      if (w < 768) return 1;
+      if (w < 1024) return 2;
+      return 3;
     }
-    if (lbCounter) {
-      lbCounter.textContent = `${current + 1} / ${srcs.length}`;
+
+    function getSlideWidth(): number {
+      const slide = track!.querySelector('.slider__slide') as HTMLElement | null;
+      return slide ? slide.offsetWidth : 0;
     }
-    preloadAdjacent(current);
-  }
 
-  function slideTo(index: number, direction: 'left' | 'right') {
-    if (isAnimating || !lbImg) return;
-    isAnimating = true;
-
-    const slideOut = direction === 'left' ? '-100%' : '100%';
-    const slideIn = direction === 'left' ? '60%' : '-60%';
-
-    lbImg.style.transition = 'transform 0.25s ease-in, opacity 0.2s ease-in';
-    lbImg.style.transform = `translateX(${slideOut})`;
-    lbImg.style.opacity = '0.3';
-
-    setTimeout(() => {
-      current = ((index % srcs.length) + srcs.length) % srcs.length;
-      lbImg.src = srcs[current];
-      lbImg.alt = `Photo ${current + 1}`;
-      lbImg.style.transition = 'none';
-      lbImg.style.transform = `translateX(${slideIn})`;
-      lbImg.style.opacity = '0.3';
-
-      if (lbCounter) {
-        lbCounter.textContent = `${current + 1} / ${srcs.length}`;
-      }
-
-      void lbImg.offsetWidth;
-      lbImg.style.transition = 'transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease-out';
-      lbImg.style.transform = 'translateX(0)';
-      lbImg.style.opacity = '1';
-
-      setTimeout(() => {
-        isAnimating = false;
-        preloadAdjacent(current);
-      }, 300);
-    }, 200);
-  }
-
-  function open(index: number) {
-    show(index);
-    if (lightbox) {
-      lightbox.classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
+    function maxIndex(): number {
+      return Math.max(0, total - getVisible());
     }
-  }
 
-  function close() {
-    if (lightbox) {
-      lightbox.classList.add('hidden');
-      document.body.style.overflow = '';
+    function goTo(index: number) {
+      const max = maxIndex();
+      current = Math.max(0, Math.min(index, max));
+      const slideW = getSlideWidth();
+      track!.style.transform = `translateX(-${current * slideW}px)`;
+
+      prevBtn!.classList.toggle('is-visible', current > 0);
+      nextBtn!.classList.toggle('is-visible', current < max);
     }
-  }
 
-  document.querySelectorAll<HTMLElement>('[data-carousel-index]').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      open(parseInt(btn.dataset.carouselIndex ?? '0', 10));
-    });
-  });
+    // Initial state
+    function init() {
+      goTo(current);
+    }
 
-  if (closeBtn) closeBtn.addEventListener('click', close);
-  if (prevBtn) prevBtn.addEventListener('click', () => slideTo(current - 1, 'right'));
-  if (nextBtn) nextBtn.addEventListener('click', () => slideTo(current + 1, 'left'));
+    init();
+    window.addEventListener('resize', () => goTo(current));
 
-  if (lbTrack) {
-    lbTrack.addEventListener('click', (e) => {
-      if (e.target === lbTrack) close();
-    });
-  }
+    prevBtn.addEventListener('click', () => goTo(current - 1));
+    nextBtn.addEventListener('click', () => goTo(current + 1));
 
-  document.addEventListener('keydown', (e) => {
-    if (!lightbox || lightbox.classList.contains('hidden')) return;
-    if (e.key === 'Escape') close();
-    if (e.key === 'ArrowLeft') slideTo(current - 1, 'right');
-    if (e.key === 'ArrowRight') slideTo(current + 1, 'left');
-  });
+    // Touch swipe
+    let startX = 0;
+    let deltaX = 0;
+    let swiping = false;
 
-  /* ── Touch swipe ── */
-  let touchStartX = 0;
-  let touchStartTime = 0;
-  let touchDeltaX = 0;
-  let isSwiping = false;
-
-  if (lbTrack) {
-    lbTrack.addEventListener(
+    track.addEventListener(
       'touchstart',
       (e: TouchEvent) => {
-        if (isAnimating) return;
-        touchStartX = e.touches[0].clientX;
-        touchStartTime = Date.now();
-        touchDeltaX = 0;
-        isSwiping = true;
-        if (lbImg) lbImg.style.transition = 'none';
+        startX = e.touches[0].clientX;
+        deltaX = 0;
+        swiping = true;
+        track!.style.transition = 'none';
       },
       { passive: true },
     );
 
-    lbTrack.addEventListener(
+    track.addEventListener(
       'touchmove',
       (e: TouchEvent) => {
-        if (!isSwiping || isAnimating) return;
-        touchDeltaX = e.touches[0].clientX - touchStartX;
-        if (lbImg) {
-          const dampened = touchDeltaX * 0.85;
-          const opacity = Math.max(0.4, 1 - Math.abs(dampened) / window.innerWidth);
-          lbImg.style.transform = `translateX(${dampened}px)`;
-          lbImg.style.opacity = String(opacity);
-        }
+        if (!swiping) return;
+        deltaX = e.touches[0].clientX - startX;
+        const slideW = getSlideWidth();
+        const offset = -(current * slideW) + deltaX;
+        track!.style.transform = `translateX(${offset}px)`;
       },
       { passive: true },
     );
 
-    lbTrack.addEventListener('touchend', () => {
-      if (!isSwiping || isAnimating) return;
-      isSwiping = false;
-
-      const elapsed = Date.now() - touchStartTime;
-      const velocity = Math.abs(touchDeltaX) / elapsed;
-      const threshold = 50;
-      const fastSwipe = velocity > 0.3 && Math.abs(touchDeltaX) > 20;
-
-      if (touchDeltaX < -threshold || (touchDeltaX < 0 && fastSwipe)) {
-        slideTo(current + 1, 'left');
-      } else if (touchDeltaX > threshold || (touchDeltaX > 0 && fastSwipe)) {
-        slideTo(current - 1, 'right');
+    track.addEventListener('touchend', () => {
+      if (!swiping) return;
+      swiping = false;
+      track!.style.transition = '';
+      const threshold = getSlideWidth() * 0.2;
+      if (deltaX < -threshold) {
+        goTo(current + 1);
+      } else if (deltaX > threshold) {
+        goTo(current - 1);
       } else {
-        if (lbImg) {
-          lbImg.style.transition = 'transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease-out';
-          lbImg.style.transform = 'translateX(0)';
-          lbImg.style.opacity = '1';
-        }
+        goTo(current);
       }
+    });
+
+    // Keyboard
+    document.getElementById('homepage-slider')?.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') goTo(current - 1);
+      if (e.key === 'ArrowRight') goTo(current + 1);
     });
   }
 </script>

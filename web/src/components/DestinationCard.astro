@@ -37,56 +37,68 @@ const chips = keywords.slice(0, 3);
 >
   <!-- Image -->
   <div class="dest-card__img relative overflow-hidden">
-    {isUrl ? (
-      <img
-        src={imageSrc as string}
-        alt={imageAlt}
-        loading="lazy"
-        decoding="async"
-        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-      />
-    ) : (
-      <Image
-        src={imageSrc as ImageMetadata}
-        alt={imageAlt}
-        widths={[400, 800]}
-        sizes="(min-width: 768px) 340px, 100vw"
-        loading="lazy"
-        decoding="async"
-        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-      />
-    )}
+    {
+      isUrl ? (
+        <img
+          src={imageSrc as string}
+          alt={imageAlt}
+          loading="lazy"
+          decoding="async"
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+      ) : (
+        <Image
+          src={imageSrc as ImageMetadata}
+          alt={imageAlt}
+          widths={[400, 800]}
+          sizes="(min-width: 768px) 340px, 100vw"
+          loading="lazy"
+          decoding="async"
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+      )
+    }
 
     <!-- Hover overlay -->
-    <div class="dest-card__overlay absolute inset-0 flex flex-col justify-end p-4 md:p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+    <div
+      class="dest-card__overlay absolute inset-0 flex flex-col justify-end p-4 md:p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+    >
       <p class="font-sans text-white/90 text-sm leading-relaxed line-clamp-3">
         {description}
       </p>
-      {chips.length > 0 && (
-        <div class="flex flex-wrap gap-1.5 mt-3">
-          {chips.map((kw) => (
-            <span class="text-[10px] font-sans text-white/70 bg-white/15 px-2 py-0.5 rounded-full">
-              {kw}
-            </span>
-          ))}
-        </div>
-      )}
+      {
+        chips.length > 0 && (
+          <div class="flex flex-wrap gap-1.5 mt-3">
+            {chips.map((kw) => (
+              <span class="text-[10px] font-sans text-white/70 bg-white/15 px-2 py-0.5 rounded-full">
+                {kw}
+              </span>
+            ))}
+          </div>
+        )
+      }
     </div>
 
-    <!-- Featured badge -->
-    {featured && (
+    <!-- Featured badge — masqué temporairement (peu de cards, plus pertinent) -->
+    {
+      /* featured && (
       <span class="absolute top-3 left-3 z-10 text-[10px] uppercase tracking-widest font-sans bg-terracotta text-white px-2.5 py-1 rounded-full shadow-sm">
         Coup de c&oelig;ur
       </span>
-    )}
+    ) */
+    }
   </div>
 
   <!-- Text (always visible) -->
   <div class="px-4 py-3 md:px-5 md:py-4">
-    <h3 class="font-serif text-base md:text-lg text-warm-black leading-tight group-hover:text-terracotta transition-colors">
+    <h3
+      class="font-serif text-base md:text-lg text-warm-black leading-tight group-hover:text-terracotta transition-colors"
+    >
       {country}
     </h3>
-    <p class="font-sans text-xs md:text-sm text-warm-gray mt-1 line-clamp-1 md:hidden">
+    <p
+      class="font-sans text-xs md:text-sm text-warm-gray mt-1 line-clamp-1 md:hidden"
+    >
       {description}
     </p>
   </div>

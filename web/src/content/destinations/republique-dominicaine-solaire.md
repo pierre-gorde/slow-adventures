@@ -1,4 +1,5 @@
 ---
+draft: true
 country: 'République dominicaine solaire'
 description: "Des plages de Samaná aux montagnes de Jarabacoa, la République dominicaine te fait voyager entre cascades, baleines à bosse et une joie de vivre contagieuse."
 image: 'https://images.unsplash.com/photo-1678816331175-a61a6835e889?w=1600&h=900&fit=crop&q=80'

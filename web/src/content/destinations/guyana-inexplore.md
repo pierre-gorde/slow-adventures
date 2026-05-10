@@ -1,4 +1,5 @@
 ---
+draft: true
 country: 'Guyane inexploré'
 description: "Des chutes de Kaieteur aux forêts primaires infinies, la Guyane te fait voyager dans l'un des derniers territoires sauvages de la planète, entre faune rare et communautés amérindiennes."
 image: 'https://images.unsplash.com/photo-1595794038905-0b713525dead?w=1600&h=900&fit=crop&q=80'

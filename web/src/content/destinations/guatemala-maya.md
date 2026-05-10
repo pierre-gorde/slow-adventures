@@ -1,4 +1,5 @@
 ---
+draft: true
 country: 'Guatemala maya'
 description: "Des temples perdus dans la jungle aux lacs volcaniques, le Guatemala te plonge dans une culture maya vivante, entre marchés traditionnels et paysages à couper le souffle."
 image: 'https://images.unsplash.com/photo-1753125187256-e2c1c2d1cdf8?w=1600&h=900&fit=crop&q=80'

@@ -1,4 +1,5 @@
 ---
+draft: true
 country: 'Puerto Rico'
 description: "Entre forêts tropicales bioluminescentes, vieux San Juan coloré et plages turquoise, Puerto Rico te fait voyager entre culture caribéenne vibrante et nature sauvage, à deux pas des États-Unis."
 image: 'https://images.unsplash.com/photo-1579687196544-08ae57ab5c11?w=1600&h=900&fit=crop&q=80'

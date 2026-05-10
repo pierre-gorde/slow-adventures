@@ -1,6 +1,6 @@
 ---
 country: 'Alaska au cœur du grand Nord'
-description: "Aventure brute au cœur d'une nature sauvage, entre glaciers majestueux, montagnes infinies et faune impressionnante, découvre aujourd'hui l'une des dernières terres vraiment préservées au monde."
+description: "Aventure authentique au bout du monde, entre glaciers millénaires, faune sauvage et aurores boréales, loin des foules et des itinéraires balisés. Découvre aujourd'hui l'Alaska, dernier grand wilderness américain."
 image: '../../assets/images/destinations/alaska.webp'
 gallery:
   - '../../assets/images/destinations/gallery/alaska/01.webp'
@@ -11,12 +11,24 @@ gallery:
   - '../../assets/images/destinations/gallery/alaska/06.webp'
   - '../../assets/images/destinations/gallery/alaska/07.webp'
 overlayColor: 'sauge'
-order: 36
-featured: false
+order: 3
+featured: true
 region: 'amerique-du-nord'
 title: 'Voyage en Alaska sur mesure — Travel Planning Slow Adventures'
-metaDescription: "Voyage Alaska sur mesure avec Elena, travel planner Amériques. Glaciers, ours bruns, montagnes infinies — un itinéraire grand nord taillé pour toi."
-keywords: ['Glaciers majestueux', 'Ours et faune sauvage', 'Montagnes infinies', 'Routes isolées', 'Silence et immensité', 'Parcs nationaux sauvages', 'Lodges en pleine nature', 'Observation de baleines', 'Aventure brute', 'Évasion totale']
+metaDescription: 'Voyage Alaska sur mesure avec Elena, travel planner Amériques. Glaciers, ours bruns, montagnes infinies — un itinéraire grand nord taillé pour toi.'
+keywords:
+  [
+    'Glaciers majestueux',
+    'Ours et faune sauvage',
+    'Montagnes infinies',
+    'Routes isolées',
+    'Silence et immensité',
+    'Parcs nationaux sauvages',
+    'Lodges en pleine nature',
+    'Observation de baleines',
+    'Aventure brute',
+    'Évasion totale',
+  ]
 ---
 
 L'Alaska, c'est l'appel du grand nord : ours bruns, baleines, forêts à perte de vue, routes isolées et silence total… Ici, tout est plus grand, plus intense, plus vrai. C'est un voyage qui te reconnecte à l'essentiel, loin de tout.

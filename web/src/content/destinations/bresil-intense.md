@@ -1,4 +1,5 @@
 ---
+draft: true
 country: 'Brésil intense'
 description: "Des chutes d'Iguazú à l'Amazonie, le Brésil te fait voyager entre mégapoles vibrantes, plages mythiques et une nature aux dimensions vertigineuses."
 image: 'https://images.unsplash.com/photo-1614949260630-1d8a27791215?w=1600&h=900&fit=crop&q=80'

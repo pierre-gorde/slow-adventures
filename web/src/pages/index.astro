@@ -19,15 +19,15 @@ import HomepageCarousel from '../components/HomepageCarousel.astro';
 import heroPoster from '../assets/images/hero-poster.webp';
 import heroLogo from '../assets/images/logo-white.webp';
 import elenaPhoto from '../assets/images/elena.webp';
-import carousel01 from '../assets/homepage-carousel/FD6593BF.jpg';
-import carousel02 from '../assets/homepage-carousel/FullSizeRender.jpg';
-import carousel03 from '../assets/homepage-carousel/IMG_0226.jpg';
-import carousel04 from '../assets/homepage-carousel/IMG_0318.jpg';
-import carousel06 from '../assets/homepage-carousel/IMG_3431.png';
-import carousel07 from '../assets/homepage-carousel/IMG_3468.png';
-import carousel08 from '../assets/homepage-carousel/IMG_3548.png';
-import carousel09 from '../assets/homepage-carousel/IMG_6042.jpg';
-import carousel10 from '../assets/homepage-carousel/IMG_8547.jpg';
+import carouselAntelope from '../assets/homepage-carousel/FullSizeRender.jpg';
+import carouselLA from '../assets/homepage-carousel/IMG_0226.jpg';
+import carouselUsaRoadtrip from '../assets/homepage-carousel/IMG_0318.jpg';
+import carouselBoston from '../assets/homepage-carousel/IMG_6042.jpg';
+import carouselFloride from '../assets/homepage-carousel/floride.webp';
+import carouselBowLake from '../assets/homepage-carousel/bow-lake.webp';
+import carouselNewYork from '../assets/homepage-carousel/new-york.webp';
+import carouselAlaska from '../assets/homepage-carousel/alaska-aurores.webp';
+import carouselQuebec from '../assets/homepage-carousel/quebec.webp';
 import { processSteps } from '../data/processSteps';
 import { pricingRows } from '../data/pricing';
 import { faqLd } from '../data/faq';
@@ -44,40 +44,46 @@ const optimizedPoster = await getImage({
 });
 
 const carouselSlides = [
-  { image: carousel01, caption: 'Iguazu — Argentine · Face aux chutes' },
   {
-    image: carousel07,
-    caption: 'Cozumel — Mexique · Les rencontres qu’on n’oublie pas',
-  },
-  {
-    image: carousel02,
+    image: carouselAntelope,
     caption: 'Antelope Canyon — USA · Là où la lumière sculpte la roche',
   },
   {
-    image: carousel03,
+    image: carouselFloride,
+    caption: 'Floride — USA · Les pieds dans le sable, les yeux sur l’horizon',
+  },
+  {
+    image: carouselLA,
     caption:
       'Los Angeles — Californie · Des palmiers et un lever de soleil doré',
   },
-  { image: carousel04, caption: 'USA — Road trip · L’aventure, à deux' },
   {
-    image: carousel08,
-    caption: 'Paname — Bocas del Toro · Plage de cocotiers, Caraïbes',
+    image: carouselBowLake,
+    caption: 'Bow Lake — Canada · Un lac turquoise au pied des Rocheuses',
   },
   {
-    image: carousel10,
-    caption: 'Iguazu — Argentine · Quand la nature te coupe le souffle',
+    image: carouselUsaRoadtrip,
+    caption: 'USA — Road trip · L’aventure, à deux',
   },
   {
-    image: carousel06,
-    caption: 'Machu Picchu — Pérou · 2 430 mètres au-dessus du monde',
+    image: carouselNewYork,
+    caption: 'New York — USA · Chinatown et ses rues qui n’arrêtent jamais',
   },
-  { image: carousel09, caption: 'Boston — La grandeur des buildings' },
+  {
+    image: carouselAlaska,
+    caption: 'Alaska — USA · ça pourrait être toi sous les aurores boréales',
+  },
+  {
+    image: carouselQuebec,
+    caption: 'Québec — Canada · Le Château Frontenac entre les feuilles',
+  },
+  { image: carouselBoston, caption: 'Boston — La grandeur des buildings' },
 ];
 ---
 
 <BaseLayout
-  title="Slow Adventures — Voyages immersifs et sur mesure exclusivement aux Amériques"
-  description="Création de voyages immersifs et sur mesure exclusivement aux Amériques. Confie-moi ton prochain rêve — appel gratuit de 30 minutes."
+  title="Slow Adventures — Voyages immersifs et sur mesure exclusivement en Amérique du Nord"
+  description="Création de voyages immersifs et sur mesure exclusivement en Amérique du Nord. Confie-moi ton prochain rêve — appel gratuit de 30 minutes."
   heroPreloadImage={optimizedPoster.src}
   extraLd={faqLd}
 >
@@ -87,7 +93,7 @@ const carouselSlides = [
       videoSrc="/videos/hero.mp4"
       logoSrc={heroLogo}
       title="Slow Adventures"
-      subtitle="Voyages immersifs et sur mesure exclusivement aux Amériques"
+      subtitle="Voyages immersifs et sur mesure exclusivement en Amérique du Nord"
     />
   </header>
   <main id="main">
@@ -95,9 +101,9 @@ const carouselSlides = [
     <ElenaSection
       id="elena"
       imageSrc={elenaPhoto}
-      imageAlt="Elena, créatrice de voyages immersifs aux Amériques"
-      title="Hello, Hola, Olà"
-      description="Moi c'est Elena. Après des mois à parcourir l'Amérique latine à sac à dos et plusieurs voyages en Amérique du Nord, j'ai créé SlowAdventures pour te proposer des voyages authentiques, fluides, 100% sur mesure et inspirés des valeurs du slow travel. Mon approche ? Écouter tes rêves, transformer tes envies en itinéraires uniques, et t'ouvrir les portes d'expériences mémorables. Si tu veux un voyage qui te ressemble vraiment, qui te connecte à l'âme des lieux et qui te laisse des souvenirs gravés pour toujours… tu es au bon endroit."
+      imageAlt="Elena, créatrice de voyages immersifs en Amérique du Nord"
+      title="Hello"
+      description="Moi c'est Elena, et je suis une véritable voyageuse dans l'âme. Tombée amoureuse de l'Amérique du Nord, j'ai créé SlowAdventures pour te proposer des voyages authentiques, fluides, 100% sur mesure et inspirés des valeurs du slow travel. Mon approche ? Écouter tes rêves, transformer tes envies en itinéraires uniques, et t'ouvrir les portes d'expériences mémorables. Si tu veux un voyage qui te ressemble vraiment, qui te connecte à l'âme des lieux et qui te laisse des souvenirs gravés pour toujours… tu es au bon endroit. Alors, plutôt team USA, Canada ou Alaska ?"
       ctaHref={import.meta.env.PUBLIC_CALENDLY_URL}
     />
     <section

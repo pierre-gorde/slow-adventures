@@ -1,6 +1,7 @@
 ---
+draft: true
 country: 'Mexique ancestral'
-description: "Des pyramides mayas aux plages turquoise, le Mexique te fait voyager entre cités antiques, marchés colorés et saveurs explosives, hors des sentiers battus."
+description: 'Des pyramides mayas aux plages turquoise, le Mexique te fait voyager entre cités antiques, marchés colorés et saveurs explosives, hors des sentiers battus.'
 image: 'https://images.unsplash.com/photo-1518638150340-f706e86654de?w=1600&h=900&fit=crop&q=80'
 overlayColor: 'terracotta'
 order: 6
@@ -8,7 +9,19 @@ featured: false
 region: 'amerique-du-nord'
 title: 'Voyage au Mexique sur mesure — Travel Planning Slow Adventures'
 metaDescription: 'Voyage Mexique sur mesure avec Elena, travel planner Amériques. Pyramides, cenotes, gastronomie — un itinéraire ancestral taillé pour toi.'
-keywords: ['Cités anciennes', 'Cenotes cristallins', 'Gastronomie vibrante', 'Marchés colorés', 'Plages turquoise', 'Culture millénaire', 'Aventure sensorielle', 'Moments suspendus', 'Rencontres authentiques', 'Évasion totale']
+keywords:
+  [
+    'Cités anciennes',
+    'Cenotes cristallins',
+    'Gastronomie vibrante',
+    'Marchés colorés',
+    'Plages turquoise',
+    'Culture millénaire',
+    'Aventure sensorielle',
+    'Moments suspendus',
+    'Rencontres authentiques',
+    'Évasion totale',
+  ]
 gallery:
   - '../../assets/images/destinations/gallery/mexique/01.webp'
   - '../../assets/images/destinations/gallery/mexique/02.webp'

@@ -1,4 +1,5 @@
 ---
+draft: true
 country: 'Jamaïque rythmée'
 description: "Des Blue Mountains aux plages de Negril, la Jamaïque te fait voyager entre reggae, cascades tropicales et une énergie créative qui pulse à chaque instant."
 image: 'https://images.unsplash.com/photo-1605994543054-6ffbabbd8139?w=1600&h=900&fit=crop&q=80'

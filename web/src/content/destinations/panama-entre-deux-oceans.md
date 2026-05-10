@@ -1,4 +1,5 @@
 ---
+draft: true
 country: 'Panama entre deux océans'
 description: "Du canal mythique aux archipels préservés de San Blas, le Panama te fait voyager entre jungle tropicale, gratte-ciel modernes et îles de rêve aux eaux cristallines."
 image: 'https://images.unsplash.com/photo-1566956031644-74266ac466f6?w=1600&h=900&fit=crop&q=80'

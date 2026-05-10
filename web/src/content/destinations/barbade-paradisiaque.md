@@ -1,4 +1,5 @@
 ---
+draft: true
 country: 'Barbade paradisiaque'
 description: "Des plages dorées de la côte ouest aux falaises sauvages de l'est, la Barbade te fait voyager entre rhum ancestral, surf et une élégance caribéenne unique."
 image: 'https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?w=1600&h=900&fit=crop&q=80'

@@ -1,4 +1,5 @@
 ---
+draft: true
 country: 'El Salvador authentique'
 description: "Des volcans fumants aux plages de surf légendaires, El Salvador te fait voyager entre villages colorés, lacs de cratère et une culture vibrante encore préservée du tourisme de masse."
 image: 'https://images.unsplash.com/photo-1745242787651-4b1af96a0b9e?w=1600&h=900&fit=crop&q=80'

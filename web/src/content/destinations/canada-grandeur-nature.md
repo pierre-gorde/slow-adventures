@@ -1,14 +1,26 @@
 ---
 country: 'Canada grandeur nature'
-description: "Des Rocheuses majestueuses aux forêts infinies de la Colombie-Britannique, le Canada t'offre un voyage entre lacs turquoise, faune sauvage et grands espaces à perte de vue."
+description: "Road trip sauvage entre forêts infinies, lacs turquoise et montagnes majestueuses, de Vancouver aux Rocheuses en passant par le Québec et ses grands espaces. Découvre aujourd'hui l'un des pays les plus spectaculaires au monde."
 image: 'https://images.unsplash.com/photo-1503614472-8c93d56e92ce?w=1600&h=900&fit=crop&q=80'
 overlayColor: 'sauge'
-order: 5
-featured: false
+order: 2
+featured: true
 region: 'amerique-du-nord'
 title: 'Voyage au Canada sur mesure — Travel Planning Slow Adventures'
 metaDescription: 'Voyage Canada sur mesure avec Elena, travel planner Amériques. Rocheuses, lacs turquoise, faune sauvage — un itinéraire grandeur nature taillé pour toi.'
-keywords: ['Grands espaces', 'Lacs turquoise', 'Faune sauvage', 'Montagnes majestueuses', 'Forêts infinies', 'Routes panoramiques', 'Aventure nordique', 'Moments suspendus', 'Immersion nature', 'Évasion totale']
+keywords:
+  [
+    'Grands espaces',
+    'Lacs turquoise',
+    'Faune sauvage',
+    'Montagnes majestueuses',
+    'Forêts infinies',
+    'Routes panoramiques',
+    'Aventure nordique',
+    'Moments suspendus',
+    'Immersion nature',
+    'Évasion totale',
+  ]
 gallery:
   - '../../assets/images/destinations/gallery/canada/01.webp'
   - '../../assets/images/destinations/gallery/canada/02.webp'

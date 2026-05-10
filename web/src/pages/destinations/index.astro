@@ -6,7 +6,6 @@ import DestinationCard from '../../components/DestinationCard.astro';
 import CTAButton from '../../components/CTAButton.astro';
 import CalendlyModal from '../../components/CalendlyModal.astro';
 import SectionReveal from '../../components/SectionReveal.astro';
-import { regionOrder, regionLabels } from '../../data/regions';
 import shuffleIcon from '../../assets/images/shuffle-icon.png';
 import destPoster from '../../assets/images/destinations-hero-poster.webp';
 
@@ -14,36 +13,30 @@ const allDestinations = await getCollection('destinations');
 const destinations = allDestinations.filter((d) => !d.data.draft);
 const sorted = [...destinations].sort((a, b) => a.data.order - b.data.order);
 
-const grouped = regionOrder
-  .map((r) => ({
-    region: r,
-    label: regionLabels[r],
-    destinations: sorted.filter((d) => d.data.region === r),
-  }))
-  .filter((g) => g.destinations.length > 0);
-
-const total = sorted.length;
 const allSlugs = sorted.map((d) => d.slug);
 
 const collectionLd = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
   name: 'Toutes les destinations — Slow Adventures',
-  description: `Découvre les ${total} destinations des Amériques proposées par Slow Adventures.`,
+  description: `Découvre les destinations d'Amérique du Nord proposées par Slow Adventures.`,
   url: Astro.url.toString(),
 };
 ---
 
 <BaseLayout
-  title={`Nos ${total} destinations aux Amériques — Slow Adventures`}
-  description={`Du Canada à la Patagonie en passant par les Caraïbes, explore les ${total} destinations sur mesure de Slow Adventures.`}
+  title="Ton aventure t'attend ici — Slow Adventures"
+  description="Plutôt Canada, USA ou Alaska ? Chaque voyage est une immersion pensée pour toi. Découvre les destinations d'Amérique du Nord de Slow Adventures."
   extraLd={collectionLd}
 >
   <main id="main">
     <!-- ═══════════════════════════════════════════════
          MINI-HERO
     ═══════════════════════════════════════════════ -->
-    <section class="dest-listing-hero relative overflow-hidden" aria-label="En-tête destinations">
+    <section
+      class="dest-listing-hero relative overflow-hidden"
+      aria-label="En-tête destinations"
+    >
       <Image
         src={destPoster}
         alt="Paysage des Amériques"
@@ -66,22 +59,37 @@ const collectionLd = {
       </video>
       <div class="dest-listing-hero__overlay" aria-hidden="true"></div>
       <div class="max-w-4xl mx-auto text-center px-6 relative z-10">
-        <p class="font-sans text-white/60 text-xs uppercase tracking-[0.25em] mb-4">
+        <p
+          class="font-sans text-white/60 text-xs uppercase tracking-[0.25em] mb-4"
+        >
           Slow Adventures
         </p>
-        <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl text-white leading-tight mb-3">
-          <span id="counter" data-target={total}>0</span> aventures t'attendent
+        <h1
+          class="font-serif text-4xl md:text-5xl lg:text-6xl text-white leading-tight mb-3"
+        >
+          Ton aventure t'attend ici
         </h1>
-        <p class="font-sans text-white/80 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-10">
-          Du Canada à la Patagonie, en passant par les Caraïbes : chaque voyage est une immersion pensée pour toi.
+        <p
+          class="font-sans text-white/80 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-10"
+        >
+          Plutôt Canada, USA ou Alaska ? Chaque voyage est une immersion pensée
+          pour toi.
         </p>
 
         <!-- Search + Shuffle -->
         <div class="flex items-center gap-3 max-w-lg mx-auto">
           <div class="relative flex-1">
-            <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-warm-black/30 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8" />
-              <path d="m21 21-4.3-4.3" />
+            <svg
+              class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-warm-black/30 pointer-events-none"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.3-4.3"></path>
             </svg>
             <input
               type="text"
@@ -113,63 +121,34 @@ const collectionLd = {
     </section>
 
     <!-- ═══════════════════════════════════════════════
-         MOBILE: Region filter chips
-    ═══════════════════════════════════════════════ -->
-    <div class="md:hidden bg-creme sticky top-14 z-20 border-b border-warm-black/5">
-      <div class="flex gap-2 px-4 py-3 overflow-x-auto scrollbar-hide" id="region-chips">
-        <button
-          type="button"
-          class="region-chip region-chip--active shrink-0 font-sans text-sm px-4 py-2 rounded-full transition-colors"
-          data-region="all"
-        >
-          Toutes
-        </button>
-        {grouped.map((g) => (
-          <button
-            type="button"
-            class="region-chip shrink-0 font-sans text-sm px-4 py-2 rounded-full transition-colors"
-            data-region={g.region}
-          >
-            {g.label}
-          </button>
-        ))}
-      </div>
-    </div>
-
-    <!-- ═══════════════════════════════════════════════
          DESTINATION GRID
     ═══════════════════════════════════════════════ -->
     <section class="bg-creme" aria-label="Liste des destinations">
       <div class="max-w-6xl mx-auto px-4 md:px-8 py-8 md:py-12">
         <div id="dest-list-container">
-            {grouped.map((group) => (
-              <div class="dest-region-group mb-12" data-region={group.region}>
-                <h2 class="font-serif text-xl md:text-2xl text-warm-black mb-6 pb-2 border-b-2 border-terracotta/15">
-                  {group.label}
-                </h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
-                  {group.destinations.map((d) => (
-                    <DestinationCard
-                      imageSrc={d.data.image}
-                      imageAlt={`Paysage de ${d.data.country}`}
-                      country={d.data.country}
-                      description={d.data.description}
-                      href={`/destinations/${d.slug}/`}
-                      featured={d.data.featured}
-                      slug={d.slug}
-                      keywords={d.data.keywords ?? []}
-                      overlayColor={d.data.overlayColor}
-                    />
-                  ))}
-                </div>
-              </div>
-            ))}
-            <p
-              id="dest-page-no-result"
-              class="hidden font-sans text-warm-black/40 text-center py-12"
-            >
-              Aucune destination trouvée
-            </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+            {
+              sorted.map((d) => (
+                <DestinationCard
+                  imageSrc={d.data.image}
+                  imageAlt={`Paysage de ${d.data.country}`}
+                  country={d.data.country}
+                  description={d.data.description}
+                  href={`/destinations/${d.slug}/`}
+                  featured={d.data.featured}
+                  slug={d.slug}
+                  keywords={d.data.keywords ?? []}
+                  overlayColor={d.data.overlayColor}
+                />
+              ))
+            }
+          </div>
+          <p
+            id="dest-page-no-result"
+            class="hidden font-sans text-warm-black/40 text-center py-12"
+          >
+            Aucune destination trouvée
+          </p>
         </div>
       </div>
     </section>
@@ -183,7 +162,9 @@ const collectionLd = {
     >
       <SectionReveal animation="scale-in">
         <div class="max-w-2xl mx-auto">
-          <p class="font-sans text-white/70 text-xs uppercase tracking-[0.2em] mb-5">
+          <p
+            class="font-sans text-white/70 text-xs uppercase tracking-[0.2em] mb-5"
+          >
             Travel Planning sur mesure
           </p>
           <h2
@@ -193,7 +174,8 @@ const collectionLd = {
             Une destination te fait rêver ?
           </h2>
           <p class="font-sans text-white/85 text-lg mb-10 leading-relaxed">
-            Dis-moi tes envies, tes contraintes, tes rêves — je m'occupe du reste.
+            Dis-moi tes envies, tes contraintes, tes rêves — je m'occupe du
+            reste.
           </p>
           <CTAButton
             href={import.meta.env.PUBLIC_CALENDLY_URL}
@@ -214,7 +196,17 @@ const collectionLd = {
         aria-label="Retour à l'accueil"
         class="inline-flex items-center gap-2 font-sans text-warm-black/60 hover:text-terracotta transition-colors text-sm"
       >
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
           <path d="M19 12H5M5 12l7 7M5 12l7-7"></path>
         </svg>
         Retour à l'accueil
@@ -272,7 +264,6 @@ const collectionLd = {
     );
   }
 
-
   /* CTA band */
   .dest-cta-band {
     background: linear-gradient(
@@ -283,25 +274,18 @@ const collectionLd = {
     );
   }
 
-  /* Region chips */
-  .region-chip {
-    background: color-mix(in srgb, var(--color-warm-black) 5%, transparent);
-    color: var(--color-warm-black);
-  }
-
-  .region-chip--active {
-    background: var(--color-terracotta);
-    color: white;
-  }
-
   /* Shuffle button */
   .shuffle-btn:active .shuffle-icon {
     animation: spin-shuffle 0.5s ease;
   }
 
   @keyframes spin-shuffle {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
 
   /* Card flash */
@@ -310,18 +294,17 @@ const collectionLd = {
   }
 
   @keyframes card-flash {
-    0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-terracotta) 50%, transparent); }
-    30% { box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-terracotta) 30%, transparent); }
-    100% { box-shadow: none; }
-  }
-
-  /* Hide scrollbar on chips */
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
+    0% {
+      box-shadow: 0 0 0 0
+        color-mix(in srgb, var(--color-terracotta) 50%, transparent);
+    }
+    30% {
+      box-shadow: 0 0 0 4px
+        color-mix(in srgb, var(--color-terracotta) 30%, transparent);
+    }
+    100% {
+      box-shadow: none;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -337,47 +320,41 @@ const collectionLd = {
 
   // ── Video autoplay (same pattern as homepage HeroSection) ──
   (function initDestVideo() {
-    const video = document.querySelector<HTMLVideoElement>('.dest-listing-hero__video');
+    const video = document.querySelector<HTMLVideoElement>(
+      '.dest-listing-hero__video'
+    );
     if (!video) return;
 
     const saveData =
       (navigator as unknown as { connection?: { saveData?: boolean } })
         .connection?.saveData === true;
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const reducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches;
 
     if (saveData || reducedMotion) {
       video.remove();
       return;
     }
 
-    video.play()
-      .then(() => { video.classList.add('is-playing'); })
+    video
+      .play()
+      .then(() => {
+        video.classList.add('is-playing');
+      })
       .catch(() => {});
 
     document.addEventListener('visibilitychange', function () {
       if (document.visibilityState !== 'visible') return;
       if (!video.paused) return;
-      video.play()
-        .then(() => { video.classList.add('is-playing'); })
+      video
+        .play()
+        .then(() => {
+          video.classList.add('is-playing');
+        })
         .catch(() => {});
     });
   })();
-
-  // ── Counter animation ──
-  const counterEl = document.getElementById('counter');
-  if (counterEl) {
-    const target = parseInt(counterEl.dataset.target ?? '0', 10);
-    const obj = { val: 0 };
-    gsap.to(obj, {
-      val: target,
-      duration: 1.6,
-      ease: 'power2.out',
-      delay: 0.3,
-      onUpdate: () => {
-        counterEl.textContent = Math.round(obj.val).toString();
-      },
-    });
-  }
 
   // ── Stagger animation on cards ──
   const allCards = document.querySelectorAll<HTMLElement>('.dest-card');
@@ -393,17 +370,19 @@ const collectionLd = {
     });
   }
 
-  // ── Search + Filter logic ──
-  const searchInput = document.getElementById('dest-page-search') as HTMLInputElement | null;
+  // ── Search filter ──
+  const searchInput = document.getElementById(
+    'dest-page-search'
+  ) as HTMLInputElement | null;
   const cards = document.querySelectorAll<HTMLElement>('.dest-card');
-  const regionGroups = document.querySelectorAll<HTMLElement>('.dest-region-group');
   const noResult = document.getElementById('dest-page-no-result');
-  const regionChips = document.querySelectorAll<HTMLElement>('.region-chip');
 
   const normalize = (s: string) =>
-    s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
-
-  let activeRegion = 'all';
+    s
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase()
+      .trim();
 
   function applyFilters() {
     const query = normalize(searchInput?.value ?? '');
@@ -413,10 +392,7 @@ const collectionLd = {
 
     cards.forEach((card) => {
       const country = normalize(card.dataset.country ?? '');
-      const cardRegion = card.closest<HTMLElement>('.dest-region-group')?.dataset.region ?? '';
-      const matchesSearch = !query || country.includes(query);
-      const matchesRegion = activeRegion === 'all' || cardRegion === activeRegion;
-      const show = matchesSearch && matchesRegion;
+      const show = !query || country.includes(query);
       if (show) {
         toShow.push(card);
         visibleCount++;
@@ -425,7 +401,6 @@ const collectionLd = {
       }
     });
 
-    // Animate out hidden cards, animate in visible ones
     gsap.to(toHide, {
       opacity: 0,
       scale: 0.95,
@@ -433,7 +408,6 @@ const collectionLd = {
       stagger: 0.02,
       onComplete: () => {
         toHide.forEach((c) => (c.style.display = 'none'));
-        // Then show matching
         toShow.forEach((c) => (c.style.display = ''));
         gsap.fromTo(
           toShow,
@@ -445,22 +419,9 @@ const collectionLd = {
             stagger: 0.03,
             ease: 'power2.out',
             onComplete: () => ScrollTrigger.refresh(),
-          },
+          }
         );
       },
-    });
-
-    // Show/hide region headers
-    regionGroups.forEach((group) => {
-      const hasVisible = Array.from(
-        group.querySelectorAll<HTMLElement>('.dest-card'),
-      ).some((c) => {
-        const country = normalize(c.dataset.country ?? '');
-        const matchesSearch = !query || country.includes(query);
-        const matchesRegion = activeRegion === 'all' || group.dataset.region === activeRegion;
-        return matchesSearch && matchesRegion;
-      });
-      group.style.display = hasVisible ? '' : 'none';
     });
 
     if (noResult) {
@@ -468,18 +429,7 @@ const collectionLd = {
     }
   }
 
-  // Search input
   searchInput?.addEventListener('input', applyFilters);
-
-  // Region chips (mobile)
-  regionChips.forEach((chip) => {
-    chip.addEventListener('click', () => {
-      regionChips.forEach((c) => c.classList.remove('region-chip--active'));
-      chip.classList.add('region-chip--active');
-      activeRegion = chip.dataset.region ?? 'all';
-      applyFilters();
-    });
-  });
 
   // ── Shuffle button ──
   const shuffleBtn = document.getElementById('shuffle-btn');
@@ -492,7 +442,11 @@ const collectionLd = {
 
       // Spin icon
       if (icon) {
-        gsap.fromTo(icon, { rotation: 0 }, { rotation: 720, duration: 0.6, ease: 'power2.inOut' });
+        gsap.fromTo(
+          icon,
+          { rotation: 0 },
+          { rotation: 720, duration: 0.6, ease: 'power2.inOut' }
+        );
       }
 
       // Short delay for the animation feel, then redirect

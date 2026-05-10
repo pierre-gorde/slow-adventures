@@ -1,74 +1,77 @@
 ---
 country: 'East Coast USA'
-description: "De New York à la Floride en passant par la Nouvelle-Angleterre, l'East Coast te fait voyager entre skylines mythiques, forêts flamboyantes et plages de sable blanc, au rythme de l'Amérique authentique."
+description: "Road trip entre océan et histoire, du nord jusqu'aux plages ensoleillées du Sud, là où chaque État raconte une Amérique différente. Découvre aujourd'hui la côte Est dans toute sa diversité."
 image: 'https://images.unsplash.com/photo-1534430480872-3498386e7856?w=1600&h=900&fit=crop&q=80'
 overlayColor: 'sauge'
-order: 35
-featured: false
+order: 4
+featured: true
 region: 'amerique-du-nord'
-title: 'Road trip East Coast USA sur mesure — Travel Planning Slow Adventures'
-metaDescription: 'Voyage East Coast USA sur mesure avec Elena, travel planner Amériques. New York, Boston, Floride, Nouvelle-Angleterre — un itinéraire taillé pour toi.'
+title: "East Coast : l'Amérique dans toute sa diversité — Slow Adventures"
+metaDescription: 'Voyage East Coast USA sur mesure avec Elena, travel planner Amérique du Nord. De Boston à Miami, road trip entre villes mythiques, histoire et plages sauvages.'
 keywords:
   [
-    'Skylines mythiques',
-    'Indian Summer',
-    'Forêts flamboyantes',
-    'Plages de sable blanc',
-    'Culture américaine',
-    'Road trip historique',
-    'Villes emblématiques',
-    'Moments suspendus',
-    'Aventure urbaine',
-    'Évasion totale',
+    'Villes mythiques',
+    'Histoire vivante',
+    'Plages sauvages',
+    'Diversité culturelle',
+    'Routes côtières',
+    'Ambiances contrastées',
+    'Du Maine à Miami',
+    'Rencontres authentiques',
+    'Amérique profonde',
+    'Chaque État, un monde',
   ]
 gallery:
-  - '../../assets/images/destinations/gallery/east-coast/05.webp'
+  - '../../assets/images/destinations/gallery/east-coast/01.webp'
   - '../../assets/images/destinations/gallery/east-coast/02.webp'
   - '../../assets/images/destinations/gallery/east-coast/03.webp'
   - '../../assets/images/destinations/gallery/east-coast/04.webp'
-  - '../../assets/images/destinations/gallery/east-coast/01.webp'
+  - '../../assets/images/destinations/gallery/east-coast/05.webp'
   - '../../assets/images/destinations/gallery/east-coast/06.webp'
   - '../../assets/images/destinations/gallery/east-coast/07.webp'
 ---
 
-L'East Coast, c'est un voyage qui se vit avec tous les sens : lever les yeux sur la skyline de Manhattan au coucher du soleil, sentir l'odeur des feuilles d'érable en automne dans le Vermont, marcher sur le sable blanc des Keys au bout de la Floride, et goûter un lobster roll dans un port de pêche du Maine… Chaque instant éveille la curiosité et émerveille.
+La East Coast, c'est l'Amérique dans toute sa complexité : des ruelles pavées de Boston aux bayous de la Louisiane, des gratte-ciels de New York aux plages infinies de Floride. Un voyage où la culture, l'histoire et les paysages changent à chaque État franchi.
 
-## Pourquoi l'East Coast ne s'improvise pas ? 🇺🇸
+## Pourquoi la East Coast ne s'improvise pas ? 🇺🇸
 
-On pourrait croire que l'East Coast est une destination facile : tout est bien desservi, les villes sont iconiques, et les routes sont connues. Et pourtant, c'est exactement l'inverse.
+On pourrait croire que la côte Est, c'est juste New York + Miami. C'est tout l'inverse.
 
-C'est un voyage où chaque choix change tout : la saison qui transforme complètement les paysages, le rythme entre villes et nature, les quartiers où loger qui font toute la différence, et les distances souvent sous-estimées entre New York et Miami. Mal pensé, tu enchaînes les villes sans respirer et tu passes à côté des trésors entre les étapes. Bien construit, tu vis l'Amérique comme dans les films — en mieux.
+C'est une destination immense, où le rythme, les étapes et les connexions entre les villes changent complètement l'expérience. Mal construite, tu passes ton temps dans les transports ou à courir. Bien pensée, tu vis une Amérique que peu de voyageurs voient vraiment.
 
-Du nord au sud ou par étapes, Nouvelle-Angleterre ou Floride, grandes villes ou villages côtiers, autumn leaves ou plages tropicales… il n'y a pas UNE East Coast, mais des dizaines de façons de la vivre.
+De Boston à Miami, deux Amériques en un voyage — il n'y a pas UNE East Coast, mais des dizaines de façons de la traverser.
 
 ## Ce qui t'attend ? ✨
 
-- Vibrer devant la skyline de New York depuis le Brooklyn Bridge au coucher du soleil
-- Se laisser envoûter par la Nouvelle-Orléans, entre jazz, bayous et cuisine cajun
-- Arpenter les rues historiques de Boston, berceau de la révolution américaine
-- Explorer les Everglades en airboat et croiser des alligators
-- Descendre l'Overseas Highway jusqu'à Key West, route la plus au sud des USA
-- Déguster les saveurs du Sud : BBQ fumé, shrimp & grits, key lime pie
+- Flâner dans les quartiers historiques de Boston et de Philadelphie
+- Vivre New York à ton rythme, sans courir après les monuments
+- Longer la Blue Ridge Parkway entre forêts et panoramas à couper le souffle
+- Sentir l'âme du Sud à La Nouvelle-Orléans, entre jazz et cuisine créole
+- Poser les pieds sur les plages sauvages des Outer Banks ou des Keys de Floride
+- Croiser une Amérique profonde, loin des clichés
+- Te perdre dans des petites villes où le temps semble s'être arrêté
 
 ## Quand partir ? 🤔
 
-L'East Coast offre une expérience radicalement différente selon la saison.
+La East Coast s'étend sur des milliers de kilomètres — la météo varie donc énormément selon où tu te trouves.
 
-- **Septembre à novembre** : la meilleure période — Indian Summer en Nouvelle-Angleterre, températures douces à New York, fin de saison calme en Floride
-- **Mars à mai** : le printemps — cherry blossoms à Washington, villes qui se réveillent, prix raisonnables
-- **Juin à août** : été — plages et festivals, mais chaleur étouffante dans les villes du sud et foule à New York
-- **Décembre à février** : hiver — froid intense au nord (mais New York sous la neige est magique), doux en Floride
+- **Avril à juin** : idéal pour le Nord et les villes — doux, fleuri, moins bondé qu'en été
+- **Septembre à octobre** : le meilleur moment pour le Nord (couleurs d'automne spectaculaires) et pour le Sud (chaleur supportable)
+- **Juillet-août** : chaud et humide partout, très fréquenté dans les grandes villes
+- **Hiver** : le Nord peut être rude, mais spectaculaire, et le Sud (Floride, Louisiane) reste très agréable
 
-**À savoir** : les distances sont trompeuses — New York à Miami c'est 2 000 km. Un road trip complet nord-sud demande minimum 3 semaines pour en profiter. Les hébergements à New York et Miami se réservent très en avance en haute saison.
+**À savoir** : certaines périodes sont très prisées — hébergements à anticiper plusieurs mois à l'avance.
 
 ## Combien de temps partir ? 👀
 
-- **7 à 10 jours** : une section (New York + Nouvelle-Angleterre OU Floride)
-- **14 à 18 jours** : deux sections avec des étapes entre les deux (Washington, Savannah, Charleston)
-- **+18 jours** : le grand road trip nord-sud complet, de Boston à Key West
+La East Coast ne se "fait" pas. Elle se vit État par État.
+
+- **10 jours** : un axe ciblé (par exemple New York → Washington → Charleston)
+- **14 à 21 jours** : le rythme idéal pour relier le Nord au Sud sans se précipiter
+- **+21 jours** : version complète du Maine jusqu'en Floride
 
 ## Ce que je construis pour toi ? 💚
 
-C'est une destination où chaque détail compte : les quartiers où loger dans chaque ville, la bonne saison pour chaque étape, les routes panoramiques entre les grandes villes, les réservations à anticiper dans les spots prisés…
+C'est une destination où les choix d'itinéraire sont décisifs : voiture ou train, grandes villes ou escales inattendues, côte ou intérieur des terres…
 
-Je conçois un itinéraire sur-mesure, pensé pour que tu profites à 100% : hébergements sélectionnés entre boutique hotels et motels de charme, bonnes adresses locales quartier par quartier, timing optimisé… et un roadbook clair pour vivre ton voyage pleinement, sans te poser de questions.
+Je conçois un itinéraire sur-mesure, pensé pour que tu découvres une East Coast qui te ressemble : hébergements sélectionnés, adresses locales, spots hors des sentiers battus — et un roadbook clair pour vivre chaque étape sans stress.

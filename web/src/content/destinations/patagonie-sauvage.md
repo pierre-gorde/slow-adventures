@@ -1,4 +1,5 @@
 ---
+draft: true
 country: 'Patagonie sauvage'
 description: "Des glaciers imposants aux plaines infinies, la Patagonie te fait voyager entre montagnes grandioses, lacs turquoise et paysages à couper le souffle, hors des sentiers battus."
 image: '../../assets/images/destinations/patagonie.webp'

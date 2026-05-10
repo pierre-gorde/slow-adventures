@@ -18,7 +18,7 @@ export const faqItems: FaqItem[] = [
     name: 'Sur quelles destinations je peux partir avec Slow Adventures ?',
     acceptedAnswer: {
       '@type': 'Answer',
-      text: "Slow Adventures est spécialisé dans tous les pays des Amériques : Costa Rica, Pérou, Patagonie (Argentine et Chili), West Coast USA, Mexique, Colombie, Équateur, Bolivie, Canada, et bien d'autres. Si la destination est sur le continent américain, Elena peut construire ton itinéraire. En effet Haïti et Honduras ne sont pas encore des destinations proposées par SlowAdventures. Cela est lié est risques sécuritaires pour les voyageurs indépendants sur place.",
+      text: "Slow Adventures est spécialisé dans l'Amérique du Nord : Canada, États-Unis et Alaska.",
     },
   },
   {
@@ -58,7 +58,7 @@ export const faqItems: FaqItem[] = [
     name: 'Pourquoi tu ne réserves pas à ma place ?',
     acceptedAnswer: {
       '@type': 'Answer',
-      text: "Slow Adventures est un service de travel planning, pas une agence de voyage. En effet seules les agences de voyage sont éligibles à procéder à des réservations. Elena conçoit ton voyage et te donne toutes les clés pour le réserver facilement, ce qui est un gain de temps énorme et une charge mentale en moins pour toi.",
+      text: 'Slow Adventures est un service de travel planning, pas une agence de voyage. En effet seules les agences de voyage sont éligibles à procéder à des réservations. Elena conçoit ton voyage et te donne toutes les clés pour le réserver facilement, ce qui est un gain de temps énorme et une charge mentale en moins pour toi.',
     },
   },
   {
@@ -66,7 +66,7 @@ export const faqItems: FaqItem[] = [
     name: 'Slow Adventures propose-t-il uniquement les Amériques ?',
     acceptedAnswer: {
       '@type': 'Answer',
-      text: 'Oui, Slow Adventures est exclusivement spécialisé dans les Amériques (Nord, Centrale et Sud). Cette spécialisation permet à Elena de connaître ces destinations en profondeur : les meilleures adresses, les périodes idéales, les erreurs à éviter, et les expériences hors des sentiers battus que les guides classiques ne mentionnent pas.',
+      text: "Oui, Slow Adventures est exclusivement spécialisé dans l'Amérique du Nord (États-Unis, Canada et Alaska). Cette spécialisation permet à Elena de connaître ces destinations en profondeur : les meilleures adresses, les périodes idéales, les erreurs à éviter, et les expériences hors des sentiers battus que les guides classiques ne mentionnent pas.",
     },
   },
 ];

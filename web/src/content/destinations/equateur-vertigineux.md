@@ -1,4 +1,5 @@
 ---
+draft: true
 country: 'Équateur vertigineux'
 description: "Des volcans enneigés aux îles Galápagos, l'Équateur te fait voyager entre Andes majestueuses, Amazonie profonde et une biodiversité qui défie l'imagination."
 image: 'https://images.unsplash.com/photo-1610226977124-9fd2755d09f2?w=1600&h=900&fit=crop&q=80'

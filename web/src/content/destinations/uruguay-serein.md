@@ -1,4 +1,5 @@
 ---
+draft: true
 country: 'Uruguay serein'
 description: "Des plages infinies de Punta del Este aux estancias de la pampa, l'Uruguay te fait voyager dans un pays doux, entre gaucho culture, vignobles et une sérénité rare."
 image: 'https://images.unsplash.com/photo-1689723744935-60e01c337543?w=1600&h=900&fit=crop&q=80'

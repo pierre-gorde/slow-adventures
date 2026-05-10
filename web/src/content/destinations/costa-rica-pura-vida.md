@@ -1,4 +1,5 @@
 ---
+draft: true
 country: 'Costa Rica pura vida'
 description: 'Des volcans majestueux aux plages de rêve, le Costa Rica te fait voyager entre forêts tropicales, cascades et biodiversité exceptionnelle, hors des sentiers battus.'
 image: '../../assets/images/destinations/costa-rica.webp'

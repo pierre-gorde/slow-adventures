@@ -1,4 +1,5 @@
 ---
+draft: true
 country: 'Pérou sacré'
 description: "Des Andes mystiques au lac Titicaca, le Pérou sacré te fait voyager entre cités incas, villages authentiques et paysages à couper le souffle, hors des sentiers battus."
 image: '../../assets/images/destinations/perou.webp'

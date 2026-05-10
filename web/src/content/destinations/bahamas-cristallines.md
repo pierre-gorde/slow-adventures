@@ -1,4 +1,5 @@
 ---
+draft: true
 country: 'Bahamas cristallines'
 description: "Des eaux turquoise aux cochons nageurs d'Exuma, les Bahamas te font voyager entre plages de sable rose, fonds marins spectaculaires et une douceur de vivre insulaire."
 image: 'https://plus.unsplash.com/premium_photo-1680339680335-7e3b8572fc00?w=1600&h=900&fit=crop&q=80'

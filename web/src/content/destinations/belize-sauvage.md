@@ -1,4 +1,5 @@
 ---
+draft: true
 country: 'Belize sauvage'
 description: "Du Blue Hole légendaire aux ruines mayas englouties par la jungle, le Belize te fait voyager entre récifs coralliens, forêts tropicales et aventure brute."
 image: 'https://images.unsplash.com/photo-1722761478075-720dc58e63d1?w=1600&h=900&fit=crop&q=80'

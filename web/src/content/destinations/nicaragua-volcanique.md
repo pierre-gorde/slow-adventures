@@ -1,4 +1,5 @@
 ---
+draft: true
 country: 'Nicaragua volcanique'
 description: "Des volcans actifs aux îles préservées, le Nicaragua te fait voyager entre villes coloniales, lacs immenses et une nature sauvage encore intacte."
 image: 'https://images.unsplash.com/photo-1539735016193-2bfc5a8f6699?w=1600&h=900&fit=crop&q=80'

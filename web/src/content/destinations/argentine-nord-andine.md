@@ -1,4 +1,5 @@
 ---
+draft: true
 country: 'Argentine du Nord'
 description: "De Buenos Aires aux chutes d'Iguazú, en passant par les Salinas Grandes et Purmamarca, le Nord argentin te fait voyager entre mégapole vibrante, quebradas flamboyantes et cascades mythiques."
 image: 'https://images.unsplash.com/photo-1599094792743-7df3e8870800?w=1600&h=900&fit=crop&q=80'

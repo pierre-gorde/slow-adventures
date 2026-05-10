@@ -1,4 +1,5 @@
 ---
+draft: true
 country: 'Colombie vibrante'
 description: "Des Andes verdoyantes aux Caraïbes turquoise, la Colombie te fait voyager entre villes colorées, forêts tropicales et une énergie contagieuse à chaque coin de rue."
 image: 'https://images.unsplash.com/photo-1534943441045-1009d7cb0bb9?w=1600&h=900&fit=crop&q=80'

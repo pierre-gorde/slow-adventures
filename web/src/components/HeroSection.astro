@@ -38,16 +38,18 @@ const { posterSrc, videoSrc, logoSrc, title, subtitle } = Astro.props;
   </div>
   <div class="hero__overlay"></div>
   <div class="hero__content">
-    {logoSrc && (
-      <Image
-        src={logoSrc}
-        alt="Slow Adventures"
-        class="hero__logo"
-        width={280}
-        height={280}
-        loading="eager"
-      />
-    )}
+    {
+      logoSrc && (
+        <Image
+          src={logoSrc}
+          alt="Slow Adventures"
+          class="hero__logo"
+          width={280}
+          height={280}
+          loading="eager"
+        />
+      )
+    }
     <h1 class="hero__title font-serif text-white">{title}</h1>
     <p class="hero__subtitle font-sans text-white">{subtitle}</p>
   </div>
@@ -98,7 +100,13 @@ const { posterSrc, videoSrc, logoSrc, title, subtitle } = Astro.props;
     position: absolute;
     inset: 0;
     z-index: 1;
-    background-color: rgba(44, 40, 37, 0.8);
+    height: 30vh;
+    background: linear-gradient(
+      to bottom,
+      rgba(44, 40, 37, 0.8) 0%,
+      rgba(44, 40, 37, 0.4) 18%,
+      rgba(44, 40, 37, 0) 35%
+    );
   }
 
   .hero__content {

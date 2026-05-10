@@ -1,4 +1,5 @@
 ---
+draft: true
 country: 'Bolivie hors du temps'
 description: "Du Salar d'Uyuni aux marchés de La Paz, la Bolivie te fait voyager entre déserts de sel infinis, sommets andins et une culture indigène vivante à couper le souffle."
 image: 'https://images.unsplash.com/photo-1582986610555-7f5b1ecabab2?w=1600&h=900&fit=crop&q=80'

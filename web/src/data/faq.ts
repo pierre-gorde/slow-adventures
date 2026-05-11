@@ -63,7 +63,7 @@ export const faqItems: FaqItem[] = [
   },
   {
     '@type': 'Question',
-    name: 'Slow Adventures propose-t-il uniquement les Amériques ?',
+    name: "Slow Adventures propose-t-il uniquement l'Amérique du Nord ?",
     acceptedAnswer: {
       '@type': 'Answer',
       text: "Oui, Slow Adventures est exclusivement spécialisé dans l'Amérique du Nord (États-Unis, Canada et Alaska). Cette spécialisation permet à Elena de connaître ces destinations en profondeur : les meilleures adresses, les périodes idéales, les erreurs à éviter, et les expériences hors des sentiers battus que les guides classiques ne mentionnent pas.",

@@ -7,7 +7,7 @@ order: 2
 featured: true
 region: 'amerique-du-nord'
 title: 'Voyage au Canada sur mesure — Travel Planning Slow Adventures'
-metaDescription: 'Voyage Canada sur mesure avec Elena, travel planner Amériques. Rocheuses, lacs turquoise, faune sauvage — un itinéraire grandeur nature taillé pour toi.'
+metaDescription: 'Voyage Canada sur mesure avec Elena, travel planner Amérique du Nord. Rocheuses, lacs turquoise, faune sauvage — un itinéraire grandeur nature taillé pour toi.'
 keywords:
   [
     'Grands espaces',

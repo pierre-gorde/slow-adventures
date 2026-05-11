@@ -15,7 +15,7 @@ order: 3
 featured: true
 region: 'amerique-du-nord'
 title: 'Voyage en Alaska sur mesure — Travel Planning Slow Adventures'
-metaDescription: 'Voyage Alaska sur mesure avec Elena, travel planner Amériques. Glaciers, ours bruns, montagnes infinies — un itinéraire grand nord taillé pour toi.'
+metaDescription: 'Voyage Alaska sur mesure avec Elena, travel planner Amérique du Nord. Glaciers, ours bruns, montagnes infinies — un itinéraire grand nord taillé pour toi.'
 keywords:
   [
     'Glaciers majestueux',

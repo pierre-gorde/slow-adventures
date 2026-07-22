@@ -94,22 +94,14 @@ export const TRAVELERS: Traveler[] = [
     toComplete: false,
   },
   {
-    name: 'Votre aîné·e',
-    role: 'Presque adulte, premier grand voyage',
-    age: 19,
-    toComplete: false,
-  },
-  {
-    name: 'Votre deuxième',
-    role: "L'ado du groupe",
-    age: 16,
-    toComplete: false,
-  },
-  {
-    name: 'Votre benjamin·e',
-    role: 'Le regard neuf sur tout',
-    age: 12,
-    toComplete: false,
+    name: 'Les enfants',
+    role: "Trois regards sur l'Ouest — 19, 16 et 12 ans",
+    notes: [
+      'Petits randonneurs, mais pas trop : moins de 4 h de rando par jour',
+      'Des activités ludiques à chaque étape',
+      "Des parcs d'attraction au programme",
+      'Et des feux de camp le soir',
+    ],
   },
 ];
 

@@ -22,13 +22,13 @@ import {
   DELIVERABLES,
 } from '../../data/projets/jennifer-goncalves';
 
-import heroImg from '../../assets/images/destinations/gallery/west-coast/wc-2.webp';
-import lockImg from '../../assets/images/destinations/gallery/west-coast/wc-4.webp';
+import heroImg from '../../assets/images/destinations/gallery/west-coast/wc-4.webp';
+import lockImg from '../../assets/images/destinations/gallery/west-coast/wc-8.webp';
 import nightImg from '../../assets/images/nuit-etoilee-hero.webp';
 import breatherImg from '../../assets/images/destinations/gallery/west-coast/wc-5.webp';
 import wc1 from '../../assets/images/destinations/gallery/west-coast/wc-1.webp';
+import wc2 from '../../assets/images/destinations/gallery/west-coast/wc-2.webp';
 import wc3 from '../../assets/images/destinations/gallery/west-coast/wc-3.webp';
-import wc4 from '../../assets/images/destinations/gallery/west-coast/wc-4.webp';
 import wc6 from '../../assets/images/destinations/gallery/west-coast/wc-6.webp';
 import coverImg from '../../assets/images/destinations/west-coast-usa.webp';
 
@@ -38,7 +38,7 @@ const GALLERY = [
     alt: "Elena devant le globe d'Universal Studios à Los Angeles",
     span: 'wide',
   },
-  { src: wc4, alt: "Désert de cactus cholla dans l'Ouest américain", span: '' },
+  { src: wc2, alt: "Paysage grandiose de l'Ouest américain", span: '' },
   {
     src: wc3,
     alt: 'Les amphithéâtres de Bryce Canyon au lever du soleil',
@@ -131,7 +131,7 @@ Astro.response.headers.set('Cache-Control', 'no-store');
           <div class="lock__photo relative overflow-hidden lg:order-2">
             <Image
               src={lockImg}
-              alt="Désert de cactus cholla sous le soleil de l'Ouest américain"
+              alt="Les buttes de Monument Valley sous le ciel bleu"
               widths={[768, 1440]}
               sizes="(min-width: 1024px) 50vw, 100vw"
               loading="eager"
@@ -220,7 +220,7 @@ Astro.response.headers.set('Cache-Control', 'no-store');
           >
             <Image
               src={heroImg}
-              alt="Paysage grandiose de l'Ouest américain"
+              alt="Jardin de cactus cholla dans le parc de Joshua Tree"
               widths={[768, 1440, 2880]}
               sizes="100vw"
               loading="eager"
@@ -313,7 +313,7 @@ Astro.response.headers.set('Cache-Control', 'no-store');
                   </div>
                 </div>
                 <p class="text-white/75 text-lg mt-10">
-                  Le compte à rebours est lancé. On a tout le temps de bien
+                  Le compte à rebours est lancé. J'ai tout le temps de bien
                   faire les choses.
                 </p>
               </SectionReveal>
@@ -354,7 +354,7 @@ Astro.response.headers.set('Cache-Control', 'no-store');
           {/* ═══ LE FIL DU VOYAGE ═══ */}
           <section
             class="bg-white sa-section-padding"
-            aria-label="Les trois grandes étapes"
+            aria-label="Les grandes étapes"
           >
             <div class="max-w-5xl mx-auto">
               <SectionReveal animation="fade-up">
@@ -392,8 +392,8 @@ Astro.response.headers.set('Cache-Control', 'no-store');
               <SectionReveal animation="fade-up">
                 <h2 class="section-title font-serif">La tribu au complet 💚</h2>
                 <p class="text-warm-gray text-lg leading-relaxed mb-14 max-w-xl">
-                  Cinq voyageurs, cinq façons de vivre l'Ouest. Voici ce qu'on a
-                  retenu de chacun.
+                  Cinq voyageurs, chacun sa façon de vivre l'Ouest. Voici ce que
+                  j'ai retenu de chacun.
                 </p>
               </SectionReveal>
               {TRAVELERS.map((traveler, i) => (
@@ -493,7 +493,7 @@ Astro.response.headers.set('Cache-Control', 'no-store');
                 </h2>
                 <p class="text-white/60 text-lg leading-relaxed mb-16 max-w-xl">
                   Un bon voyage se construit aussi sur ce qui inquiète. Rien
-                  n'est balayé sous le tapis : on garde ces points en tête à
+                  n'est balayé sous le tapis : je garde ces points en tête à
                   chaque choix d'itinéraire.
                 </p>
               </SectionReveal>
@@ -529,7 +529,7 @@ Astro.response.headers.set('Cache-Control', 'no-store');
             <div class="max-w-5xl mx-auto">
               <SectionReveal animation="fade-up">
                 <h2 class="section-title font-serif">
-                  Ce qu'on prépare pour vous
+                  Ce que je prépare pour vous
                 </h2>
               </SectionReveal>
               <SectionReveal animation="stagger">

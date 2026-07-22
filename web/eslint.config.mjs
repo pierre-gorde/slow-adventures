@@ -8,7 +8,7 @@ export default tseslint.config(
   ...tseslint.configs.strict,
   ...astroPlugin.configs.recommended,
   {
-    ignores: ['dist/', '.astro/', 'node_modules/'],
+    ignores: ['dist/', '.astro/', '.netlify/', 'node_modules/'],
   },
   {
     files: ['*.config.mjs', '*.config.ts'],

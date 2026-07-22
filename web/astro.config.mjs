@@ -9,7 +9,10 @@ export default defineConfig({
   site: process.env.SITE_URL || 'https://slowadventures.fr',
   adapter: netlify(),
   integrations: [
-    sitemap({ filter: (page) => !page.includes('/decouvrir') }),
+    sitemap({
+      filter: (page) =>
+        !page.includes('/decouvrir') && !page.includes('/projet'),
+    }),
     robotsTxt(),
   ],
   image: {

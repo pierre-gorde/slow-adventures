@@ -1,0 +1,998 @@
+---
+export const prerender = false;
+
+import { createHash } from 'node:crypto';
+import '../../styles/global.css';
+import { Image } from 'astro:assets';
+import SectionReveal from '../../components/SectionReveal.astro';
+import ScrollHint from '../../components/ScrollHint.astro';
+import {
+  PROJET_SLUG,
+  PROJET_PASSWORD,
+  PROJET_COOKIE_NAME,
+  PROJET_COOKIE_MAX_AGE_DAYS,
+  DEPARTURE_DATE_ISO,
+  DEPARTURE_LABEL,
+  ESSENTIALS,
+  ROUTE_STEPS,
+  TRAVELERS,
+  ENVIES,
+  A_EVITER,
+  VIGILANCE,
+  DELIVERABLES,
+} from '../../data/projets/jennifer-goncalves';
+
+import heroImg from '../../assets/images/destinations/gallery/west-coast/wc-2.webp';
+import lockImg from '../../assets/images/destinations/gallery/west-coast/wc-4.webp';
+import nightImg from '../../assets/images/nuit-etoilee-hero.webp';
+import breatherImg from '../../assets/images/destinations/gallery/west-coast/wc-5.webp';
+import wc1 from '../../assets/images/destinations/gallery/west-coast/wc-1.webp';
+import wc3 from '../../assets/images/destinations/gallery/west-coast/wc-3.webp';
+import wc4 from '../../assets/images/destinations/gallery/west-coast/wc-4.webp';
+import wc6 from '../../assets/images/destinations/gallery/west-coast/wc-6.webp';
+import coverImg from '../../assets/images/destinations/west-coast-usa.webp';
+
+const GALLERY = [
+  {
+    src: wc1,
+    alt: "Elena devant le globe d'Universal Studios à Los Angeles",
+    span: 'wide',
+  },
+  { src: wc4, alt: "Désert de cactus cholla dans l'Ouest américain", span: '' },
+  {
+    src: wc3,
+    alt: 'Les amphithéâtres de Bryce Canyon au lever du soleil',
+    span: 'tall',
+  },
+  { src: wc6, alt: 'Elena face aux buttes de Monument Valley', span: '' },
+  {
+    src: coverImg,
+    alt: 'Route mythique de la côte ouest des États-Unis',
+    span: 'wide',
+  },
+];
+
+const LOCK_META = [
+  { label: 'Itinéraire', value: 'LA → Las Vegas → SF' },
+  { label: 'Départ', value: DEPARTURE_LABEL },
+  { label: 'Durée', value: '3 semaines' },
+  { label: 'Voyageurs', value: '5' },
+];
+
+const sessionToken = createHash('sha256')
+  .update(`${PROJET_PASSWORD}:${PROJET_SLUG}`)
+  .digest('hex');
+
+const normalize = (raw: string) =>
+  raw
+    .trim()
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+    .replace(/\s+/g, '-');
+
+let passwordError = false;
+
+if (Astro.request.method === 'POST') {
+  const form = await Astro.request.formData().catch(() => null);
+  const submitted = normalize(String(form?.get('password') ?? ''));
+  if (submitted === PROJET_PASSWORD) {
+    Astro.cookies.set(PROJET_COOKIE_NAME, sessionToken, {
+      path: '/projet',
+      httpOnly: true,
+      sameSite: 'lax',
+      secure: import.meta.env.PROD,
+      maxAge: PROJET_COOKIE_MAX_AGE_DAYS * 24 * 60 * 60,
+    });
+    return Astro.redirect(Astro.url.pathname, 303);
+  }
+  passwordError = true;
+}
+
+const unlocked = Astro.cookies.get(PROJET_COOKIE_NAME)?.value === sessionToken;
+
+Astro.response.headers.set('X-Robots-Tag', 'noindex, nofollow');
+Astro.response.headers.set('Cache-Control', 'no-store');
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <title>Ton voyage dans l'Ouest américain — Slow Adventures</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Stardos+Stencil:wght@400;700&family=Bree+Serif&display=swap"
+      onload="this.rel='stylesheet'"
+    />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Stardos+Stencil:wght@400;700&family=Bree+Serif&display=swap"
+        rel="stylesheet"
+      />
+      <style>
+        [data-reveal] {
+          opacity: 1 !important;
+        }
+      </style>
+    </noscript>
+  </head>
+  <body class="bg-creme text-warm-black font-sans">
+    {
+      !unlocked ? (
+        <main class="lock min-h-svh lg:grid lg:grid-cols-2" id="main">
+          <div class="lock__photo relative overflow-hidden lg:order-2">
+            <Image
+              src={lockImg}
+              alt="Désert de cactus cholla sous le soleil de l'Ouest américain"
+              widths={[768, 1440]}
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              loading="eager"
+              decoding="async"
+              class="absolute inset-0 w-full h-full object-cover"
+            />
+            <div
+              class="absolute inset-0 bg-linear-to-t from-warm-black/35 to-transparent lg:bg-none"
+              aria-hidden="true"
+            />
+          </div>
+
+          <div class="lock__panel relative bg-creme flex items-center lg:order-1">
+            <div class="lock__stamp font-serif" aria-hidden="true">
+              <span>Août</span>
+              <span>2027</span>
+            </div>
+
+            <div class="w-full max-w-md mx-auto px-6 py-12 lg:px-12">
+              <p class="text-terracotta text-xs uppercase tracking-[0.3em] mb-2">
+                Slow Adventures
+              </p>
+              <p class="text-warm-gray text-xs uppercase tracking-[0.2em] mb-8">
+                Dossier de voyage privé · n° 001
+              </p>
+
+              <h1 class="font-serif text-warm-black leading-none lock__title mb-3">
+                L'Ouest américain
+              </h1>
+              <p class="text-warm-gray text-lg mb-10">
+                Préparé pour Jennifer & sa tribu
+              </p>
+
+              <dl class="lock__meta mb-10">
+                {LOCK_META.map((row) => (
+                  <div class="flex items-baseline gap-3 py-2.5">
+                    <dt class="text-warm-gray text-sm uppercase tracking-wider shrink-0">
+                      {row.label}
+                    </dt>
+                    <span class="lock__leader" aria-hidden="true" />
+                    <dd class="text-warm-black font-semibold shrink-0">
+                      {row.value}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+
+              <form method="post" class="flex flex-col gap-3">
+                <label class="sr-only" for="password">
+                  Mot de passe
+                </label>
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  required
+                  autocomplete="off"
+                  placeholder="Mot de passe"
+                  class="w-full bg-white text-warm-black placeholder:text-warm-gray/60 text-lg px-6 py-4 rounded-full border-2 border-warm-black/10 focus:border-terracotta focus:outline-none transition-colors"
+                />
+                {passwordError && (
+                  <p class="text-terracotta text-sm px-2" role="alert">
+                    Ce n'est pas le bon mot de passe. Réessaie !
+                  </p>
+                )}
+                <button
+                  type="submit"
+                  class="bg-terracotta text-white font-semibold text-lg px-8 py-4 rounded-full active:bg-terracotta-dark motion-safe:hover:scale-[1.02] transition-transform"
+                >
+                  Ouvrir le dossier
+                </button>
+              </form>
+
+              <p class="text-warm-gray/80 text-sm mt-6">
+                Le mot de passe t'a été transmis avec le devis.
+              </p>
+            </div>
+          </div>
+        </main>
+      ) : (
+        <main id="main">
+          {/* ═══ HERO ═══ */}
+          <section
+            class="hero relative overflow-hidden"
+            aria-label="Ton projet de voyage"
+          >
+            <Image
+              src={heroImg}
+              alt="Paysage grandiose de l'Ouest américain"
+              widths={[768, 1440, 2880]}
+              sizes="100vw"
+              loading="eager"
+              decoding="async"
+              class="hero__img absolute inset-0 w-full h-full object-cover"
+            />
+            <div
+              class="absolute inset-0 bg-linear-to-t from-warm-black/80 via-warm-black/25 to-warm-black/30"
+              aria-hidden="true"
+            />
+            <div class="hero__content relative z-10 flex flex-col justify-end px-6 pb-24 md:px-12 lg:px-24">
+              <div class="hero__text max-w-4xl">
+                <p class="text-white/70 text-xs uppercase tracking-[0.25em] mb-5">
+                  Slow Adventures · Dossier de voyage privé
+                </p>
+                <h1 class="font-serif text-white leading-none mb-6 hero__title">
+                  L'Ouest américain en famille
+                </h1>
+                <p class="text-white/85 text-lg md:text-xl leading-relaxed">
+                  Jennifer & sa tribu · {DEPARTURE_LABEL} · 3 semaines
+                </p>
+                <p class="text-white/70 text-base md:text-lg mt-2">
+                  Los Angeles&ensp;→&ensp;Las Vegas&ensp;→&ensp;San Francisco
+                </p>
+              </div>
+            </div>
+            <ScrollHint />
+          </section>
+
+          {/* ═══ COMPTE À REBOURS ═══ */}
+          <section
+            class="relative overflow-hidden"
+            aria-label="Compte à rebours avant le départ"
+          >
+            <Image
+              src={nightImg}
+              alt=""
+              widths={[768, 1440]}
+              sizes="100vw"
+              loading="lazy"
+              decoding="async"
+              class="absolute inset-0 w-full h-full object-cover"
+            />
+            <div class="absolute inset-0 bg-warm-black/60" aria-hidden="true" />
+            <div class="relative z-10 px-6 py-20 md:py-28 text-center">
+              <SectionReveal animation="fade-up">
+                <p class="text-white/60 text-xs uppercase tracking-[0.25em] mb-8">
+                  Le grand départ · {DEPARTURE_LABEL}
+                </p>
+                <div
+                  id="countdown"
+                  data-target={DEPARTURE_DATE_ISO}
+                  class="countdown mx-auto grid grid-cols-4 gap-2 md:gap-8 max-w-2xl"
+                >
+                  <div>
+                    <span
+                      class="countdown__value font-serif text-ambre"
+                      data-unit="days"
+                    >
+                      —
+                    </span>
+                    <span class="countdown__label text-white/60">jours</span>
+                  </div>
+                  <div>
+                    <span
+                      class="countdown__value font-serif text-ambre"
+                      data-unit="hours"
+                    >
+                      —
+                    </span>
+                    <span class="countdown__label text-white/60">heures</span>
+                  </div>
+                  <div>
+                    <span
+                      class="countdown__value font-serif text-ambre"
+                      data-unit="minutes"
+                    >
+                      —
+                    </span>
+                    <span class="countdown__label text-white/60">minutes</span>
+                  </div>
+                  <div>
+                    <span
+                      class="countdown__value font-serif text-ambre"
+                      data-unit="seconds"
+                    >
+                      —
+                    </span>
+                    <span class="countdown__label text-white/60">secondes</span>
+                  </div>
+                </div>
+                <p class="text-white/75 text-lg mt-10">
+                  Le compte à rebours est lancé. On a tout le temps de bien
+                  faire les choses.
+                </p>
+              </SectionReveal>
+            </div>
+          </section>
+
+          {/* ═══ L'ESSENTIEL ═══ */}
+          <section
+            class="bg-creme sa-section-padding"
+            aria-label="Le voyage en un coup d'œil"
+          >
+            <div class="max-w-5xl mx-auto">
+              <SectionReveal animation="fade-up">
+                <h2 class="section-title font-serif">
+                  Ton voyage en un coup d'œil
+                </h2>
+              </SectionReveal>
+              <SectionReveal animation="stagger">
+                {ESSENTIALS.map((item, i) => (
+                  <div class={`essential essential--${i % 4}`}>
+                    <span class="essential__value font-serif text-terracotta">
+                      {item.value}
+                    </span>
+                    <div>
+                      <p class="text-warm-black text-lg md:text-xl font-semibold">
+                        {item.label}
+                      </p>
+                      <p class="text-warm-gray text-base leading-relaxed">
+                        {item.detail}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </SectionReveal>
+            </div>
+          </section>
+
+          {/* ═══ LE FIL DU VOYAGE ═══ */}
+          <section
+            class="bg-white sa-section-padding"
+            aria-label="Les trois grandes étapes"
+          >
+            <div class="max-w-5xl mx-auto">
+              <SectionReveal animation="fade-up">
+                <h2 class="section-title font-serif">Le fil du voyage</h2>
+              </SectionReveal>
+              <SectionReveal animation="stagger">
+                <div class="route md:grid md:grid-cols-5 md:gap-6">
+                  {ROUTE_STEPS.map((step, i) => (
+                    <div class="route-step relative pl-12 pb-10 md:pl-0 md:pb-0 md:pt-14">
+                      <span
+                        class={`route-step__dot ${step.kind === 'parks' ? 'route-step__dot--parks' : ''}`}
+                        aria-hidden="true"
+                      >
+                        {i + 1}
+                      </span>
+                      <h3 class="font-serif text-2xl text-warm-black mb-2">
+                        {step.name}
+                      </h3>
+                      <p class="text-warm-gray text-base leading-relaxed">
+                        {step.caption}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </SectionReveal>
+              <SectionReveal animation="fade-up">
+                <p class="mt-12 md:mt-16 text-warm-black/80 text-lg leading-relaxed bg-creme rounded-round px-6 py-5 md:max-w-2xl md:ml-auto">
+                  Quels parcs exactement ? On garde la surprise : chaque spot
+                  sera dévoilé et argumenté dans l'itinéraire qu'on construit
+                  pour vous.
+                </p>
+              </SectionReveal>
+            </div>
+          </section>
+
+          {/* ═══ LA TRIBU ═══ */}
+          <section
+            class="bg-creme sa-section-padding"
+            aria-label="Les voyageurs"
+          >
+            <div class="max-w-5xl mx-auto">
+              <SectionReveal animation="fade-up">
+                <h2 class="section-title font-serif">La tribu au complet 💚</h2>
+                <p class="text-warm-gray text-lg leading-relaxed mb-14 max-w-xl">
+                  Cinq voyageurs, cinq façons de vivre l'Ouest. Voici ce qu'on a
+                  retenu de chacun — complète ou corrige, c'est la matière
+                  première de l'itinéraire.
+                </p>
+              </SectionReveal>
+              {TRAVELERS.map((traveler, i) => (
+                <SectionReveal animation="fade-up">
+                  <article
+                    class={`traveler py-8 md:py-10 md:max-w-2xl ${i % 2 === 1 ? 'md:ml-auto' : ''}`}
+                  >
+                    <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-4">
+                      <h3 class="font-serif text-2xl md:text-3xl text-warm-black">
+                        {traveler.name}
+                      </h3>
+                      {traveler.age && (
+                        <span class="font-serif text-terracotta text-xl md:text-2xl">
+                          {traveler.age} ans
+                        </span>
+                      )}
+                      {traveler.toComplete && (
+                        <span class="text-xs uppercase tracking-wider text-sauge border border-sauge/40 rounded-full px-3 py-1">
+                          à compléter ensemble
+                        </span>
+                      )}
+                    </div>
+                    <p class="text-terracotta text-base md:text-lg mb-4">
+                      {traveler.role}
+                    </p>
+                    {traveler.notes && (
+                      <ul class="traveler__notes">
+                        {traveler.notes.map((note) => (
+                          <li class="text-warm-black/85 leading-relaxed">
+                            {note}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </article>
+                </SectionReveal>
+              ))}
+            </div>
+          </section>
+
+          {/* ═══ RESPIRATION PHOTO ═══ */}
+          <div class="breather relative overflow-hidden" aria-hidden="true">
+            <Image
+              src={breatherImg}
+              alt=""
+              widths={[768, 1440, 2880]}
+              sizes="100vw"
+              loading="lazy"
+              decoding="async"
+              class="absolute inset-0 w-full h-full object-cover"
+            />
+          </div>
+
+          {/* ═══ ENVIES ═══ */}
+          <section class="bg-white sa-section-padding" aria-label="Vos envies">
+            <div class="max-w-5xl mx-auto md:grid md:grid-cols-5 md:gap-16">
+              <div class="md:col-span-3">
+                <SectionReveal animation="fade-up">
+                  <h2 class="section-title font-serif">
+                    Ce que vous voulez vivre ✨
+                  </h2>
+                </SectionReveal>
+                <SectionReveal animation="stagger">
+                  {ENVIES.map((envie) => (
+                    <p class="envie relative pl-8 mb-5 text-warm-black text-lg leading-relaxed">
+                      {envie}
+                    </p>
+                  ))}
+                </SectionReveal>
+              </div>
+              <div class="md:col-span-2 md:pt-24">
+                <SectionReveal animation="fade-up">
+                  <div class="bg-creme-dark rounded-round px-6 py-6 md:px-8 mt-12 md:mt-0">
+                    <h3 class="font-serif text-xl text-warm-black mb-4">
+                      Ce qu'on évite
+                    </h3>
+                    {A_EVITER.map((item) => (
+                      <p class="eviter relative pl-8 mb-3 last:mb-0 text-warm-black/80 leading-relaxed">
+                        {item}
+                      </p>
+                    ))}
+                  </div>
+                </SectionReveal>
+              </div>
+            </div>
+          </section>
+
+          {/* ═══ POINTS DE VIGILANCE ═══ */}
+          <section
+            class="bg-warm-black sa-section-padding"
+            aria-label="Points de vigilance"
+          >
+            <div class="max-w-5xl mx-auto">
+              <SectionReveal animation="fade-up">
+                <h2 class="section-title section-title--dark font-serif">
+                  Les points de vigilance
+                </h2>
+                <p class="text-white/60 text-lg leading-relaxed mb-16 max-w-xl">
+                  Un bon voyage se construit aussi sur ce qui inquiète. Rien
+                  n'est balayé sous le tapis : on garde ces points en tête à
+                  chaque choix d'itinéraire.
+                </p>
+              </SectionReveal>
+              {VIGILANCE.map((point, i) => (
+                <SectionReveal animation="fade-up">
+                  <article class="vigilance md:grid md:grid-cols-12 md:gap-6">
+                    <p
+                      class={`vigilance__num font-serif text-ambre/60 md:col-span-2 ${i % 2 === 1 ? 'md:order-2 md:text-right' : ''}`}
+                    >
+                      {String(i + 1).padStart(2, '0')}
+                    </p>
+                    <div
+                      class={`md:col-span-9 ${i % 2 === 1 ? 'md:order-1 md:col-start-2' : 'md:col-start-3'}`}
+                    >
+                      <h3 class="font-serif text-2xl md:text-3xl text-white mb-3">
+                        {point.title}
+                      </h3>
+                      <p class="text-white/70 text-base md:text-lg leading-relaxed">
+                        {point.detail}
+                      </p>
+                    </div>
+                  </article>
+                </SectionReveal>
+              ))}
+            </div>
+          </section>
+
+          {/* ═══ CE QU'ELENA PRÉPARE ═══ */}
+          <section
+            class="bg-creme sa-section-padding"
+            aria-label="Les prochaines étapes"
+          >
+            <div class="max-w-5xl mx-auto">
+              <SectionReveal animation="fade-up">
+                <h2 class="section-title font-serif">
+                  Ce qu'on prépare pour vous
+                </h2>
+              </SectionReveal>
+              <SectionReveal animation="stagger">
+                <div class="md:grid md:grid-cols-2 md:gap-x-16">
+                  {DELIVERABLES.map((d, i) => (
+                    <div
+                      class={`deliverable flex gap-5 md:gap-6 py-6 md:py-8 ${i % 2 === 1 ? 'md:translate-y-10' : ''}`}
+                    >
+                      <span class="font-serif text-terracotta text-3xl md:text-5xl shrink-0 leading-none">
+                        {i + 1}
+                      </span>
+                      <div>
+                        <h3 class="text-warm-black text-lg md:text-xl font-semibold mb-1">
+                          {d.title}
+                        </h3>
+                        <p class="text-warm-gray leading-relaxed">{d.detail}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </SectionReveal>
+            </div>
+          </section>
+
+          {/* ═══ GALERIE ═══ */}
+          <section
+            class="bg-white py-16 md:py-24 overflow-hidden"
+            aria-label="Un avant-goût en images"
+          >
+            <SectionReveal animation="fade-up">
+              <h2 class="section-title font-serif px-6 md:px-12 max-w-5xl lg:mx-auto">
+                Un avant-goût 🇺🇸
+              </h2>
+            </SectionReveal>
+            <div class="gallery flex gap-4 overflow-x-auto px-6 pb-4 md:grid md:grid-cols-4 md:gap-5 md:overflow-visible md:px-12 md:pb-0 md:max-w-5xl md:mx-auto">
+              {GALLERY.map((photo) => (
+                <figure class={`gallery__item shrink-0 ${photo.span}`}>
+                  <Image
+                    src={photo.src}
+                    alt={photo.alt}
+                    widths={[480, 960]}
+                    sizes="(max-width: 768px) 80vw, 40vw"
+                    loading="lazy"
+                    decoding="async"
+                    class="w-full h-full object-cover rounded-round"
+                  />
+                </figure>
+              ))}
+            </div>
+            <p class="text-warm-gray text-sm text-center mt-14">
+              Dossier préparé avec soin par Elena · Slow Adventures 💚
+            </p>
+          </section>
+        </main>
+      )
+    }
+
+    <script is:inline>
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+        document.querySelectorAll('[data-reveal]').forEach(function (el) {
+          observer.observe(el);
+        });
+        window.__revealObserver = observer;
+      } else {
+        document.querySelectorAll('[data-reveal]').forEach(function (el) {
+          el.classList.add('revealed');
+        });
+      }
+    </script>
+
+    <script>
+      const countdown = document.getElementById('countdown');
+      if (countdown) {
+        const target = new Date(countdown.dataset.target ?? '').getTime();
+        const units = {
+          days: countdown.querySelector<HTMLElement>('[data-unit="days"]'),
+          hours: countdown.querySelector<HTMLElement>('[data-unit="hours"]'),
+          minutes: countdown.querySelector<HTMLElement>(
+            '[data-unit="minutes"]'
+          ),
+          seconds: countdown.querySelector<HTMLElement>(
+            '[data-unit="seconds"]'
+          ),
+        };
+        const MS_PER_SECOND = 1000;
+        const MS_PER_MINUTE = 60 * MS_PER_SECOND;
+        const MS_PER_HOUR = 60 * MS_PER_MINUTE;
+        const MS_PER_DAY = 24 * MS_PER_HOUR;
+        const pad = (n: number) => String(n).padStart(2, '0');
+        const tick = () => {
+          const diff = Math.max(0, target - Date.now());
+          const days = Math.floor(diff / MS_PER_DAY);
+          const hours = Math.floor(diff / MS_PER_HOUR) % 24;
+          const minutes = Math.floor(diff / MS_PER_MINUTE) % 60;
+          const seconds = Math.floor(diff / MS_PER_SECOND) % 60;
+          if (units.days) units.days.textContent = String(days);
+          if (units.hours) units.hours.textContent = pad(hours);
+          if (units.minutes) units.minutes.textContent = pad(minutes);
+          if (units.seconds) units.seconds.textContent = pad(seconds);
+        };
+        tick();
+        setInterval(tick, MS_PER_SECOND);
+      }
+    </script>
+
+    <script>
+      import { gsap } from '../../lib/gsap';
+
+      const heroImgEl = document.querySelector<HTMLElement>('.hero__img');
+      if (heroImgEl) {
+        gsap.to(heroImgEl, {
+          yPercent: 20,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 1,
+          },
+        });
+      }
+    </script>
+
+    <style>
+      /* ── Écran verrouillé ── */
+      .lock__photo {
+        height: 42svh;
+      }
+
+      @media (min-width: 1024px) {
+        .lock__photo {
+          height: auto;
+          min-height: 100svh;
+        }
+
+        .lock__panel {
+          min-height: 100svh;
+        }
+      }
+
+      .lock__title {
+        font-size: clamp(2.5rem, 6vw, 3.75rem);
+      }
+
+      .lock__stamp {
+        position: absolute;
+        top: -2.75rem;
+        right: 1.5rem;
+        width: 5.5rem;
+        height: 5.5rem;
+        border-radius: 50%;
+        border: 2px dashed var(--color-terracotta);
+        background: var(--color-creme);
+        color: var(--color-terracotta);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        line-height: 1.1;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        letter-spacing: 0.1em;
+        transform: rotate(-8deg);
+        box-shadow: 0 4px 16px
+          color-mix(in srgb, var(--color-warm-black) 12%, transparent);
+      }
+
+      @media (min-width: 1024px) {
+        .lock__stamp {
+          top: 3rem;
+          right: 3rem;
+          width: 6.5rem;
+          height: 6.5rem;
+          font-size: 0.9rem;
+        }
+      }
+
+      .lock__leader {
+        flex: 1;
+        border-bottom: 2px dotted
+          color-mix(in srgb, var(--color-warm-black) 20%, transparent);
+      }
+
+      /* ── Hero ── */
+      .hero,
+      .hero__content {
+        min-height: 100svh;
+      }
+
+      .hero__title {
+        font-size: clamp(2.75rem, 9vw, 6.5rem);
+        max-width: 14ch;
+      }
+
+      .hero__text {
+        opacity: 0;
+        transform: translateY(32px);
+        animation: hero-entrance 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.2s
+          forwards;
+      }
+
+      @keyframes hero-entrance {
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      /* ── Titres de section ── */
+      .section-title {
+        font-size: clamp(1.75rem, 5vw, 2.75rem);
+        color: var(--color-warm-black);
+        line-height: 1.15;
+        margin-bottom: 2.5rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 2px solid
+          color-mix(in srgb, var(--color-terracotta) 15%, transparent);
+      }
+
+      .section-title--dark {
+        color: var(--color-creme);
+        border-bottom-color: color-mix(
+          in srgb,
+          var(--color-ambre) 25%,
+          transparent
+        );
+      }
+
+      /* ── Compte à rebours ── */
+      .countdown__value {
+        display: block;
+        font-size: clamp(2rem, 9vw, 4.5rem);
+        line-height: 1;
+      }
+
+      .countdown__label {
+        display: block;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        margin-top: 0.5rem;
+      }
+
+      /* ── L'essentiel — quinconce ── */
+      .essential {
+        display: flex;
+        align-items: baseline;
+        gap: 1.25rem;
+        padding-block: 1.5rem;
+      }
+
+      .essential + .essential {
+        border-top: 1px solid
+          color-mix(in srgb, var(--color-warm-black) 10%, transparent);
+      }
+
+      .essential__value {
+        font-size: clamp(2.25rem, 6vw, 3.75rem);
+        line-height: 1;
+        min-width: 2ch;
+        white-space: nowrap;
+      }
+
+      @media (min-width: 768px) {
+        :global([data-reveal]:has(.essential)) {
+          display: grid;
+          grid-template-columns: repeat(12, 1fr);
+          column-gap: 2rem;
+        }
+
+        .essential + .essential {
+          border-top: none;
+        }
+
+        .essential--0 {
+          grid-column: 1 / 6;
+        }
+
+        .essential--1 {
+          grid-column: 7 / 13;
+          margin-top: 4rem;
+        }
+
+        .essential--2 {
+          grid-column: 2 / 7;
+          margin-top: 1rem;
+        }
+
+        .essential--3 {
+          grid-column: 8 / 13;
+          margin-top: 4.5rem;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.5rem;
+        }
+      }
+
+      /* ── Fil du voyage ── */
+      .route-step:not(:last-of-type)::before {
+        content: '';
+        position: absolute;
+        left: 1.1rem;
+        top: 2.75rem;
+        bottom: 0.5rem;
+        border-left: 2px dashed
+          color-mix(in srgb, var(--color-terracotta) 35%, transparent);
+      }
+
+      @media (min-width: 768px) {
+        .route-step:not(:last-of-type)::before {
+          left: 3rem;
+          right: -1.5rem;
+          top: 1.1rem;
+          bottom: auto;
+          border-left: none;
+          border-top: 2px dashed
+            color-mix(in srgb, var(--color-terracotta) 35%, transparent);
+        }
+      }
+
+      .route-step__dot {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 2.25rem;
+        height: 2.25rem;
+        border-radius: 50%;
+        background: var(--color-terracotta);
+        color: var(--color-creme);
+        font-family: var(--font-family-serif);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .route-step__dot--parks {
+        background: var(--color-sauge);
+      }
+
+      /* ── La tribu ── */
+      .traveler {
+        border-top: 1px solid
+          color-mix(in srgb, var(--color-warm-black) 10%, transparent);
+      }
+
+      .traveler__notes li {
+        position: relative;
+        padding-left: 1.5rem;
+        margin-bottom: 0.6rem;
+      }
+
+      .traveler__notes li::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0.65em;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: color-mix(in srgb, var(--color-sauge) 70%, transparent);
+      }
+
+      /* ── Envies ── */
+      .envie::before,
+      .eviter::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0.65em;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: color-mix(
+          in srgb,
+          var(--color-terracotta) 55%,
+          transparent
+        );
+      }
+
+      .eviter::before {
+        background: color-mix(in srgb, var(--color-warm-gray) 55%, transparent);
+      }
+
+      /* ── Vigilance ── */
+      :global([data-reveal]:has(.vigilance) + [data-reveal]:has(.vigilance)) {
+        margin-top: 4.5rem;
+      }
+
+      @media (min-width: 768px) {
+        :global([data-reveal]:has(.vigilance) + [data-reveal]:has(.vigilance)) {
+          margin-top: 7rem;
+        }
+      }
+
+      .vigilance__num {
+        font-size: clamp(2.5rem, 6vw, 4.5rem);
+        line-height: 1;
+        margin-bottom: 0.75rem;
+      }
+
+      /* ── Respiration photo ── */
+      .breather {
+        height: clamp(240px, 45vh, 480px);
+      }
+
+      /* ── Galerie ── */
+      .gallery {
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .gallery__item {
+        scroll-snap-align: center;
+        width: min(80vw, 480px);
+        aspect-ratio: 4 / 3;
+      }
+
+      @media (min-width: 768px) {
+        .gallery {
+          scroll-snap-type: none;
+          grid-auto-rows: 220px;
+        }
+
+        .gallery__item {
+          width: auto;
+          aspect-ratio: auto;
+        }
+
+        .gallery__item.wide {
+          grid-column: span 2;
+        }
+
+        .gallery__item.tall {
+          grid-row: span 2;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .hero__text {
+          animation: none;
+          opacity: 1;
+          transform: none;
+        }
+      }
+    </style>
+  </body>
+</html>

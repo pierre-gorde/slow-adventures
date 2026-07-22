@@ -53,7 +53,7 @@ export const ROUTE_STEPS: RouteStep[] = [
   {
     name: 'Les premiers parcs',
     kind: 'parks',
-    caption: 'Déserts, canyons, décors de western — on garde les noms secrets',
+    caption: 'Déserts, canyons, décors de western',
   },
   {
     name: 'Las Vegas',

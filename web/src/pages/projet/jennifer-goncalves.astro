@@ -20,6 +20,8 @@ import {
   A_EVITER,
   VIGILANCE,
   DELIVERABLES,
+  INCLUSIONS,
+  INCLUSIONS_HIGHLIGHT,
 } from '../../data/projets/jennifer-goncalves';
 
 import heroImg from '../../assets/images/destinations/gallery/west-coast/wc-4.webp';
@@ -554,6 +556,52 @@ Astro.response.headers.set('Cache-Control', 'no-store');
             </div>
           </section>
 
+          {/* ═══ CE QUI EST INCLUS ═══ */}
+          <section
+            class="bg-sauge-dark sa-section-padding"
+            aria-label="Ce qui est inclus"
+          >
+            <div class="max-w-5xl mx-auto">
+              <SectionReveal animation="fade-up">
+                <h2 class="section-title section-title--dark font-serif">
+                  Ce qui est inclus
+                </h2>
+                <p class="text-creme/85 text-lg leading-relaxed mb-14 max-w-xl">
+                  Un accompagnement de bout en bout — pour que vous n'ayez plus
+                  qu'à vivre le voyage.
+                </p>
+              </SectionReveal>
+              <SectionReveal animation="stagger">
+                {INCLUSIONS.map((item) => (
+                  <div class="inclusion flex items-start gap-4 md:gap-5">
+                    <span class="inclusion__check shrink-0" aria-hidden="true">
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M5 13l4 4L19 7" />
+                      </svg>
+                    </span>
+                    <p class="text-creme text-lg md:text-xl leading-relaxed">
+                      {item}
+                    </p>
+                  </div>
+                ))}
+              </SectionReveal>
+              <SectionReveal animation="fade-up">
+                <div class="inclusion-highlight bg-creme rounded-round px-7 py-7 md:px-10 md:py-9 mt-14 md:mt-16">
+                  <p class="font-serif text-warm-black text-xl md:text-2xl leading-snug">
+                    {INCLUSIONS_HIGHLIGHT}
+                  </p>
+                </div>
+              </SectionReveal>
+            </div>
+          </section>
+
           {/* ═══ GALERIE ═══ */}
           <section
             class="bg-white py-16 md:py-24 overflow-hidden"
@@ -939,6 +987,33 @@ Astro.response.headers.set('Cache-Control', 'no-store');
         font-size: clamp(2.5rem, 6vw, 4.5rem);
         line-height: 1;
         margin-bottom: 0.75rem;
+      }
+
+      /* ── Ce qui est inclus ── */
+      .inclusion {
+        padding-block: 1.4rem;
+      }
+
+      .inclusion + .inclusion {
+        border-top: 1px solid
+          color-mix(in srgb, var(--color-creme) 18%, transparent);
+      }
+
+      .inclusion__check {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2rem;
+        height: 2rem;
+        margin-top: 0.15rem;
+        border-radius: 50%;
+        background: color-mix(in srgb, var(--color-creme) 16%, transparent);
+        color: var(--color-creme);
+      }
+
+      .inclusion__check svg {
+        width: 1.15rem;
+        height: 1.15rem;
       }
 
       /* ── Respiration photo ── */

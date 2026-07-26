@@ -144,6 +144,16 @@ export const VIGILANCE: VigilancePoint[] = [
   },
 ];
 
+export const INCLUSIONS = [
+  "Réalisation de l'itinéraire de A à Z selon vos goûts, vos envies, et selon mes conseils d'experte",
+  'Accompagnement avant, pendant et après le voyage',
+  'Disponible sur WhatsApp 24h/24 pendant toute votre aventure',
+  'Road book que vous recevrez dans le mois avant le départ : un véritable compagnon de voyage !',
+];
+
+export const INCLUSIONS_HIGHLIGHT =
+  'Et surtout : une charge mentale en moins pour vous. Un voyage clé en main, 100 % sur mesure, fait pour votre tribu.';
+
 export const DELIVERABLES: Deliverable[] = [
   {
     title: "L'itinéraire idéal, argumenté",

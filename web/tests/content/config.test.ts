@@ -7,6 +7,17 @@ const config = readFileSync(
   'utf-8'
 );
 
+const META_DESCRIPTION_MAX_LENGTH = 160;
+const MIN_BODY_WORDS = 400;
+const REGIONS = [
+  'amerique-du-nord',
+  'amerique-centrale',
+  'amerique-du-sud',
+  'caraibes',
+];
+const IMAGE_SOURCE =
+  /^image:\s*['"]?(\.\.\/\.\.\/assets\/images\/destinations\/|https:\/\/)/m;
+
 describe('content/config.ts', () => {
   describe('collection definition', () => {
     it('imports defineCollection and z from astro:content', () => {
@@ -27,6 +38,10 @@ describe('content/config.ts', () => {
   });
 
   describe('schema fields', () => {
+    it('defines draft as z.boolean().default(false)', () => {
+      expect(config).toContain('draft: z.boolean().default(false)');
+    });
+
     it('defines country as z.string()', () => {
       expect(config).toContain('country: z.string()');
     });
@@ -35,9 +50,13 @@ describe('content/config.ts', () => {
       expect(config).toContain('description: z.string()');
     });
 
-    it('uses image() helper for image field (NOT z.string)', () => {
-      expect(config).toContain('image: image()');
+    it('accepts image() helper or remote URL for image field (NOT plain z.string)', () => {
+      expect(config).toContain('image: z.union([image(), z.string()])');
       expect(config).not.toContain('image: z.string()');
+    });
+
+    it('defines optional gallery as z.array(image()).optional()', () => {
+      expect(config).toContain('gallery: z.array(image()).optional()');
     });
 
     it('defines overlayColor as enum with terracotta and sauge', () => {
@@ -48,12 +67,23 @@ describe('content/config.ts', () => {
       expect(config).toContain('order: z.number()');
     });
 
+    it('defines featured as z.boolean().default(false)', () => {
+      expect(config).toContain('featured: z.boolean().default(false)');
+    });
+
+    it('defines region as enum of the 4 Americas regions', () => {
+      expect(config).toContain('region: z.enum([');
+      REGIONS.forEach((region) => expect(config).toContain(`'${region}'`));
+    });
+
     it('defines optional title as z.string().optional()', () => {
       expect(config).toContain('title: z.string().optional()');
     });
 
     it('defines optional metaDescription as z.string().max(160).optional()', () => {
-      expect(config).toContain('metaDescription: z.string().max(160).optional()');
+      expect(config).toContain(
+        'metaDescription: z.string().max(160).optional()'
+      );
     });
 
     it('defines optional keywords as z.array(z.string()).optional()', () => {
@@ -70,19 +100,23 @@ describe('content/config.ts', () => {
 
 describe('destinations content files', () => {
   const destDir = resolve(__dirname, '../../src/content/destinations');
-  const expectedFiles = [
+  const originalFiles = [
     'west-coast-usa.md',
     'perou-sacre.md',
     'costa-rica-pura-vida.md',
     'patagonie-sauvage.md',
   ];
+  const files = readdirSync(destDir).filter((f) => f.endsWith('.md'));
 
-  it('contains exactly 4 destination markdown files', () => {
-    const files = readdirSync(destDir).filter((f) => f.endsWith('.md'));
-    expect(files).toHaveLength(4);
+  it('contains at least one destination markdown file', () => {
+    expect(files.length).toBeGreaterThan(0);
   });
 
-  expectedFiles.forEach((filename) => {
+  it('still contains the original destinations', () => {
+    originalFiles.forEach((filename) => expect(files).toContain(filename));
+  });
+
+  files.forEach((filename) => {
     describe(filename, () => {
       const content = readFileSync(resolve(destDir, filename), 'utf-8');
 
@@ -94,9 +128,8 @@ describe('destinations content files', () => {
         expect(content).toMatch(/^---[\s\S]*description:.*[\s\S]*---/);
       });
 
-      it('has frontmatter with image field pointing to assets', () => {
-        expect(content).toContain('image:');
-        expect(content).toContain('assets/images/destinations/');
+      it('has frontmatter with image field (local asset or https URL)', () => {
+        expect(content).toMatch(IMAGE_SOURCE);
       });
 
       it('has frontmatter with overlayColor (terracotta or sauge)', () => {
@@ -105,6 +138,12 @@ describe('destinations content files', () => {
 
       it('has frontmatter with order number', () => {
         expect(content).toMatch(/order:\s*\d+/);
+      });
+
+      it('has frontmatter with a known region', () => {
+        const regionMatch = content.match(/^region:\s*['"]?([a-z-]+)/m);
+        expect(regionMatch).not.toBeNull();
+        expect(REGIONS).toContain(regionMatch?.[1]);
       });
 
       it('has markdown body content', () => {
@@ -120,7 +159,9 @@ describe('destinations content files', () => {
         expect(content).toMatch(/^---[\s\S]*metaDescription:[\s\S]*---/);
         const metaMatch = content.match(/metaDescription:\s*['"]([^'"]+)['"]/);
         if (metaMatch) {
-          expect(metaMatch[1].length).toBeLessThanOrEqual(160);
+          expect(metaMatch[1].length).toBeLessThanOrEqual(
+            META_DESCRIPTION_MAX_LENGTH
+          );
         }
       });
 
@@ -131,7 +172,7 @@ describe('destinations content files', () => {
       it('has at least 400 words in body content', () => {
         const body = content.replace(/^---[\s\S]*?\n---\n?/, '').trim();
         const wordCount = body.split(/\s+/).filter((w) => w.length > 0).length;
-        expect(wordCount).toBeGreaterThanOrEqual(400);
+        expect(wordCount).toBeGreaterThanOrEqual(MIN_BODY_WORDS);
       });
     });
   });

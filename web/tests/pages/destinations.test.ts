@@ -7,6 +7,15 @@ const slugPagePath = resolve(
   '../../src/pages/destinations/[slug].astro'
 );
 
+const ORIGINAL_SLUGS = [
+  'costa-rica-pura-vida',
+  'perou-sacre',
+  'patagonie-sauvage',
+  'west-coast-usa',
+];
+
+const KEBAB_CASE_MD = /^[a-z0-9]+(-[a-z0-9]+)*\.md$/;
+
 describe('[slug].astro — page dynamique destinations', () => {
   it('le fichier [slug].astro existe', () => {
     expect(existsSync(slugPagePath)).toBe(true);
@@ -23,19 +32,25 @@ describe('[slug].astro — page dynamique destinations', () => {
       expect(page).toContain("getCollection('destinations')");
     });
 
+    it('exclut les destinations en draft', () => {
+      expect(page).toContain('!d.data.draft');
+    });
+
     it('mappe les entrées vers des params { slug: entry.slug }', () => {
       expect(page).toContain('params: { slug: entry.slug }');
     });
 
-    it('les 4 slugs de destination existent dans le dossier content', () => {
+    it('le dossier content ne contient que des fichiers markdown en kebab-case', () => {
       const destDir = resolve(__dirname, '../../src/content/destinations');
       const files = readdirSync(destDir).filter((f) => f.endsWith('.md'));
-      const slugs = files.map((f) => f.replace('.md', ''));
-      expect(slugs).toContain('costa-rica-pura-vida');
-      expect(slugs).toContain('perou-sacre');
-      expect(slugs).toContain('patagonie-sauvage');
-      expect(slugs).toContain('west-coast-usa');
-      expect(files).toHaveLength(4);
+      expect(files.length).toBeGreaterThan(0);
+      files.forEach((f) => expect(f).toMatch(KEBAB_CASE_MD));
+    });
+
+    it("les slugs des destinations d'origine existent toujours", () => {
+      const destDir = resolve(__dirname, '../../src/content/destinations');
+      const slugs = readdirSync(destDir).map((f) => f.replace('.md', ''));
+      ORIGINAL_SLUGS.forEach((slug) => expect(slugs).toContain(slug));
     });
   });
 
@@ -86,17 +101,22 @@ describe('[slug].astro — page dynamique destinations', () => {
       expect(page).toContain('description={pageDescription}');
     });
 
-    it('utilise getImage() pour optimiser l\'image hero', () => {
+    it("utilise getImage() pour optimiser l'image hero locale", () => {
       expect(page).toContain('getImage(');
       expect(page).toContain('optimizedHero');
     });
 
-    it('passe heroPreloadImage avec URL optimisée à BaseLayout', () => {
-      expect(page).toContain('heroPreloadImage={optimizedHero.src}');
+    it("dérive heroSrc de optimizedHero ou de l'URL distante", () => {
+      expect(page).toContain('optimizedHero?.src');
+      expect(page).toContain('const heroSrc = isUrlImage');
+    });
+
+    it('passe heroPreloadImage={heroSrc} à BaseLayout', () => {
+      expect(page).toContain('heroPreloadImage={heroSrc}');
     });
 
     it('passe ogImage destination-specific à BaseLayout', () => {
-      expect(page).toContain('ogImage={optimizedHero.src}');
+      expect(page).toContain('ogImage={heroSrc}');
     });
   });
 
@@ -155,15 +175,15 @@ describe('[slug].astro — page dynamique destinations', () => {
       expect(page).toContain('dest-section__header');
     });
 
-    it('contient un CTAButton "Réserver un Discovery Call"', () => {
+    it('contient un CTAButton "Confie-moi ton prochain rêve"', () => {
       expect(page).toContain('<CTAButton');
-      expect(page).toContain('Réserver un Discovery Call');
+      expect(page).toContain('Confie-moi ton prochain rêve');
     });
 
-    it('contient un lien retour vers /#destinations avec aria-label', () => {
-      expect(page).toContain('href="/#destinations"');
+    it('contient un lien retour vers /destinations/ avec aria-label', () => {
+      expect(page).toContain('href="/destinations/"');
       expect(page).toContain('Toutes les destinations');
-      expect(page).toContain('aria-label=');
+      expect(page).toContain('aria-label="Retour à toutes les destinations"');
     });
 
     it('contient un main id="main" pour l\'accessibilité', () => {

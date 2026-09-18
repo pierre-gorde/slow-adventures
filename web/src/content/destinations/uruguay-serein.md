@@ -7,9 +7,21 @@ overlayColor: 'terracotta'
 order: 20
 featured: false
 region: 'amerique-du-sud'
-title: "Voyage en Uruguay sur mesure — Travel Planning Slow Adventures"
-metaDescription: "Voyage Uruguay sur mesure avec Elena, travel planner Amériques. Plages, estancias, Colonia — un itinéraire serein taillé pour toi."
-keywords: ['Plages infinies', 'Culture gaucho', 'Vignobles', 'Estancias', 'Douceur de vivre', 'Colonia historique', 'Gastronomie raffinée', 'Moments suspendus', 'Sérénité rare', 'Évasion totale']
+title: 'Voyage en Uruguay sur mesure — Travel Planning Slow Adventures'
+metaDescription: 'Voyage Uruguay sur mesure avec Elena, travel planner Amériques. Plages, estancias, Colonia — un itinéraire serein taillé pour toi.'
+keywords:
+  [
+    'Plages infinies',
+    'Culture gaucho',
+    'Vignobles',
+    'Estancias',
+    'Douceur de vivre',
+    'Colonia historique',
+    'Gastronomie raffinée',
+    'Moments suspendus',
+    'Sérénité rare',
+    'Évasion totale',
+  ]
 ---
 
 L'Uruguay, c'est un voyage qui se vit avec tous les sens : sentir le vent de l'Atlantique sur les plages désertes de Cabo Polonio, goûter un asado préparé par un gaucho dans la pampa, flâner dans les ruelles pavées de Colonia del Sacramento au coucher du soleil, et entendre le silence apaisant d'une estancia à perte de vue… Chaque instant éveille la curiosité et émerveille.

@@ -7,9 +7,21 @@ overlayColor: 'terracotta'
 order: 16
 featured: false
 region: 'amerique-du-sud'
-title: "Voyage en Équateur sur mesure — Travel Planning Slow Adventures"
-metaDescription: "Voyage Équateur sur mesure avec Elena, travel planner Amériques. Galápagos, volcans, Amazonie — un itinéraire vertigineux taillé pour toi."
-keywords: ['Volcans enneigés', 'Îles Galápagos', 'Amazonie profonde', 'Biodiversité unique', 'Marchés andins', 'Altitude vertigineuse', 'Aventure complète', 'Moments suspendus', 'Nature spectaculaire', 'Évasion totale']
+title: 'Voyage en Équateur sur mesure — Travel Planning Slow Adventures'
+metaDescription: 'Voyage Équateur sur mesure avec Elena, travel planner Amériques. Galápagos, volcans, Amazonie — un itinéraire vertigineux taillé pour toi.'
+keywords:
+  [
+    'Volcans enneigés',
+    'Îles Galápagos',
+    'Amazonie profonde',
+    'Biodiversité unique',
+    'Marchés andins',
+    'Altitude vertigineuse',
+    'Aventure complète',
+    'Moments suspendus',
+    'Nature spectaculaire',
+    'Évasion totale',
+  ]
 ---
 
 L'Équateur, c'est un voyage qui se vit avec tous les sens : sentir l'air glacial au sommet d'un volcan à 5 000 mètres, croiser le regard d'une tortue géante aux Galápagos, entendre les oiseaux dans la canopée amazonienne, et goûter du chocolat cultivé en pleine forêt tropicale… Chaque instant éveille la curiosité et émerveille.

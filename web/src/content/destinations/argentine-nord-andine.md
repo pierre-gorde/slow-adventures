@@ -8,8 +8,20 @@ order: 24
 featured: false
 region: 'amerique-du-sud'
 title: "Voyage dans le Nord de l'Argentine sur mesure — Travel Planning Slow Adventures"
-metaDescription: "Voyage Nord Argentine sur mesure avec Elena, travel planner Amériques. Buenos Aires, Salta, Jujuy, Iguazú — un itinéraire andin taillé pour toi."
-keywords: ['Chutes d Iguazú', 'Buenos Aires', 'Salinas Grandes', 'Purmamarca', 'Quebrada de Humahuaca', 'Salta coloniale', 'Andes argentines', 'Moments suspendus', 'Aventure hors du temps', 'Évasion totale']
+metaDescription: 'Voyage Nord Argentine sur mesure avec Elena, travel planner Amériques. Buenos Aires, Salta, Jujuy, Iguazú — un itinéraire andin taillé pour toi.'
+keywords:
+  [
+    'Chutes d Iguazú',
+    'Buenos Aires',
+    'Salinas Grandes',
+    'Purmamarca',
+    'Quebrada de Humahuaca',
+    'Salta coloniale',
+    'Andes argentines',
+    'Moments suspendus',
+    'Aventure hors du temps',
+    'Évasion totale',
+  ]
 gallery:
   - '../../assets/images/destinations/gallery/argentine-nord/01.webp'
   - '../../assets/images/destinations/gallery/argentine-nord/02.webp'

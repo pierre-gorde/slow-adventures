@@ -1,6 +1,6 @@
 ---
 country: 'Cuba intemporel'
-description: "Des voitures vintage aux ruelles de La Havane, Cuba te fait voyager dans un monde suspendu entre musique enivrante, plages turquoise et une culture qui ne ressemble à aucune autre."
+description: 'Des voitures vintage aux ruelles de La Havane, Cuba te fait voyager dans un monde suspendu entre musique enivrante, plages turquoise et une culture qui ne ressemble à aucune autre.'
 image: 'https://images.unsplash.com/photo-1500759285222-a95626b934cb?w=1600&h=900&fit=crop&q=80'
 overlayColor: 'sauge'
 order: 21
@@ -9,7 +9,19 @@ draft: true
 region: 'caraibes'
 title: 'Voyage à Cuba sur mesure — Travel Planning Slow Adventures'
 metaDescription: 'Voyage Cuba sur mesure avec Elena, travel planner Amériques. La Havane, Viñales, Trinidad — un itinéraire intemporel taillé pour toi.'
-keywords: ['Voitures vintage', 'Musique enivrante', 'Ruelles colorées', 'Plages turquoise', 'Culture unique', 'Tabac et rhum', 'Aventure hors du temps', 'Moments suspendus', 'Authenticité brute', 'Évasion totale']
+keywords:
+  [
+    'Voitures vintage',
+    'Musique enivrante',
+    'Ruelles colorées',
+    'Plages turquoise',
+    'Culture unique',
+    'Tabac et rhum',
+    'Aventure hors du temps',
+    'Moments suspendus',
+    'Authenticité brute',
+    'Évasion totale',
+  ]
 ---
 
 Cuba, c'est un voyage qui se vit avec tous les sens : entendre la salsa résonner dans les ruelles de La Havane, sentir l'odeur du tabac dans les champs de Viñales, admirer les façades colorées qui s'écaillent avec grâce, et goûter un mojito préparé devant toi dans un bar où le temps s'est arrêté… Chaque instant éveille la curiosité et émerveille.

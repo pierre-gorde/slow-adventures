@@ -60,10 +60,7 @@
         // Premier visiteur — stocker flags, pas de banner
         localStorage.setItem('sa_visited', 'true');
         localStorage.setItem('sa_visit_count', '1');
-        localStorage.setItem(
-          'sa_first_visit_date',
-          new Date().toISOString()
-        );
+        localStorage.setItem('sa_first_visit_date', new Date().toISOString());
       } else {
         // Visiteur retour — incrémenter compteur
         const count =

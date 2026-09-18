@@ -9,7 +9,19 @@ featured: false
 region: 'caraibes'
 title: 'Voyage à la Barbade sur mesure — Travel Planning Slow Adventures'
 metaDescription: 'Voyage Barbade sur mesure avec Elena, travel planner Amériques. Plages, rhum, surf — un itinéraire paradisiaque taillé pour toi.'
-keywords: ['Plages dorées', 'Rhum ancestral', 'Surf atlantique', 'Élégance caribéenne', 'Falaises sauvages', 'Gastronomie raffinée', 'Aventure insulaire', 'Moments suspendus', 'Culture bajane', 'Évasion totale']
+keywords:
+  [
+    'Plages dorées',
+    'Rhum ancestral',
+    'Surf atlantique',
+    'Élégance caribéenne',
+    'Falaises sauvages',
+    'Gastronomie raffinée',
+    'Aventure insulaire',
+    'Moments suspendus',
+    'Culture bajane',
+    'Évasion totale',
+  ]
 ---
 
 La Barbade, c'est un voyage qui se vit avec tous les sens : sentir le rhum vieilli dans des caves centenaires, entendre les vagues de l'Atlantique s'écraser sur les falaises de Bathsheba, goûter du flying fish préparé dans un rum shop au bord de la route, et contempler un coucher de soleil doré depuis la côte ouest… Chaque instant éveille la curiosité et émerveille.

@@ -1,7 +1,7 @@
 ---
 draft: true
 country: 'Pérou sacré'
-description: "Des Andes mystiques au lac Titicaca, le Pérou sacré te fait voyager entre cités incas, villages authentiques et paysages à couper le souffle, hors des sentiers battus."
+description: 'Des Andes mystiques au lac Titicaca, le Pérou sacré te fait voyager entre cités incas, villages authentiques et paysages à couper le souffle, hors des sentiers battus.'
 image: '../../assets/images/destinations/perou.webp'
 gallery:
   - '../../assets/images/destinations/gallery/perou/pe-1.webp'
@@ -16,7 +16,19 @@ featured: true
 region: 'amerique-du-sud'
 title: 'Voyage au Pérou sur mesure — Travel Planning Slow Adventures'
 metaDescription: 'Voyage Pérou sur mesure avec Elena, travel planner Amériques. Machu Picchu, Cusco, lac Titicaca — un itinéraire inca taillé pour toi.'
-keywords: ['Mystères des Andes', 'Cités perdues', 'Rencontres authentiques', 'Lacs et sommets majestueux', 'Routes anciennes des Incas', 'Nature spectaculaire', 'Culture vibrante', 'Moments suspendus', 'Aventure hors du temps', 'Évasion totale']
+keywords:
+  [
+    'Mystères des Andes',
+    'Cités perdues',
+    'Rencontres authentiques',
+    'Lacs et sommets majestueux',
+    'Routes anciennes des Incas',
+    'Nature spectaculaire',
+    'Culture vibrante',
+    'Moments suspendus',
+    'Aventure hors du temps',
+    'Évasion totale',
+  ]
 ---
 
 Le Pérou sacré, c'est un voyage qui se vit avec tous les sens. Sentir l'air frais des Andes au réveil, admirer les sommets qui se reflètent dans les lacs turquoise, marcher sur des chemins qui ont traversé des siècles, rencontrer des communautés qui préservent des traditions ancestrales… Chaque instant éveille la curiosité et émerveille.

@@ -30,7 +30,9 @@ const isUrlImage = typeof entry.data.image === 'string';
 const optimizedHero = isUrlImage
   ? null
   : await getImage({ src: entry.data.image, width: 1440, format: 'webp' });
-const heroSrc = isUrlImage ? (entry.data.image as string) : optimizedHero?.src ?? '';
+const heroSrc = isUrlImage
+  ? (entry.data.image as string)
+  : (optimizedHero?.src ?? '');
 
 const gallery = entry.data.gallery ?? [];
 const hasGallery = gallery.length > 0;
@@ -108,25 +110,27 @@ const touristDestinationLd = {
       class="dest-hero relative overflow-hidden"
       aria-label={`Destination ${entry.data.country}`}
     >
-      {isUrlImage ? (
-        <img
-          src={entry.data.image as string}
-          alt={`Paysage de ${entry.data.country}`}
-          loading="eager"
-          decoding="async"
-          class="dest-hero__img absolute inset-0 w-full h-full object-cover"
-        />
-      ) : (
-        <Image
-          src={entry.data.image as ImageMetadata}
-          alt={`Paysage de ${entry.data.country}`}
-          widths={[768, 1440, 2880]}
-          sizes="100vw"
-          loading="eager"
-          decoding="async"
-          class="dest-hero__img absolute inset-0 w-full h-full object-cover"
-        />
-      )}
+      {
+        isUrlImage ? (
+          <img
+            src={entry.data.image as string}
+            alt={`Paysage de ${entry.data.country}`}
+            loading="eager"
+            decoding="async"
+            class="dest-hero__img absolute inset-0 w-full h-full object-cover"
+          />
+        ) : (
+          <Image
+            src={entry.data.image as ImageMetadata}
+            alt={`Paysage de ${entry.data.country}`}
+            widths={[768, 1440, 2880]}
+            sizes="100vw"
+            loading="eager"
+            decoding="async"
+            class="dest-hero__img absolute inset-0 w-full h-full object-cover"
+          />
+        )
+      }
       <div
         class="absolute inset-0 bg-linear-to-b from-warm-black/55 via-warm-black/15 to-warm-black/75"
         aria-hidden="true"

@@ -1,7 +1,7 @@
 ---
 draft: true
 country: 'El Salvador authentique'
-description: "Des volcans fumants aux plages de surf légendaires, El Salvador te fait voyager entre villages colorés, lacs de cratère et une culture vibrante encore préservée du tourisme de masse."
+description: 'Des volcans fumants aux plages de surf légendaires, El Salvador te fait voyager entre villages colorés, lacs de cratère et une culture vibrante encore préservée du tourisme de masse.'
 image: 'https://images.unsplash.com/photo-1745242787651-4b1af96a0b9e?w=1600&h=900&fit=crop&q=80'
 overlayColor: 'sauge'
 order: 9
@@ -9,7 +9,19 @@ featured: false
 region: 'amerique-centrale'
 title: 'Voyage au El Salvador sur mesure — Travel Planning Slow Adventures'
 metaDescription: 'Voyage El Salvador sur mesure avec Elena, travel planner Amériques. Volcans, surf, villages — un itinéraire authentique taillé pour toi.'
-keywords: ['Volcans fumants', 'Plages de surf', 'Villages colorés', 'Lacs de cratère', 'Culture préservée', 'Gastronomie locale', 'Aventure compacte', 'Moments suspendus', 'Hors des sentiers battus', 'Évasion totale']
+keywords:
+  [
+    'Volcans fumants',
+    'Plages de surf',
+    'Villages colorés',
+    'Lacs de cratère',
+    'Culture préservée',
+    'Gastronomie locale',
+    'Aventure compacte',
+    'Moments suspendus',
+    'Hors des sentiers battus',
+    'Évasion totale',
+  ]
 ---
 
 El Salvador, c'est un voyage qui se vit avec tous les sens : sentir la chaleur du sable noir sous tes pieds, admirer un lac turquoise niché dans le cratère d'un volcan, goûter les pupusas grillées au bord de la route, et ressentir l'énergie d'un pays qui se réinvente chaque jour… Chaque instant éveille la curiosité et émerveille.

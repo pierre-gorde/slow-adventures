@@ -1,10 +1,15 @@
 ---
 import '../styles/global.css';
+import AnalyticsScripts from '../components/AnalyticsScripts.astro';
 import Footer from '../components/Footer.astro';
 import CookieConsent from '../components/CookieConsent.astro';
 import TopBar from '../components/TopBar.astro';
 
-type JsonLdSchema = { '@context': string; '@type': string; [key: string]: unknown };
+type JsonLdSchema = {
+  '@context': string;
+  '@type': string;
+  [key: string]: unknown;
+};
 
 interface Props {
   title: string;
@@ -31,7 +36,7 @@ const jsonLd = {
   '@type': ['ProfessionalService', 'TravelAgency'],
   name: 'Slow Adventures',
   description:
-    "Slow Adventures est un service de travel planning créé par Elena. Elena conçoit des voyages immersifs et sur mesure exclusivement en Amérique du Nord — Canada, États-Unis et Alaska.",
+    'Slow Adventures est un service de travel planning créé par Elena. Elena conçoit des voyages immersifs et sur mesure exclusivement en Amérique du Nord — Canada, États-Unis et Alaska.',
   url: siteUrl.toString(),
   image: new URL('/og-image.jpg', siteUrl).toString(),
   logo: new URL('/favicon.svg', siteUrl).toString(),
@@ -142,28 +147,24 @@ const jsonLd = {
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageUrl.toString()} />
-    <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd).replace(/<\/script>/gi, '<\\/script>')} />
-    {extraLd && <script is:inline type="application/ld+json" set:html={JSON.stringify(extraLd).replace(/<\/script>/gi, '<\\/script>')} />}
-    {import.meta.env.PROD && (
-      <>
-        {/* Microsoft Clarity */}
-        <script is:inline>
-          (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-          })(window,document,"clarity","script","vuosqkypn0");
-        </script>
-        {/* Google tag (gtag.js) */}
-        <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-4NYCND6NTZ"></script>
-        <script is:inline>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-4NYCND6NTZ');
-        </script>
-      </>
-    )}
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(jsonLd).replace(/<\/script>/gi, '<\\/script>')}
+    />
+    {
+      extraLd && (
+        <script
+          is:inline
+          type="application/ld+json"
+          set:html={JSON.stringify(extraLd).replace(
+            /<\/script>/gi,
+            '<\\/script>'
+          )}
+        />
+      )
+    }
+    {import.meta.env.PROD && <AnalyticsScripts />}
   </head>
   <body class="bg-creme text-warm-black font-sans">
     <a

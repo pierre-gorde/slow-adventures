@@ -14,7 +14,7 @@ interface Props {
 const { slides } = Astro.props;
 
 const optimized = await Promise.all(
-  slides.map((s) => getImage({ src: s.image, width: 800, format: 'webp' })),
+  slides.map((s) => getImage({ src: s.image, width: 800, format: 'webp' }))
 );
 ---
 
@@ -75,7 +75,7 @@ const optimized = await Promise.all(
         stroke-linecap="round"
         stroke-linejoin="round"
       >
-        <path d="M15 18l-6-6 6-6" />
+        <path d="M15 18l-6-6 6-6"></path>
       </svg>
     </button>
 
@@ -95,7 +95,7 @@ const optimized = await Promise.all(
         stroke-linecap="round"
         stroke-linejoin="round"
       >
-        <path d="M9 18l6-6-6-6" />
+        <path d="M9 18l6-6-6-6"></path>
       </svg>
     </button>
   </div>
@@ -149,7 +149,7 @@ const optimized = await Promise.all(
     }
 
     function getSlideWidth(): number {
-      const slide = track!.querySelector('.slider__slide') as HTMLElement | null;
+      const slide = track.querySelector('.slider__slide') as HTMLElement | null;
       return slide ? slide.offsetWidth : 0;
     }
 
@@ -161,10 +161,10 @@ const optimized = await Promise.all(
       const max = maxIndex();
       current = Math.max(0, Math.min(index, max));
       const slideW = getSlideWidth();
-      track!.style.transform = `translateX(-${current * slideW}px)`;
+      track.style.transform = `translateX(-${current * slideW}px)`;
 
-      prevBtn!.classList.toggle('is-visible', current > 0);
-      nextBtn!.classList.toggle('is-visible', current < max);
+      prevBtn.classList.toggle('is-visible', current > 0);
+      nextBtn.classList.toggle('is-visible', current < max);
     }
 
     // Initial state
@@ -189,9 +189,9 @@ const optimized = await Promise.all(
         startX = e.touches[0].clientX;
         deltaX = 0;
         swiping = true;
-        track!.style.transition = 'none';
+        track.style.transition = 'none';
       },
-      { passive: true },
+      { passive: true }
     );
 
     track.addEventListener(
@@ -201,15 +201,15 @@ const optimized = await Promise.all(
         deltaX = e.touches[0].clientX - startX;
         const slideW = getSlideWidth();
         const offset = -(current * slideW) + deltaX;
-        track!.style.transform = `translateX(${offset}px)`;
+        track.style.transform = `translateX(${offset}px)`;
       },
-      { passive: true },
+      { passive: true }
     );
 
     track.addEventListener('touchend', () => {
       if (!swiping) return;
       swiping = false;
-      track!.style.transition = '';
+      track.style.transition = '';
       const threshold = getSlideWidth() * 0.2;
       if (deltaX < -threshold) {
         goTo(current + 1);
@@ -221,9 +221,11 @@ const optimized = await Promise.all(
     });
 
     // Keyboard
-    document.getElementById('homepage-slider')?.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft') goTo(current - 1);
-      if (e.key === 'ArrowRight') goTo(current + 1);
-    });
+    document
+      .getElementById('homepage-slider')
+      ?.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') goTo(current - 1);
+        if (e.key === 'ArrowRight') goTo(current + 1);
+      });
   }
 </script>

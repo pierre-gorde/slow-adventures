@@ -1,7 +1,7 @@
 ---
 draft: true
 country: 'Paraguay méconnu'
-description: "Des missions jésuites aux plaines du Chaco, le Paraguay te fait voyager dans un pays authentique, entre culture guarani vivante, nature sauvage et hospitalité sincère."
+description: 'Des missions jésuites aux plaines du Chaco, le Paraguay te fait voyager dans un pays authentique, entre culture guarani vivante, nature sauvage et hospitalité sincère.'
 image: 'https://images.unsplash.com/photo-1585318822320-300abf39f65d?w=1600&h=900&fit=crop&q=80'
 overlayColor: 'sauge'
 order: 19
@@ -9,7 +9,19 @@ featured: false
 region: 'amerique-du-sud'
 title: 'Voyage au Paraguay sur mesure — Travel Planning Slow Adventures'
 metaDescription: 'Voyage Paraguay sur mesure avec Elena, travel planner Amériques. Missions jésuites, Chaco, culture guarani — un itinéraire méconnu taillé pour toi.'
-keywords: ['Missions jésuites', 'Culture guarani', 'Chaco sauvage', 'Authenticité pure', 'Faune préservée', 'Hospitalité sincère', 'Aventure méconnue', 'Moments suspendus', 'Hors des circuits', 'Évasion totale']
+keywords:
+  [
+    'Missions jésuites',
+    'Culture guarani',
+    'Chaco sauvage',
+    'Authenticité pure',
+    'Faune préservée',
+    'Hospitalité sincère',
+    'Aventure méconnue',
+    'Moments suspendus',
+    'Hors des circuits',
+    'Évasion totale',
+  ]
 ---
 
 Le Paraguay, c'est un voyage qui se vit avec tous les sens : entendre le guarani résonner dans les marchés, contempler les ruines jésuites au coucher du soleil, sentir la terre rouge du Chaco sous tes pieds, et goûter un tereré glacé partagé avec des inconnus devenus amis… Chaque instant éveille la curiosité et émerveille.

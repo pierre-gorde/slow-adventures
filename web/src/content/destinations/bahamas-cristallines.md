@@ -9,7 +9,19 @@ featured: false
 region: 'caraibes'
 title: 'Voyage aux Bahamas sur mesure — Travel Planning Slow Adventures'
 metaDescription: 'Voyage Bahamas sur mesure avec Elena, travel planner Amériques. Exuma, plages roses, plongée — un itinéraire cristallin taillé pour toi.'
-keywords: ['Eaux cristallines', 'Plages de sable rose', 'Cochons nageurs', 'Plongée spectaculaire', 'Îles préservées', 'Vie insulaire', 'Aventure marine', 'Moments suspendus', 'Paradis tropical', 'Évasion totale']
+keywords:
+  [
+    'Eaux cristallines',
+    'Plages de sable rose',
+    'Cochons nageurs',
+    'Plongée spectaculaire',
+    'Îles préservées',
+    'Vie insulaire',
+    'Aventure marine',
+    'Moments suspendus',
+    'Paradis tropical',
+    'Évasion totale',
+  ]
 ---
 
 Les Bahamas, c'est un voyage qui se vit avec tous les sens : plonger dans des eaux si claires que tu vois le fond à 20 mètres, sentir le sable rose entre tes doigts à Harbour Island, nager avec des cochons sur une île déserte, et écouter le silence d'un archipel où la nature règne encore… Chaque instant éveille la curiosité et émerveille.

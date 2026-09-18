@@ -29,7 +29,7 @@ const allMedia: { type: 'image' | 'video'; src: string; poster?: string }[] =
         return { type: 'image' as const, src: opt.src };
       }
       return { type: 'video' as const, src: item.src, poster: item.poster };
-    }),
+    })
   );
 ---
 
@@ -158,7 +158,7 @@ const allMedia: { type: 'image' | 'video'; src: string; poster?: string }[] =
       stroke-linecap="round"
       stroke-linejoin="round"
     >
-      <path d="M18 6 6 18M6 6l12 12" />
+      <path d="M18 6 6 18M6 6l12 12"></path>
     </svg>
   </button>
 
@@ -184,7 +184,7 @@ const allMedia: { type: 'image' | 'video'; src: string; poster?: string }[] =
       stroke-linecap="round"
       stroke-linejoin="round"
     >
-      <path d="M15 18l-6-6 6-6" />
+      <path d="M15 18l-6-6 6-6"></path>
     </svg>
   </button>
 
@@ -224,7 +224,7 @@ const allMedia: { type: 'image' | 'video'; src: string; poster?: string }[] =
       stroke-linecap="round"
       stroke-linejoin="round"
     >
-      <path d="M9 18l6-6-6-6" />
+      <path d="M9 18l6-6-6-6"></path>
     </svg>
   </button>
 </div>
@@ -240,7 +240,9 @@ const allMedia: { type: 'image' | 'video'; src: string; poster?: string }[] =
     touch-action: pan-y;
     user-select: none;
     -webkit-user-select: none;
-    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+    transition:
+      transform 0.3s ease-out,
+      opacity 0.3s ease-out;
   }
 </style>
 
@@ -250,7 +252,9 @@ const allMedia: { type: 'image' | 'video'; src: string; poster?: string }[] =
   const galleryTrigger = document.querySelector('.media-gallery__trigger');
   const lightbox = document.getElementById('media-lightbox');
   const lbImg = document.getElementById('mlb-img') as HTMLImageElement | null;
-  const lbVideo = document.getElementById('mlb-video') as HTMLVideoElement | null;
+  const lbVideo = document.getElementById(
+    'mlb-video'
+  ) as HTMLVideoElement | null;
   const lbCounter = document.getElementById('mlb-counter');
   const lbTrack = document.getElementById('mlb-track');
   const closeBtn = document.getElementById('mlb-close');
@@ -259,14 +263,14 @@ const allMedia: { type: 'image' | 'video'; src: string; poster?: string }[] =
 
   type MediaEntry = { type: 'image' | 'video'; src: string; poster?: string };
   const media: MediaEntry[] = JSON.parse(
-    gallerySection?.dataset.mediaItems ?? '[]',
+    gallerySection?.dataset.mediaItems ?? '[]'
   );
 
   let current = 0;
   let isAnimating = false;
 
   function preloadAdjacent(index: number) {
-    const prev = ((index - 1) % media.length + media.length) % media.length;
+    const prev = (((index - 1) % media.length) + media.length) % media.length;
     const next = (index + 1) % media.length;
     [prev, next].forEach((i) => {
       if (media[i].type === 'image') {
@@ -316,7 +320,9 @@ const allMedia: { type: 'image' | 'video'; src: string; poster?: string }[] =
     isAnimating = true;
 
     // Pause any playing video
-    if (lbVideo) { lbVideo.pause(); }
+    if (lbVideo) {
+      lbVideo.pause();
+    }
 
     const activeEl = media[current].type === 'video' ? lbVideo : lbImg;
     const slideOut = direction === 'left' ? '-100%' : '100%';
@@ -342,7 +348,9 @@ const allMedia: { type: 'image' | 'video'; src: string; poster?: string }[] =
         newEl.style.transform = 'translateX(0)';
         newEl.style.opacity = '1';
       }
-      setTimeout(() => { isAnimating = false; }, 300);
+      setTimeout(() => {
+        isAnimating = false;
+      }, 300);
     }, 200);
   }
 
@@ -355,7 +363,10 @@ const allMedia: { type: 'image' | 'video'; src: string; poster?: string }[] =
   }
 
   function close() {
-    if (lbVideo) { lbVideo.pause(); lbVideo.removeAttribute('src'); }
+    if (lbVideo) {
+      lbVideo.pause();
+      lbVideo.removeAttribute('src');
+    }
     if (lightbox) {
       lightbox.classList.add('hidden');
       document.body.style.overflow = '';
@@ -373,9 +384,14 @@ const allMedia: { type: 'image' | 'video'; src: string; poster?: string }[] =
 
   if (galleryTrigger) galleryTrigger.addEventListener('click', () => open(0));
   if (closeBtn) closeBtn.addEventListener('click', close);
-  if (prevBtn) prevBtn.addEventListener('click', () => slideTo(current - 1, 'right'));
-  if (nextBtn) nextBtn.addEventListener('click', () => slideTo(current + 1, 'left'));
-  if (lbTrack) lbTrack.addEventListener('click', (e) => { if (e.target === lbTrack) close(); });
+  if (prevBtn)
+    prevBtn.addEventListener('click', () => slideTo(current - 1, 'right'));
+  if (nextBtn)
+    nextBtn.addEventListener('click', () => slideTo(current + 1, 'left'));
+  if (lbTrack)
+    lbTrack.addEventListener('click', (e) => {
+      if (e.target === lbTrack) close();
+    });
 
   /* Keyboard */
   document.addEventListener('keydown', (e) => {
@@ -392,27 +408,38 @@ const allMedia: { type: 'image' | 'video'; src: string; poster?: string }[] =
   let isSwiping = false;
 
   if (lbTrack) {
-    lbTrack.addEventListener('touchstart', (e: TouchEvent) => {
-      if (isAnimating) return;
-      touchStartX = e.touches[0].clientX;
-      touchStartTime = Date.now();
-      touchDeltaX = 0;
-      isSwiping = true;
-      const el = media[current].type === 'video' ? lbVideo : lbImg;
-      if (el) el.style.transition = 'none';
-    }, { passive: true });
+    lbTrack.addEventListener(
+      'touchstart',
+      (e: TouchEvent) => {
+        if (isAnimating) return;
+        touchStartX = e.touches[0].clientX;
+        touchStartTime = Date.now();
+        touchDeltaX = 0;
+        isSwiping = true;
+        const el = media[current].type === 'video' ? lbVideo : lbImg;
+        if (el) el.style.transition = 'none';
+      },
+      { passive: true }
+    );
 
-    lbTrack.addEventListener('touchmove', (e: TouchEvent) => {
-      if (!isSwiping || isAnimating) return;
-      touchDeltaX = e.touches[0].clientX - touchStartX;
-      const el = media[current].type === 'video' ? lbVideo : lbImg;
-      if (el) {
-        const dampened = touchDeltaX * 0.85;
-        const opacity = Math.max(0.4, 1 - Math.abs(dampened) / window.innerWidth);
-        el.style.transform = `translateX(${dampened}px)`;
-        el.style.opacity = String(opacity);
-      }
-    }, { passive: true });
+    lbTrack.addEventListener(
+      'touchmove',
+      (e: TouchEvent) => {
+        if (!isSwiping || isAnimating) return;
+        touchDeltaX = e.touches[0].clientX - touchStartX;
+        const el = media[current].type === 'video' ? lbVideo : lbImg;
+        if (el) {
+          const dampened = touchDeltaX * 0.85;
+          const opacity = Math.max(
+            0.4,
+            1 - Math.abs(dampened) / window.innerWidth
+          );
+          el.style.transform = `translateX(${dampened}px)`;
+          el.style.opacity = String(opacity);
+        }
+      },
+      { passive: true }
+    );
 
     lbTrack.addEventListener('touchend', () => {
       if (!isSwiping || isAnimating) return;
@@ -429,7 +456,8 @@ const allMedia: { type: 'image' | 'video'; src: string; poster?: string }[] =
       } else {
         const el = media[current].type === 'video' ? lbVideo : lbImg;
         if (el) {
-          el.style.transition = 'transform 0.3s cubic-bezier(0.22,1,0.36,1), opacity 0.3s ease-out';
+          el.style.transition =
+            'transform 0.3s cubic-bezier(0.22,1,0.36,1), opacity 0.3s ease-out';
           el.style.transform = 'translateX(0)';
           el.style.opacity = '1';
         }

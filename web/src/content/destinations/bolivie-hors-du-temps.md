@@ -9,7 +9,19 @@ featured: false
 region: 'amerique-du-sud'
 title: 'Voyage en Bolivie sur mesure — Travel Planning Slow Adventures'
 metaDescription: 'Voyage Bolivie sur mesure avec Elena, travel planner Amériques. Uyuni, La Paz, Titicaca — un itinéraire hors du temps taillé pour toi.'
-keywords: ['Salar infini', 'Altitude extrême', 'Culture indigène', 'Marchés andins', 'Paysages lunaires', 'Lagunes colorées', 'Aventure brute', 'Moments suspendus', 'Hors du temps', 'Évasion totale']
+keywords:
+  [
+    'Salar infini',
+    'Altitude extrême',
+    'Culture indigène',
+    'Marchés andins',
+    'Paysages lunaires',
+    'Lagunes colorées',
+    'Aventure brute',
+    'Moments suspendus',
+    'Hors du temps',
+    'Évasion totale',
+  ]
 ---
 
 La Bolivie, c'est un voyage qui se vit avec tous les sens : marcher sur le miroir blanc du Salar d'Uyuni, respirer l'air raréfié à 4 000 mètres, goûter une salteña dans les marchés de La Paz, et contempler des lagunes roses et vertes au milieu de paysages lunaires… Chaque instant éveille la curiosité et émerveille.

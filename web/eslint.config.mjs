@@ -33,5 +33,16 @@ export default tseslint.config(
         ImageMetadata: 'readonly',
       },
     },
+  },
+  {
+    // Les snippets Clarity et gtag.js exigent l'objet `arguments` : gtag.js
+    // ignore les commandes poussées sous forme de tableau.
+    files: [
+      'src/components/AnalyticsScripts.astro',
+      'src/components/AnalyticsScripts.astro/**',
+    ],
+    rules: {
+      'prefer-rest-params': 'off',
+    },
   }
 );

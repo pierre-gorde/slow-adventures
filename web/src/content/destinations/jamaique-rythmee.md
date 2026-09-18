@@ -1,7 +1,7 @@
 ---
 draft: true
 country: 'Jamaïque rythmée'
-description: "Des Blue Mountains aux plages de Negril, la Jamaïque te fait voyager entre reggae, cascades tropicales et une énergie créative qui pulse à chaque instant."
+description: 'Des Blue Mountains aux plages de Negril, la Jamaïque te fait voyager entre reggae, cascades tropicales et une énergie créative qui pulse à chaque instant.'
 image: 'https://images.unsplash.com/photo-1605994543054-6ffbabbd8139?w=1600&h=900&fit=crop&q=80'
 overlayColor: 'terracotta'
 order: 22
@@ -9,7 +9,19 @@ featured: false
 region: 'caraibes'
 title: 'Voyage en Jamaïque sur mesure — Travel Planning Slow Adventures'
 metaDescription: 'Voyage Jamaïque sur mesure avec Elena, travel planner Amériques. Blue Mountains, reggae, cascades — un itinéraire rythmé taillé pour toi.'
-keywords: ['Reggae et culture', 'Blue Mountains', 'Cascades tropicales', 'Plages dorées', 'Cuisine jerk', 'Énergie créative', 'Aventure caribéenne', 'Moments suspendus', 'Vibes authentiques', 'Évasion totale']
+keywords:
+  [
+    'Reggae et culture',
+    'Blue Mountains',
+    'Cascades tropicales',
+    'Plages dorées',
+    'Cuisine jerk',
+    'Énergie créative',
+    'Aventure caribéenne',
+    'Moments suspendus',
+    'Vibes authentiques',
+    'Évasion totale',
+  ]
 ---
 
 La Jamaïque, c'est un voyage qui se vit avec tous les sens : sentir le rythme du reggae vibrer dans l'air, goûter un jerk chicken grillé au bord de la route, plonger dans une cascade turquoise au milieu de la jungle, et admirer un coucher de soleil incandescent depuis les falaises de Negril… Chaque instant éveille la curiosité et émerveille.

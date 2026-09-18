@@ -1,7 +1,7 @@
 ---
 draft: true
 country: 'Colombie vibrante'
-description: "Des Andes verdoyantes aux Caraïbes turquoise, la Colombie te fait voyager entre villes colorées, forêts tropicales et une énergie contagieuse à chaque coin de rue."
+description: 'Des Andes verdoyantes aux Caraïbes turquoise, la Colombie te fait voyager entre villes colorées, forêts tropicales et une énergie contagieuse à chaque coin de rue.'
 image: 'https://images.unsplash.com/photo-1534943441045-1009d7cb0bb9?w=1600&h=900&fit=crop&q=80'
 overlayColor: 'terracotta'
 order: 12
@@ -9,7 +9,19 @@ featured: false
 region: 'amerique-du-sud'
 title: 'Voyage en Colombie sur mesure — Travel Planning Slow Adventures'
 metaDescription: 'Voyage Colombie sur mesure avec Elena, travel planner Amériques. Carthagène, café, Caraïbes — un itinéraire vibrant taillé pour toi.'
-keywords: ['Villes colorées', 'Café des Andes', 'Caraïbes turquoise', 'Musique et danse', 'Forêts tropicales', 'Culture vibrante', 'Aventure sensorielle', 'Moments suspendus', 'Rencontres chaleureuses', 'Évasion totale']
+keywords:
+  [
+    'Villes colorées',
+    'Café des Andes',
+    'Caraïbes turquoise',
+    'Musique et danse',
+    'Forêts tropicales',
+    'Culture vibrante',
+    'Aventure sensorielle',
+    'Moments suspendus',
+    'Rencontres chaleureuses',
+    'Évasion totale',
+  ]
 ---
 
 La Colombie, c'est un voyage qui se vit avec tous les sens : danser au rythme de la cumbia dans les ruelles de Carthagène, sentir l'arôme du café fraîchement torréfié dans les montagnes, plonger dans les eaux turquoise des îles du Rosaire, et goûter des fruits que tu n'as jamais vus nulle part ailleurs… Chaque instant éveille la curiosité et émerveille.

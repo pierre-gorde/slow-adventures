@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { Image } from 'astro:assets';
+import AnalyticsScripts from '../components/AnalyticsScripts.astro';
 import TopBar from '../components/TopBar.astro';
 import CalendlyModal from '../components/CalendlyModal.astro';
 import CookieConsent from '../components/CookieConsent.astro';
@@ -9,7 +10,7 @@ import elenaImage from '../assets/images/elena.webp';
 
 const title = 'Slow Adventures — Voyages sur mesure en Amérique du Nord';
 const description =
-  "Découvre Slow Adventures : des voyages immersifs et sur mesure en Amérique du Nord (USA, Canada, Alaska), pensés par Elena, travel planner passionnée.";
+  'Découvre Slow Adventures : des voyages immersifs et sur mesure en Amérique du Nord (USA, Canada, Alaska), pensés par Elena, travel planner passionnée.';
 const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL;
 ---
 
@@ -43,24 +44,7 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL;
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="fr_FR" />
-    {import.meta.env.PROD && (
-      <>
-        <script is:inline>
-          (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-          })(window,document,"clarity","script","vuosqkypn0");
-        </script>
-        <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-4NYCND6NTZ"></script>
-        <script is:inline>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-4NYCND6NTZ');
-        </script>
-      </>
-    )}
+    {import.meta.env.PROD && <AnalyticsScripts />}
   </head>
   <body class="lp-body">
     <TopBar />
@@ -81,12 +65,15 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL;
         />
         <div class="lp-hero__overlay" aria-hidden="true"></div>
         <div class="lp-hero__content" data-lp-reveal>
-          <p class="lp-eyebrow" data-lp-reveal>Travel Planner · Amérique du Nord</p>
+          <p class="lp-eyebrow" data-lp-reveal>
+            Travel Planner · Amérique du Nord
+          </p>
           <h1 class="lp-hero__title font-serif" data-lp-reveal>
             Ce genre de moment,<br /><em>tu mérites de le vivre.</em>
           </h1>
           <p class="lp-hero__subtitle" data-lp-reveal>
-            Je suis Elena. Je transforme tes envies d'ailleurs en voyages sur mesure, pensés rien que pour toi.
+            Je suis Elena. Je transforme tes envies d'ailleurs en voyages sur
+            mesure, pensés rien que pour toi.
           </p>
           <a
             href={calendlyUrl}
@@ -98,8 +85,17 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL;
           </a>
         </div>
         <div class="lp-scroll-hint" aria-hidden="true">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 5v14M5 12l7 7 7-7" />
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M12 5v14M5 12l7 7 7-7"></path>
           </svg>
         </div>
       </section>
@@ -129,10 +125,18 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL;
               Elena, passionnée d'Amérique du Nord
             </h2>
             <p class="lp-text">
-              Depuis des années, je parcours le continent nord-américain — du Canada à l'Alaska, des grands parcs nationaux aux côtes mythiques des USA. Chaque voyage m'a appris quelque chose : les meilleures adresses ne sont jamais dans les guides, et les vrais moments de bonheur arrivent quand on sort des sentiers battus.
+              Depuis des années, je parcours le continent nord-américain — du
+              Canada à l'Alaska, des grands parcs nationaux aux côtes mythiques
+              des USA. Chaque voyage m'a appris quelque chose : les meilleures
+              adresses ne sont jamais dans les guides, et les vrais moments de
+              bonheur arrivent quand on sort des sentiers battus.
             </p>
             <p class="lp-text">
-              Aujourd'hui, je mets cette expérience à ton service. Je ne vends pas de packages : je construis ton voyage à partir de tes envies, ton rythme et ton budget. Et je reste à tes côtés par WhatsApp pendant tout le séjour, pour que chaque journée soit exactement comme tu l'avais imaginée — en mieux.
+              Aujourd'hui, je mets cette expérience à ton service. Je ne vends
+              pas de packages : je construis ton voyage à partir de tes envies,
+              ton rythme et ton budget. Et je reste à tes côtés par WhatsApp
+              pendant tout le séjour, pour que chaque journée soit exactement
+              comme tu l'avais imaginée — en mieux.
             </p>
           </div>
         </div>
@@ -152,30 +156,32 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL;
               <span class="lp-step__number">01</span>
               <h3 class="lp-step__title">On se parle</h3>
               <p class="lp-text">
-                Un appel de 30 minutes, gratuit et sans engagement. On apprend à se connaître, tu me racontes tes rêves de voyage, et on pose ensemble les bases de ton itinéraire.
+                Un appel de 30 minutes, gratuit et sans engagement. On apprend à
+                se connaître, tu me racontes tes rêves de voyage, et on pose
+                ensemble les bases de ton itinéraire.
               </p>
             </div>
             <div class="lp-step" data-lp-reveal>
               <span class="lp-step__number">02</span>
               <h3 class="lp-step__title">Ton itinéraire prend vie</h3>
               <p class="lp-text">
-                Je construis un voyage sur mesure, jour par jour : hébergements triés sur le volet, expériences authentiques, logistique pensée dans les moindres détails. Tu valides, on ajuste si besoin.
+                Je construis un voyage sur mesure, jour par jour : hébergements
+                triés sur le volet, expériences authentiques, logistique pensée
+                dans les moindres détails. Tu valides, on ajuste si besoin.
               </p>
             </div>
             <div class="lp-step" data-lp-reveal>
               <span class="lp-step__number">03</span>
               <h3 class="lp-step__title">Tu pars, l'esprit libre</h3>
               <p class="lp-text">
-                Roadbook en main, tu vis ton voyage pleinement. Et si un imprévu survient, je suis joignable par WhatsApp pour t'aider en temps réel, du décollage au retour.
+                Roadbook en main, tu vis ton voyage pleinement. Et si un imprévu
+                survient, je suis joignable par WhatsApp pour t'aider en temps
+                réel, du décollage au retour.
               </p>
             </div>
           </div>
           <div class="text-center" style="margin-top: 3rem;">
-            <a
-              href={calendlyUrl}
-              data-calendly-trigger
-              class="lp-cta-btn"
-            >
+            <a href={calendlyUrl} data-calendly-trigger class="lp-cta-btn">
               <span class="lp-cta-btn__text">Réserve ton appel gratuit</span>
             </a>
           </div>
@@ -185,7 +191,10 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL;
       <!-- ═══════════════════════════════════════════════
            CTA — Ton prochain reve
       ═══════════════════════════════════════════════ -->
-      <section class="lp-section lp-cta-section" aria-labelledby="lp-cta-heading">
+      <section
+        class="lp-section lp-cta-section"
+        aria-labelledby="lp-cta-heading"
+      >
         <div class="lp-container text-center" data-lp-reveal>
           <h2 id="lp-cta-heading" class="lp-heading lp-cta__title font-serif">
             Ton prochain rêve<br /><em>commence ici.</em>
@@ -193,11 +202,7 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL;
           <p class="lp-text lp-cta__subtitle">
             30 minutes, gratuites, sans engagement.
           </p>
-          <a
-            href={calendlyUrl}
-            data-calendly-trigger
-            class="lp-cta-btn"
-          >
+          <a href={calendlyUrl} data-calendly-trigger class="lp-cta-btn">
             <span class="lp-cta-btn__text">Réserve ton Discovery Call</span>
           </a>
           <p class="lp-cta__note">Aucune carte bancaire · Aucun engagement</p>
@@ -243,16 +248,22 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL;
 
     <script>
       // Staggered hero entrance
-      const heroEls = document.querySelectorAll('.lp-hero__content [data-lp-reveal]');
+      const heroEls = document.querySelectorAll(
+        '.lp-hero__content [data-lp-reveal]'
+      );
       heroEls.forEach((el, i) => {
         const htmlEl = el as HTMLElement;
         htmlEl.style.opacity = '0';
         htmlEl.style.transform = 'translateY(24px)';
-        setTimeout(() => {
-          htmlEl.style.transition = 'opacity 0.7s ease-out, transform 0.7s ease-out';
-          htmlEl.style.opacity = '1';
-          htmlEl.style.transform = 'translateY(0)';
-        }, 400 + i * 200);
+        setTimeout(
+          () => {
+            htmlEl.style.transition =
+              'opacity 0.7s ease-out, transform 0.7s ease-out';
+            htmlEl.style.opacity = '1';
+            htmlEl.style.transform = 'translateY(0)';
+          },
+          400 + i * 200
+        );
       });
 
       // IO-based fadeUp for sections
@@ -402,14 +413,13 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL;
     position: absolute;
     inset: 0;
     z-index: 1;
-    background:
-      linear-gradient(
-        to bottom,
-        rgba(10, 14, 26, 0.45) 0%,
-        rgba(10, 14, 26, 0.3) 50%,
-        rgba(10, 14, 26, 0.85) 85%,
-        var(--lp-bg) 100%
-      );
+    background: linear-gradient(
+      to bottom,
+      rgba(10, 14, 26, 0.45) 0%,
+      rgba(10, 14, 26, 0.3) 50%,
+      rgba(10, 14, 26, 0.85) 85%,
+      var(--lp-bg) 100%
+    );
   }
 
   .lp-hero__content {
@@ -471,8 +481,15 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL;
   }
 
   @keyframes lp-pulse {
-    0%, 100% { opacity: 0.4; transform: translateX(-50%) translateY(0); }
-    50% { opacity: 0.8; transform: translateX(-50%) translateY(8px); }
+    0%,
+    100% {
+      opacity: 0.4;
+      transform: translateX(-50%) translateY(0);
+    }
+    50% {
+      opacity: 0.8;
+      transform: translateX(-50%) translateY(8px);
+    }
   }
 
   /* ── ELENA ── */
@@ -668,7 +685,9 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL;
     padding: 1rem 2.5rem;
     border-radius: 9999px;
     text-decoration: none;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
     cursor: pointer;
   }
 

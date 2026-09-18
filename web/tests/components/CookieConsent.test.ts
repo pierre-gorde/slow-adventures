@@ -14,7 +14,9 @@ describe('CookieConsent.astro', () => {
     });
 
     it('has aria-label for cookie consent banner', () => {
-      expect(component).toContain('aria-label="Bannière de consentement cookies"');
+      expect(component).toContain(
+        'aria-label="Bannière de consentement cookies"'
+      );
     });
 
     it('has aria-describedby pointing to text', () => {
@@ -51,7 +53,7 @@ describe('CookieConsent.astro', () => {
     });
 
     it('stores sa_consent in localStorage', () => {
-      expect(component).toContain("localStorage.setItem(");
+      expect(component).toContain('localStorage.setItem(');
       expect(component).toContain('sa_consent');
     });
   });

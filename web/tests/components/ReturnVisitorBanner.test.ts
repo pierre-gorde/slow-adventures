@@ -108,9 +108,9 @@ describe('ReturnVisitorBanner.astro', () => {
   });
 
   describe('toast design (floating toast)', () => {
-    it('is fixed positioned with z-50', () => {
+    it('is fixed positioned with z-30 (above content, below TopBar)', () => {
       expect(component).toContain('fixed');
-      expect(component).toContain('z-50');
+      expect(component).toContain('z-30');
     });
 
     it('has rounded-xl and shadow-lg for toast look', () => {

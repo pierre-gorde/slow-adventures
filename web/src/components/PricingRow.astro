@@ -18,7 +18,7 @@ const { label, price, descriptions, dark = false } = Astro.props;
 >
   <dt
     class:list={[
-      'font-sans font-semibold text-lg flex-1 inline-flex items-baseline gap-2 after:content-[\'\'] after:flex-1 after:border-b after:border-dotted',
+      "font-sans font-semibold text-lg flex-1 inline-flex items-baseline gap-2 after:content-[''] after:flex-1 after:border-b after:border-dotted",
       dark
         ? 'text-white after:border-white/30'
         : 'text-warm-black after:border-warm-gray/40',

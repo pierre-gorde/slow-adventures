@@ -1,7 +1,7 @@
 ---
 draft: true
 country: 'Puerto Rico'
-description: "Entre forêts tropicales bioluminescentes, vieux San Juan coloré et plages turquoise, Puerto Rico te fait voyager entre culture caribéenne vibrante et nature sauvage, à deux pas des États-Unis."
+description: 'Entre forêts tropicales bioluminescentes, vieux San Juan coloré et plages turquoise, Puerto Rico te fait voyager entre culture caribéenne vibrante et nature sauvage, à deux pas des États-Unis.'
 image: 'https://images.unsplash.com/photo-1579687196544-08ae57ab5c11?w=1600&h=900&fit=crop&q=80'
 overlayColor: 'terracotta'
 order: 34
@@ -9,7 +9,19 @@ featured: false
 region: 'caraibes'
 title: 'Voyage à Puerto Rico sur mesure — Travel Planning Slow Adventures'
 metaDescription: 'Voyage Puerto Rico sur mesure avec Elena, travel planner Amériques. San Juan, El Yunque, baies bioluminescentes — un itinéraire caribéen taillé pour toi.'
-keywords: ['Baies bioluminescentes', 'Vieux San Juan coloré', 'Forêt tropicale', 'Plages sauvages', 'Culture caribéenne', 'Salsa et reggaetón', 'Gastronomie créole', 'Moments suspendus', 'Aventure tropicale', 'Évasion totale']
+keywords:
+  [
+    'Baies bioluminescentes',
+    'Vieux San Juan coloré',
+    'Forêt tropicale',
+    'Plages sauvages',
+    'Culture caribéenne',
+    'Salsa et reggaetón',
+    'Gastronomie créole',
+    'Moments suspendus',
+    'Aventure tropicale',
+    'Évasion totale',
+  ]
 ---
 
 Puerto Rico, c'est un voyage qui se vit avec tous les sens : flâner dans les rues pavées et colorées du Vieux San Juan, pagayer de nuit sur une baie bioluminescente où l'eau s'illumine à chaque mouvement, sentir l'humidité de la forêt d'El Yunque envelopper ta peau, et goûter un mofongo croustillant dans une fonda de quartier… Chaque instant éveille la curiosité et émerveille.

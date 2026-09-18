@@ -76,9 +76,11 @@ describe('ElenaSection.astro', () => {
       expect(component).toContain('animation="scale-in"');
     });
 
-    it('wraps text with fade-in animation and 200ms delay', () => {
-      expect(component).toContain('animation="fade-in"');
-      expect(component).toContain('delay={200}');
+    it('animates text block with GSAP stagger entrance instead of SectionReveal', () => {
+      expect(component).toContain('data-elena-text');
+      expect(component).toContain('elena-text__el');
+      expect(component).toContain('stagger: 0.2');
+      expect(component).not.toContain('animation="fade-in"');
     });
   });
 

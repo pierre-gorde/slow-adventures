@@ -1,7 +1,7 @@
 ---
 draft: true
 country: 'République dominicaine solaire'
-description: "Des plages de Samaná aux montagnes de Jarabacoa, la République dominicaine te fait voyager entre cascades, baleines à bosse et une joie de vivre contagieuse."
+description: 'Des plages de Samaná aux montagnes de Jarabacoa, la République dominicaine te fait voyager entre cascades, baleines à bosse et une joie de vivre contagieuse.'
 image: 'https://images.unsplash.com/photo-1678816331175-a61a6835e889?w=1600&h=900&fit=crop&q=80'
 overlayColor: 'sauge'
 order: 23
@@ -9,7 +9,19 @@ featured: false
 region: 'caraibes'
 title: 'Voyage en République dominicaine sur mesure — Travel Planning Slow Adventures'
 metaDescription: 'Voyage République dominicaine sur mesure avec Elena, travel planner. Samaná, baleines, cascades — un itinéraire solaire taillé pour toi.'
-keywords: ['Plages paradisiaques', 'Baleines à bosse', 'Cascades tropicales', 'Merengue et bachata', 'Montagnes verdoyantes', 'Culture chaleureuse', 'Aventure solaire', 'Moments suspendus', 'Authenticité caraïbe', 'Évasion totale']
+keywords:
+  [
+    'Plages paradisiaques',
+    'Baleines à bosse',
+    'Cascades tropicales',
+    'Merengue et bachata',
+    'Montagnes verdoyantes',
+    'Culture chaleureuse',
+    'Aventure solaire',
+    'Moments suspendus',
+    'Authenticité caraïbe',
+    'Évasion totale',
+  ]
 ---
 
 La République dominicaine, c'est un voyage qui se vit avec tous les sens : sentir le sable fin entre tes orteils à Samaná, voir une baleine à bosse surgir de l'eau devant toi, entendre le merengue dans les rues de Santo Domingo, et goûter la mangue la plus sucrée de ta vie… Chaque instant éveille la curiosité et émerveille.

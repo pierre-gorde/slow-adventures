@@ -4,6 +4,8 @@ import { readFileSync, existsSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 const distDir = resolve(__dirname, '../dist');
+// Runner CI à cache froid : optimisation de toutes les images de destinations.
+const BUILD_TIMEOUT_MS = 120_000;
 
 describe('build output validation', () => {
   beforeAll(() => {
@@ -11,7 +13,7 @@ describe('build output validation', () => {
       cwd: resolve(__dirname, '..'),
       stdio: 'pipe',
     });
-  }, 30_000);
+  }, BUILD_TIMEOUT_MS);
 
   describe('index.html rendered output', () => {
     let html: string;
@@ -27,13 +29,13 @@ describe('build output validation', () => {
 
     it('renders dynamic title', () => {
       expect(html).toContain(
-        '<title>Slow Adventures — Voyages immersifs et sur mesure exclusivement aux Amériques</title>'
+        '<title>Slow Adventures — Voyages immersifs et sur mesure exclusivement en Amérique du Nord</title>'
       );
     });
 
     it('renders meta description', () => {
       expect(html).toContain(
-        'content="Création de voyages immersifs et sur mesure exclusivement aux Amériques. Discovery call gratuit de 30 minutes."'
+        'content="Création de voyages immersifs et sur mesure exclusivement en Amérique du Nord. Confie-moi ton prochain rêve — appel gratuit de 30 minutes."'
       );
     });
 
@@ -93,7 +95,11 @@ describe('build output validation', () => {
     });
 
     it('all JSON-LD scripts contain valid parseable JSON', () => {
-      const jsonLdBlocks = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];
+      const jsonLdBlocks = [
+        ...html.matchAll(
+          /<script type="application\/ld\+json">([\s\S]*?)<\/script>/g
+        ),
+      ];
       expect(jsonLdBlocks.length).toBeGreaterThanOrEqual(2);
       jsonLdBlocks.forEach(([, content]) => {
         expect(() => JSON.parse(content)).not.toThrow();

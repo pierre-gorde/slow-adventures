@@ -13,11 +13,16 @@
   class="sa-consent fixed bottom-0 left-0 right-0 z-50 bg-warm-black/95 text-creme font-sans px-6 py-4 md:px-12 md:py-6"
   hidden
 >
-  <div class="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+  <div
+    class="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-4"
+  >
     <p id="cookie-consent-text" class="text-sm leading-relaxed md:mr-8">
-      Ce site utilise des cookies analytiques (Google Analytics) pour améliorer ton expérience.
-      Aucune donnée personnelle n'est collectée sans ton accord.
-      <a href="/politique-confidentialite" class="text-creme underline hover:text-terracotta transition-colors">
+      Ce site utilise des cookies analytiques (Google Analytics) pour améliorer
+      ton expérience. Aucune donnée personnelle n'est collectée sans ton accord.
+      <a
+        href="/politique-confidentialite"
+        class="text-creme underline hover:text-terracotta transition-colors"
+      >
         En savoir plus
       </a>
     </p>
@@ -76,7 +81,9 @@
   const refuseBtn = document.getElementById('cookie-refuse');
 
   if (container && acceptBtn && refuseBtn) {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const prefersReducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches;
 
     function showBanner(): void {
       container.removeAttribute('hidden');
@@ -88,9 +95,12 @@
     function hideBanner(): void {
       container.classList.remove('sa-consent-visible');
       container.classList.add('sa-consent-exit');
-      setTimeout(() => {
-        container.setAttribute('hidden', '');
-      }, prefersReducedMotion ? 0 : 300);
+      setTimeout(
+        () => {
+          container.setAttribute('hidden', '');
+        },
+        prefersReducedMotion ? 0 : 300
+      );
     }
 
     try {
@@ -101,16 +111,17 @@
       }
       // Existing consent — analytics.ts handles GA4 loading
     } catch {
-      try { localStorage.removeItem('sa_consent'); } catch { /* localStorage indisponible */ }
+      try {
+        localStorage.removeItem('sa_consent');
+      } catch {
+        /* localStorage indisponible */
+      }
       showBanner();
     }
 
     acceptBtn.addEventListener('click', () => {
       try {
-        localStorage.setItem(
-          'sa_consent',
-          JSON.stringify({ analytics: true })
-        );
+        localStorage.setItem('sa_consent', JSON.stringify({ analytics: true }));
         hideBanner();
       } catch (error) {
         console.error('[slow-adventures]', error);

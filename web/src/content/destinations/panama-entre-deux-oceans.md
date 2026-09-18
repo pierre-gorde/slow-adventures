@@ -1,7 +1,7 @@
 ---
 draft: true
 country: 'Panama entre deux océans'
-description: "Du canal mythique aux archipels préservés de San Blas, le Panama te fait voyager entre jungle tropicale, gratte-ciel modernes et îles de rêve aux eaux cristallines."
+description: 'Du canal mythique aux archipels préservés de San Blas, le Panama te fait voyager entre jungle tropicale, gratte-ciel modernes et îles de rêve aux eaux cristallines.'
 image: 'https://images.unsplash.com/photo-1566956031644-74266ac466f6?w=1600&h=900&fit=crop&q=80'
 overlayColor: 'sauge'
 order: 11
@@ -9,7 +9,19 @@ featured: false
 region: 'amerique-centrale'
 title: 'Voyage au Panama sur mesure — Travel Planning Slow Adventures'
 metaDescription: 'Voyage Panama sur mesure avec Elena, travel planner Amériques. Canal, San Blas, jungle — un itinéraire entre deux océans taillé pour toi.'
-keywords: ['Canal mythique', 'Îles paradisiaques', 'Jungle tropicale', 'Archipel San Blas', 'Diversité culturelle', 'Plongée tropicale', 'Contrastes urbains', 'Moments suspendus', 'Aventure entre océans', 'Évasion totale']
+keywords:
+  [
+    'Canal mythique',
+    'Îles paradisiaques',
+    'Jungle tropicale',
+    'Archipel San Blas',
+    'Diversité culturelle',
+    'Plongée tropicale',
+    'Contrastes urbains',
+    'Moments suspendus',
+    'Aventure entre océans',
+    'Évasion totale',
+  ]
 gallery:
   - '../../assets/images/destinations/gallery/panama/01.webp'
   - '../../assets/images/destinations/gallery/panama/02.webp'

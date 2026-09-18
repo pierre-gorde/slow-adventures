@@ -14,8 +14,8 @@ describe('StickyMobileCTA.astro', () => {
       expect(component).toContain('role="complementary"');
     });
 
-    it('has aria-label for screen readers', () => {
-      expect(component).toContain('aria-label="Réserver une discovery call"');
+    it('has aria-label matching the visible CTA text', () => {
+      expect(component).toContain('aria-label="Confie-moi ton prochain rêve"');
     });
   });
 

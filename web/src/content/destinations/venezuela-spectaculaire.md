@@ -9,7 +9,19 @@ draft: true
 region: 'amerique-du-sud'
 title: 'Voyage au Venezuela sur mesure — Travel Planning Slow Adventures'
 metaDescription: 'Voyage Venezuela sur mesure avec Elena, travel planner Amériques. Salto Ángel, tepuys, Llanos — un itinéraire spectaculaire taillé pour toi.'
-keywords: ['Chutes vertigineuses', 'Tepuys mystérieux', 'Plaines sauvages', 'Nature préhistorique', 'Faune des Llanos', 'Aventure extrême', 'Paysages uniques', 'Moments suspendus', 'Exploration brute', 'Évasion totale']
+keywords:
+  [
+    'Chutes vertigineuses',
+    'Tepuys mystérieux',
+    'Plaines sauvages',
+    'Nature préhistorique',
+    'Faune des Llanos',
+    'Aventure extrême',
+    'Paysages uniques',
+    'Moments suspendus',
+    'Exploration brute',
+    'Évasion totale',
+  ]
 ---
 
 Le Venezuela, c'est un voyage qui se vit avec tous les sens : lever les yeux vers la plus haute chute d'eau du monde, sentir l'humidité de la jungle envelopper les tepuys millénaires, écouter le silence des plaines infinies des Llanos, et ressentir la puissance brute d'une nature parmi les plus anciennes de la Terre… Chaque instant éveille la curiosité et émerveille.

@@ -9,7 +9,19 @@ featured: false
 region: 'amerique-du-sud'
 title: 'Voyage en Guyane sur mesure — Travel Planning Slow Adventures'
 metaDescription: 'Voyage Guyane sur mesure avec Elena, travel planner Amériques. Kaieteur, forêt primaire, faune — un itinéraire inexploré taillé pour toi.'
-keywords: ['Forêt primaire', 'Chutes spectaculaires', 'Faune rare', 'Communautés amérindiennes', 'Aventure sauvage', 'Nature intacte', 'Exploration pionnière', 'Moments suspendus', 'Hors des sentiers battus', 'Évasion totale']
+keywords:
+  [
+    'Forêt primaire',
+    'Chutes spectaculaires',
+    'Faune rare',
+    'Communautés amérindiennes',
+    'Aventure sauvage',
+    'Nature intacte',
+    'Exploration pionnière',
+    'Moments suspendus',
+    'Hors des sentiers battus',
+    'Évasion totale',
+  ]
 ---
 
 La Guyane, c'est un voyage qui se vit avec tous les sens : entendre le rugissement des chutes de Kaieteur qui plongent dans le vide, sentir l'humidité de la forêt primaire sur ta peau, observer un jaguar à travers la canopée, et naviguer sur des rivières où personne ne passe jamais… Chaque instant éveille la curiosité et émerveille.

@@ -16,7 +16,19 @@ featured: true
 region: 'amerique-centrale'
 title: 'Voyage au Costa Rica sur mesure — Travel Planning Slow Adventures'
 metaDescription: 'Voyage Costa Rica sur mesure avec Elena, travel planner Amériques. Volcans, forêts tropicales, plages — un itinéraire pura vida taillé pour toi.'
-keywords: ['Volcans et forêts tropicales', 'Plages sauvages', 'Faune exotique', 'Cascades et rivières', 'Nature luxuriante', 'Aventure sensorielle', 'Rencontres authentiques', 'Moments suspendus', 'Découverte des animaux', 'Évasion totale']
+keywords:
+  [
+    'Volcans et forêts tropicales',
+    'Plages sauvages',
+    'Faune exotique',
+    'Cascades et rivières',
+    'Nature luxuriante',
+    'Aventure sensorielle',
+    'Rencontres authentiques',
+    'Moments suspendus',
+    'Découverte des animaux',
+    'Évasion totale',
+  ]
 ---
 
 Le Costa Rica, c'est un voyage qui se vit avec tous les sens : sentir l'air chaud et humide de la forêt tropicale, écouter le chant des oiseaux multicolores, observer les tortues pondre sur les plages, et respirer la puissance des volcans en activité… Chaque instant éveille la curiosité et émerveille.

@@ -1,7 +1,7 @@
 ---
 draft: true
 country: 'Nicaragua volcanique'
-description: "Des volcans actifs aux îles préservées, le Nicaragua te fait voyager entre villes coloniales, lacs immenses et une nature sauvage encore intacte."
+description: 'Des volcans actifs aux îles préservées, le Nicaragua te fait voyager entre villes coloniales, lacs immenses et une nature sauvage encore intacte.'
 image: 'https://images.unsplash.com/photo-1539735016193-2bfc5a8f6699?w=1600&h=900&fit=crop&q=80'
 overlayColor: 'terracotta'
 order: 10
@@ -9,7 +9,19 @@ featured: false
 region: 'amerique-centrale'
 title: 'Voyage au Nicaragua sur mesure — Travel Planning Slow Adventures'
 metaDescription: 'Voyage Nicaragua sur mesure avec Elena, travel planner Amériques. Volcans, îles, villes coloniales — un itinéraire volcanique taillé pour toi.'
-keywords: ['Volcans actifs', 'Îles préservées', 'Villes coloniales', 'Lac Nicaragua', 'Nature sauvage', 'Surf et aventure', 'Culture vibrante', 'Moments suspendus', 'Authenticité brute', 'Évasion totale']
+keywords:
+  [
+    'Volcans actifs',
+    'Îles préservées',
+    'Villes coloniales',
+    'Lac Nicaragua',
+    'Nature sauvage',
+    'Surf et aventure',
+    'Culture vibrante',
+    'Moments suspendus',
+    'Authenticité brute',
+    'Évasion totale',
+  ]
 ---
 
 Le Nicaragua, c'est un voyage qui se vit avec tous les sens : sentir la chaleur des volcans sous tes pieds, admirer les façades colorées de Granada au coucher du soleil, naviguer sur le lac Nicaragua vers une île peuplée de singes, et écouter le silence d'une plage où tu es seul au monde… Chaque instant éveille la curiosité et émerveille.

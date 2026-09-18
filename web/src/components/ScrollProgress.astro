@@ -35,7 +35,8 @@
     );
     border-radius: 0 2px 2px 0;
     transition: width 0.15s ease-out;
-    box-shadow: 0 0 6px color-mix(in srgb, var(--color-terracotta) 40%, transparent);
+    box-shadow: 0 0 6px
+      color-mix(in srgb, var(--color-terracotta) 40%, transparent);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -60,13 +61,14 @@
       const maxScroll = docH - viewH;
 
       if (scrollY > viewH * 0.8) {
-        bar!.classList.add('is-visible');
+        bar.classList.add('is-visible');
       } else {
-        bar!.classList.remove('is-visible');
+        bar.classList.remove('is-visible');
       }
 
-      const pct = maxScroll > 0 ? Math.min((scrollY / maxScroll) * 100, 100) : 0;
-      fill!.style.width = pct + '%';
+      const pct =
+        maxScroll > 0 ? Math.min((scrollY / maxScroll) * 100, 100) : 0;
+      fill.style.width = pct + '%';
 
       ticking = false;
     }

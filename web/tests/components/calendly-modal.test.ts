@@ -9,7 +9,7 @@ const component = readFileSync(
 
 describe('CalendlyModal.astro', () => {
   describe('Calendly popup widget assets (AC #1)', () => {
-    it('preloads Calendly widget CSS', () => {
+    it('loads Calendly widget CSS', () => {
       expect(component).toContain(
         'https://assets.calendly.com/assets/external/widget.css'
       );
@@ -19,10 +19,14 @@ describe('CalendlyModal.astro', () => {
       expect(component).toContain(
         'https://assets.calendly.com/assets/external/widget.js'
       );
+      expect(component).toContain('script.async = true');
     });
 
-    it('has <noscript> fallback for widget CSS', () => {
-      expect(component).toContain('<noscript>');
+    it('injects assets lazily on first trigger click (no eager <link>/<script> in head)', () => {
+      expect(component).toContain("document.createElement('link')");
+      expect(component).toContain("document.createElement('script')");
+      expect(component).not.toContain('rel="preload"');
+      expect(component).not.toContain('is:inline');
     });
   });
 
@@ -89,12 +93,18 @@ describe('CalendlyModal.astro', () => {
   });
 
   describe('Calendly readiness check', () => {
-    it('has waitForCalendly helper function', () => {
-      expect(component).toContain('waitForCalendly');
+    it('has loadCalendlyAssets helper that resolves once window.Calendly exists', () => {
+      expect(component).toContain('loadCalendlyAssets');
+      expect(component).toContain('if (win.Calendly)');
     });
 
-    it('has timeout parameter for waiting', () => {
+    it('gives up after 5000ms if Calendly never initializes', () => {
       expect(component).toContain('5000');
+      expect(component).toContain('resolve(false)');
+    });
+
+    it('resolves false when the widget script fails to load', () => {
+      expect(component).toContain('script.onerror');
     });
   });
 });

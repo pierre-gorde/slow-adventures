@@ -1,7 +1,7 @@
 ---
 draft: true
 country: 'Belize sauvage'
-description: "Du Blue Hole légendaire aux ruines mayas englouties par la jungle, le Belize te fait voyager entre récifs coralliens, forêts tropicales et aventure brute."
+description: 'Du Blue Hole légendaire aux ruines mayas englouties par la jungle, le Belize te fait voyager entre récifs coralliens, forêts tropicales et aventure brute.'
 image: 'https://images.unsplash.com/photo-1722761478075-720dc58e63d1?w=1600&h=900&fit=crop&q=80'
 overlayColor: 'terracotta'
 order: 8
@@ -9,7 +9,19 @@ featured: false
 region: 'amerique-centrale'
 title: 'Voyage au Belize sur mesure — Travel Planning Slow Adventures'
 metaDescription: 'Voyage Belize sur mesure avec Elena, travel planner Amériques. Blue Hole, jungle, récifs — un itinéraire sauvage taillé pour toi.'
-keywords: ['Récifs coralliens', 'Jungle tropicale', 'Ruines mayas', 'Plongée spectaculaire', 'Îles paradisiaques', 'Faune marine', 'Aventure sauvage', 'Moments suspendus', 'Nature préservée', 'Évasion totale']
+keywords:
+  [
+    'Récifs coralliens',
+    'Jungle tropicale',
+    'Ruines mayas',
+    'Plongée spectaculaire',
+    'Îles paradisiaques',
+    'Faune marine',
+    'Aventure sauvage',
+    'Moments suspendus',
+    'Nature préservée',
+    'Évasion totale',
+  ]
 ---
 
 Le Belize, c'est un voyage qui se vit avec tous les sens : plonger dans des eaux cristallines au-dessus de récifs vivants, entendre les singes hurleurs dans la canopée, marcher sur des temples mayas oubliés dans la jungle, et sentir le sel marin sur ta peau en naviguant entre les îles… Chaque instant éveille la curiosité et émerveille.

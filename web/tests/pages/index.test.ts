@@ -60,7 +60,7 @@ describe('index.astro', () => {
 
     it('passes subtitle', () => {
       expect(page).toContain(
-        'subtitle="Voyages immersifs et sur mesure exclusivement aux Amériques"'
+        'subtitle="Voyages immersifs et sur mesure exclusivement en Amérique du Nord"'
       );
     });
 
@@ -69,7 +69,7 @@ describe('index.astro', () => {
     });
 
     it('uses getImage for poster preload optimization', () => {
-      expect(page).toContain("import { Image, getImage } from 'astro:assets'");
+      expect(page).toContain("import { getImage } from 'astro:assets'");
       expect(page).toContain('getImage(');
     });
 
@@ -106,7 +106,7 @@ describe('index.astro', () => {
     });
 
     it('passes title and description props', () => {
-      expect(page).toContain('title="Hello, Hola, Olà"');
+      expect(page).toContain('title="Hello"');
     });
 
     it('passes ctaHref with PUBLIC_CALENDLY_URL', () => {
@@ -130,8 +130,11 @@ describe('index.astro', () => {
       expect(page).toContain("getCollection('destinations')");
     });
 
-    it('sorts destinations by order using immutable spread', () => {
-      expect(page).toContain('[...destinations].sort(');
+    it('filters out drafts and non-featured, then sorts by order using immutable spread', () => {
+      expect(page).toContain('[...allDestinations]');
+      expect(page).toContain(
+        '.filter((d) => !d.data.draft && d.data.featured)'
+      );
       expect(page).toContain('a.data.order - b.data.order');
     });
 
@@ -183,10 +186,6 @@ describe('index.astro', () => {
       expect(page).toContain('id="processus"');
     });
 
-    it('has id="temoignages" on the testimonials section', () => {
-      expect(page).toContain('id="temoignages"');
-    });
-
     it('has id="tarifs" on the pricing section', () => {
       expect(page).toContain('id="tarifs"');
     });
@@ -207,11 +206,6 @@ describe('index.astro', () => {
       expect(page).toContain('id="heading-processus"');
     });
 
-    it('temoignages section has aria-labelledby="heading-temoignages"', () => {
-      expect(page).toContain('aria-labelledby="heading-temoignages"');
-      expect(page).toContain('id="heading-temoignages"');
-    });
-
     it('tarifs section has aria-labelledby="heading-tarifs"', () => {
       expect(page).toContain('aria-labelledby="heading-tarifs"');
       expect(page).toContain('id="heading-tarifs"');
@@ -224,23 +218,23 @@ describe('index.astro', () => {
   });
 
   describe('section rendering order', () => {
-    it('renders sections in order: Hero → Elena → Destinations → Processus → Témoignages → Pricing → CTA finale → Email Capture', () => {
+    it('renders sections in order: Hero → Elena → Destinations → Processus → Pricing → CTA finale → Email Capture → FAQ', () => {
       const heroIdx = page.indexOf('<HeroSection');
       const elenaIdx = page.indexOf('<ElenaSection');
       const destIdx = page.indexOf('sortedDestinations.map(');
       const processIdx = page.indexOf('La construction de TON aventure');
-      const testimonialsIdx = page.indexOf('Ils ont vécu SlowAdventures');
       const pricingIdx = page.indexOf('Ici, on est transparent');
       const ctaFinalIdx = page.indexOf('id="cta-final"');
       const emailCaptureIdx = page.indexOf('<EmailCapture');
+      const faqIdx = page.indexOf('<FaqSection');
       expect(heroIdx).toBeGreaterThan(-1);
       expect(elenaIdx).toBeGreaterThan(heroIdx);
       expect(destIdx).toBeGreaterThan(elenaIdx);
       expect(processIdx).toBeGreaterThan(destIdx);
-      expect(testimonialsIdx).toBeGreaterThan(processIdx);
-      expect(pricingIdx).toBeGreaterThan(testimonialsIdx);
+      expect(pricingIdx).toBeGreaterThan(processIdx);
       expect(ctaFinalIdx).toBeGreaterThan(pricingIdx);
       expect(emailCaptureIdx).toBeGreaterThan(ctaFinalIdx);
+      expect(faqIdx).toBeGreaterThan(emailCaptureIdx);
     });
   });
 
@@ -273,8 +267,10 @@ describe('index.astro', () => {
       expect(page).toContain('La construction de TON aventure');
     });
 
-    it('uses SectionReveal with stagger animation', () => {
-      expect(page).toContain('animation="stagger"');
+    it('animates process steps with a GSAP scroll timeline on #process-list', () => {
+      expect(page).toContain('id="process-list"');
+      expect(page).toContain("getElementById('process-list')");
+      expect(page).toContain("'[data-process-step]'");
     });
 
     it('uses an ordered list for process steps', () => {
@@ -290,80 +286,12 @@ describe('index.astro', () => {
     });
   });
 
-  describe('Témoignages section integration', () => {
-    it('imports TestimonialCard component', () => {
-      expect(page).toContain(
-        "import TestimonialCard from '../components/TestimonialCard.astro'"
-      );
-    });
-
-    it('imports testimonials data', () => {
-      expect(page).toContain("from '../data/testimonials'");
-    });
-
-    it('imports testimonials background image', () => {
-      expect(page).toContain("from '../assets/images/testimonials-bg.webp'");
-    });
-
-    it('has h2 title "Ils ont vécu SlowAdventures"', () => {
-      expect(page).toContain('Ils ont vécu SlowAdventures');
-    });
-
-    it('uses background image with overlay ambre at 60%', () => {
-      expect(page).toContain('bg-ambre/60');
-    });
-
-    it('has id="temoignages" for anchor navigation', () => {
-      expect(page).toContain('id="temoignages"');
-    });
-
-    it('uses min-h-[70vh] for section height', () => {
-      expect(page).toContain('min-h-[70vh]');
-    });
-
-    it('wraps each TestimonialCard in SectionReveal fade-up', () => {
-      expect(page).toContain('animation="fade-up"');
-      expect(page).toContain('<TestimonialCard');
-    });
-
-    it('maps testimonials data', () => {
-      expect(page).toContain('testimonials.map(');
-    });
-
-    it('passes quote, name, tripContext props', () => {
-      expect(page).toContain('quote={t.quote}');
-      expect(page).toContain('name={t.name}');
-      expect(page).toContain('tripContext={t.tripContext}');
-    });
-
-    it('includes CTAButton with solid variant and desktopOnly', () => {
-      expect(page).toContain('variant="solid"');
-      expect(page).toContain('desktopOnly={true}');
-    });
-
-    it('CTAButton uses PUBLIC_CALENDLY_URL, not #contact', () => {
-      const temoignagesSection = page.slice(
-        page.indexOf('id="temoignages"'),
-        page.indexOf('id="tarifs"')
-      );
-      expect(temoignagesSection).toContain(
-        'href={import.meta.env.PUBLIC_CALENDLY_URL}'
-      );
-      expect(temoignagesSection).not.toContain('href="#contact"');
-    });
-
-    it('uses Image component for background with lazy loading', () => {
-      expect(page).toContain('src={testimonialsBg}');
-      expect(page).toContain('loading="lazy"');
-    });
-
-    it('uses responsive grid for cards', () => {
-      expect(page).toContain('grid-cols-1');
-      expect(page).toContain('md:grid-cols-2');
-    });
-  });
-
   describe('Pricing section integration', () => {
+    const tarifsSection = page.slice(
+      page.indexOf('id="tarifs"'),
+      page.indexOf('id="cta-final"')
+    );
+
     it('imports PricingRow component', () => {
       expect(page).toContain(
         "import PricingRow from '../components/PricingRow.astro'"
@@ -382,12 +310,15 @@ describe('index.astro', () => {
       expect(page).toContain('id="tarifs"');
     });
 
-    it('uses bg-creme background', () => {
-      expect(page).toContain('bg-creme');
+    it('uses bg-warm-black background with dark PricingRow variant', () => {
+      expect(tarifsSection).toContain('bg-warm-black');
+      expect(tarifsSection).toContain('dark={true}');
     });
 
-    it('uses SectionReveal with stagger animation for pricing', () => {
-      expect(page).toContain('animation="stagger"');
+    it('animates pricing rows with a GSAP scroll timeline on #pricing-list', () => {
+      expect(page).toContain('id="pricing-list"');
+      expect(page).toContain("getElementById('pricing-list')");
+      expect(page).toContain("'[data-pricing-row]'");
     });
 
     it('uses <dl> definition list for pricing', () => {
@@ -553,41 +484,20 @@ describe('index.astro', () => {
     });
   });
 
-  describe('FAQ section visible', () => {
-    it('has section with id="faq"', () => {
-      expect(page).toContain('id="faq"');
+  describe('FaqSection integration', () => {
+    it('imports FaqSection component', () => {
+      expect(page).toContain(
+        "import FaqSection from '../components/FaqSection.astro'"
+      );
     });
 
-    it('has aria-labelledby="heading-faq" and matching heading id', () => {
-      expect(page).toContain('aria-labelledby="heading-faq"');
-      expect(page).toContain('id="heading-faq"');
+    it('renders FaqSection component', () => {
+      expect(page).toContain('<FaqSection />');
     });
 
-    it('has h2 "Questions fréquentes"', () => {
-      expect(page).toContain('Questions fréquentes');
-    });
-
-    it('uses <details>/<summary> for accordion', () => {
-      expect(page).toMatch(/<details/);
-      expect(page).toMatch(/<summary/);
-    });
-
-    it('iterates faqItems with .map()', () => {
-      expect(page).toContain('faqItems.map(');
-    });
-
-    it('renders question name and answer text from faqItems', () => {
-      expect(page).toContain('item.name');
-      expect(page).toContain('item.acceptedAnswer.text');
-    });
-
-    it('chevron uses group-open:rotate-180 for open/close indicator', () => {
-      expect(page).toContain('group-open:rotate-180');
-    });
-
-    it('FAQ section is placed after EmailCapture and inside main', () => {
+    it('places FaqSection after EmailCapture and inside main', () => {
       const emailIdx = page.indexOf('<EmailCapture');
-      const faqIdx = page.indexOf('id="faq"');
+      const faqIdx = page.indexOf('<FaqSection');
       const mainCloseIdx = page.indexOf('</main>');
       expect(faqIdx).toBeGreaterThan(emailIdx);
       expect(faqIdx).toBeLessThan(mainCloseIdx);
@@ -595,74 +505,12 @@ describe('index.astro', () => {
   });
 
   describe('FAQ Schema JSON-LD', () => {
-    it('declares a faqLd variable in the frontmatter', () => {
-      expect(page).toContain('faqLd');
-    });
-
-    it('faqLd has @type FAQPage', () => {
-      expect(page).toContain("'@type': 'FAQPage'");
-    });
-
-    it('faqLd has a mainEntity array', () => {
-      expect(page).toContain('mainEntity:');
-    });
-
-    it('faqLd contains at least 5 Question entries', () => {
-      const matches = page.match(/'@type': 'Question'/g);
-      expect(matches).not.toBeNull();
-      expect((matches ?? []).length).toBeGreaterThanOrEqual(5);
-    });
-
-    it('every Question has a name field', () => {
-      const questionBlocks = page.split("'@type': 'Question'").slice(1);
-      expect(questionBlocks.length).toBeGreaterThanOrEqual(5);
-      questionBlocks.forEach((block) => {
-        expect(block).toMatch(/name:/);
-      });
-    });
-
-    it('every Question has an acceptedAnswer with text', () => {
-      const answerMatches = page.match(/'@type': 'Answer'/g);
-      expect(answerMatches).not.toBeNull();
-      expect((answerMatches ?? []).length).toBeGreaterThanOrEqual(5);
-      expect(page).toContain('text:');
+    it('imports faqLd from the faq data module', () => {
+      expect(page).toContain("import { faqLd } from '../data/faq'");
     });
 
     it('passes extraLd={faqLd} to BaseLayout', () => {
       expect(page).toContain('extraLd={faqLd}');
-    });
-
-    it('faqLd strings use double quotes (no typographic apostrophes in single-quoted strings)', () => {
-      // Vérifie qu'aucune string single-quotée ne contient une apostrophe typographique
-      const singleQuotedWithTypoApostrophe = /(?<![=:,\s])'[^']*\u2019[^']*'/;
-      expect(page).not.toMatch(singleQuotedWithTypoApostrophe);
-    });
-
-    it('covers the Discovery Call topic', () => {
-      expect(page).toContain('Discovery Call');
-    });
-
-    it('covers pricing information', () => {
-      expect(page).toContain('300');
-    });
-
-    it('uses "travel planner" wording, not "agence"', () => {
-      // Dans le contexte FAQ, le wording doit être travel planner
-      const faqItemsStart = page.indexOf('faqItems');
-      const faqItemsContent = page.slice(faqItemsStart, faqItemsStart + 5000);
-      expect(faqItemsContent).toContain('travel planner');
-    });
-
-    it('faqLd declares @context https://schema.org', () => {
-      expect(page).toContain("'@context': 'https://schema.org'");
-    });
-
-    it('every Question has a properly structured acceptedAnswer with @type Answer', () => {
-      const questionBlocks = page.split("'@type': 'Question'").slice(1);
-      expect(questionBlocks.length).toBeGreaterThanOrEqual(5);
-      questionBlocks.forEach((block) => {
-        expect(block).toContain("'@type': 'Answer'");
-      });
     });
   });
 });

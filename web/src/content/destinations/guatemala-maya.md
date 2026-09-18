@@ -1,7 +1,7 @@
 ---
 draft: true
 country: 'Guatemala maya'
-description: "Des temples perdus dans la jungle aux lacs volcaniques, le Guatemala te plonge dans une culture maya vivante, entre marchés traditionnels et paysages à couper le souffle."
+description: 'Des temples perdus dans la jungle aux lacs volcaniques, le Guatemala te plonge dans une culture maya vivante, entre marchés traditionnels et paysages à couper le souffle.'
 image: 'https://images.unsplash.com/photo-1753125187256-e2c1c2d1cdf8?w=1600&h=900&fit=crop&q=80'
 overlayColor: 'sauge'
 order: 7
@@ -9,7 +9,19 @@ featured: false
 region: 'amerique-centrale'
 title: 'Voyage au Guatemala sur mesure — Travel Planning Slow Adventures'
 metaDescription: 'Voyage Guatemala sur mesure avec Elena, travel planner Amériques. Tikal, lac Atitlán, culture maya — un itinéraire authentique taillé pour toi.'
-keywords: ['Temples mayas', 'Lacs volcaniques', 'Marchés colorés', 'Culture vivante', 'Jungles tropicales', 'Villages authentiques', 'Aventure spirituelle', 'Moments suspendus', 'Rencontres locales', 'Évasion totale']
+keywords:
+  [
+    'Temples mayas',
+    'Lacs volcaniques',
+    'Marchés colorés',
+    'Culture vivante',
+    'Jungles tropicales',
+    'Villages authentiques',
+    'Aventure spirituelle',
+    'Moments suspendus',
+    'Rencontres locales',
+    'Évasion totale',
+  ]
 gallery:
   - '../../assets/images/destinations/gallery/guatemala/01.webp'
   - '../../assets/images/destinations/gallery/guatemala/02.webp'

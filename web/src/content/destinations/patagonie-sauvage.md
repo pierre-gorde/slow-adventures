@@ -1,7 +1,7 @@
 ---
 draft: true
 country: 'Patagonie sauvage'
-description: "Des glaciers imposants aux plaines infinies, la Patagonie te fait voyager entre montagnes grandioses, lacs turquoise et paysages à couper le souffle, hors des sentiers battus."
+description: 'Des glaciers imposants aux plaines infinies, la Patagonie te fait voyager entre montagnes grandioses, lacs turquoise et paysages à couper le souffle, hors des sentiers battus.'
 image: '../../assets/images/destinations/patagonie.webp'
 gallery:
   - '../../assets/images/destinations/gallery/patagonie/pat-1.webp'
@@ -16,7 +16,19 @@ featured: true
 region: 'amerique-du-sud'
 title: 'Road trip en Patagonie sur mesure — Travel Planning Slow Adventures'
 metaDescription: 'Road trip Patagonie sur mesure avec Elena, travel planner Amériques. Torres del Paine, Perito Moreno, El Chaltén — un itinéraire au bout du monde.'
-keywords: ['Glaciers et fjords', 'Montagnes majestueuses', 'Lacs turquoise', 'Steppes infinies', 'Faune sauvage', 'Randonnées spectaculaires', 'Moments suspendus', 'Nature brute', 'Aventure et liberté', 'Évasion totale']
+keywords:
+  [
+    'Glaciers et fjords',
+    'Montagnes majestueuses',
+    'Lacs turquoise',
+    'Steppes infinies',
+    'Faune sauvage',
+    'Randonnées spectaculaires',
+    'Moments suspendus',
+    'Nature brute',
+    'Aventure et liberté',
+    'Évasion totale',
+  ]
 ---
 
 La Patagonie, c'est un voyage qui se vit avec tous les sens : respirer l'air glacial au pied des montagnes, entendre le craquement des glaciers, admirer les lacs turquoise refléter les sommets, sentir la puissance de la nature brute autour de toi… Chaque instant éveille la curiosité et émerveille.

@@ -9,6 +9,8 @@
     "lint": "eslint . && prettier --check .",
     "format": "prettier --write .",
     "test": "vitest run",
+    "report:weekly": "node --experimental-strip-types --env-file-if-exists=.env scripts/weekly-report/index.ts",
+    "report:sample": "node --experimental-strip-types scripts/weekly-report/index.ts --sample",
     "astro": "astro"
   },
   "dependencies": {

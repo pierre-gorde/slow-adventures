@@ -1,0 +1,34 @@
+name: 📊 Rapport hebdo analytics
+
+on:
+  schedule:
+    # Lundi 7h17 UTC = 9h17 Paris en été, 8h17 en hiver. Minute décalée : GitHub
+    # déclenche les crons de l'heure pile avec parfois plusieurs heures de retard.
+    - cron: '17 7 * * 1'
+  workflow_dispatch:
+
+jobs:
+  envoi-du-rapport:
+    name: ✉️ Envoyer le rapport
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - name: 📥 Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Préparer Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: 📊 Envoyer le rapport hebdo
+        run: node scripts/weekly-report/index.ts
+        env:
+          GA4_PROPERTY_ID: ${{ secrets.GA4_PROPERTY_ID }}
+          GA4_SERVICE_ACCOUNT_JSON: ${{ secrets.GA4_SERVICE_ACCOUNT_JSON }}
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+          REPORT_EMAIL_FROM: ${{ secrets.REPORT_EMAIL_FROM }}
+          REPORT_EMAIL_TO: ${{ secrets.REPORT_EMAIL_TO }}
+          REPORT_EMAIL_CC: ${{ secrets.REPORT_EMAIL_CC }}

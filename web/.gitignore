@@ -24,3 +24,6 @@ pnpm-debug.log*
 # IDE settings
 .idea/
 .vscode/
+
+# aperçu généré par npm run report:sample
+weekly-report-preview.html

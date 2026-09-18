@@ -26,6 +26,7 @@ npm run lint     # ESLint + Prettier (check)
 npm run format   # Prettier (write)
 npm run test     # Vitest
 npm run report:sample  # Aperçu HTML du rapport hebdo (données factices)
+npm run report:dry-run # Rapport hebdo avec vraies données GA4, sans envoi
 npm run report:weekly  # Envoi réel du rapport hebdo (lit .env)
 ```
 

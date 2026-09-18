@@ -52,15 +52,18 @@ tient sur une ligne entre quotes simples.
 4. **Brevo** — Expéditeurs & IP : authentifier le domaine `slowadventures.fr`
    (DNS chez Gandi : DKIM + SPF + code Brevo) et ajouter l'expéditeur
    `rapport@slowadventures.fr`.
-5. Créer les 5 secrets GitHub, pousser sur `main`, puis tester via
-   **Actions > Rapport hebdo analytics > Run workflow**.
+5. Créer les secrets GitHub, pousser sur `main`, puis tester via
+   **Actions > Rapport hebdo analytics > Run workflow**. Cocher `dry_run` pour
+   valider la chaîne sans envoyer d'email : l'aperçu HTML est déposé en artefact
+   du run.
 
 ## Commandes
 
-| Commande                | Action                                                                     |
-| ----------------------- | -------------------------------------------------------------------------- |
-| `npm run report:sample` | Génère `weekly-report-preview.html` avec des données factices, sans réseau |
-| `npm run report:weekly` | Envoi réel (lit `.env` si présent, nécessite les 5 variables obligatoires) |
+| Commande                 | Action                                                                        |
+| ------------------------ | ----------------------------------------------------------------------------- |
+| `npm run report:sample`  | Génère `weekly-report-preview.html` avec des données factices, sans réseau    |
+| `npm run report:dry-run` | Vraies données GA4, HTML écrit dans `weekly-report-preview.html`, aucun envoi |
+| `npm run report:weekly`  | Envoi réel (lit `.env` si présent, nécessite les 5 variables obligatoires)    |
 
 En local, Node ≥ 22.9 suffit (`--experimental-strip-types`, `--env-file-if-exists`) ;
 le workflow CI utilise Node 24 qui exécute le TypeScript nativement.

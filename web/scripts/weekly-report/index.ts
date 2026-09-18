@@ -21,7 +21,8 @@ import {
 import { previousWeekRange, type WeekRange } from './week.ts';
 
 const SAMPLE_FLAG = '--sample';
-const SAMPLE_OUTPUT_DEFAULT_PATH = 'weekly-report-preview.html';
+const DRY_RUN_FLAG = '--dry-run';
+const PREVIEW_DEFAULT_PATH = 'weekly-report-preview.html';
 
 function requireEnv(name: string): string {
   const value = process.env[name];
@@ -34,6 +35,14 @@ function requireEnv(name: string): string {
 
 function optionalEnv(name: string): string | undefined {
   return process.env[name] || undefined;
+}
+
+function previewPath(): string {
+  const flagIndex = process.argv.findIndex(
+    (arg) => arg === SAMPLE_FLAG || arg === DRY_RUN_FLAG
+  );
+  const next = process.argv[flagIndex + 1];
+  return next && !next.startsWith('--') ? next : PREVIEW_DEFAULT_PATH;
 }
 
 function sampleReport(range: WeekRange): ReportData {
@@ -75,14 +84,13 @@ async function fetchReport(range: WeekRange): Promise<ReportData> {
 
 async function main(): Promise<void> {
   const sampleMode = process.argv.includes(SAMPLE_FLAG);
+  const dryRun = process.argv.includes(DRY_RUN_FLAG);
   const range = previousWeekRange(Date.now());
   const report = sampleMode ? sampleReport(range) : await fetchReport(range);
   const html = buildHtml(report);
 
-  if (sampleMode) {
-    const outputPath =
-      process.argv[process.argv.indexOf(SAMPLE_FLAG) + 1] ??
-      SAMPLE_OUTPUT_DEFAULT_PATH;
+  if (sampleMode || dryRun) {
+    const outputPath = previewPath();
     await writeFile(outputPath, html);
     console.log(
       `👀 Aperçu écrit dans ${outputPath} — sujet : « ${buildSubject(range)} »`

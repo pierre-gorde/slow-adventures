@@ -11,6 +11,7 @@
     "test": "vitest run",
     "report:weekly": "node --experimental-strip-types --env-file-if-exists=.env scripts/weekly-report/index.ts",
     "report:sample": "node --experimental-strip-types scripts/weekly-report/index.ts --sample",
+    "report:dry-run": "node --experimental-strip-types --env-file-if-exists=.env scripts/weekly-report/index.ts --dry-run",
     "astro": "astro"
   },
   "dependencies": {

@@ -6,6 +6,11 @@ on:
     # déclenche les crons de l'heure pile avec parfois plusieurs heures de retard.
     - cron: '17 7 * * 1'
   workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Générer le rapport sans l'envoyer (aperçu HTML en artefact)"
+        type: boolean
+        default: false
 
 jobs:
   envoi-du-rapport:
@@ -23,8 +28,8 @@ jobs:
         with:
           node-version: 24
 
-      - name: 📊 Envoyer le rapport hebdo
-        run: node scripts/weekly-report/index.ts
+      - name: 📊 Générer et envoyer le rapport hebdo
+        run: node scripts/weekly-report/index.ts ${{ inputs.dry_run == true && '--dry-run' || '' }}
         env:
           GA4_PROPERTY_ID: ${{ secrets.GA4_PROPERTY_ID }}
           GA4_SERVICE_ACCOUNT_JSON: ${{ secrets.GA4_SERVICE_ACCOUNT_JSON }}
@@ -32,3 +37,10 @@ jobs:
           REPORT_EMAIL_FROM: ${{ secrets.REPORT_EMAIL_FROM }}
           REPORT_EMAIL_TO: ${{ secrets.REPORT_EMAIL_TO }}
           REPORT_EMAIL_CC: ${{ secrets.REPORT_EMAIL_CC }}
+
+      - name: 👀 Archiver l'aperçu (dry run)
+        if: inputs.dry_run == true
+        uses: actions/upload-artifact@v4
+        with:
+          name: weekly-report-preview
+          path: web/weekly-report-preview.html

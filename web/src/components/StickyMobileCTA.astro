@@ -1,12 +1,13 @@
 ---
 // StickyMobileCTA.astro — Island client:load
 // Sticky CTA bar for mobile visitors, hidden on desktop
+import { CIRCUITS_URL } from '../data/contact';
 ---
 
 <aside
   id="sticky-mobile-cta"
   role="complementary"
-  aria-label="Confie-moi ton prochain rêve"
+  aria-label="Découvre les circuits"
   class="fixed bottom-0 left-0 right-0 z-50 lg:hidden"
   style="opacity: 0; pointer-events: none; transform: translateY(100%);"
 >
@@ -16,12 +17,11 @@
     <span class="sticky-cta-wrapper relative block">
       <span class="sticky-cta-glow" aria-hidden="true"></span>
       <a
-        href={import.meta.env.PUBLIC_CALENDLY_URL}
-        data-calendly-trigger
+        href={CIRCUITS_URL}
         data-cta
         class="sticky-cta-btn relative block w-full text-center bg-terracotta text-white font-sans font-semibold text-sm py-3 min-h-11 border-2 border-terracotta motion-safe:transition-all motion-safe:duration-300 active:bg-terracotta-dark"
       >
-        Confie-moi ton prochain rêve
+        Découvre les circuits
       </a>
     </span>
   </div>

@@ -1,0 +1,87 @@
+---
+import { Image } from 'astro:assets';
+import type { Circuit } from '../data/circuits';
+import { circuitHref } from '../data/circuits';
+
+interface Props {
+  circuit: Circuit;
+  headingLevel?: 'h2' | 'h3';
+}
+
+const { circuit, headingLevel = 'h3' } = Astro.props;
+const Heading = headingLevel;
+---
+
+<a
+  href={circuitHref(circuit)}
+  class="circuit-card group relative block overflow-hidden rounded-2xl aspect-[3/4] md:aspect-[4/5] bg-warm-black"
+  data-circuit-card
+>
+  <Image
+    src={circuit.slide}
+    alt={circuit.slideAlt}
+    widths={[480, 800, 1200]}
+    sizes="(min-width: 768px) 45vw, 85vw"
+    loading="lazy"
+    decoding="async"
+    class="absolute inset-0 w-full h-full object-cover motion-safe:transition-transform motion-safe:duration-700 group-hover:scale-[1.03]"
+  />
+  <div class="circuit-card__overlay absolute inset-0" aria-hidden="true"></div>
+  <div
+    class="relative z-10 flex h-full flex-col justify-end p-5 md:p-7 text-white"
+  >
+    <Heading class="font-serif text-2xl md:text-3xl leading-tight mb-2">
+      {circuit.nom}
+    </Heading>
+    <p class="font-sans text-sm md:text-base text-white/90 mb-3">
+      {circuit.duree} · {circuit.trajet}
+    </p>
+    <ul class="flex flex-wrap gap-1.5 mb-4 list-none p-0" aria-label="Ambiance">
+      {
+        circuit.tags.map((tag) => (
+          <li class="font-sans text-[11px] md:text-xs px-2.5 py-1 rounded-full bg-white/15 backdrop-blur-sm border border-white/25">
+            {tag}
+          </li>
+        ))
+      }
+    </ul>
+    <p
+      class="font-sans text-sm md:text-base italic text-white/90 leading-relaxed mb-5"
+    >
+      «&nbsp;{circuit.accroche}&nbsp;»
+    </p>
+    <span
+      class="inline-flex items-center gap-2 self-start font-sans text-sm font-semibold bg-terracotta px-5 py-2.5 rounded-full group-hover:bg-terracotta-dark transition-colors"
+    >
+      Découvrir le circuit
+      <svg
+        class="w-4 h-4 motion-safe:transition-transform group-hover:translate-x-1"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M5 12h14M12 5l7 7-7 7"></path>
+      </svg>
+    </span>
+  </div>
+</a>
+
+<style>
+  .circuit-card__overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(44, 40, 37, 0.05) 0%,
+      rgba(44, 40, 37, 0.25) 35%,
+      rgba(44, 40, 37, 0.88) 100%
+    );
+  }
+
+  .circuit-card:focus-visible {
+    outline: 3px solid var(--color-terracotta);
+    outline-offset: 3px;
+  }
+</style>

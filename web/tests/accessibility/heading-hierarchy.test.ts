@@ -61,16 +61,18 @@ describe('Heading hierarchy & semantic HTML (WCAG 1.3.1, 3.1.1)', () => {
       expect(destinationBlock).toMatch(/<h2[\s>]/);
     });
 
-    it('index.astro has h2 for "La construction de TON aventure" (Processus)', () => {
-      expect(indexPage).toContain('La construction de TON aventure');
+    it('index.astro has h2 for "Comment ton rêve prend vie" (Processus)', () => {
+      expect(indexPage).toContain('Comment ton rêve prend vie');
     });
 
     it('index.astro has h2 for "Ils ont vécu SlowAdventures" (Témoignages)', () => {
       expect(indexPage).toContain('Ils ont vécu SlowAdventures');
     });
 
-    it('index.astro has h2 for "Ici, on est transparent" (Tarifs)', () => {
-      expect(indexPage).toContain('Ici, on est transparent');
+    it('index.astro has h2 for "Ce que Slow Adventures change (vraiment) pour toi" (Avantages)', () => {
+      expect(indexPage).toContain(
+        'Ce que Slow Adventures change (vraiment) pour toi'
+      );
     });
 
     it('index.astro has h2 for "Ton prochain rêve commence ici" (CTA finale)', () => {

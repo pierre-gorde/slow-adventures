@@ -1,5 +1,7 @@
 ---
-const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL;
+import { CALENDLY_URL } from '../data/contact';
+
+const calendlyUrl = CALENDLY_URL;
 ---
 
 <div id="calendly-config" data-calendly-url={calendlyUrl} hidden></div>

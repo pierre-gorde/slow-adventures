@@ -17,7 +17,9 @@ describe('index.astro', () => {
   });
 
   it('uses BaseLayout with description prop', () => {
-    expect(page).toContain('Création de voyages immersifs et sur mesure');
+    expect(page).toContain(
+      'Des circuits conçus par Elena pour mieux voyager aux États-Unis et au Canada.'
+    );
   });
 
   it('contains a main element with id', () => {
@@ -60,7 +62,7 @@ describe('index.astro', () => {
 
     it('passes subtitle', () => {
       expect(page).toContain(
-        'subtitle="Voyages immersifs et sur mesure exclusivement en Amérique du Nord"'
+        'subtitle="Des circuits conçus par Elena pour mieux voyager aux États-Unis et au Canada. Tu choisis, on s’occupe du reste."'
       );
     });
 
@@ -109,63 +111,24 @@ describe('index.astro', () => {
       expect(page).toContain('title="Hello"');
     });
 
-    it('passes ctaHref with PUBLIC_CALENDLY_URL', () => {
-      expect(page).toContain('ctaHref={import.meta.env.PUBLIC_CALENDLY_URL}');
-      expect(page).not.toContain('ctaHref="#contact"');
+    it('points the bio button to the circuits page', () => {
+      expect(page).toContain('ctaHref={CIRCUITS_URL}');
+      expect(page).toContain('ctaText="Découvre les circuits"');
+      expect(page).toContain('ctaCalendly={false}');
     });
   });
 
-  describe('Destinations section integration', () => {
-    it('imports getCollection from astro:content', () => {
-      expect(page).toContain("import { getCollection } from 'astro:content'");
-    });
-
-    it('imports DestinationBlock component', () => {
+  describe('Circuits section integration', () => {
+    it('imports and renders CircuitCarousel', () => {
       expect(page).toContain(
-        "import DestinationBlock from '../components/DestinationBlock.astro'"
+        "import CircuitCarousel from '../components/CircuitCarousel.astro'"
       );
+      expect(page).toContain('<CircuitCarousel />');
     });
 
-    it('fetches destinations collection', () => {
-      expect(page).toContain("getCollection('destinations')");
-    });
-
-    it('filters out drafts and non-featured, then sorts by order using immutable spread', () => {
-      expect(page).toContain('[...allDestinations]');
-      expect(page).toContain(
-        '.filter((d) => !d.data.draft && d.data.featured)'
-      );
-      expect(page).toContain('a.data.order - b.data.order');
-    });
-
-    it('maps sorted destinations to DestinationBlock components', () => {
-      expect(page).toContain('sortedDestinations.map(');
-    });
-
-    it('wraps each DestinationBlock in SectionReveal', () => {
-      expect(page).toContain('<SectionReveal animation="fade-in">');
-      expect(page).toContain('<DestinationBlock');
-    });
-
-    it('passes image data from content collection', () => {
-      expect(page).toContain('dest.data.image');
-    });
-
-    it('passes country and description from content', () => {
-      expect(page).toContain('dest.data.country');
-      expect(page).toContain('dest.data.description');
-    });
-
-    it('passes overlayColor from content', () => {
-      expect(page).toContain('dest.data.overlayColor');
-    });
-
-    it('generates descriptive imageAlt from country name', () => {
-      expect(page).toContain('Paysage de ${dest.data.country}');
-    });
-
-    it('passes learnMoreHref linking to individual destination page', () => {
-      expect(page).toContain('learnMoreHref={`/destinations/${dest.slug}/`}');
+    it('no longer lists destinations on the homepage', () => {
+      expect(page).not.toContain('<DestinationBlock');
+      expect(page).not.toContain("getCollection('destinations')");
     });
   });
 
@@ -174,20 +137,12 @@ describe('index.astro', () => {
       expect(page).toContain('id="elena"');
     });
 
-    it('has id="destinations" section wrapping DestinationBlocks', () => {
-      expect(page).toContain('id="destinations"');
-    });
-
-    it('has sr-only heading "Nos destinations" for screen readers', () => {
-      expect(page).toContain('class="sr-only">Nos destinations</h2>');
-    });
-
     it('has id="processus" on the process section', () => {
       expect(page).toContain('id="processus"');
     });
 
-    it('has id="tarifs" on the pricing section', () => {
-      expect(page).toContain('id="tarifs"');
+    it('no longer has the pricing section', () => {
+      expect(page).not.toContain('id="tarifs"');
     });
 
     it('has id="cta-final" on the CTA finale section', () => {
@@ -196,19 +151,9 @@ describe('index.astro', () => {
   });
 
   describe('aria-labelledby on all sections', () => {
-    it('destinations section has aria-labelledby="heading-destinations"', () => {
-      expect(page).toContain('aria-labelledby="heading-destinations"');
-      expect(page).toContain('id="heading-destinations"');
-    });
-
     it('processus section has aria-labelledby="heading-processus"', () => {
       expect(page).toContain('aria-labelledby="heading-processus"');
       expect(page).toContain('id="heading-processus"');
-    });
-
-    it('tarifs section has aria-labelledby="heading-tarifs"', () => {
-      expect(page).toContain('aria-labelledby="heading-tarifs"');
-      expect(page).toContain('id="heading-tarifs"');
     });
 
     it('cta-final section has aria-labelledby="heading-cta-final"', () => {
@@ -218,12 +163,12 @@ describe('index.astro', () => {
   });
 
   describe('section rendering order', () => {
-    it('renders sections in order: Hero → Elena → Destinations → Processus → Pricing → CTA finale → Email Capture → FAQ', () => {
+    it('renders sections in order: Hero → Elena → Circuits → Processus → Avantages → CTA finale → Email Capture → FAQ', () => {
       const heroIdx = page.indexOf('<HeroSection');
       const elenaIdx = page.indexOf('<ElenaSection');
-      const destIdx = page.indexOf('sortedDestinations.map(');
-      const processIdx = page.indexOf('La construction de TON aventure');
-      const pricingIdx = page.indexOf('Ici, on est transparent');
+      const destIdx = page.indexOf('<CircuitCarousel');
+      const processIdx = page.indexOf('Comment ton rêve prend vie');
+      const pricingIdx = page.indexOf('id="avantages"');
       const ctaFinalIdx = page.indexOf('id="cta-final"');
       const emailCaptureIdx = page.indexOf('<EmailCapture');
       const faqIdx = page.indexOf('<FaqSection');
@@ -263,8 +208,8 @@ describe('index.astro', () => {
       expect(page).toContain('sa-section-padding');
     });
 
-    it('has h2 title "La construction de TON aventure"', () => {
-      expect(page).toContain('La construction de TON aventure');
+    it('has h2 title "Comment ton rêve prend vie"', () => {
+      expect(page).toContain('Comment ton rêve prend vie');
     });
 
     it('animates process steps with a GSAP scroll timeline on #process-list', () => {
@@ -283,60 +228,6 @@ describe('index.astro', () => {
 
     it('renders ProcessStep component', () => {
       expect(page).toContain('<ProcessStep');
-    });
-  });
-
-  describe('Pricing section integration', () => {
-    const tarifsSection = page.slice(
-      page.indexOf('id="tarifs"'),
-      page.indexOf('id="cta-final"')
-    );
-
-    it('imports PricingRow component', () => {
-      expect(page).toContain(
-        "import PricingRow from '../components/PricingRow.astro'"
-      );
-    });
-
-    it('imports pricingRows data', () => {
-      expect(page).toContain("from '../data/pricing'");
-    });
-
-    it('has h2 title "Ici, on est transparent"', () => {
-      expect(page).toContain('Ici, on est transparent');
-    });
-
-    it('has id="tarifs" for anchor navigation', () => {
-      expect(page).toContain('id="tarifs"');
-    });
-
-    it('uses bg-warm-black background with dark PricingRow variant', () => {
-      expect(tarifsSection).toContain('bg-warm-black');
-      expect(tarifsSection).toContain('dark={true}');
-    });
-
-    it('animates pricing rows with a GSAP scroll timeline on #pricing-list', () => {
-      expect(page).toContain('id="pricing-list"');
-      expect(page).toContain("getElementById('pricing-list')");
-      expect(page).toContain("'[data-pricing-row]'");
-    });
-
-    it('uses <dl> definition list for pricing', () => {
-      expect(page).toMatch(/<dl[\s>]/);
-    });
-
-    it('maps pricingRows data', () => {
-      expect(page).toContain('pricingRows.map(');
-    });
-
-    it('passes label, price, descriptions props', () => {
-      expect(page).toContain('label={row.label}');
-      expect(page).toContain('price={row.price}');
-      expect(page).toContain('descriptions={row.descriptions}');
-    });
-
-    it('uses max-w-3xl for pricing layout', () => {
-      expect(page).toContain('max-w-3xl');
     });
   });
 
@@ -429,15 +320,16 @@ describe('index.astro', () => {
       expect(ctaSection).toContain('size="default"');
     });
 
-    it('has CTAButton with PUBLIC_CALENDLY_URL href', () => {
+    it('has CTAButton linking to the circuits page', () => {
       const ctaSection = page.slice(page.indexOf('id="cta-final"'));
-      expect(ctaSection).toContain(
-        'href={import.meta.env.PUBLIC_CALENDLY_URL}'
-      );
+      expect(ctaSection).toContain('href={CIRCUITS_URL}');
+      expect(ctaSection).toContain('text="Choisis ton circuit"');
     });
 
-    it('has subtext "30 min, gratuit, sans engagement"', () => {
-      expect(page).toContain('subtext="30 min, gratuit, sans engagement"');
+    it('has the new subtext under the button', () => {
+      expect(page).toContain(
+        'subtext="Tout est déjà pensé pour toi, il ne te reste qu’à choisir."'
+      );
     });
 
     it('does NOT have desktopOnly on CTA finale button', () => {

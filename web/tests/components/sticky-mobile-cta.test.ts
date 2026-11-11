@@ -15,21 +15,21 @@ describe('StickyMobileCTA.astro', () => {
     });
 
     it('has aria-label matching the visible CTA text', () => {
-      expect(component).toContain('aria-label="Confie-moi ton prochain rêve"');
+      expect(component).toContain('aria-label="Découvre les circuits"');
     });
   });
 
   describe('CTA link (AC #1)', () => {
-    it('has data-calendly-trigger attribute on the link', () => {
-      expect(component).toContain('data-calendly-trigger');
+    it('is a plain link (does not open Calendly)', () => {
+      expect(component).not.toContain('data-calendly-trigger');
     });
 
-    it('uses PUBLIC_CALENDLY_URL in href', () => {
-      expect(component).toContain('href={import.meta.env.PUBLIC_CALENDLY_URL}');
+    it('links to the circuits page', () => {
+      expect(component).toContain('href={CIRCUITS_URL}');
     });
 
     it('displays the correct CTA text', () => {
-      expect(component).toContain('Confie-moi ton prochain rêve');
+      expect(component).toContain('Découvre les circuits');
     });
 
     it('has minimum 44px touch target height', () => {

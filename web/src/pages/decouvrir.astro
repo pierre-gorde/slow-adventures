@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { CALENDLY_URL } from '../data/contact';
 import { Image } from 'astro:assets';
 import AnalyticsScripts from '../components/AnalyticsScripts.astro';
 import TopBar from '../components/TopBar.astro';
@@ -11,7 +12,7 @@ import elenaImage from '../assets/images/elena.webp';
 const title = 'Slow Adventures — Voyages sur mesure en Amérique du Nord';
 const description =
   'Découvre Slow Adventures : des voyages immersifs et sur mesure en Amérique du Nord (USA, Canada, Alaska), pensés par Elena, travel planner passionnée.';
-const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL;
+const calendlyUrl = CALENDLY_URL;
 ---
 
 <!doctype html>

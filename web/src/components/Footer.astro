@@ -1,10 +1,12 @@
 ---
+import { CALENDLY_URL } from '../data/contact';
+
 const currentYear = new Date().getFullYear();
 ---
 
 <footer class="bg-warm-black py-8" aria-label="Pied de page">
   <div
-    class="max-w-[640px] mx-auto px-6 flex flex-col items-center gap-4 lg:flex-row lg:justify-center lg:gap-6"
+    class="max-w-[1100px] mx-auto px-6 flex flex-col items-center gap-4 lg:flex-row lg:justify-center lg:gap-6"
   >
     <nav
       aria-label="Liens du pied de page"
@@ -12,25 +14,32 @@ const currentYear = new Date().getFullYear();
     >
       <a
         href="/mentions-legales"
-        class="text-white/60 text-sm hover:underline transition-colors hover:text-white min-h-11 inline-flex items-center"
+        class="text-white/60 text-sm hover:underline transition-colors hover:text-white min-h-11 inline-flex items-center whitespace-nowrap"
         >Mentions légales</a
       >
       <a
         href="/politique-confidentialite"
-        class="text-white/60 text-sm hover:underline transition-colors hover:text-white min-h-11 inline-flex items-center"
+        class="text-white/60 text-sm hover:underline transition-colors hover:text-white min-h-11 inline-flex items-center whitespace-nowrap"
         >Politique de confidentialité</a
       >
       <a
         href="mailto:elena@slowadventures.fr"
-        class="text-white/60 text-sm hover:underline transition-colors hover:text-white min-h-11 inline-flex items-center"
+        class="text-white/60 text-sm hover:underline transition-colors hover:text-white min-h-11 inline-flex items-center whitespace-nowrap"
         >elena@slowadventures.fr</a
+      >
+      <a
+        href={CALENDLY_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-white/60 text-sm hover:underline transition-colors hover:text-white min-h-11 inline-flex items-center whitespace-nowrap"
+        >Réserve 15 min avec Elena</a
       >
       <a
         href="https://www.instagram.com/slow_adventures_/"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Instagram Slow Adventures (@slow_adventures_)"
-        class="text-white/60 text-sm hover:text-white transition-colors min-h-11 inline-flex items-center gap-1.5"
+        class="text-white/60 text-sm hover:text-white transition-colors min-h-11 inline-flex items-center whitespace-nowrap gap-1.5"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -52,7 +61,7 @@ const currentYear = new Date().getFullYear();
         @slow_adventures_
       </a>
     </nav>
-    <span class="text-white/60 text-sm"
+    <span class="text-white/60 text-sm whitespace-nowrap"
       >&copy; {currentYear} Slow Adventures</span
     >
   </div>

@@ -29,13 +29,13 @@ describe('build output validation', () => {
 
     it('renders dynamic title', () => {
       expect(html).toContain(
-        '<title>Slow Adventures — Voyages immersifs et sur mesure exclusivement en Amérique du Nord</title>'
+        '<title>Slow Adventures — Circuits slow travel aux États-Unis et au Canada</title>'
       );
     });
 
     it('renders meta description', () => {
       expect(html).toContain(
-        'content="Création de voyages immersifs et sur mesure exclusivement en Amérique du Nord. Confie-moi ton prochain rêve — appel gratuit de 30 minutes."'
+        'content="Des circuits conçus par Elena pour mieux voyager aux États-Unis et au Canada. Tu choisis, on s’occupe du reste."'
       );
     });
 

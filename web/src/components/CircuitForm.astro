@@ -1,0 +1,656 @@
+---
+/**
+ * Formulaire « Je veux ce voyage » — envoyé via Netlify Forms.
+ * Les champs sont déclarés pour Netlify dans public/__forms.html :
+ * tout nouveau champ doit aussi y être ajouté.
+ */
+import type { Circuit } from '../data/circuits';
+
+interface Props {
+  circuit: Circuit;
+}
+
+const { circuit } = Astro.props;
+
+const FORM_NAME = 'demande-circuit';
+
+const mois = [
+  'Janvier',
+  'Février',
+  'Mars',
+  'Avril',
+  'Mai',
+  'Juin',
+  'Juillet',
+  'Août',
+  'Septembre',
+  'Octobre',
+  'Novembre',
+  'Décembre',
+];
+
+// À partir d'octobre, on propose l'année suivante en premier.
+const now = new Date();
+const firstYear =
+  now.getMonth() >= 9 ? now.getFullYear() + 1 : now.getFullYear();
+const annees = [firstYear, firstYear + 1, firstYear + 2];
+const { hebergements, vehicules, extra } = circuit.formulaire;
+---
+
+<section
+  class="sa-form"
+  id="je-veux-ce-voyage"
+  aria-labelledby="sa-form-titre"
+  data-sa-form
+>
+  <div class="sa-form__intro">
+    <h2 id="sa-form-titre" class="font-serif">Je veux ce voyage</h2>
+    <p>
+      Dis-moi quand et comment tu veux partir. Je reviens vers toi sur WhatsApp,
+      puis notre agence partenaire te confirme ton voyage et son prix exact dans
+      la semaine.
+    </p>
+  </div>
+
+  <form
+    name={FORM_NAME}
+    method="POST"
+    action="/__forms.html"
+    novalidate
+    data-circuit={circuit.nom}
+  >
+    <input type="hidden" name="form-name" value={FORM_NAME} />
+    <input type="hidden" name="circuit" value={circuit.nom} />
+    <p class="sa-hidden" aria-hidden="true">
+      <label
+        >Ne pas remplir ce champ&nbsp;: <input
+          name="bot-field"
+          tabindex="-1"
+          autocomplete="off"
+        /></label
+      >
+    </p>
+
+    <fieldset class="sa-group">
+      <legend class="font-serif">Ton voyage</legend>
+
+      <p class="sa-circuit">
+        <span class="sa-circuit__label">Circuit choisi</span>
+        <span class="sa-circuit__nom">{circuit.nom}</span>
+        <span class="sa-circuit__label">{circuit.duree} · {circuit.trajet}</span
+        >
+      </p>
+
+      <div class="sa-row">
+        <div class="sa-field">
+          <label for="sa-mois">Mois de départ</label>
+          <select id="sa-mois" name="mois-depart" required>
+            <option value="">Choisir</option>
+            {mois.map((m) => <option value={m}>{m}</option>)}
+          </select>
+        </div>
+        <div class="sa-field">
+          <label for="sa-annee">Année</label>
+          <select id="sa-annee" name="annee-depart" required>
+            <option value="">Choisir</option>
+            {annees.map((a) => <option value={String(a)}>{a}</option>)}
+          </select>
+        </div>
+      </div>
+
+      <div class="sa-field">
+        <label for="sa-dates"
+          >Dates précises <span class="sa-optional">facultatif</span></label
+        >
+        <input
+          id="sa-dates"
+          name="dates-precises"
+          type="text"
+          placeholder="Ex. du 4 au 19 juillet"
+        />
+      </div>
+
+      <div class="sa-row">
+        <div class="sa-field">
+          <label for="sa-adultes">Adultes</label>
+          <input
+            id="sa-adultes"
+            name="adultes"
+            type="number"
+            min="1"
+            max="12"
+            value="2"
+            inputmode="numeric"
+            required
+          />
+        </div>
+        <div class="sa-field">
+          <label for="sa-enfants">Enfants</label>
+          <input
+            id="sa-enfants"
+            name="enfants"
+            type="number"
+            min="0"
+            max="12"
+            value="0"
+            inputmode="numeric"
+          />
+        </div>
+      </div>
+
+      <div class="sa-field sa-ages" hidden>
+        <label for="sa-ages">Âge des enfants</label>
+        <input
+          id="sa-ages"
+          name="age-enfants"
+          type="text"
+          placeholder="Ex. 6 et 9 ans"
+        />
+      </div>
+
+      <div class="sa-field">
+        <span class="sa-choices__label" id="sa-heb-label">Hébergement</span>
+        <div
+          class="sa-choices"
+          role="radiogroup"
+          aria-labelledby="sa-heb-label"
+        >
+          {
+            hebergements.map((h, i) => (
+              <label class="sa-choice">
+                <input
+                  type="radio"
+                  name="hebergement"
+                  value={h}
+                  required={i === 0}
+                />
+                <span>{h}</span>
+              </label>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="sa-field">
+        <span class="sa-choices__label" id="sa-veh-label">Véhicule</span>
+        <div
+          class="sa-choices"
+          role="radiogroup"
+          aria-labelledby="sa-veh-label"
+        >
+          {
+            vehicules.map((v, i) => (
+              <label class="sa-choice">
+                <input
+                  type="radio"
+                  name="vehicule"
+                  value={v}
+                  required={i === 0}
+                />
+                <span>{v}</span>
+              </label>
+            ))
+          }
+        </div>
+      </div>
+
+      {
+        extra && (
+          <div class="sa-field">
+            <span class="sa-choices__label" id="sa-extra-label">
+              {extra}
+            </span>
+            <input type="hidden" name="option-supplementaire" value={extra} />
+            <div
+              class="sa-choices"
+              role="radiogroup"
+              aria-labelledby="sa-extra-label"
+            >
+              <label class="sa-choice">
+                <input type="radio" name="option-choisie" value="Oui" />
+                <span>Oui</span>
+              </label>
+              <label class="sa-choice">
+                <input type="radio" name="option-choisie" value="Non" checked />
+                <span>Non</span>
+              </label>
+            </div>
+          </div>
+        )
+      }
+    </fieldset>
+
+    <fieldset class="sa-group">
+      <legend class="font-serif">Toi</legend>
+
+      <div class="sa-row">
+        <div class="sa-field">
+          <label for="sa-prenom">Prénom</label>
+          <input
+            id="sa-prenom"
+            name="prenom"
+            type="text"
+            autocomplete="given-name"
+            required
+          />
+        </div>
+        <div class="sa-field">
+          <label for="sa-nom">Nom</label>
+          <input
+            id="sa-nom"
+            name="nom"
+            type="text"
+            autocomplete="family-name"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="sa-row">
+        <div class="sa-field">
+          <label for="sa-email">Email</label>
+          <input
+            id="sa-email"
+            name="email"
+            type="email"
+            autocomplete="email"
+            required
+          />
+        </div>
+        <div class="sa-field">
+          <label for="sa-tel">Téléphone (WhatsApp)</label>
+          <input
+            id="sa-tel"
+            name="telephone"
+            type="tel"
+            autocomplete="tel"
+            placeholder="+33 6 12 34 56 78"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="sa-field">
+        <label for="sa-message"
+          >Un mot à ajouter&nbsp;? <span class="sa-optional">facultatif</span
+          ></label
+        >
+        <textarea
+          id="sa-message"
+          name="message"
+          rows="3"
+          placeholder="Une occasion spéciale, une envie particulière…"
+        ></textarea>
+      </div>
+
+      <label class="sa-consent">
+        <input type="checkbox" name="consentement" value="Oui" required />
+        <span
+          >J’accepte que mes informations soient utilisées pour traiter ma
+          demande de voyage et transmises à l’agence partenaire qui l’organise (<a
+            href="/politique-confidentialite">en savoir plus</a
+          >).</span
+        >
+      </label>
+    </fieldset>
+
+    <p class="sa-error" role="alert" hidden></p>
+
+    <div class="sa-submit">
+      <button type="submit">Envoyer ma demande</button>
+      <p>Gratuit et sans engagement.</p>
+    </div>
+  </form>
+
+  <div class="sa-success" hidden tabindex="-1">
+    <h3 class="font-serif">
+      Merci <span class="sa-success__prenom"></span>&nbsp;!
+    </h3>
+    <p>
+      Ta demande pour <strong>{circuit.nom}</strong> est bien partie. Je reviens vers
+      toi très vite sur WhatsApp, puis notre agence partenaire te confirme ton voyage
+      et son prix exact dans la semaine.
+    </p>
+    <p class="sa-success__signature">Elena</p>
+  </div>
+</section>
+
+<style>
+  .sa-form {
+    --sa-ink: var(--color-warm-black);
+    --sa-muted: var(--color-warm-gray);
+    --sa-line: color-mix(in srgb, var(--color-warm-black) 18%, transparent);
+    --sa-surface: #ffffff;
+    --sa-soft: var(--color-creme-dark);
+    --sa-accent: var(--color-terracotta);
+    --sa-accent-ink: #ffffff;
+    --sa-error: #a33a2c;
+
+    max-width: 44rem;
+    margin: 0 auto;
+    color: var(--sa-ink);
+  }
+
+  .sa-form__intro h2 {
+    margin: 0 0 0.5rem;
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    line-height: 1.15;
+    text-align: center;
+  }
+  .sa-form__intro p {
+    margin: 0 auto 2.5rem;
+    color: var(--sa-muted);
+    line-height: 1.6;
+    max-width: 36rem;
+    text-align: center;
+  }
+
+  .sa-hidden {
+    position: absolute;
+    left: -9999px;
+  }
+
+  .sa-group {
+    border: 0;
+    margin: 0 0 2rem;
+    padding: 0;
+    min-width: 0;
+  }
+  .sa-group legend {
+    padding: 0;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+  }
+
+  .sa-circuit {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    margin: 0 0 1.25rem;
+    padding: 0.9rem 1rem;
+    background: var(--sa-soft);
+    border-left: 3px solid var(--sa-accent);
+    border-radius: 0 6px 6px 0;
+  }
+  .sa-circuit__label {
+    font-size: 0.85rem;
+    color: var(--sa-muted);
+  }
+  .sa-circuit__nom {
+    font-weight: 600;
+  }
+
+  .sa-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 1rem;
+  }
+  @media (max-width: 34rem) {
+    .sa-row {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .sa-field {
+    margin-bottom: 1.1rem;
+  }
+  .sa-field label,
+  .sa-choices__label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-size: 0.95rem;
+  }
+  .sa-optional {
+    font-size: 0.85rem;
+    color: var(--sa-muted);
+  }
+
+  .sa-field input[type='text'],
+  .sa-field input[type='email'],
+  .sa-field input[type='tel'],
+  .sa-field input[type='number'],
+  .sa-field select,
+  .sa-field textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.7rem 0.8rem;
+    font: inherit;
+    font-family:
+      system-ui,
+      -apple-system,
+      'Segoe UI',
+      sans-serif;
+    color: var(--sa-ink);
+    background: var(--sa-surface);
+    border: 1px solid var(--sa-line);
+    border-radius: 6px;
+  }
+  .sa-field textarea {
+    resize: vertical;
+  }
+  .sa-field input:focus-visible,
+  .sa-field select:focus-visible,
+  .sa-field textarea:focus-visible,
+  .sa-consent input:focus-visible {
+    outline: 2px solid var(--sa-accent);
+    outline-offset: 2px;
+  }
+  .sa-field [aria-invalid='true'] {
+    border-color: var(--sa-error);
+  }
+
+  .sa-choices {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .sa-choice {
+    position: relative;
+    margin: 0;
+  }
+  .sa-choice input {
+    position: absolute;
+    opacity: 0;
+    inset: 0;
+    margin: 0;
+    cursor: pointer;
+  }
+  .sa-choice span {
+    display: inline-block;
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--sa-line);
+    border-radius: 999px;
+    background: var(--sa-surface);
+    font-size: 0.95rem;
+    transition:
+      background-color 0.15s,
+      border-color 0.15s,
+      color 0.15s;
+  }
+  .sa-choice input:checked + span {
+    background: var(--sa-accent);
+    border-color: var(--sa-accent);
+    color: var(--sa-accent-ink);
+  }
+  .sa-choice input:focus-visible + span {
+    outline: 2px solid var(--sa-accent);
+    outline-offset: 2px;
+  }
+  .sa-choice input[aria-invalid='true'] + span {
+    border-color: var(--sa-error);
+  }
+
+  .sa-consent {
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-start;
+    font-size: 0.9rem;
+    color: var(--sa-muted);
+    line-height: 1.5;
+  }
+  .sa-consent input {
+    margin-top: 0.25rem;
+    accent-color: var(--sa-accent);
+  }
+  .sa-consent a {
+    color: var(--sa-accent);
+    text-decoration: underline;
+  }
+
+  .sa-error {
+    margin: 0 0 1rem;
+    padding: 0.8rem 1rem;
+    border-radius: 6px;
+    background: #fbeeec;
+    color: var(--sa-error);
+    font-size: 0.95rem;
+  }
+
+  .sa-submit button {
+    width: 100%;
+    padding: 0.95rem 1.5rem;
+    font: inherit;
+    font-size: 1.05rem;
+    color: var(--sa-accent-ink);
+    background: var(--sa-accent);
+    border: 0;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  .sa-submit button:hover {
+    background: var(--color-terracotta-dark);
+  }
+  .sa-submit button:focus-visible {
+    outline: 2px solid var(--sa-ink);
+    outline-offset: 3px;
+  }
+  .sa-submit button[disabled] {
+    opacity: 0.6;
+    cursor: wait;
+  }
+  .sa-submit p {
+    margin: 0.6rem 0 0;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--sa-muted);
+  }
+
+  .sa-success {
+    padding: 2rem 1.5rem;
+    background: var(--sa-soft);
+    border-radius: 10px;
+    line-height: 1.6;
+  }
+  .sa-success:focus {
+    outline: none;
+  }
+  .sa-success h3 {
+    margin: 0 0 0.6rem;
+    font-size: 1.5rem;
+  }
+  .sa-success p {
+    margin: 0 0 0.6rem;
+  }
+  .sa-success__signature {
+    font-style: italic;
+    margin-bottom: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sa-choice span {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  import { trackCircuitRequest } from '../lib/analytics';
+
+  const MSG_MANQUANT =
+    'Il manque quelques informations : vérifie les champs en rouge, ton hébergement, ton véhicule et la case de consentement.';
+  const MSG_ECHEC =
+    'Oups, ta demande n’a pas pu partir. Réessaie dans un instant, ou écris-moi sur WhatsApp.';
+
+  document
+    .querySelectorAll<HTMLElement>('[data-sa-form]')
+    .forEach((section) => {
+      const form = section.querySelector('form');
+      const success = section.querySelector<HTMLElement>('.sa-success');
+      if (!form || !success) return;
+
+      const enfants = form.querySelector<HTMLInputElement>(
+        'input[name="enfants"]'
+      );
+      const ages = form.querySelector<HTMLElement>('.sa-ages');
+      const error = form.querySelector<HTMLElement>('.sa-error');
+      const button = form.querySelector<HTMLButtonElement>(
+        'button[type="submit"]'
+      );
+
+      const toggleAges = () => {
+        if (ages && enfants) ages.hidden = !(Number(enfants.value) > 0);
+      };
+      enfants?.addEventListener('input', toggleAges);
+      toggleAges();
+
+      const showError = (msg: string) => {
+        if (!error) return;
+        error.textContent = msg;
+        error.hidden = false;
+      };
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (error) error.hidden = true;
+        form
+          .querySelectorAll('[aria-invalid]')
+          .forEach((el) => el.removeAttribute('aria-invalid'));
+
+        const invalid = Array.from(form.elements).filter(
+          (el): el is HTMLInputElement =>
+            'checkValidity' in el && !(el as HTMLInputElement).checkValidity()
+        );
+        if (invalid.length) {
+          invalid.forEach((el) => {
+            el.setAttribute('aria-invalid', 'true');
+            // Un groupe radio invalide : on marque toutes ses pastilles.
+            if (el.type === 'radio') {
+              form
+                .querySelectorAll(`input[name="${el.name}"]`)
+                .forEach((r) => r.setAttribute('aria-invalid', 'true'));
+            }
+          });
+          showError(MSG_MANQUANT);
+          invalid[0].focus();
+          return;
+        }
+
+        if (button) button.disabled = true;
+        try {
+          const data = new FormData(form);
+          const body = new URLSearchParams();
+          data.forEach((value, key) => body.append(key, String(value)));
+          const res = await fetch(form.getAttribute('action') ?? '/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: body.toString(),
+          });
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+          trackCircuitRequest(form.dataset.circuit ?? '');
+          const prenom = section.querySelector('.sa-success__prenom');
+          if (prenom)
+            prenom.textContent = String(data.get('prenom') ?? '').trim();
+          form.hidden = true;
+          success.hidden = false;
+          success.focus();
+        } catch (err) {
+          console.warn('[slow-adventures]', err);
+          showError(MSG_ECHEC);
+        } finally {
+          if (button) button.disabled = false;
+        }
+      });
+    });
+</script>

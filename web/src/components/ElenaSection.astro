@@ -11,9 +11,21 @@ interface Props {
   title: string;
   description: string;
   ctaHref: string;
+  ctaText?: string;
+  /** true : le bouton ouvre Calendly. false : lien classique. */
+  ctaCalendly?: boolean;
 }
 
-const { id, imageSrc, imageAlt, title, description, ctaHref } = Astro.props;
+const {
+  id,
+  imageSrc,
+  imageAlt,
+  title,
+  description,
+  ctaHref,
+  ctaText,
+  ctaCalendly = true,
+} = Astro.props;
 ---
 
 <section
@@ -56,6 +68,8 @@ const { id, imageSrc, imageAlt, title, description, ctaHref } = Astro.props;
         <div class="elena-text__el">
           <CTAButton
             href={ctaHref}
+            text={ctaText}
+            calendly={ctaCalendly}
             variant="solid"
             size="small"
             subtext=""

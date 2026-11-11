@@ -1,13 +1,10 @@
 ---
 import { getImage } from 'astro:assets';
-import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroSection from '../components/HeroSection.astro';
 import ElenaSection from '../components/ElenaSection.astro';
-import DestinationBlock from '../components/DestinationBlock.astro';
 import SectionReveal from '../components/SectionReveal.astro';
 import ProcessStep from '../components/ProcessStep.astro';
-import PricingRow from '../components/PricingRow.astro';
 import CTAButton from '../components/CTAButton.astro';
 import EmailCapture from '../components/EmailCapture.astro';
 import CalendlyModal from '../components/CalendlyModal.astro';
@@ -16,6 +13,7 @@ import ReturnVisitorBanner from '../components/ReturnVisitorBanner.astro';
 import ScrollProgress from '../components/ScrollProgress.astro';
 import FaqSection from '../components/FaqSection.astro';
 import HomepageCarousel from '../components/HomepageCarousel.astro';
+import CircuitCarousel from '../components/CircuitCarousel.astro';
 import heroPoster from '../assets/images/hero-poster.webp';
 import heroLogo from '../assets/images/logo-white.webp';
 import elenaPhoto from '../assets/images/elena.webp';
@@ -29,13 +27,8 @@ import carouselNewYork from '../assets/homepage-carousel/new-york.webp';
 import carouselAlaska from '../assets/homepage-carousel/alaska-aurores.webp';
 import carouselQuebec from '../assets/homepage-carousel/quebec.webp';
 import { processSteps } from '../data/processSteps';
-import { pricingRows } from '../data/pricing';
 import { faqLd } from '../data/faq';
-
-const allDestinations = await getCollection('destinations');
-const sortedDestinations = [...allDestinations]
-  .filter((d) => !d.data.draft && d.data.featured)
-  .sort((a, b) => a.data.order - b.data.order);
+import { CIRCUITS_URL } from '../data/contact';
 
 const optimizedPoster = await getImage({
   src: heroPoster,
@@ -82,8 +75,8 @@ const carouselSlides = [
 ---
 
 <BaseLayout
-  title="Slow Adventures — Voyages immersifs et sur mesure exclusivement en Amérique du Nord"
-  description="Création de voyages immersifs et sur mesure exclusivement en Amérique du Nord. Confie-moi ton prochain rêve — appel gratuit de 30 minutes."
+  title="Slow Adventures — Circuits slow travel aux États-Unis et au Canada"
+  description="Des circuits conçus par Elena pour mieux voyager aux États-Unis et au Canada. Tu choisis, on s’occupe du reste."
   heroPreloadImage={optimizedPoster.src}
   extraLd={faqLd}
 >
@@ -93,7 +86,7 @@ const carouselSlides = [
       videoSrc="/videos/hero.mp4"
       logoSrc={heroLogo}
       title="Slow Adventures"
-      subtitle="Voyages immersifs et sur mesure exclusivement en Amérique du Nord"
+      subtitle="Des circuits conçus par Elena pour mieux voyager aux États-Unis et au Canada. Tu choisis, on s’occupe du reste."
     />
   </header>
   <main id="main">
@@ -103,61 +96,12 @@ const carouselSlides = [
       imageSrc={elenaPhoto}
       imageAlt="Elena, créatrice de voyages immersifs en Amérique du Nord"
       title="Hello"
-      description="Moi c'est Elena, et je suis une véritable voyageuse dans l'âme. Tombée amoureuse de l'Amérique du Nord, j'ai créé SlowAdventures pour te proposer des voyages authentiques, fluides, 100% sur mesure et inspirés des valeurs du slow travel. Mon approche ? Écouter tes rêves, transformer tes envies en itinéraires uniques, et t'ouvrir les portes d'expériences mémorables. Si tu veux un voyage qui te ressemble vraiment, qui te connecte à l'âme des lieux et qui te laisse des souvenirs gravés pour toujours… tu es au bon endroit. Alors, plutôt team USA, Canada ou Alaska ?"
-      ctaHref={import.meta.env.PUBLIC_CALENDLY_URL}
+      description="Moi c’est Elena, et je suis une véritable voyageuse dans l’âme. Tombée amoureuse de l’Amérique du Nord, j’ai créé SlowAdventures pour partager les voyages qui me font rêver. Chaque circuit, je l’ai imaginé et construit avec soin, dans l’esprit du slow travel : des itinéraires pensés avec du sens, des hébergements choisis, et des expériences qui te connectent vraiment à l’âme des lieux. Pas besoin de tout organiser : tu choisis ton rêve, on s’occupe du reste, et tu pars l’esprit libre. Alors, plutôt team USA ou Canada ?"
+      ctaHref={CIRCUITS_URL}
+      ctaText="Découvre les circuits"
+      ctaCalendly={false}
     />
-    <section
-      id="destinations-intro"
-      aria-labelledby="heading-destinations-intro"
-      class="bg-creme sa-section-padding"
-    >
-      <SectionReveal animation="fade-up">
-        <h2
-          id="heading-destinations-intro"
-          class="font-serif text-3xl md:text-4xl text-warm-black text-center"
-        >
-          Des rêves pour t'inspirer
-        </h2>
-      </SectionReveal>
-    </section>
-    <section id="destinations" aria-labelledby="heading-destinations">
-      <h2 id="heading-destinations" class="sr-only">Nos destinations</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2">
-        {
-          sortedDestinations.map((dest) => (
-            <SectionReveal animation="fade-in">
-              <DestinationBlock
-                imageSrc={dest.data.image}
-                imageAlt={`Paysage de ${dest.data.country}`}
-                country={dest.data.country}
-                description={dest.data.description}
-                overlayColor={dest.data.overlayColor}
-                learnMoreHref={`/destinations/${dest.slug}/`}
-              />
-            </SectionReveal>
-          ))
-        }
-      </div>
-      <div class="bg-creme-dark text-center py-12">
-        <a
-          href="/destinations/"
-          class="inline-flex items-center gap-3 font-sans text-base font-medium text-terracotta hover:text-white border-2 border-terracotta hover:bg-terracotta px-6 py-3 rounded-full transition-all duration-200 group"
-        >
-          Voir toutes les destinations
-          <svg
-            class="w-4 h-4 transition-transform group-hover:translate-x-1"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="M5 12h14M12 5l7 7-7 7"></path>
-          </svg>
-        </a>
-      </div>
-    </section>
+    <CircuitCarousel />
     <section
       id="processus"
       aria-labelledby="heading-processus"
@@ -168,7 +112,7 @@ const carouselSlides = [
           id="heading-processus"
           class="font-serif text-3xl md:text-4xl text-warm-black text-center mb-12"
         >
-          La construction de TON aventure
+          Comment ton rêve prend vie
         </h2>
         <ol
           id="process-list"
@@ -181,6 +125,7 @@ const carouselSlides = [
                 title={step.title}
                 description={step.description}
                 icon={step.icon}
+                links={step.links}
               />
             ))
           }
@@ -262,7 +207,7 @@ const carouselSlides = [
             <p
               class="font-sans text-lg md:text-xl font-semibold text-warm-black/20 transition-none"
             >
-              Un voyage 100% sur mesure
+              Des circuits imaginés par une passionnée, pas par un algorithme
             </p>
           </li>
           <li
@@ -276,7 +221,7 @@ const carouselSlides = [
             <p
               class="font-sans text-lg md:text-xl font-semibold text-warm-black/20 transition-none"
             >
-              Un gain de temps énorme
+              Zéro organisation, zéro charge mentale
             </p>
           </li>
           <li
@@ -290,7 +235,8 @@ const carouselSlides = [
             <p
               class="font-sans text-lg md:text-xl font-semibold text-warm-black/20 transition-none"
             >
-              Moins de charge mentale
+              Réservations, paiement et assistance gérés par une agence
+              partenaire
             </p>
           </li>
           <li
@@ -304,21 +250,7 @@ const carouselSlides = [
             <p
               class="font-sans text-lg md:text-xl font-semibold text-warm-black/20 transition-none"
             >
-              Plus de flexibilité
-            </p>
-          </li>
-          <li
-            class="avantage-item flex items-center gap-5 md:gap-6"
-            data-avantage
-          >
-            <span
-              class="avantage-marker shrink-0 text-xl leading-none opacity-0 scale-75"
-              >✦</span
-            >
-            <p
-              class="font-sans text-lg md:text-xl font-semibold text-warm-black/20 transition-none"
-            >
-              Tu économises par rapport à une agence classique
+              Un voyage clés en main qui garde sa part d’aventure
             </p>
           </li>
         </ul>
@@ -442,93 +374,7 @@ const carouselSlides = [
       gsap.matchMedia().add('(prefers-reduced-motion: reduce)', () => {
         gsap.set('[data-process-step]', { opacity: 1, y: 0 });
       });
-
-      /* ── Pricing rows: labels flash terracotta one by one ── */
-      gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
-        const rows = document.querySelectorAll('[data-pricing-row]');
-        const pricingList = document.getElementById('pricing-list');
-        if (!rows.length || !pricingList) return;
-
-        gsap.set(rows, { opacity: 0, y: 20 });
-
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: pricingList,
-            start: 'top 80%',
-            end: 'bottom 20%',
-            scrub: 1.2,
-          },
-        });
-
-        rows.forEach((row, i) => {
-          const label = row.querySelector('dt');
-          const pos = i * 2;
-
-          tl.to(
-            row,
-            {
-              opacity: 1,
-              y: 0,
-              duration: 0.8,
-              ease: 'power2.out',
-            },
-            pos
-          );
-
-          if (label) {
-            tl.fromTo(
-              label,
-              { color: '#ffffff' },
-              { color: '#a65330', duration: 0.6, ease: 'power2.out' },
-              pos
-            );
-            tl.to(
-              label,
-              { color: '#ffffff', duration: 0.6, ease: 'power2.inOut' },
-              pos + 1
-            );
-          }
-        });
-
-        // Ensure timeline extends past last return
-        tl.set({}, {}, '+=0.5');
-
-        return () => {
-          tl.kill();
-        };
-      });
-
-      /* Reduced motion: pricing */
-      gsap.matchMedia().add('(prefers-reduced-motion: reduce)', () => {
-        gsap.set('[data-pricing-row]', { opacity: 1, y: 0 });
-      });
     </script>
-    <section
-      id="tarifs"
-      aria-labelledby="heading-tarifs"
-      class="bg-warm-black sa-section-padding"
-    >
-      <div class="max-w-3xl mx-auto">
-        <h2
-          id="heading-tarifs"
-          class="font-serif text-3xl md:text-4xl text-white text-center mb-12"
-        >
-          Ici, on est transparent
-        </h2>
-        <dl id="pricing-list" class="space-y-6">
-          {
-            pricingRows.map((row) => (
-              <PricingRow
-                label={row.label}
-                price={row.price}
-                descriptions={row.descriptions}
-                dark={true}
-              />
-            ))
-          }
-        </dl>
-      </div>
-    </section>
     <SectionReveal animation="fade-in">
       <HomepageCarousel slides={carouselSlides} />
     </SectionReveal>
@@ -546,10 +392,12 @@ const carouselSlides = [
             Ton prochain rêve commence ici
           </h2>
           <CTAButton
-            href={import.meta.env.PUBLIC_CALENDLY_URL}
+            href={CIRCUITS_URL}
+            calendly={false}
             variant="solid"
             size="default"
-            subtext="30 min, gratuit, sans engagement"
+            text="Choisis ton circuit"
+            subtext="Tout est déjà pensé pour toi, il ne te reste qu’à choisir."
           />
         </SectionReveal>
       </div>
@@ -558,6 +406,16 @@ const carouselSlides = [
       <EmailCapture />
     </SectionReveal>
     <FaqSection />
+    <div class="bg-creme text-center pb-16 md:pb-24 px-6">
+      <CTAButton
+        href={CIRCUITS_URL}
+        calendly={false}
+        variant="solid"
+        size="small"
+        text="Découvre les circuits"
+        subtext=""
+      />
+    </div>
   </main>
   <CalendlyModal />
   <StickyMobileCTA />

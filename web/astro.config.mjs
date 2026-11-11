@@ -8,6 +8,11 @@ import netlify from '@astrojs/netlify';
 export default defineConfig({
   site: process.env.SITE_URL || 'https://slowadventures.fr',
   adapter: netlify(),
+  // L'ancienne page « Destinations » devient « Circuits ».
+  // Les pages /destinations/<pays>/ restent en ligne pour le référencement.
+  redirects: {
+    '/destinations': '/circuits/',
+  },
   integrations: [
     sitemap({
       filter: (page) =>

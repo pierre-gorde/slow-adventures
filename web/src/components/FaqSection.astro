@@ -1,6 +1,6 @@
 ---
 import SectionReveal from './SectionReveal.astro';
-import { faqItems } from '../data/faq';
+import { faqItems, faqLinks } from '../data/faq';
 ---
 
 <section
@@ -29,6 +29,21 @@ import { faqItems } from '../data/faq';
               <p class="pb-5 text-warm-black/70 leading-relaxed">
                 {item.acceptedAnswer.text}
               </p>
+              {faqLinks[item.name] && (
+                <p class="pb-5 -mt-2 flex flex-wrap gap-x-5 gap-y-2">
+                  {faqLinks[item.name].map((link) => (
+                    <a
+                      href={link.href}
+                      data-calendly-trigger={link.calendly ? '' : undefined}
+                      target={link.calendly ? undefined : '_blank'}
+                      rel={link.calendly ? undefined : 'noopener noreferrer'}
+                      class="text-terracotta underline underline-offset-4 hover:text-terracotta-dark"
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                </p>
+              )}
             </details>
           ))
         }

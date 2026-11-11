@@ -111,6 +111,7 @@ const tripLd = {
           </ul>
           <a
             href="#je-veux-ce-voyage"
+            data-open-form
             class="inline-block font-sans font-semibold text-white bg-terracotta hover:bg-terracotta-dark px-8 py-3.5 rounded-full transition-colors"
           >
             Je veux ce voyage
@@ -237,10 +238,18 @@ const tripLd = {
         <div class="text-center mt-12">
           <a
             href="#je-veux-ce-voyage"
+            data-open-form
             class="inline-block font-sans font-semibold text-white bg-terracotta hover:bg-terracotta-dark px-10 py-4 rounded-full text-lg transition-colors"
           >
             Je veux ce voyage
           </a>
+          <p
+            class="font-sans text-warm-gray leading-relaxed max-w-md mx-auto mt-5"
+          >
+            Dis-moi quand et comment tu veux partir. Je reviens vers toi sur
+            WhatsApp, puis notre agence partenaire te confirme ton voyage et son
+            prix exact dans la semaine.
+          </p>
           <p class="font-sans text-warm-gray mt-4">
             Une question&nbsp;?
             <a
@@ -254,10 +263,35 @@ const tripLd = {
       </div>
     </section>
 
-    <!-- FORMULAIRE -->
-    <div class="bg-creme sa-section-padding">
-      <CircuitForm circuit={circuit} />
-    </div>
+    <!-- FORMULAIRE (fenêtre qui s'ouvre au clic sur « Je veux ce voyage ») -->
+    <dialog
+      id="circuit-dialog"
+      class="circuit-dialog"
+      aria-labelledby="sa-form-titre"
+    >
+      <button
+        type="button"
+        class="circuit-dialog__close"
+        data-close-form
+        aria-label="Fermer le formulaire"
+      >
+        <svg
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          aria-hidden="true"
+        >
+          <path d="M18 6 6 18M6 6l12 12"></path>
+        </svg>
+      </button>
+      <div class="circuit-dialog__body">
+        <CircuitForm circuit={circuit} />
+      </div>
+    </dialog>
 
     <!-- RETOUR -->
     <div class="text-center py-8 bg-creme border-t border-warm-black/5">
@@ -367,11 +401,98 @@ const tripLd = {
     color: var(--color-terracotta);
   }
 
-  :global(#je-veux-ce-voyage) {
-    scroll-margin-top: 5rem;
+  /* Fenêtre du formulaire */
+  .circuit-dialog {
+    width: min(46rem, calc(100vw - 2rem));
+    max-height: calc(100dvh - 2rem);
+    margin: auto;
+    padding: 0;
+    border: 0;
+    border-radius: 1rem;
+    background: var(--color-creme);
+    box-shadow: 0 24px 60px rgba(44, 40, 37, 0.35);
+    overflow: hidden;
+  }
+
+  .circuit-dialog[open] {
+    display: flex;
+    flex-direction: column;
+    animation: dialog-in 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .circuit-dialog::backdrop {
+    background: rgba(44, 40, 37, 0.6);
+    backdrop-filter: blur(2px);
+  }
+
+  .circuit-dialog__body {
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 2.5rem 1.5rem 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .circuit-dialog__body {
+      padding: 3rem 2.5rem 2.5rem;
+    }
+  }
+
+  /* Sur mobile : plein écran */
+  @media (max-width: 639px) {
+    .circuit-dialog {
+      width: 100vw;
+      max-width: 100vw;
+      height: 100dvh;
+      max-height: 100dvh;
+      border-radius: 0;
+    }
+  }
+
+  .circuit-dialog__close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    z-index: 1;
+    width: 2.75rem;
+    height: 2.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background: #fff;
+    color: var(--color-warm-black);
+    box-shadow: 0 2px 8px rgba(44, 40, 37, 0.15);
+    cursor: pointer;
+  }
+
+  .circuit-dialog__close:hover {
+    color: var(--color-terracotta);
+  }
+
+  .circuit-dialog__close:focus-visible {
+    outline: 2px solid var(--color-terracotta);
+    outline-offset: 2px;
+  }
+
+  :global(html:has(.circuit-dialog[open])) {
+    overflow: hidden;
+  }
+
+  @keyframes dialog-in {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
+    .circuit-dialog[open] {
+      animation: none;
+    }
     .circuit-hero__text {
       animation: none;
       opacity: 1;
@@ -379,3 +500,38 @@ const tripLd = {
     }
   }
 </style>
+
+<script>
+  const dialog = document.getElementById(
+    'circuit-dialog'
+  ) as HTMLDialogElement | null;
+
+  if (dialog) {
+    const open = () => {
+      if (dialog.open) return;
+      dialog.showModal();
+      dialog
+        .querySelector<HTMLElement>('.circuit-dialog__body')
+        ?.scrollTo(0, 0);
+    };
+    const close = () => dialog.close();
+
+    document.querySelectorAll('[data-open-form]').forEach((btn) =>
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        open();
+      })
+    );
+    dialog
+      .querySelectorAll('[data-close-form]')
+      .forEach((btn) => btn.addEventListener('click', close));
+
+    // Clic sur le fond sombre : on ferme.
+    dialog.addEventListener('click', (e) => {
+      if (e.target === dialog) close();
+    });
+
+    // Lien direct vers /circuits/<circuit>/#je-veux-ce-voyage
+    if (window.location.hash === '#je-veux-ce-voyage') open();
+  }
+</script>

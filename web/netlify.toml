@@ -1,9 +1,15 @@
-# Monorepo: le deploy se fait via GitHub Actions + netlify-cli (voir .github/workflows/deploy.yml)
-# Cette section [build] est utilisée uniquement si Netlify build est activé dans l'UI.
-# Dans ce cas, configurer base = "web" dans Netlify UI > Build settings.
+# Seul chemin de déploiement : le build Netlify déclenché par Git (base directory
+# = "web" dans Netlify UI > Build settings). Pas de deploy depuis GitHub Actions.
+# - Deploy previews (PR) : build seul, pour que la preview existe même si le lint
+#   échoue. Lint et tests tournent sur la PR via .github/workflows/verification.yml.
+# - Production (push sur main) : lint et tests d'abord ; un échec annule la mise
+#   en ligne et la version précédente reste publiée.
 [build]
   command = "npm run build"
   publish = "dist"
+
+[context.production]
+  command = "npm run lint && npm run test && npm run build"
 
 [[headers]]
   for = "/*"

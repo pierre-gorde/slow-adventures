@@ -318,7 +318,8 @@ const carouselSlides = [
         });
       });
 
-      /* ── Process steps: appear one by one, title flashes terracotta ── */
+      /* ── Process steps: appear row by row (steps side by side appear
+       *    together), title flashes terracotta ── */
       gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
         const steps = document.querySelectorAll('[data-process-step]');
         const processList = document.getElementById('process-list');
@@ -330,14 +331,23 @@ const carouselSlides = [
           scrollTrigger: {
             trigger: processList,
             start: 'top 80%',
-            end: 'bottom 40%',
+            end: 'bottom 70%',
             scrub: 1.2,
           },
         });
 
-        steps.forEach((step, i) => {
+        // Group steps by visual row (2 per row on desktop, 1 on mobile)
+        // so that steps on the same line appear at the same time.
+        const rowTops = [
+          ...new Set(
+            Array.from(steps, (step) => (step as HTMLElement).offsetTop)
+          ),
+        ].sort((a, b) => a - b);
+
+        steps.forEach((step) => {
           const title = step.querySelector('.process-step__title');
-          const pos = i * 1.8;
+          const row = rowTops.indexOf((step as HTMLElement).offsetTop);
+          const pos = row * 1.8;
 
           tl.to(
             step,

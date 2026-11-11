@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex" />
+    <title>Formulaires Slow Adventures</title>
+  </head>
+  <body>
+    <!--
+      Déclaration des formulaires pour Netlify Forms (non affichée sur le site).
+      Le formulaire visible est dans src/components/CircuitForm.astro :
+      tout champ ajouté là-bas doit aussi être ajouté ici.
+    -->
+    <form
+      name="demande-circuit"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      hidden
+    >
+      <input type="hidden" name="form-name" value="demande-circuit" />
+      <input name="bot-field" />
+      <input name="circuit" />
+      <input name="mois-depart" />
+      <input name="annee-depart" />
+      <input name="dates-precises" />
+      <input name="adultes" />
+      <input name="enfants" />
+      <input name="age-enfants" />
+      <input name="hebergement" />
+      <input name="vehicule" />
+      <input name="option-supplementaire" />
+      <input name="option-choisie" />
+      <input name="prenom" />
+      <input name="nom" />
+      <input name="email" type="email" />
+      <input name="telephone" />
+      <textarea name="message"></textarea>
+      <input name="consentement" />
+    </form>
+  </body>
+</html>

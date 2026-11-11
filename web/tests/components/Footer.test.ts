@@ -78,8 +78,8 @@ describe('Footer.astro', () => {
       expect(footer).toContain('py-8');
     });
 
-    it('uses max-w-[640px] mx-auto for centered width', () => {
-      expect(footer).toContain('max-w-[640px]');
+    it('uses max-w-[1100px] mx-auto for centered width', () => {
+      expect(footer).toContain('max-w-[1100px]');
       expect(footer).toContain('mx-auto');
     });
   });

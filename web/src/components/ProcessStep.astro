@@ -4,9 +4,28 @@ interface Props {
   title: string;
   description: string;
   icon?: string;
+  links?: { label: string; href: string; calendly?: boolean }[];
 }
 
-const { number, title, description, icon } = Astro.props;
+const { number, title, description, icon, links = [] } = Astro.props;
+
+const escapeHtml = (t: string) =>
+  t
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+
+// Construit en une seule chaîne pour éviter les espaces parasites autour des liens.
+const linksHtml = links
+  .map((link) => {
+    const attrs = link.calendly
+      ? 'data-calendly-trigger'
+      : 'target="_blank" rel="noopener noreferrer"';
+    return `<a href="${escapeHtml(link.href)}" ${attrs} class="text-terracotta underline underline-offset-4 hover:text-terracotta-dark">${escapeHtml(link.label)}</a>`;
+  })
+  .join(' ou ')
+  .concat(links.length > 0 ? '.' : '');
 ---
 
 <li
@@ -29,6 +48,6 @@ const { number, title, description, icon } = Astro.props;
     {title}
   </h3>
   <p class="font-sans text-warm-gray leading-relaxed whitespace-pre-line">
-    {description}
+    <Fragment set:html={escapeHtml(description) + linksHtml} />
   </p>
 </li>

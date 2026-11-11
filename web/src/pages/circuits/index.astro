@@ -1,0 +1,276 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CircuitCard from '../../components/CircuitCard.astro';
+import CTAButton from '../../components/CTAButton.astro';
+import CalendlyModal from '../../components/CalendlyModal.astro';
+import SectionReveal from '../../components/SectionReveal.astro';
+import destPoster from '../../assets/images/destinations-hero-poster.webp';
+import { circuits, circuitHref } from '../../data/circuits';
+import { CALENDLY_URL } from '../../data/contact';
+
+const collectionLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Les circuits — Slow Adventures',
+  description:
+    'Les circuits Slow Adventures aux États-Unis et au Canada, imaginés par Elena.',
+  url: Astro.url.toString(),
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: circuits.map((c, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: c.nom,
+      url: new URL(circuitHref(c), Astro.site).toString(),
+    })),
+  },
+};
+---
+
+<BaseLayout
+  title="Les circuits — Slow Adventures"
+  description="Plutôt USA ou Canada ? Découvre les circuits Slow Adventures, imaginés par Elena pour mieux voyager aux États-Unis et au Canada."
+  extraLd={collectionLd}
+>
+  <main id="main">
+    <!-- ═══════════════════════════════════════════════
+         MINI-HERO
+    ═══════════════════════════════════════════════ -->
+    <section
+      class="dest-listing-hero relative overflow-hidden"
+      aria-label="En-tête circuits"
+    >
+      <Image
+        src={destPoster}
+        alt="Paysage d'Amérique du Nord"
+        class="dest-listing-hero__poster"
+        widths={[768, 1440]}
+        sizes="100vw"
+        loading="eager"
+        decoding="async"
+      />
+      <video
+        class="dest-listing-hero__video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        aria-hidden="true"
+      >
+        <source src="/videos/destinations-hero.mp4" type="video/mp4" />
+      </video>
+      <div class="dest-listing-hero__overlay" aria-hidden="true"></div>
+      <div class="max-w-4xl mx-auto text-center px-6 relative z-10">
+        <p
+          class="font-sans text-white/60 text-xs uppercase tracking-[0.25em] mb-4"
+        >
+          Slow Adventures
+        </p>
+        <h1
+          class="font-serif text-4xl md:text-5xl lg:text-6xl text-white leading-tight mb-3"
+        >
+          Ton aventure t'attend ici
+        </h1>
+        <p
+          class="font-sans text-white/80 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
+        >
+          Plutôt USA ou Canada&nbsp;? Chaque circuit est pensé pour mieux
+          voyager.
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         LISTE DES CIRCUITS
+    ═══════════════════════════════════════════════ -->
+    <section class="bg-creme" aria-label="Liste des circuits">
+      <ul
+        class="max-w-5xl mx-auto px-4 md:px-8 py-10 md:py-16 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 list-none"
+      >
+        {
+          circuits.map((circuit) => (
+            <li class="circuit-list__item">
+              <CircuitCard circuit={circuit} headingLevel="h2" />
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         CTA SECTION
+    ═══════════════════════════════════════════════ -->
+    <section
+      class="dest-cta-band sa-section-padding text-center"
+      aria-labelledby="dest-listing-cta-heading"
+    >
+      <SectionReveal animation="scale-in">
+        <div class="max-w-2xl mx-auto">
+          <h2
+            id="dest-listing-cta-heading"
+            class="font-serif text-3xl md:text-4xl text-white mb-5"
+          >
+            Tu hésites entre deux circuits&nbsp;?
+          </h2>
+          <p class="font-sans text-white/85 text-lg mb-10 leading-relaxed">
+            Pose-moi tes questions, je t’aide à trouver celui qui te correspond.
+          </p>
+          <CTAButton
+            href={CALENDLY_URL}
+            variant="outline"
+            text="Réserve 15 min avec Elena"
+            subtext="Gratuit, sans engagement"
+          />
+        </div>
+      </SectionReveal>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         BACK LINK
+    ═══════════════════════════════════════════════ -->
+    <div class="text-center py-8 bg-creme">
+      <a
+        href="/"
+        aria-label="Retour à l'accueil"
+        class="inline-flex items-center gap-2 font-sans text-warm-black/60 hover:text-terracotta transition-colors text-sm"
+      >
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M19 12H5M5 12l7 7M5 12l7-7"></path>
+        </svg>
+        Retour à l'accueil
+      </a>
+    </div>
+  </main>
+  <CalendlyModal />
+</BaseLayout>
+
+<style>
+  /* Hero */
+  .dest-listing-hero {
+    padding: 8rem 1.5rem 3rem;
+  }
+
+  @media (min-width: 768px) {
+    .dest-listing-hero {
+      padding: 10rem 3rem 4rem;
+    }
+  }
+
+  .dest-listing-hero__poster {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+  .dest-listing-hero__video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+
+  .dest-listing-hero__video.is-playing {
+    opacity: 1;
+  }
+
+  .dest-listing-hero__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.5) 0%,
+      rgba(0, 0, 0, 0.35) 60%,
+      rgba(0, 0, 0, 0.6) 100%
+    );
+  }
+
+  /* CTA band */
+  .dest-cta-band {
+    background: linear-gradient(
+      135deg,
+      var(--color-terracotta) 0%,
+      var(--color-ambre) 60%,
+      color-mix(in srgb, var(--color-ambre) 70%, var(--color-sauge)) 100%
+    );
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .circuit-list__item {
+      animation: card-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+    .circuit-list__item:nth-child(2) {
+      animation-delay: 0.12s;
+    }
+  }
+
+  @keyframes card-in {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>
+
+<script>
+  // ── Video autoplay (same pattern as homepage HeroSection) ──
+  (function initDestVideo() {
+    const video = document.querySelector<HTMLVideoElement>(
+      '.dest-listing-hero__video'
+    );
+    if (!video) return;
+
+    const saveData =
+      (navigator as unknown as { connection?: { saveData?: boolean } })
+        .connection?.saveData === true;
+    const reducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches;
+
+    if (saveData || reducedMotion) {
+      video.remove();
+      return;
+    }
+
+    video
+      .play()
+      .then(() => {
+        video.classList.add('is-playing');
+      })
+      .catch(() => {});
+
+    document.addEventListener('visibilitychange', function () {
+      if (document.visibilityState !== 'visible') return;
+      if (!video.paused) return;
+      video
+        .play()
+        .then(() => {
+          video.classList.add('is-playing');
+        })
+        .catch(() => {});
+    });
+  })();
+</script>

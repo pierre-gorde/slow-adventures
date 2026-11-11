@@ -145,9 +145,8 @@ describe('[slug].astro — page dynamique destinations', () => {
       expect(page).toContain("'@type': 'Audience'");
     });
 
-    it('contient un offers utilisant PUBLIC_CALENDLY_URL pour le Discovery Call', () => {
-      expect(page).toContain('PUBLIC_CALENDLY_URL');
-      expect(page).toContain('https://slowadventures.fr');
+    it('contient un offers utilisant le lien Calendly partagé', () => {
+      expect(page).toContain('url: CALENDLY_URL');
     });
 
     it('passe extraLd={touristDestinationLd} à BaseLayout', () => {
@@ -175,15 +174,15 @@ describe('[slug].astro — page dynamique destinations', () => {
       expect(page).toContain('dest-section__header');
     });
 
-    it('contient un CTAButton "Confie-moi ton prochain rêve"', () => {
+    it('contient un CTAButton "Découvre les circuits"', () => {
       expect(page).toContain('<CTAButton');
-      expect(page).toContain('Confie-moi ton prochain rêve');
+      expect(page).toContain('Découvre les circuits');
     });
 
-    it('contient un lien retour vers /destinations/ avec aria-label', () => {
-      expect(page).toContain('href="/destinations/"');
-      expect(page).toContain('Toutes les destinations');
-      expect(page).toContain('aria-label="Retour à toutes les destinations"');
+    it('contient un lien retour vers les circuits avec aria-label', () => {
+      expect(page).toContain('href={CIRCUITS_URL}');
+      expect(page).toContain('Tous les circuits');
+      expect(page).toContain('aria-label="Voir tous les circuits"');
     });
 
     it('contient un main id="main" pour l\'accessibilité', () => {

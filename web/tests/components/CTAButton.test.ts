@@ -17,7 +17,7 @@ describe('CTAButton.astro', () => {
   describe('Props interface', () => {
     it('defines text prop with default value', () => {
       expect(component).toContain('text');
-      expect(component).toContain('Confie-moi ton prochain rêve');
+      expect(component).toContain('Réserve 15 min avec Elena');
     });
 
     it('defines subtext as optional prop', () => {

@@ -4,6 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import CTAButton from '../components/CTAButton.astro';
 import CalendlyModal from '../components/CalendlyModal.astro';
 import SectionReveal from '../components/SectionReveal.astro';
+import { CIRCUITS_URL } from '../data/contact';
 import ScrollHint from '../components/ScrollHint.astro';
 import MediaGallery from '../components/MediaGallery.astro';
 import type { MediaItem } from '../types/media';
@@ -206,7 +207,9 @@ const keywords = [
           </div>
           <div class="text-center mt-10">
             <CTAButton
-              href={import.meta.env.PUBLIC_CALENDLY_URL}
+              href={CIRCUITS_URL}
+              calendly={false}
+              text="Découvre les circuits"
               variant="solid"
               size="small"
               subtext=""
@@ -253,10 +256,10 @@ const keywords = [
           </div>
           <div class="flex flex-wrap justify-center gap-4 mt-10">
             <a
-              href="/destinations/"
+              href={CIRCUITS_URL}
               class="inline-flex items-center gap-3 font-sans text-base font-medium text-terracotta hover:text-white border-2 border-terracotta hover:bg-terracotta px-6 py-3 rounded-full transition-all duration-200 group"
             >
-              Voir toutes les destinations
+              Voir tous les circuits
               <svg
                 class="w-4 h-4 transition-transform group-hover:translate-x-1"
                 viewBox="0 0 24 24"
@@ -281,11 +284,6 @@ const keywords = [
     >
       <SectionReveal animation="scale-in">
         <div class="max-w-2xl mx-auto">
-          <p
-            class="font-sans text-white/70 text-xs uppercase tracking-[0.2em] mb-5"
-          >
-            Travel Planning sur mesure
-          </p>
           <h2
             id="philo-cta-heading"
             class="font-serif text-3xl md:text-4xl text-white mb-5"
@@ -293,14 +291,14 @@ const keywords = [
             Prêt(e) à voyager autrement ?
           </h2>
           <p class="font-sans text-white/85 text-lg mb-10 leading-relaxed">
-            Dis-moi tes envies, tes contraintes, tes rêves — je m'occupe du
-            reste.
+            Tu choisis ton rêve, on s’occupe du reste.
           </p>
           <CTAButton
-            href={import.meta.env.PUBLIC_CALENDLY_URL}
+            href={CIRCUITS_URL}
+            calendly={false}
             variant="outline"
-            text="Confie-moi ton prochain rêve"
-            subtext="30 min, gratuit, sans engagement"
+            text="Découvre les circuits"
+            subtext="Gratuit et sans engagement"
           />
         </div>
       </SectionReveal>

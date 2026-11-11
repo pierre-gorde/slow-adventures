@@ -31,8 +31,9 @@ describe('CalendlyModal.astro', () => {
   });
 
   describe('Calendly URL configuration (AC #2)', () => {
-    it('references PUBLIC_CALENDLY_URL env variable', () => {
-      expect(component).toContain('PUBLIC_CALENDLY_URL');
+    it('uses the shared 15-minute Calendly link', () => {
+      expect(component).toContain('CALENDLY_URL');
+      expect(component).toContain("from '../data/contact'");
     });
 
     it('uses a data attribute to pass URL to script', () => {

@@ -1,0 +1,381 @@
+---
+import { Image, getImage } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CalendlyModal from '../../components/CalendlyModal.astro';
+import SectionReveal from '../../components/SectionReveal.astro';
+import ScrollHint from '../../components/ScrollHint.astro';
+import DestinationGallery from '../../components/DestinationGallery.astro';
+import CircuitForm from '../../components/CircuitForm.astro';
+import { circuits } from '../../data/circuits';
+import type { Circuit } from '../../data/circuits';
+import { CALENDLY_URL, CIRCUITS_URL } from '../../data/contact';
+
+export function getStaticPaths() {
+  return circuits.map((circuit) => ({
+    params: { slug: circuit.slug },
+    props: { circuit },
+  }));
+}
+
+type Props = { circuit: Circuit };
+const { circuit } = Astro.props;
+
+const optimizedHero = await getImage({
+  src: circuit.hero,
+  width: 1440,
+  format: 'webp',
+});
+const carteFull = await getImage({
+  src: circuit.carte,
+  width: 2000,
+  format: 'webp',
+});
+
+const tripLd = {
+  '@context': 'https://schema.org',
+  '@type': 'TouristTrip',
+  name: circuit.nom,
+  description: circuit.metaDescription,
+  url: Astro.url.toString(),
+  itinerary: {
+    '@type': 'ItemList',
+    itemListElement: circuit.etapes.map((e, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: `${e.jours} · ${e.lieu}`,
+    })),
+  },
+  provider: {
+    '@type': 'Organization',
+    name: 'Slow Adventures',
+    url: 'https://slowadventures.fr',
+  },
+};
+---
+
+<BaseLayout
+  title={circuit.metaTitle}
+  description={circuit.metaDescription}
+  heroPreloadImage={optimizedHero.src}
+  ogImage={optimizedHero.src}
+  extraLd={tripLd}
+>
+  <main id="main">
+    <!-- HERO -->
+    <section
+      class="circuit-hero relative overflow-hidden"
+      aria-label={`Circuit ${circuit.nom}`}
+    >
+      <Image
+        src={circuit.hero}
+        alt={circuit.heroAlt}
+        widths={[768, 1440, 2880]}
+        sizes="100vw"
+        loading="eager"
+        decoding="async"
+        class="circuit-hero__img absolute inset-0 w-full h-full object-cover"
+      />
+      <div
+        class="absolute inset-0 bg-linear-to-b from-warm-black/55 via-warm-black/20 to-warm-black/80"
+        aria-hidden="true"
+      >
+      </div>
+      <div
+        class="circuit-hero__content relative z-10 flex flex-col justify-end items-center text-center px-6 pb-28"
+      >
+        <div class="circuit-hero__text max-w-3xl">
+          <p
+            class="font-sans text-white/70 text-xs uppercase tracking-[0.25em] mb-4"
+          >
+            Slow Adventures · Circuit
+          </p>
+          <h1
+            class="font-serif text-4xl md:text-6xl lg:text-7xl text-white leading-tight mb-5"
+          >
+            {circuit.nom}
+          </h1>
+          <p class="font-sans text-white text-lg md:text-xl mb-5">
+            {circuit.duree} · {circuit.trajet}
+          </p>
+          <ul
+            class="flex flex-wrap justify-center gap-2 mb-8 list-none p-0"
+            aria-label="Ambiance du circuit"
+          >
+            {
+              circuit.tags.map((tag) => (
+                <li class="font-sans text-xs md:text-sm text-white px-3 py-1.5 rounded-full bg-white/15 backdrop-blur-sm border border-white/30">
+                  {tag}
+                </li>
+              ))
+            }
+          </ul>
+          <a
+            href="#je-veux-ce-voyage"
+            class="inline-block font-sans font-semibold text-white bg-terracotta hover:bg-terracotta-dark px-8 py-3.5 rounded-full transition-colors"
+          >
+            Je veux ce voyage
+          </a>
+        </div>
+      </div>
+      <ScrollHint />
+    </section>
+
+    <!-- GALERIE -->
+    <DestinationGallery images={circuit.gallery} country={circuit.nom} />
+
+    <!-- POURQUOI CE CIRCUIT -->
+    <section
+      class="bg-creme sa-section-padding"
+      aria-labelledby="heading-pourquoi"
+    >
+      <SectionReveal animation="fade-up">
+        <div class="max-w-3xl mx-auto">
+          <h2
+            id="heading-pourquoi"
+            class="circuit-section__header font-serif text-2xl md:text-3xl text-warm-black leading-tight mb-8 pb-3"
+          >
+            Pourquoi ce circuit
+          </h2>
+          <p class="circuit-lead font-sans text-warm-black/85">
+            {circuit.pourquoi}
+          </p>
+        </div>
+      </SectionReveal>
+    </section>
+
+    <!-- CARTE -->
+    <section
+      class="bg-white sa-section-padding"
+      aria-labelledby="heading-carte"
+    >
+      <div class="max-w-5xl mx-auto">
+        <h2
+          id="heading-carte"
+          class="circuit-section__header font-serif text-2xl md:text-3xl text-warm-black leading-tight mb-8 pb-3 max-w-3xl mx-auto"
+        >
+          Carte du trajet
+        </h2>
+        <a
+          href={carteFull.src}
+          target="_blank"
+          rel="noopener"
+          class="block rounded-2xl overflow-hidden shadow-sm border border-warm-black/5"
+          aria-label="Agrandir la carte du trajet (nouvel onglet)"
+        >
+          <Image
+            src={circuit.carte}
+            alt={circuit.carteAlt}
+            widths={[640, 1024, 1600]}
+            sizes="(min-width: 1024px) 64rem, 100vw"
+            loading="lazy"
+            decoding="async"
+            class="w-full h-auto"
+          />
+        </a>
+      </div>
+    </section>
+
+    <!-- ÉTAPES -->
+    <section
+      class="bg-creme sa-section-padding"
+      aria-labelledby="heading-etapes"
+    >
+      <div class="max-w-3xl mx-auto">
+        <h2
+          id="heading-etapes"
+          class="circuit-section__header font-serif text-2xl md:text-3xl text-warm-black leading-tight mb-10 pb-3"
+        >
+          Ton voyage, étape par étape
+        </h2>
+        <ol class="circuit-timeline list-none p-0 m-0">
+          {
+            circuit.etapes.map((etape, i) => (
+              <li class="circuit-timeline__item">
+                <span class="circuit-timeline__dot" aria-hidden="true">
+                  {i + 1}
+                </span>
+                <h3 class="font-serif text-xl text-warm-black leading-snug">
+                  <span class="text-terracotta">{etape.jours}</span> ·{' '}
+                  {etape.lieu}
+                </h3>
+                {etape.route && (
+                  <p class="font-sans text-sm text-warm-gray mt-1">
+                    {etape.route}
+                  </p>
+                )}
+                <p class="font-sans text-warm-black/85 leading-relaxed mt-2">
+                  {etape.texte}
+                </p>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </section>
+
+    <!-- OPTIONS -->
+    <section
+      class="bg-white sa-section-padding"
+      aria-labelledby="heading-options"
+    >
+      <div class="max-w-3xl mx-auto">
+        <h2
+          id="heading-options"
+          class="circuit-section__header font-serif text-2xl md:text-3xl text-warm-black leading-tight mb-8 pb-3"
+        >
+          Tes options
+        </h2>
+        <ul class="circuit-options list-none p-0 m-0 space-y-4">
+          {
+            circuit.options.map((opt) => (
+              <li class="font-sans text-lg text-warm-black leading-relaxed">
+                <strong>{opt.label}&nbsp;:</strong> {opt.texte}
+              </li>
+            ))
+          }
+        </ul>
+        <div class="text-center mt-12">
+          <a
+            href="#je-veux-ce-voyage"
+            class="inline-block font-sans font-semibold text-white bg-terracotta hover:bg-terracotta-dark px-10 py-4 rounded-full text-lg transition-colors"
+          >
+            Je veux ce voyage
+          </a>
+          <p class="font-sans text-warm-gray mt-4">
+            Une question&nbsp;?
+            <a
+              href={CALENDLY_URL}
+              data-calendly-trigger
+              class="text-terracotta underline underline-offset-4 hover:text-terracotta-dark"
+              >Réserve 15 min avec Elena</a
+            >
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMULAIRE -->
+    <div class="bg-creme sa-section-padding">
+      <CircuitForm circuit={circuit} />
+    </div>
+
+    <!-- RETOUR -->
+    <div class="text-center py-8 bg-creme border-t border-warm-black/5">
+      <a
+        href={CIRCUITS_URL}
+        class="inline-flex items-center gap-2 font-sans text-warm-black/60 hover:text-terracotta transition-colors text-sm"
+      >
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M19 12H5M5 12l7 7M5 12l7-7"></path>
+        </svg>
+        Tous les circuits
+      </a>
+    </div>
+  </main>
+  <CalendlyModal />
+</BaseLayout>
+
+<style>
+  .circuit-hero,
+  .circuit-hero__content {
+    min-height: 100svh;
+  }
+
+  .circuit-hero__text {
+    opacity: 0;
+    transform: translateY(32px);
+    animation: hero-entrance 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+  }
+
+  @keyframes hero-entrance {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .circuit-section__header {
+    border-bottom: 2px solid
+      color-mix(in srgb, var(--color-terracotta) 15%, transparent);
+  }
+
+  .circuit-lead {
+    font-size: 1.15rem;
+    line-height: 1.9;
+  }
+
+  /* Frise des étapes */
+  .circuit-timeline__item {
+    position: relative;
+    padding-left: 3.25rem;
+    padding-bottom: 2rem;
+  }
+
+  .circuit-timeline__item::before {
+    content: '';
+    position: absolute;
+    left: 1rem;
+    top: 2.25rem;
+    bottom: 0.25rem;
+    width: 2px;
+    background: color-mix(in srgb, var(--color-terracotta) 25%, transparent);
+  }
+
+  .circuit-timeline__item:last-child {
+    padding-bottom: 0;
+  }
+
+  .circuit-timeline__item:last-child::before {
+    display: none;
+  }
+
+  .circuit-timeline__dot {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2.1rem;
+    height: 2.1rem;
+    border-radius: 9999px;
+    background: var(--color-terracotta);
+    color: #fff;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .circuit-options li {
+    padding-left: 1.75rem;
+    position: relative;
+  }
+
+  .circuit-options li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    color: var(--color-terracotta);
+  }
+
+  :global(#je-veux-ce-voyage) {
+    scroll-margin-top: 5rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .circuit-hero__text {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>

@@ -48,12 +48,12 @@ const jsonLd = {
   areaServed: {
     '@type': 'Place',
     name: 'Amérique du Nord',
-    description: 'Canada, États-Unis et Alaska',
+    description: 'États-Unis et Canada',
   },
   knowsAbout: [
-    'travel planning sur mesure',
+    'circuits slow travel',
     'voyages immersifs',
-    'itinéraires personnalisés',
+    'road trips en Amérique du Nord',
     'Amérique du Nord',
     'Canada',
     'États-Unis',
@@ -67,23 +67,18 @@ const jsonLd = {
     itemListElement: [
       {
         '@type': 'Offer',
-        name: 'Discovery Call',
+        name: 'Circuits slow travel aux États-Unis et au Canada',
         description:
-          "30 minutes pour se connaître, cerner vos rêves et poser les bases d'un voyage personnalisé.",
-        price: '0',
-        priceCurrency: 'EUR',
-        url: siteUrl.toString(),
+          'Circuits imaginés par Elena, avec devis personnalisé et sans engagement. Réservations, paiement et assistance gérés par une agence partenaire.',
+        url: new URL('/circuits/', siteUrl).toString(),
       },
       {
         '@type': 'Offer',
-        name: "Création d'itinéraire sur mesure",
+        name: 'Appel de 15 minutes avec Elena',
         description:
-          "Itinéraire personnalisé complet pour un voyage immersif en Amérique du Nord, ajusté jusqu'à 100% de satisfaction.",
-        priceSpecification: {
-          '@type': 'PriceSpecification',
-          minPrice: '300',
-          priceCurrency: 'EUR',
-        },
+          'Un échange gratuit et sans engagement pour poser tes questions sur un circuit.',
+        price: '0',
+        priceCurrency: 'EUR',
         url: siteUrl.toString(),
       },
     ],

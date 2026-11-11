@@ -6,15 +6,18 @@ interface Props {
   size?: 'default' | 'small';
   variant?: 'solid' | 'outline' | 'ghost';
   desktopOnly?: boolean;
+  /** true : ouvre la fenêtre Calendly au clic. false : lien classique. */
+  calendly?: boolean;
 }
 
 const {
-  text = 'Confie-moi ton prochain rêve',
-  subtext = '30 min, gratuit, sans engagement',
+  text = 'Réserve 15 min avec Elena',
+  subtext = 'Gratuit, sans engagement',
   href,
   size = 'default',
   variant = 'solid',
   desktopOnly = false,
+  calendly = true,
 } = Astro.props;
 
 const sizeClasses =
@@ -37,7 +40,7 @@ const visibilityClass = desktopOnly ? 'hidden lg:inline-block' : '';
   <span class="cta-glow" aria-hidden="true"></span>
   <a
     href={href}
-    data-calendly-trigger
+    data-calendly-trigger={calendly ? '' : undefined}
     data-cta
     class:list={[
       'cta-btn relative inline-block font-sans font-semibold text-center motion-safe:hover:scale-[1.02]',

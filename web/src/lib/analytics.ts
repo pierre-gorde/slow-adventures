@@ -96,3 +96,7 @@ function initCTATracking(): void {
 initScrollTracking();
 initCTATracking();
 trackUTM();
+
+export function trackCircuitRequest(circuit: string): void {
+  safeGtag('event', 'circuit_request', { circuit });
+}

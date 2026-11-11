@@ -10,6 +10,7 @@ import CalendlyModal from '../../components/CalendlyModal.astro';
 import SectionReveal from '../../components/SectionReveal.astro';
 import ScrollHint from '../../components/ScrollHint.astro';
 import DestinationGallery from '../../components/DestinationGallery.astro';
+import { CALENDLY_URL, CIRCUITS_URL } from '../../data/contact';
 
 export async function getStaticPaths() {
   const allDestinations = await getCollection('destinations');
@@ -85,7 +86,7 @@ const touristDestinationLd = {
   offers: {
     '@type': 'Offer',
     name: "Création d'itinéraire sur mesure",
-    url: import.meta.env.PUBLIC_CALENDLY_URL ?? 'https://slowadventures.fr',
+    url: CALENDLY_URL,
     offeredBy: {
       '@type': 'Person',
       name: 'Elena',
@@ -240,7 +241,7 @@ const touristDestinationLd = {
           <p
             class="font-sans text-white/70 text-xs uppercase tracking-[0.2em] mb-5"
           >
-            Travel Planning sur mesure
+            Slow Adventures
           </p>
           <h2
             id="dest-cta-heading"
@@ -249,14 +250,15 @@ const touristDestinationLd = {
             Prêt(e) à partir ?
           </h2>
           <p class="font-sans text-white/85 text-lg mb-10 leading-relaxed">
-            Dis-moi tes envies, tes contraintes, tes rêves — je m'occupe du
-            reste.
+            Découvre les circuits imaginés par Elena aux États-Unis et au
+            Canada.
           </p>
           <CTAButton
-            href={import.meta.env.PUBLIC_CALENDLY_URL}
+            href={CIRCUITS_URL}
+            calendly={false}
             variant="outline"
-            text="Confie-moi ton prochain rêve"
-            subtext="30 min, gratuit, sans engagement"
+            text="Découvre les circuits"
+            subtext="Gratuit et sans engagement"
           />
         </div>
       </SectionReveal>
@@ -267,8 +269,8 @@ const touristDestinationLd = {
     ═══════════════════════════════════════════════ -->
     <div class="text-center py-8 bg-creme">
       <a
-        href="/destinations/"
-        aria-label="Retour à toutes les destinations"
+        href={CIRCUITS_URL}
+        aria-label="Voir tous les circuits"
         class="inline-flex items-center gap-2 font-sans text-warm-black/60 hover:text-terracotta transition-colors text-sm"
       >
         <svg
@@ -284,7 +286,7 @@ const touristDestinationLd = {
         >
           <path d="M19 12H5M5 12l7 7M5 12l7-7"></path>
         </svg>
-        Toutes les destinations
+        Tous les circuits
       </a>
     </div>
   </main>

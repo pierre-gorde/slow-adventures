@@ -30,6 +30,10 @@ import { processSteps } from '../data/processSteps';
 import { faqLd } from '../data/faq';
 import { CIRCUITS_URL } from '../data/contact';
 
+// Présentation d'Elena (« Hello ») : masquée depuis le passage aux circuits,
+// le client achète d'abord le produit. Mettre `true` pour la réafficher.
+const showElenaSection = false;
+
 const optimizedPoster = await getImage({
   src: heroPoster,
   width: 1440,
@@ -91,16 +95,20 @@ const carouselSlides = [
   </header>
   <main id="main">
     <ReturnVisitorBanner />
-    <ElenaSection
-      id="elena"
-      imageSrc={elenaPhoto}
-      imageAlt="Elena, créatrice de voyages immersifs en Amérique du Nord"
-      title="Hello"
-      description="Moi c’est Elena, et je suis une véritable voyageuse dans l’âme. Tombée amoureuse de l’Amérique du Nord, j’ai créé SlowAdventures pour partager les voyages qui me font rêver. Chaque circuit, je l’ai imaginé et construit avec soin, dans l’esprit du slow travel : des itinéraires pensés avec du sens, des hébergements choisis, et des expériences qui te connectent vraiment à l’âme des lieux. Pas besoin de tout organiser : tu choisis ton rêve, on s’occupe du reste, et tu pars l’esprit libre. Alors, plutôt team USA ou Canada ?"
-      ctaHref={CIRCUITS_URL}
-      ctaText="Découvre les circuits"
-      ctaCalendly={false}
-    />
+    {
+      showElenaSection && (
+        <ElenaSection
+          id="elena"
+          imageSrc={elenaPhoto}
+          imageAlt="Elena, créatrice de voyages immersifs en Amérique du Nord"
+          title="Hello"
+          description="Moi c’est Elena, et je suis une véritable voyageuse dans l’âme. Tombée amoureuse de l’Amérique du Nord, j’ai créé SlowAdventures pour partager les voyages qui me font rêver. Chaque circuit, je l’ai imaginé et construit avec soin, dans l’esprit du slow travel : des itinéraires pensés avec du sens, des hébergements choisis, et des expériences qui te connectent vraiment à l’âme des lieux. Pas besoin de tout organiser : tu choisis ton rêve, on s’occupe du reste, et tu pars l’esprit libre. Alors, plutôt team USA ou Canada ?"
+          ctaHref={CIRCUITS_URL}
+          ctaText="Découvre les circuits"
+          ctaCalendly={false}
+        />
+      )
+    }
     <CircuitCarousel />
     <section
       id="processus"

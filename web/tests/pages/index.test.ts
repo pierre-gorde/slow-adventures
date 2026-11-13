@@ -118,6 +118,22 @@ describe('index.astro', () => {
     });
   });
 
+  describe('Concept section integration', () => {
+    it('renders ConceptQuote just before the circuits section', () => {
+      expect(page).toContain(
+        "import ConceptQuote from '../components/ConceptQuote.astro'"
+      );
+      const conceptIdx = page.indexOf('<ConceptQuote');
+      expect(conceptIdx).toBeGreaterThan(page.indexOf('<ReturnVisitorBanner'));
+      expect(page.indexOf('<CircuitCarousel')).toBeGreaterThan(conceptIdx);
+    });
+
+    it('links to the philosophy page', () => {
+      expect(page).toContain('ctaHref="/philosophie/"');
+      expect(page).toContain('ctaText="C’est quoi le slow travel ?"');
+    });
+  });
+
   describe('Circuits section integration', () => {
     it('imports and renders CircuitCarousel', () => {
       expect(page).toContain(

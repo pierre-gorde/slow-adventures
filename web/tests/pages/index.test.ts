@@ -137,6 +137,11 @@ describe('index.astro', () => {
       expect(page).toContain('id="elena"');
     });
 
+    it('keeps the Elena section in the code but hidden', () => {
+      expect(page).toContain('const showElenaSection = false;');
+      expect(page).toContain('showElenaSection && (');
+    });
+
     it('has id="processus" on the process section', () => {
       expect(page).toContain('id="processus"');
     });

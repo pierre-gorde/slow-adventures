@@ -14,6 +14,8 @@ import ScrollProgress from '../components/ScrollProgress.astro';
 import FaqSection from '../components/FaqSection.astro';
 import HomepageCarousel from '../components/HomepageCarousel.astro';
 import CircuitCarousel from '../components/CircuitCarousel.astro';
+import ConceptQuote from '../components/ConceptQuote.astro';
+import conceptPhoto from '../assets/images/destinations-hero-poster.webp';
 import heroPoster from '../assets/images/hero-poster.webp';
 import heroLogo from '../assets/images/logo-white.webp';
 import elenaPhoto from '../assets/images/elena.webp';
@@ -109,6 +111,13 @@ const carouselSlides = [
         />
       )
     }
+    <ConceptQuote
+      imageSrc={conceptPhoto}
+      imageAlt="Route au coucher du soleil à travers les grands espaces de l’Ouest américain"
+      quote="On peut ressentir autant d’émotions en quelques jours… quand on prend vraiment le temps de s’en imprégner."
+      ctaText="C’est quoi le slow travel ?"
+      ctaHref="/philosophie/"
+    />
     <CircuitCarousel />
     <section
       id="processus"

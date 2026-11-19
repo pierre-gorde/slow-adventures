@@ -87,6 +87,22 @@ describe('CircuitForm ↔ Netlify Forms declaration', () => {
   });
 });
 
+describe('consent and privacy (RGPD)', () => {
+  const privacy = read('../../src/pages/politique-confidentialite.astro');
+
+  it('tells the visitor their data goes to the partner agency for the quote', () => {
+    expect(form).toContain(
+      'transmises à l’agence partenaire chargée de mon devis'
+    );
+    expect(form).toContain('href="/politique-confidentialite"');
+  });
+
+  it('explains the transfer to the partner agency in the privacy policy', () => {
+    expect(privacy).toContain('Transmission à notre agence partenaire');
+    expect(privacy).toContain('chargée d’établir ton devis');
+  });
+});
+
 describe('navigation', () => {
   it('redirects the old destinations listing to the circuits page', () => {
     expect(astroConfig).toContain("'/destinations': '/circuits/'");

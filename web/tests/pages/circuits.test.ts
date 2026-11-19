@@ -48,6 +48,11 @@ describe('circuit content', () => {
     expect(matches).toHaveLength(2);
   });
 
+  it('offers WhatsApp under the Calendly link on circuit pages', () => {
+    expect(page).toContain('Tu préfères par WhatsApp');
+    expect(page).toContain('href={WHATSAPP_URL}');
+  });
+
   it('shows the included and price sections on every circuit page', () => {
     expect(page).toContain('Ce qui est inclus');
     expect(page).toContain('Combien ça coûte');

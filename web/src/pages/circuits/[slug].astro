@@ -6,7 +6,12 @@ import SectionReveal from '../../components/SectionReveal.astro';
 import ScrollHint from '../../components/ScrollHint.astro';
 import DestinationGallery from '../../components/DestinationGallery.astro';
 import CircuitForm from '../../components/CircuitForm.astro';
-import { circuits } from '../../data/circuits';
+import {
+  circuits,
+  circuitInclus,
+  circuitInclusNote,
+  circuitPrix,
+} from '../../data/circuits';
 import type { Circuit } from '../../data/circuits';
 import { CALENDLY_URL, CIRCUITS_URL } from '../../data/contact';
 
@@ -235,7 +240,49 @@ const tripLd = {
             ))
           }
         </ul>
-        <div class="text-center mt-12">
+      </div>
+    </section>
+
+    <!-- CE QUI EST INCLUS -->
+    <section
+      class="bg-creme sa-section-padding"
+      aria-labelledby="heading-inclus"
+    >
+      <div class="max-w-3xl mx-auto">
+        <h2
+          id="heading-inclus"
+          class="circuit-section__header font-serif text-2xl md:text-3xl text-warm-black leading-tight mb-8 pb-3"
+        >
+          Ce qui est inclus
+        </h2>
+        <ul class="circuit-inclus list-none p-0 m-0 space-y-3">
+          {
+            circuitInclus.map((item) => (
+              <li class="font-sans text-lg text-warm-black leading-relaxed">
+                {item}
+              </li>
+            ))
+          }
+        </ul>
+        <p class="font-sans text-warm-gray leading-relaxed mt-8">
+          {circuitInclusNote}
+        </p>
+      </div>
+    </section>
+
+    <!-- COMBIEN ÇA COÛTE -->
+    <section class="bg-white sa-section-padding" aria-labelledby="heading-prix">
+      <div class="max-w-3xl mx-auto">
+        <h2
+          id="heading-prix"
+          class="circuit-section__header font-serif text-2xl md:text-3xl text-warm-black leading-tight mb-8 pb-3"
+        >
+          Combien ça coûte&nbsp;?
+        </h2>
+        <p class="font-sans text-lg text-warm-black/85 leading-relaxed">
+          {circuitPrix}
+        </p>
+        <div class="text-center mt-14">
           <a
             href="#je-veux-ce-voyage"
             data-open-form
@@ -392,6 +439,19 @@ const tripLd = {
   .circuit-options li {
     padding-left: 1.75rem;
     position: relative;
+  }
+
+  .circuit-inclus li {
+    padding-left: 2rem;
+    position: relative;
+  }
+
+  .circuit-inclus li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-sauge-dark);
+    font-weight: 700;
   }
 
   .circuit-options li::before {

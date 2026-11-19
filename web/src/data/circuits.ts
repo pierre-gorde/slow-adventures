@@ -77,7 +77,7 @@ export const circuits: Circuit[] = [
     accroche:
       'Grand Canyon, Zion, Bryce, Death Valley… L’Ouest américain dans ce qu’il a de plus spectaculaire, à ton rythme.',
     pourquoi:
-      'L’Ouest américain dans ce qu’il a de plus spectaculaire, en une boucle pensée pour en profiter vraiment. On part des palmiers de Los Angeles pour traverser les déserts de Californie, on rejoint les roches rouges de l’Arizona et le vertige du Grand Canyon, puis les canyons sculptés de l’Utah. Une soirée dans les lumières du Nevada à Las Vegas, une dernière nuit au cœur de la Vallée de la Mort, et retour au Pacifique. Deux semaines de paysages qui semblent venir d’une autre planète, sans jamais avoir l’impression de courir.',
+      'L’Ouest américain dans ce qu’il a de plus spectaculaire, en une boucle pensée pour en profiter vraiment. On part des palmiers de Los Angeles pour traverser les déserts de Californie, on rejoint les roches rouges de l’Arizona et le vertige du Grand Canyon, puis les canyons sculptés de l’Utah. Deux jours entre les néons de Las Vegas et les roches rouges du Nevada, une dernière nuit au cœur de la Vallée de la Mort, et retour au Pacifique. Deux semaines de paysages qui semblent venir d’une autre planète, sans jamais avoir l’impression de courir.',
     etapes: [
       {
         jours: 'Jours 1 et 2',
@@ -131,7 +131,8 @@ export const circuits: Circuit[] = [
         jours: 'Jours 13 et 14',
         lieu: 'Las Vegas',
         route: 'environ 2 h 30',
-        texte: 'Une soirée pour le contraste, entre néons et démesure.',
+        texte:
+          'Deux jours pour le contraste : néons et démesure le soir, et en journée, Red Rock Canyon ou la Valley of Fire, à moins d’une heure de la ville.',
       },
       {
         jours: 'Jour 15',
@@ -156,6 +157,11 @@ export const circuits: Circuit[] = [
         label: 'Véhicule',
         texte: 'SUV, van aménagé, tente de toit ou camping-car',
       },
+      {
+        label: 'Prolonge ton voyage d’une semaine',
+        texte:
+          'Sequoia, Yosemite et San Francisco, avec retour depuis San Francisco',
+      },
     ],
     formulaire: {
       hebergements: [
@@ -164,6 +170,8 @@ export const circuits: Circuit[] = [
         'Hôtels supérieurs',
       ],
       vehicules: ['SUV', 'Van aménagé', 'Tente de toit', 'Camping-car'],
+      extra:
+        'Prolonger d’une semaine : Sequoia, Yosemite et San Francisco (retour depuis San Francisco)',
     },
     hero: parcsHero,
     heroAlt: 'Route droite à travers le désert de l’Ouest américain',
@@ -279,5 +287,24 @@ export const circuits: Circuit[] = [
       'Circuit de 15 jours en boucle depuis Calgary : Banff, Lake Louise, l’Icefields Parkway, Jasper et Abraham Lake. Un road trip imaginé par Elena.',
   },
 ];
+
+/** Section « Ce qui est inclus », commune à tous les circuits. */
+export const circuitInclus: string[] = [
+  'Les vols',
+  'Les hébergements',
+  'La location du véhicule',
+  'Les activités prévues au programme',
+  'L’itinéraire détaillé et une eSim',
+  'Une assistance 24 h/24 pendant ton voyage',
+  'Des options d’annulation flexibles et la protection de tes fonds',
+  'Un voyage ajusté à tes dates et à tes options',
+];
+
+export const circuitInclusNote =
+  'Les prestations exactes sont confirmées dans ton devis, selon ta destination, la saison et tes envies.';
+
+/** Section « Combien ça coûte ? », commune à tous les circuits. */
+export const circuitPrix =
+  'Le prix de ton voyage dépend de tes dates, du nombre de voyageurs et des options choisies. Tu reçois un devis précis et sans engagement dans la semaine qui suit ta demande.';
 
 export const circuitHref = (c: Circuit): string => `/circuits/${c.slug}/`;

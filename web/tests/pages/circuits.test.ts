@@ -28,6 +28,29 @@ describe('circuits data', () => {
   });
 });
 
+describe('circuit content', () => {
+  const page = read('../../src/pages/circuits/[slug].astro');
+
+  it('describes two days in Las Vegas, not one evening', () => {
+    expect(circuitsData).toContain('Deux jours pour le contraste');
+    expect(circuitsData).not.toContain('Une soirée pour le contraste');
+  });
+
+  it('offers the one-week extension on the US parks circuit', () => {
+    expect(circuitsData).toContain(
+      "label: 'Prolonge ton voyage d’une semaine'"
+    );
+    expect(circuitsData).toMatch(/extra:\s*'Prolonger d’une semaine/);
+  });
+
+  it('shows the included and price sections on every circuit page', () => {
+    expect(page).toContain('Ce qui est inclus');
+    expect(page).toContain('Combien ça coûte');
+    expect(circuitsData).toContain('export const circuitInclus');
+    expect(circuitsData).toContain("'Les vols'");
+  });
+});
+
 describe('contact links', () => {
   it('uses the 15-minute Calendly event', () => {
     expect(contact).toContain(

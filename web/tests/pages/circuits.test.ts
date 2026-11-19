@@ -82,6 +82,11 @@ describe('CircuitForm ↔ Netlify Forms declaration', () => {
     }
   });
 
+  it('asks for a required budget per person, declared for Netlify', () => {
+    expect(form).toMatch(/name="budget-par-personne"[\s\S]*?required/);
+    expect(netlifyForms).toContain('name="budget-par-personne"');
+  });
+
   it('sends the circuit name as a quoted hidden value', () => {
     expect(form).toContain('name="circuit" value={circuit.nom}');
   });

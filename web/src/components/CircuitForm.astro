@@ -144,6 +144,29 @@ const { hebergements, vehicules, extra } = circuit.formulaire;
       </div>
 
       <div class="sa-field">
+        <label for="sa-budget"
+          >Budget par personne <span class="sa-optional">vols compris</span
+          ></label
+        >
+        <div class="sa-budget">
+          <input
+            id="sa-budget"
+            name="budget-par-personne"
+            type="text"
+            inputmode="numeric"
+            placeholder="Ex. 3 500"
+            aria-describedby="sa-budget-aide"
+            required
+          />
+          <span class="sa-budget__devise" aria-hidden="true">€</span>
+        </div>
+        <p id="sa-budget-aide" class="sa-aide">
+          Une estimation suffit&nbsp;: elle aide l’agence à te proposer les
+          bonnes options.
+        </p>
+      </div>
+
+      <div class="sa-field">
         <span class="sa-choices__label" id="sa-heb-label">Hébergement</span>
         <div
           class="sa-choices"
@@ -422,6 +445,26 @@ const { hebergements, vehicules, extra } = circuit.formulaire;
   }
   .sa-field textarea {
     resize: vertical;
+  }
+
+  .sa-budget {
+    position: relative;
+  }
+  .sa-field .sa-budget input {
+    padding-right: 2.25rem;
+  }
+  .sa-budget__devise {
+    position: absolute;
+    right: 0.9rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--sa-muted);
+    pointer-events: none;
+  }
+  .sa-aide {
+    margin: 0.35rem 0 0;
+    font-size: 0.85rem;
+    color: var(--sa-muted);
   }
   .sa-field input:focus-visible,
   .sa-field select:focus-visible,

@@ -53,6 +53,12 @@ describe('circuit content', () => {
     expect(page).toContain('href={WHATSAPP_URL}');
   });
 
+  it('offers WhatsApp on the circuits listing page too', () => {
+    const listing = read('../../src/pages/circuits/index.astro');
+    expect(listing).toContain('Tu préfères par WhatsApp');
+    expect(listing).toContain('href={WHATSAPP_URL}');
+  });
+
   it('shows the included and price sections on every circuit page', () => {
     expect(page).toContain('Ce qui est inclus');
     expect(page).toContain('Combien ça coûte');

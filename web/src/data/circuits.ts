@@ -151,7 +151,8 @@ export const circuits: Circuit[] = [
     options: [
       {
         label: 'Hébergement',
-        texte: 'camping, lodges et motels de charme, ou hôtels supérieurs',
+        texte:
+          'camping, lodges et motels de charme, hôtels supérieurs, ou un mélange des trois',
       },
       {
         label: 'Véhicule',
@@ -168,6 +169,7 @@ export const circuits: Circuit[] = [
         'Camping',
         'Lodges et motels de charme',
         'Hôtels supérieurs',
+        'Un mélange',
       ],
       vehicules: ['SUV', 'Van aménagé', 'Tente de toit', 'Camping-car'],
       extra:
@@ -253,7 +255,8 @@ export const circuits: Circuit[] = [
     options: [
       {
         label: 'Hébergement',
-        texte: 'camping, lodges et chalets de montagne, ou hôtels supérieurs',
+        texte:
+          'camping, lodges et chalets de montagne, hôtels supérieurs, ou un mélange des trois',
       },
       {
         label: 'Véhicule',
@@ -269,6 +272,7 @@ export const circuits: Circuit[] = [
         'Camping',
         'Lodges et chalets de montagne',
         'Hôtels supérieurs',
+        'Un mélange',
       ],
       vehicules: ['SUV', 'Van aménagé', 'Camping-car'],
       extra:

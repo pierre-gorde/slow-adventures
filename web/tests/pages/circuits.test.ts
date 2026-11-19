@@ -43,6 +43,11 @@ describe('circuit content', () => {
     expect(circuitsData).toMatch(/extra:\s*'Prolonger d’une semaine/);
   });
 
+  it('offers "Un mélange" as an accommodation choice on both circuits', () => {
+    const matches = circuitsData.match(/'Hôtels supérieurs',\s*'Un mélange',/g);
+    expect(matches).toHaveLength(2);
+  });
+
   it('shows the included and price sections on every circuit page', () => {
     expect(page).toContain('Ce qui est inclus');
     expect(page).toContain('Combien ça coûte');

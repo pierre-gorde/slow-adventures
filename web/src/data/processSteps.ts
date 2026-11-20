@@ -1,4 +1,4 @@
-import { CALENDLY_URL, WHATSAPP_URL } from './contact';
+import { CALENDLY_URL, whatsappLink } from './contact';
 
 export interface ProcessStepLink {
   label: string;
@@ -23,7 +23,7 @@ export const processSteps: ProcessStepData[] = [
     description:
       'Chaque circuit a son itinéraire jour par jour, son rythme et son ambiance. Une question avant de te lancer ? ',
     links: [
-      { label: 'Écris-moi sur WhatsApp', href: WHATSAPP_URL },
+      { label: 'Écris-moi sur WhatsApp', href: whatsappLink() },
       { label: 'réserve 15 min avec moi', href: CALENDLY_URL, calendly: true },
     ],
   },

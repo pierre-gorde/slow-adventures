@@ -71,7 +71,7 @@ export const circuits: Circuit[] = [
   {
     slug: 'parcs-nationaux-us',
     nom: 'Les parcs nationaux US',
-    duree: '16 jours',
+    duree: '2 semaines',
     trajet: 'Boucle Los Angeles → Los Angeles',
     tags: ['Grands espaces', 'Road trip', 'En famille', 'Rythme équilibré'],
     accroche:
@@ -95,56 +95,56 @@ export const circuits: Circuit[] = [
       {
         jours: 'Jours 4 et 5',
         lieu: 'Sedona',
-        route: 'environ 4 h 30',
+        route: 'environ 4 h 30 de route',
         texte:
           'Des randonnées au milieu des roches rouges, une petite ville à l’énergie unique et des couchers de soleil incandescents.',
       },
       {
         jours: 'Jours 6 et 7',
         lieu: 'Grand Canyon',
-        route: 'environ 2 h',
+        route: 'environ 2 h de route',
         texte:
           'Deux jours sur la rive sud pour vivre le canyon à différentes heures, du lever du soleil aux sentiers qui plongent dans la roche.',
       },
       {
         jours: 'Jours 8 et 9',
         lieu: 'Page',
-        route: 'environ 2 h 30',
+        route: 'environ 2 h 30 de route',
         texte:
           'Antelope Canyon et ses jeux de lumière, Horseshoe Bend et les eaux bleues du lac Powell.',
       },
       {
         jours: 'Jour 10',
         lieu: 'Bryce Canyon',
-        route: 'environ 2 h 30',
+        route: 'environ 2 h 30 de route',
         texte:
           'Un amphithéâtre de cheminées de fées orange et rose, à couper le souffle.',
       },
       {
         jours: 'Jours 11 et 12',
         lieu: 'Zion',
-        route: 'environ 1 h 30',
+        route: 'environ 1 h 30 de route',
         texte:
           'Les falaises monumentales, la rivière Virgin et quelques-unes des plus belles randonnées de l’Ouest.',
       },
       {
         jours: 'Jours 13 et 14',
         lieu: 'Las Vegas',
-        route: 'environ 2 h 30',
+        route: 'environ 2 h 30 de route',
         texte:
           'Deux jours pour le contraste : néons et démesure le soir, et en journée, Red Rock Canyon ou la Valley of Fire, à moins d’une heure de la ville.',
       },
       {
         jours: 'Jour 15',
         lieu: 'Death Valley',
-        route: 'environ 2 h',
+        route: 'environ 2 h de route',
         texte:
           'Les dunes de Mesquite, Badwater Basin et Zabriskie Point : le point le plus bas d’Amérique du Nord, et des paysages lunaires.',
       },
       {
         jours: 'Jour 16',
         lieu: 'Retour à Los Angeles',
-        route: 'environ 4 h 30',
+        route: 'environ 4 h 30 de route',
         texte: 'Restitution du véhicule et vol retour.',
       },
     ],
@@ -183,14 +183,15 @@ export const circuits: Circuit[] = [
     carte: parcsCarte,
     carteAlt:
       'Carte du circuit Les parcs nationaux US : Los Angeles, Joshua Tree, Sedona, Grand Canyon, Page, Bryce Canyon, Zion, Las Vegas, Death Valley, retour à Los Angeles',
-    metaTitle: 'Les parcs nationaux US — Circuit 16 jours | Slow Adventures',
+    metaTitle:
+      'Les parcs nationaux US — Circuit de 2 semaines | Slow Adventures',
     metaDescription:
-      'Circuit de 16 jours en boucle depuis Los Angeles : Grand Canyon, Zion, Bryce, Death Valley. Un road trip imaginé par Elena, à ton rythme.',
+      'Circuit de 2 semaines en boucle depuis Los Angeles : Grand Canyon, Zion, Bryce, Death Valley. Un road trip imaginé par Elena, à ton rythme.',
   },
   {
     slug: 'rocheuses-canadiennes',
     nom: 'Les Rocheuses canadiennes',
-    duree: '15 jours',
+    duree: '2 semaines',
     trajet: 'Boucle Calgary → Calgary',
     tags: [
       'Grands espaces',
@@ -202,7 +203,7 @@ export const circuits: Circuit[] = [
     accroche:
       'Lacs turquoise, glaciers et forêts à perte de vue, entre Banff et Jasper.',
     pourquoi:
-      'Quinze jours entièrement consacrés aux Rocheuses, pour enfin prendre le temps. Des lacs d’un turquoise irréel, des glaciers que l’on touche presque, des sources chaudes au milieu des montagnes, et des ours, des wapitis et des mouflons au bord des routes. On sillonne l’Alberta et la Colombie-Britannique, de Banff à Jasper par l’Icefields Parkway, l’une des plus belles routes du monde. Et pour finir, un détour par Abraham Lake, un lac sauvage que peu de voyageurs connaissent. Un circuit pour ceux qui aiment marcher, respirer et se sentir tout petits face à la nature.',
+      'Deux semaines entièrement consacrées aux Rocheuses, pour enfin prendre le temps. Des lacs d’un turquoise irréel, des glaciers que l’on touche presque, des sources chaudes au milieu des montagnes, et des ours, des wapitis et des mouflons au bord des routes. On sillonne l’Alberta et la Colombie-Britannique, de Banff à Jasper par l’Icefields Parkway, l’une des plus belles routes du monde. Et pour finir, un détour par Abraham Lake, un lac sauvage que peu de voyageurs connaissent. Un circuit pour ceux qui aiment marcher, respirer et se sentir tout petits face à la nature.',
     etapes: [
       {
         jours: 'Jour 1',
@@ -220,35 +221,35 @@ export const circuits: Circuit[] = [
       {
         jours: 'Jours 5 et 6',
         lieu: 'Radium Hot Springs',
-        route: 'environ 1 h 30',
+        route: 'environ 1 h 30 de route',
         texte:
           'La traversée du parc de Kootenay, entre Marble Canyon et les Paint Pots, des bassins d’argile ocre. Puis deux jours au calme dans une petite ville de montagne, réputée pour ses sources chaudes et ses mouflons.',
       },
       {
         jours: 'Jours 7 à 9',
         lieu: 'Lake Louise',
-        route: 'environ 1 h 45',
+        route: 'environ 1 h 45 de route',
         texte:
           'Le lac Louise, Moraine Lake (accessible en navette) et deux escapades dans le parc de Yoho : Emerald Lake et les chutes Takakkaw.',
       },
       {
         jours: 'Jours 10 à 12',
         lieu: 'Jasper',
-        route: 'environ 4 h par l’Icefields Parkway',
+        route: 'environ 4 h de route par l’Icefields Parkway',
         texte:
           'Une journée entière sur l’Icefields Parkway, entre Bow Lake, Peyto Lake et le glacier Athabasca. Puis le plus sauvage des parcs des Rocheuses : le lac Maligne et Spirit Island, le Maligne Canyon et des ciels étoilés exceptionnels.',
       },
       {
         jours: 'Jours 13 et 14',
         lieu: 'Abraham Lake',
-        route: 'environ 3 h',
+        route: 'environ 3 h de route',
         texte:
           'Un lac turquoise immense, bordé de montagnes, loin de la foule. Deux jours pour randonner, pagayer et profiter du silence.',
       },
       {
         jours: 'Jour 15',
         lieu: 'Calgary',
-        route: 'environ 3 h',
+        route: 'environ 3 h de route',
         texte: 'Restitution du véhicule et vol retour.',
       },
     ],
@@ -286,9 +287,10 @@ export const circuits: Circuit[] = [
     carte: rocheusesCarte,
     carteAlt:
       'Carte du circuit Les Rocheuses canadiennes : Calgary, Banff, Radium Hot Springs, Lake Louise, Jasper, Abraham Lake, retour à Calgary',
-    metaTitle: 'Les Rocheuses canadiennes — Circuit 15 jours | Slow Adventures',
+    metaTitle:
+      'Les Rocheuses canadiennes — Circuit de 2 semaines | Slow Adventures',
     metaDescription:
-      'Circuit de 15 jours en boucle depuis Calgary : Banff, Lake Louise, l’Icefields Parkway, Jasper et Abraham Lake. Un road trip imaginé par Elena.',
+      'Circuit de 2 semaines en boucle depuis Calgary : Banff, Lake Louise, l’Icefields Parkway, Jasper et Abraham Lake. Un road trip imaginé par Elena.',
   },
 ];
 

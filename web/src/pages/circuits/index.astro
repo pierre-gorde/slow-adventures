@@ -7,7 +7,7 @@ import CalendlyModal from '../../components/CalendlyModal.astro';
 import SectionReveal from '../../components/SectionReveal.astro';
 import destPoster from '../../assets/images/destinations-hero-poster.webp';
 import { circuits, circuitHref } from '../../data/circuits';
-import { CALENDLY_URL, WHATSAPP_URL } from '../../data/contact';
+import { CALENDLY_URL, whatsappLink } from '../../data/contact';
 
 const collectionLd = {
   '@context': 'https://schema.org',
@@ -126,7 +126,7 @@ const collectionLd = {
           <p class="font-sans text-sm text-white/85 mt-6">
             Tu préfères par WhatsApp&nbsp;?
             <a
-              href={WHATSAPP_URL}
+              href={whatsappLink()}
               target="_blank"
               rel="noopener noreferrer"
               data-cta="whatsapp-circuits-liste"

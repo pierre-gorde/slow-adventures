@@ -22,9 +22,9 @@ describe('circuits data', () => {
 
   it('uses the validated names and durations', () => {
     expect(circuitsData).toContain("nom: 'Les parcs nationaux US'");
-    expect(circuitsData).toContain("duree: '16 jours'");
+    expect(circuitsData).not.toMatch(/duree: '1[56] jours'/);
     expect(circuitsData).toContain("nom: 'Les Rocheuses canadiennes'");
-    expect(circuitsData).toContain("duree: '15 jours'");
+    expect(circuitsData.match(/duree: '2 semaines'/g)).toHaveLength(2);
   });
 });
 
@@ -50,13 +50,15 @@ describe('circuit content', () => {
 
   it('offers WhatsApp under the Calendly link on circuit pages', () => {
     expect(page).toContain('Tu préfères par WhatsApp');
-    expect(page).toContain('href={WHATSAPP_URL}');
+    expect(page).toContain(
+      'href={whatsappLink(whatsappMessageCircuit(circuit.nom))}'
+    );
   });
 
   it('offers WhatsApp on the circuits listing page too', () => {
     const listing = read('../../src/pages/circuits/index.astro');
     expect(listing).toContain('Tu préfères par WhatsApp');
-    expect(listing).toContain('href={WHATSAPP_URL}');
+    expect(listing).toContain('href={whatsappLink()}');
   });
 
   it('shows the included and price sections on every circuit page', () => {
@@ -67,11 +69,37 @@ describe('circuit content', () => {
   });
 });
 
+describe('road time and children ages', () => {
+  it('says "de route" on every step with a drive', () => {
+    const routes = [...circuitsData.matchAll(/route: '([^']*)'/g)].map(
+      (m) => m[1]
+    );
+    expect(routes.length).toBeGreaterThan(10);
+    routes.forEach((r) => expect(r).toContain('de route'));
+  });
+
+  it('asks the age of each child and still sends it in age-enfants', () => {
+    expect(form).toContain('Précise l’âge de chacun pendant le voyage');
+    expect(form).toContain('moins de 18 ans');
+    expect(form).toContain('name="age-enfants"');
+    expect(netlifyForms).toContain('name="age-enfants"');
+  });
+});
+
 describe('contact links', () => {
   it('uses the 15-minute Calendly event', () => {
     expect(contact).toContain(
       'https://calendly.com/elena-slowadventures/15min'
     );
+  });
+
+  it('pre-writes the WhatsApp message, naming the circuit when known', () => {
+    expect(contact).toContain('export const whatsappLink');
+    expect(contact).toContain('encodeURIComponent(message)');
+    expect(contact).toContain(
+      'Je suis intéressé(e) par le circuit « ${nomCircuit} »'
+    );
+    expect(contact).toContain('Je découvre tes circuits');
   });
 
   it('uses the WhatsApp number in international format', () => {

@@ -1,4 +1,4 @@
-import { CALENDLY_URL, WHATSAPP_URL } from './contact';
+import { CALENDLY_URL, whatsappLink } from './contact';
 
 export type FaqLink = { label: string; href: string; calendly?: boolean };
 
@@ -89,7 +89,7 @@ export const faqItems: FaqItem[] = [
  */
 export const faqLinks: Record<string, FaqLink[]> = {
   'Est-ce que je peux échanger avec Elena avant de réserver ?': [
-    { label: 'Écris-moi sur WhatsApp', href: WHATSAPP_URL },
+    { label: 'Écris-moi sur WhatsApp', href: whatsappLink() },
     { label: 'Réserve 15 min avec Elena', href: CALENDLY_URL, calendly: true },
   ],
 };

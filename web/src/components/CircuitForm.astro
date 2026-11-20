@@ -120,7 +120,9 @@ const { hebergements, vehicules, extra } = circuit.formulaire;
           />
         </div>
         <div class="sa-field">
-          <label for="sa-enfants">Enfants</label>
+          <label for="sa-enfants"
+            >Enfants <span class="sa-optional">moins de 18 ans</span></label
+          >
           <input
             id="sa-enfants"
             name="enfants"
@@ -133,14 +135,18 @@ const { hebergements, vehicules, extra } = circuit.formulaire;
         </div>
       </div>
 
-      <div class="sa-field sa-ages" hidden>
-        <label for="sa-ages">Âge des enfants</label>
-        <input
-          id="sa-ages"
-          name="age-enfants"
-          type="text"
-          placeholder="Ex. 6 et 9 ans"
-        />
+      <div
+        class="sa-field sa-ages"
+        role="group"
+        aria-labelledby="sa-ages-label"
+        hidden
+      >
+        <span class="sa-choices__label" id="sa-ages-label"
+          >Précise l’âge de chacun pendant le voyage</span
+        >
+        <div class="sa-ages__liste"></div>
+        <!-- Rempli au moment de l'envoi : « Enfant 1 : 6 ans, Enfant 2 : 9 ans » -->
+        <input type="hidden" name="age-enfants" value="" />
       </div>
 
       <div class="sa-field">
@@ -461,6 +467,41 @@ const { hebergements, vehicules, extra } = circuit.formulaire;
     color: var(--sa-muted);
     pointer-events: none;
   }
+  .sa-ages__liste {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+    gap: 0.75rem 1rem;
+  }
+  /* Champs créés par le script : styles en :global (pas d'attribut Astro). */
+  .sa-ages__liste :global(label) {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-size: 0.85rem;
+    color: var(--sa-muted);
+  }
+  .sa-ages__liste :global(select) {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.7rem 0.8rem;
+    font: inherit;
+    font-family:
+      system-ui,
+      -apple-system,
+      'Segoe UI',
+      sans-serif;
+    color: var(--sa-ink);
+    background: var(--sa-surface);
+    border: 1px solid var(--sa-line);
+    border-radius: 6px;
+  }
+  .sa-ages__liste :global(select:focus-visible) {
+    outline: 2px solid var(--sa-accent);
+    outline-offset: 2px;
+  }
+  .sa-ages__liste :global(select[aria-invalid='true']) {
+    border-color: var(--sa-error);
+  }
+
   .sa-aide {
     margin: 0.35rem 0 0;
     font-size: 0.85rem;
@@ -626,11 +667,55 @@ const { hebergements, vehicules, extra } = circuit.formulaire;
         'button[type="submit"]'
       );
 
-      const toggleAges = () => {
-        if (ages && enfants) ages.hidden = !(Number(enfants.value) > 0);
+      const agesListe = ages?.querySelector<HTMLElement>('.sa-ages__liste');
+      const agesHidden = form.querySelector<HTMLInputElement>(
+        'input[name="age-enfants"]'
+      );
+      const AGE_OPTIONS = [
+        'Moins d’1 an',
+        ...Array.from({ length: 17 }, (_, i) => `${i + 1} an${i ? 's' : ''}`),
+      ];
+
+      // Un menu « âge » par enfant ; les âges déjà choisis sont conservés
+      // quand le nombre d'enfants change.
+      const renderAges = () => {
+        if (!ages || !agesListe || !enfants) return;
+        const count = Math.min(
+          Math.max(Math.floor(Number(enfants.value)) || 0, 0),
+          12
+        );
+        const previous = Array.from(
+          agesListe.querySelectorAll<HTMLSelectElement>('select'),
+          (sel) => sel.value
+        );
+        agesListe.replaceChildren();
+        for (let i = 0; i < count; i++) {
+          const wrapper = document.createElement('div');
+          const label = document.createElement('label');
+          const select = document.createElement('select');
+          select.id = `sa-age-${i + 1}`;
+          select.required = true;
+          select.dataset.enfant = String(i + 1);
+          label.htmlFor = select.id;
+          label.textContent = `Enfant ${i + 1}`;
+          select.add(new Option('Choisir', ''));
+          AGE_OPTIONS.forEach((age) => select.add(new Option(age, age)));
+          select.value = previous[i] ?? '';
+          wrapper.append(label, select);
+          agesListe.append(wrapper);
+        }
+        ages.hidden = count === 0;
       };
-      enfants?.addEventListener('input', toggleAges);
-      toggleAges();
+      enfants?.addEventListener('input', renderAges);
+      renderAges();
+
+      const fillAgesHidden = () => {
+        if (!agesHidden || !agesListe) return;
+        agesHidden.value = Array.from(
+          agesListe.querySelectorAll<HTMLSelectElement>('select'),
+          (sel) => `Enfant ${sel.dataset.enfant} : ${sel.value}`
+        ).join(', ');
+      };
 
       const showError = (msg: string) => {
         if (!error) return;
@@ -666,6 +751,7 @@ const { hebergements, vehicules, extra } = circuit.formulaire;
 
         if (button) button.disabled = true;
         try {
+          fillAgesHidden();
           const data = new FormData(form);
           const body = new URLSearchParams();
           data.forEach((value, key) => body.append(key, String(value)));

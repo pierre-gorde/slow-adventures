@@ -13,7 +13,12 @@ import {
   circuitPrix,
 } from '../../data/circuits';
 import type { Circuit } from '../../data/circuits';
-import { CALENDLY_URL, CIRCUITS_URL, WHATSAPP_URL } from '../../data/contact';
+import {
+  CALENDLY_URL,
+  CIRCUITS_URL,
+  whatsappLink,
+  whatsappMessageCircuit,
+} from '../../data/contact';
 
 export function getStaticPaths() {
   return circuits.map((circuit) => ({
@@ -309,7 +314,7 @@ const tripLd = {
           <p class="font-sans text-sm text-warm-gray mt-2">
             Tu préfères par WhatsApp&nbsp;?
             <a
-              href={WHATSAPP_URL}
+              href={whatsappLink(whatsappMessageCircuit(circuit.nom))}
               target="_blank"
               rel="noopener noreferrer"
               data-cta="whatsapp-circuit"

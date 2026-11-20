@@ -1,15 +1,18 @@
-name: 🚀 Déploiement du site
+name: 🔍 Vérification du site
 
+# La mise en ligne est faite par Netlify (build Git, voir web/netlify.toml),
+# qui relance lint + tests avant chaque déploiement de prod. Ce workflow donne
+# leur résultat sur la PR, avant le merge.
 on:
-  push:
+  pull_request:
     branches: [main]
     paths:
       - 'web/**'
-      - '.github/workflows/deploy.yml'
+      - '.github/workflows/verification.yml'
 
 jobs:
-  verification-et-mise-en-ligne:
-    name: 🔍 Vérifier & 🌐 Mettre en ligne
+  verification:
+    name: 🔍 Lint & tests
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -21,7 +24,7 @@ jobs:
       - name: ⚙️ Préparer Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
           cache-dependency-path: web/package-lock.json
 
@@ -33,12 +36,3 @@ jobs:
 
       - name: 🧪 Lancer les tests
         run: npm run test
-
-      - name: 🏗️ Construire le site
-        run: npm run build
-
-      - name: 🌐 Publier sur Netlify
-        run: npx netlify-cli deploy --prod
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}

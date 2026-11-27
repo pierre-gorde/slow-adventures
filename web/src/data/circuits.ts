@@ -283,7 +283,7 @@ export const circuits: Circuit[] = [
       {
         label: 'Rythme',
         valeur:
-          'Équilibré\u00a0: deux à trois nuits par étape pour prendre le temps de randonner, jamais plus de 4\u00a0h de route dans la journée',
+          'Équilibré\u00a0: la plupart des étapes durent deux à trois nuits, pour prendre le temps de randonner, et jamais plus de 4\u00a0h de route dans la journée',
       },
       {
         label: 'Ambiance',

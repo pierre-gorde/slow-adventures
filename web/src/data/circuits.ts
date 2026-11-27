@@ -83,6 +83,8 @@ export interface CircuitFormulaire {
 
 export interface Circuit {
   slug: string;
+  /** true : circuit caché (page non publiée, absent du menu et des listes). */
+  masque?: boolean;
   nom: string;
   duree: string;
   trajet: string;
@@ -264,6 +266,7 @@ export const circuits: Circuit[] = [
   },
   {
     slug: 'rocheuses-canadiennes',
+    masque: true,
     nom: 'Les Rocheuses canadiennes',
     duree: '2 semaines',
     trajet: 'Boucle Calgary → Calgary',
@@ -706,5 +709,8 @@ export const circuitInclusNote =
 /** Section « Combien ça coûte ? », commune à tous les circuits. */
 export const circuitPrix =
   'Le prix de ton voyage dépend de tes dates, du nombre de voyageurs et des options choisies. Tu reçois un devis précis et sans engagement dans la semaine qui suit ta demande.';
+
+/** Circuits affichés sur le site (sans les circuits masqués). */
+export const circuitsVisibles: Circuit[] = circuits.filter((c) => !c.masque);
 
 export const circuitHref = (c: Circuit): string => `/circuits/${c.slug}/`;

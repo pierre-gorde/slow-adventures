@@ -1,5 +1,5 @@
 ---
-import { circuits, circuitHref } from '../data/circuits';
+import { circuitsVisibles, circuitHref } from '../data/circuits';
 import { CIRCUITS_URL } from '../data/contact';
 
 interface Props {
@@ -73,7 +73,7 @@ const isHome = currentPath === '/' || currentPath === '';
             class="bg-white shadow-lg border border-warm-black/5 rounded-xl p-3"
           >
             {
-              circuits.map((c) => (
+              circuitsVisibles.map((c) => (
                 <a
                   href={circuitHref(c)}
                   class={`topbar__dropdown-link flex flex-col px-3 py-2 rounded-lg font-sans text-sm transition-colors ${
@@ -176,7 +176,7 @@ const isHome = currentPath === '/' || currentPath === '';
       </a>
       <div class="mt-1 mb-4">
         {
-          circuits.map((c) => (
+          circuitsVisibles.map((c) => (
             <a
               href={circuitHref(c)}
               class={`topbar__menu-link font-sans text-base py-3 pl-6 pr-3 rounded-lg transition-colors block ${

@@ -187,6 +187,37 @@ describe('En bref on every circuit', () => {
   });
 });
 
+describe('hidden circuits', () => {
+  const masked = [
+    ...circuitsData.matchAll(/slug: '([^']+)',\s*masque: true/g),
+  ].map((m) => m[1]);
+
+  it('hides the Rockies circuit without deleting it', () => {
+    expect(masked).toEqual(['rocheuses-canadiennes']);
+    expect(circuitsData).toContain("nom: 'Les Rocheuses canadiennes'");
+  });
+
+  it('redirects exactly the hidden circuits to the circuits list', () => {
+    const redirected = [
+      ...astroConfig.matchAll(/'\/circuits\/([a-z-]+)': '\/circuits\/'/g),
+    ].map((m) => m[1]);
+    expect(redirected.sort()).toEqual(masked.sort());
+  });
+
+  it('lists, routes and links only visible circuits', () => {
+    for (const f of [
+      '../../src/components/CircuitCarousel.astro',
+      '../../src/components/TopBar.astro',
+      '../../src/pages/circuits/index.astro',
+      '../../src/pages/circuits/[slug].astro',
+    ]) {
+      const src = read(f);
+      expect(src).toContain('circuitsVisibles');
+      expect(src).not.toMatch(/\bcircuits\.map\(/);
+    }
+  });
+});
+
 describe('contact links', () => {
   it('uses the 15-minute Calendly event', () => {
     expect(contact).toContain(

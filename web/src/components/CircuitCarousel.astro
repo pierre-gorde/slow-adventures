@@ -1,7 +1,7 @@
 ---
 import CircuitCard from './CircuitCard.astro';
 import SectionReveal from './SectionReveal.astro';
-import { circuits } from '../data/circuits';
+import { circuitsVisibles } from '../data/circuits';
 import { CIRCUITS_URL } from '../data/contact';
 ---
 
@@ -20,11 +20,14 @@ import { CIRCUITS_URL } from '../data/contact';
   </SectionReveal>
 
   <ul
-    class="circuit-track max-w-6xl mx-auto list-none p-0"
+    class:list={[
+      'circuit-track mx-auto list-none p-0',
+      circuitsVisibles.length >= 3 ? 'max-w-6xl circuit-track--3' : 'max-w-5xl',
+    ]}
     aria-label="Nos circuits"
   >
     {
-      circuits.map((circuit) => (
+      circuitsVisibles.map((circuit) => (
         <li class="circuit-track__item">
           <CircuitCard circuit={circuit} />
         </li>
@@ -88,8 +91,9 @@ import { CIRCUITS_URL } from '../data/contact';
     }
   }
 
+  /* 3 colonnes seulement s'il y a au moins 3 circuits. */
   @media (min-width: 1024px) {
-    .circuit-track {
+    .circuit-track--3 {
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }

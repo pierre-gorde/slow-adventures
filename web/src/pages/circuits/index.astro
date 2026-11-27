@@ -6,7 +6,7 @@ import CTAButton from '../../components/CTAButton.astro';
 import CalendlyModal from '../../components/CalendlyModal.astro';
 import SectionReveal from '../../components/SectionReveal.astro';
 import destPoster from '../../assets/images/destinations-hero-poster.webp';
-import { circuits, circuitHref } from '../../data/circuits';
+import { circuitsVisibles, circuitHref } from '../../data/circuits';
 import { CALENDLY_URL, whatsappLink } from '../../data/contact';
 
 const collectionLd = {
@@ -18,7 +18,7 @@ const collectionLd = {
   url: Astro.url.toString(),
   mainEntity: {
     '@type': 'ItemList',
-    itemListElement: circuits.map((c, i) => ({
+    itemListElement: circuitsVisibles.map((c, i) => ({
       '@type': 'ListItem',
       position: i + 1,
       name: c.nom,
@@ -87,10 +87,15 @@ const collectionLd = {
     ═══════════════════════════════════════════════ -->
     <section class="bg-creme" aria-label="Liste des circuits">
       <ul
-        class="max-w-6xl mx-auto px-4 md:px-8 py-10 md:py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 list-none"
+        class:list={[
+          'mx-auto px-4 md:px-8 py-10 md:py-16 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 list-none',
+          circuitsVisibles.length >= 3
+            ? 'max-w-6xl lg:grid-cols-3'
+            : 'max-w-5xl',
+        ]}
       >
         {
-          circuits.map((circuit) => (
+          circuitsVisibles.map((circuit) => (
             <li class="circuit-list__item">
               <CircuitCard circuit={circuit} headingLevel="h2" />
             </li>

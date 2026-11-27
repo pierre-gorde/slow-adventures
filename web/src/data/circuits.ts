@@ -369,7 +369,7 @@ export const circuits: Circuit[] = [
       {
         label: 'Idéal pour',
         valeur:
-          'Un premier voyage à New York, en couple, entre sœurs ou entre amis',
+          'Un premier voyage à New York, en couple, en famille ou entre amis',
       },
       {
         label: 'Où dormir',
@@ -387,7 +387,7 @@ export const circuits: Circuit[] = [
         jours: 'Jour 1',
         lieu: 'New York, New York',
         texte:
-          'Arrivée en fin de matinée et installation à l’hôtel, puis première balade pour prendre le pouls de la ville.',
+          'Arrivée en fin de matinée et installation à l’hôtel, puis première balade pour s’acclimater à la ville.',
         blocs: [
           {
             items: [
@@ -411,23 +411,16 @@ export const circuits: Circuit[] = [
           {
             titre: 'Tôt le matin',
             items: [
-              'Arrivée en métro à la station Brooklyn Bridge–City Hall environ 40 minutes avant le lever du soleil',
+              'Arrivée en métro à la station Brooklyn Bridge–City Hall un peu avant le lever du soleil',
               'Traversée du pont de Brooklyn : place-toi au milieu du pont, le soleil se lève côté Brooklyn',
               'DUMBO et sa vue culte sur le Manhattan Bridge',
               'Balade sur la Brooklyn Heights Promenade, puis un café ou un petit-déj dans le quartier',
             ],
           },
           {
+            titre: 'Fin de matinée : Williamsburg',
             texte:
-              'Si tu tombes un dimanche : c’est le moment d’assister à une messe gospel à Brooklyn. Une expérience incroyable, à vérifier selon les disponibilités.',
-          },
-          {
-            titre: 'Fin de matinée : friperies de Williamsburg',
-            items: [
-              'Awoke Vintage (ouvre vers 10 h)',
-              'Beacon’s Closet (ouvre vers 11 h)',
-              'Stella Dallas (ouvre vers 12 h)',
-            ],
+              'Direction Williamsburg, le quartier des friperies : plus tu t’enfonces dans ses rues, plus les boutiques vintage se multiplient. Parfait pour chiner la pièce que personne d’autre n’aura.',
           },
           {
             titre: 'Après-midi',
@@ -436,7 +429,7 @@ export const circuits: Circuit[] = [
           {
             titre: 'Le soir',
             texte:
-              'Spectacle à Broadway (séances vers 18 h 30-19 h selon les shows), avec un verre sur un rooftop avant ou après.',
+              'Spectacle à Broadway, avec un verre sur un rooftop avant ou après.',
           },
         ],
         conseil:
@@ -451,16 +444,16 @@ export const circuits: Circuit[] = [
           {
             titre: 'Matin',
             items: [
-              'Arrivée vers 9 h 30 à Central Park pour une longue balade',
+              'Longue balade à Central Park',
               'Petit-déj ou brunch dans un vrai diner new-yorkais, façon luncheonette',
-              'MoMA vers 11 h (billets à prendre en ligne à l’avance)',
+              'Le MoMA (billets à prendre en ligne à l’avance)',
             ],
           },
           {
             titre: 'Après-midi',
             items: [
               'Marche sur la 5th Avenue : cathédrale Saint-Patrick, Rockefeller Center et boutiques',
-              'Top of the Rock : arrive environ 1 heure avant le coucher du soleil pour voir la ville de jour, puis s’illuminer, avec l’Empire State Building juste en face',
+              'Top of the Rock : arrive avant le coucher du soleil pour voir la ville de jour, puis s’illuminer, avec l’Empire State Building juste en face',
             ],
           },
         ],
@@ -474,7 +467,7 @@ export const circuits: Circuit[] = [
           {
             titre: 'Matin',
             items: [
-              '9 h : ferry de Staten Island, gratuit, avec une super vue sur la Statue de la Liberté. À l’aller, place-toi côté droit ; au retour, côté gauche',
+              'Ferry de Staten Island, gratuit, avec une super vue sur la Statue de la Liberté. À l’aller, place-toi côté droit ; au retour, côté gauche',
               'Petit café ou balade à Staten Island, puis retour',
               'Wall Street, le Charging Bull, Ground Zero et l’Oculus',
             ],
@@ -489,7 +482,7 @@ export const circuits: Circuit[] = [
           {
             titre: 'Fin d’après-midi',
             texte:
-              'NYC Ferry (ligne East River) depuis Wall St/Pier 11 jusqu’à Hunter’s Point South Park, environ 30 minutes de bateau, pour un coucher de soleil sur toute la skyline. Pars au plus tard 1 heure avant le coucher du soleil. Plan B : un rooftop.',
+              'NYC Ferry (ligne East River) depuis Wall St/Pier 11 jusqu’à Hunter’s Point South Park, pour un coucher de soleil sur toute la skyline. Pars bien avant le coucher du soleil. Plan B : un rooftop.',
           },
           {
             titre: 'Le soir',
@@ -506,10 +499,10 @@ export const circuits: Circuit[] = [
           {
             titre: 'Matin',
             items: [
-              '9 h : Grand Central, la New York Public Library et Bryant Park',
+              'Grand Central, la New York Public Library et Bryant Park',
               'Pause dans un diner, comme The Comfort Diner',
               'Selon tes envies : le nord de Central Park, ou le Roosevelt Island Tramway pour une vue aérienne sur l’East River',
-              'Empire State Building (compte environ 1 h 30)',
+              'L’Empire State Building',
             ],
           },
           {

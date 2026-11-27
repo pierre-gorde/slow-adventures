@@ -36,26 +36,23 @@ const jsonLd = {
   '@type': ['ProfessionalService', 'TravelAgency'],
   name: 'Slow Adventures',
   description:
-    'Slow Adventures est un service de travel planning créé par Elena. Elena conçoit des voyages immersifs et sur mesure exclusivement en Amérique du Nord — Canada, États-Unis et Alaska.',
+    'Slow Adventures propose des circuits slow travel aux États-Unis, imaginés par Elena. Réservations, paiement et assistance sont gérés par une agence partenaire.',
   url: siteUrl.toString(),
   image: new URL('/og-image.jpg', siteUrl).toString(),
   logo: new URL('/favicon.svg', siteUrl).toString(),
   founder: {
     '@type': 'Person',
     name: 'Elena',
-    jobTitle: 'Travel Planner — Amérique du Nord',
+    jobTitle: 'Créatrice de circuits — États-Unis',
   },
   areaServed: {
-    '@type': 'Place',
-    name: 'Amérique du Nord',
-    description: 'États-Unis et Canada',
+    '@type': 'Country',
+    name: 'États-Unis',
   },
   knowsAbout: [
     'circuits slow travel',
     'voyages immersifs',
-    'road trips en Amérique du Nord',
-    'Amérique du Nord',
-    'Canada',
+    'road trips aux États-Unis',
     'États-Unis',
     'Alaska',
     'road trip',
@@ -67,7 +64,7 @@ const jsonLd = {
     itemListElement: [
       {
         '@type': 'Offer',
-        name: 'Circuits slow travel aux États-Unis et au Canada',
+        name: 'Circuits slow travel aux États-Unis',
         description:
           'Circuits imaginés par Elena, avec devis personnalisé et sans engagement. Réservations, paiement et assistance gérés par une agence partenaire.',
         url: new URL('/circuits/', siteUrl).toString(),

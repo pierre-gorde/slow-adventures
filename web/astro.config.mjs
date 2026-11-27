@@ -16,6 +16,9 @@ export default defineConfig({
     // leur ancienne adresse renvoie vers la liste. Retirer la ligne si on
     // réaffiche le circuit (vérifié par tests/pages/circuits.test.ts).
     '/circuits/rocheuses-canadiennes': '/circuits/',
+    // Anciennes fiches destinations retirées (draft: true).
+    '/destinations/canada-grandeur-nature': '/circuits/',
+    '/destinations/yukon-bout-du-monde': '/circuits/',
   },
   integrations: [
     sitemap({

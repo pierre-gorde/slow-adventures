@@ -196,6 +196,11 @@ export const circuits: Circuit[] = [
         texte: 'Restitution du véhicule et vol retour.',
       },
     ],
+    petitPlus: {
+      titre: 'Le petit plus\u00a0: une semaine de plus jusqu’à San Francisco',
+      texte:
+        'Prolonge ton voyage d’une semaine\u00a0: Sequoia, Yosemite et San Francisco, avec retour depuis San Francisco.',
+    },
     options: [
       {
         label: 'Hébergement',
@@ -205,11 +210,6 @@ export const circuits: Circuit[] = [
       {
         label: 'Véhicule',
         texte: 'SUV, van aménagé, tente de toit ou camping-car',
-      },
-      {
-        label: 'Prolonge ton voyage d’une semaine',
-        texte:
-          'Sequoia, Yosemite et San Francisco, avec retour depuis San Francisco',
       },
     ],
     formulaire: {

@@ -37,9 +37,13 @@ describe('circuit content', () => {
   });
 
   it('offers the one-week extension on the US parks circuit', () => {
-    expect(circuitsData).toContain(
-      "label: 'Prolonge ton voyage d’une semaine'"
+    const parcs = circuitsData.slice(
+      circuitsData.indexOf("slug: 'parcs-nationaux-us'"),
+      circuitsData.indexOf("slug: 'rocheuses-canadiennes'")
     );
+    expect(parcs).toContain('Le petit plus');
+    expect(parcs).toContain('Prolonge ton voyage d’une semaine');
+    expect(parcs).not.toContain("label: 'Prolonge ton voyage d’une semaine'");
     expect(circuitsData).toMatch(/extra:\s*'Prolonger d’une semaine/);
   });
 

@@ -29,13 +29,13 @@ describe('build output validation', () => {
 
     it('renders dynamic title', () => {
       expect(html).toContain(
-        '<title>Slow Adventures — Circuits slow travel aux États-Unis et au Canada</title>'
+        '<title>Slow Adventures — Circuits slow travel aux États-Unis</title>'
       );
     });
 
     it('renders meta description', () => {
       expect(html).toContain(
-        'content="Des circuits conçus par Elena pour mieux voyager aux États-Unis et au Canada. Tu choisis, on s’occupe du reste."'
+        'content="Des circuits conçus par Elena pour mieux voyager aux États-Unis. Tu choisis, on s’occupe du reste."'
       );
     });
 
@@ -196,6 +196,32 @@ describe('build output validation', () => {
       const robots = readFileSync(resolve(distDir, 'robots.txt'), 'utf-8');
       expect(robots).toContain('Sitemap:');
       expect(robots).toContain('sitemap-index.xml');
+    });
+  });
+
+  describe('no Canada mention on the site', () => {
+    const pages = [
+      'index.html',
+      'circuits/index.html',
+      'circuits/parcs-nationaux-us/index.html',
+      'circuits/new-york-essentials/index.html',
+      'philosophie/index.html',
+      'decouvrir/index.html',
+    ];
+
+    it.each(pages)('%s does not mention Canada', (page) => {
+      const html = readFileSync(resolve(distDir, page), 'utf-8');
+      expect(html).not.toMatch(/Canada|canadien/i);
+    });
+
+    it('does not publish the hidden Canada pages', () => {
+      for (const page of [
+        'circuits/rocheuses-canadiennes/index.html',
+        'destinations/canada-grandeur-nature/index.html',
+        'destinations/yukon-bout-du-monde/index.html',
+      ]) {
+        expect(existsSync(resolve(distDir, page))).toBe(false);
+      }
     });
   });
 });

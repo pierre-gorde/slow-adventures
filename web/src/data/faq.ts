@@ -14,7 +14,7 @@ export const faqItems: FaqItem[] = [
     name: 'Qu’est-ce que Slow Adventures ?',
     acceptedAnswer: {
       '@type': 'Answer',
-      text: 'SlowAdventures propose des circuits en Amérique du Nord, imaginés par Elena et inspirés des valeurs du slow travel. Pas forcément voyager moins vite, mais autrement. Ici, on ne coche pas des cases. On prend le temps de comprendre un lieu, de rencontrer les habitants, de s’imprégner vraiment. Chaque circuit est pensé comme une expérience immersive : des itinéraires construits avec sens, des hébergements choisis avec soin, et des activités qui ont un impact positif, pour toi comme pour les destinations. L’idée n’est pas de voir plus, mais de voir mieux et de ressentir la destination. Parce qu’au fond, les plus beaux souvenirs ne viennent pas de ce qu’on a vu, mais de ce qu’on a ressenti.',
+      text: 'SlowAdventures propose des circuits aux États-Unis, imaginés par Elena et inspirés des valeurs du slow travel. Pas forcément voyager moins vite, mais autrement. Ici, on ne coche pas des cases. On prend le temps de comprendre un lieu, de rencontrer les habitants, de s’imprégner vraiment. Chaque circuit est pensé comme une expérience immersive : des itinéraires construits avec sens, des hébergements choisis avec soin, et des activités qui ont un impact positif, pour toi comme pour les destinations. L’idée n’est pas de voir plus, mais de voir mieux et de ressentir la destination. Parce qu’au fond, les plus beaux souvenirs ne viennent pas de ce qu’on a vu, mais de ce qu’on a ressenti.',
     },
   },
   {
@@ -22,7 +22,7 @@ export const faqItems: FaqItem[] = [
     name: 'Sur quelles destinations je peux partir avec Slow Adventures ?',
     acceptedAnswer: {
       '@type': 'Answer',
-      text: 'SlowAdventures est spécialisé dans l’Amérique du Nord : tous les circuits se déroulent aux États-Unis et au Canada. De nouveaux circuits arrivent régulièrement : inscris-toi à la newsletter pour être le premier ou la première informé(e).',
+      text: 'SlowAdventures est spécialisé dans les États-Unis : tous les circuits s’y déroulent. De nouveaux circuits arrivent régulièrement : inscris-toi à la newsletter pour être le premier ou la première informé(e).',
     },
   },
   {
@@ -62,7 +62,7 @@ export const faqItems: FaqItem[] = [
     name: 'Quelle est la différence entre Slow Adventures et une agence de voyage ?',
     acceptedAnswer: {
       '@type': 'Answer',
-      text: 'Les circuits SlowAdventures ne sortent pas d’un catalogue d’agence : chacun a été imaginé par Elena, avec l’exigence d’une passionnée de l’Amérique du Nord. Tu profites d’un voyage pensé avec soin et avec du sens, et de la sécurité d’une agence partenaire pour tout ce qui concerne la réservation. Le meilleur des deux mondes, sans l’image de l’agence classique.',
+      text: 'Les circuits SlowAdventures ne sortent pas d’un catalogue d’agence : chacun a été imaginé par Elena, avec l’exigence d’une passionnée des États-Unis. Tu profites d’un voyage pensé avec soin et avec du sens, et de la sécurité d’une agence partenaire pour tout ce qui concerne la réservation. Le meilleur des deux mondes, sans l’image de l’agence classique.',
     },
   },
   {
@@ -75,10 +75,10 @@ export const faqItems: FaqItem[] = [
   },
   {
     '@type': 'Question',
-    name: 'Slow Adventures propose-t-il uniquement l’Amérique du Nord ?',
+    name: 'Slow Adventures propose-t-il uniquement les États-Unis ?',
     acceptedAnswer: {
       '@type': 'Answer',
-      text: 'Oui, Slow Adventures est exclusivement spécialisé dans l’Amérique du Nord (États-Unis et Canada). Cette spécialisation permet à Elena de connaître ces destinations en profondeur : les meilleures adresses, les périodes idéales, les erreurs à éviter, et les expériences hors des sentiers battus que les guides classiques ne mentionnent pas.',
+      text: 'Oui, Slow Adventures est exclusivement spécialisé dans les États-Unis. Cette spécialisation permet à Elena de connaître ces destinations en profondeur : les meilleures adresses, les périodes idéales, les erreurs à éviter, et les expériences hors des sentiers battus que les guides classiques ne mentionnent pas.',
     },
   },
 ];

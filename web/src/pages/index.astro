@@ -24,10 +24,8 @@ import carouselLA from '../assets/homepage-carousel/IMG_0226.jpg';
 import carouselUsaRoadtrip from '../assets/homepage-carousel/IMG_0318.jpg';
 import carouselBoston from '../assets/homepage-carousel/IMG_6042.jpg';
 import carouselFloride from '../assets/homepage-carousel/floride.webp';
-import carouselBowLake from '../assets/homepage-carousel/bow-lake.webp';
 import carouselNewYork from '../assets/homepage-carousel/new-york.webp';
 import carouselAlaska from '../assets/homepage-carousel/alaska-aurores.webp';
-import carouselQuebec from '../assets/homepage-carousel/quebec.webp';
 import { processSteps } from '../data/processSteps';
 import { faqLd } from '../data/faq';
 import { CIRCUITS_URL } from '../data/contact';
@@ -57,10 +55,6 @@ const carouselSlides = [
       'Los Angeles — Californie · Des palmiers et un lever de soleil doré',
   },
   {
-    image: carouselBowLake,
-    caption: 'Bow Lake — Canada · Un lac turquoise au pied des Rocheuses',
-  },
-  {
     image: carouselUsaRoadtrip,
     caption: 'USA — Road trip · L’aventure, à deux',
   },
@@ -72,17 +66,13 @@ const carouselSlides = [
     image: carouselAlaska,
     caption: 'Alaska — USA · ça pourrait être toi sous les aurores boréales',
   },
-  {
-    image: carouselQuebec,
-    caption: 'Québec — Canada · Le Château Frontenac entre les feuilles',
-  },
   { image: carouselBoston, caption: 'Boston — La grandeur des buildings' },
 ];
 ---
 
 <BaseLayout
-  title="Slow Adventures — Circuits slow travel aux États-Unis et au Canada"
-  description="Des circuits conçus par Elena pour mieux voyager aux États-Unis et au Canada. Tu choisis, on s’occupe du reste."
+  title="Slow Adventures — Circuits slow travel aux États-Unis"
+  description="Des circuits conçus par Elena pour mieux voyager aux États-Unis. Tu choisis, on s’occupe du reste."
   heroPreloadImage={optimizedPoster.src}
   extraLd={faqLd}
 >
@@ -92,7 +82,7 @@ const carouselSlides = [
       videoSrc="/videos/hero.mp4"
       logoSrc={heroLogo}
       title="Slow Adventures"
-      subtitle="Des circuits conçus par Elena pour mieux voyager aux États-Unis et au Canada. Tu choisis, on s’occupe du reste."
+      subtitle="Des circuits conçus par Elena pour mieux voyager aux États-Unis. Tu choisis, on s’occupe du reste."
     />
   </header>
   <main id="main">
@@ -102,9 +92,9 @@ const carouselSlides = [
         <ElenaSection
           id="elena"
           imageSrc={elenaPhoto}
-          imageAlt="Elena, créatrice de voyages immersifs en Amérique du Nord"
+          imageAlt="Elena, créatrice de circuits aux États-Unis"
           title="Hello"
-          description="Moi c’est Elena, et je suis une véritable voyageuse dans l’âme. Tombée amoureuse de l’Amérique du Nord, j’ai créé SlowAdventures pour partager les voyages qui me font rêver. Chaque circuit, je l’ai imaginé et construit avec soin, dans l’esprit du slow travel : des itinéraires pensés avec du sens, des hébergements choisis, et des expériences qui te connectent vraiment à l’âme des lieux. Pas besoin de tout organiser : tu choisis ton rêve, on s’occupe du reste, et tu pars l’esprit libre. Alors, plutôt team USA ou Canada ?"
+          description="Moi c’est Elena, et je suis une véritable voyageuse dans l’âme. Tombée amoureuse des États-Unis, j’ai créé SlowAdventures pour partager les voyages qui me font rêver. Chaque circuit, je l’ai imaginé et construit avec soin, dans l’esprit du slow travel : des itinéraires pensés avec du sens, des hébergements choisis, et des expériences qui te connectent vraiment à l’âme des lieux. Pas besoin de tout organiser : tu choisis ton rêve, on s’occupe du reste, et tu pars l’esprit libre. Alors, plutôt grands espaces ou city trip ?"
           ctaHref={CIRCUITS_URL}
           ctaText="Découvre les circuits"
           ctaCalendly={false}

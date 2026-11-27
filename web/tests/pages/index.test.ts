@@ -18,7 +18,7 @@ describe('index.astro', () => {
 
   it('uses BaseLayout with description prop', () => {
     expect(page).toContain(
-      'Des circuits conçus par Elena pour mieux voyager aux États-Unis et au Canada.'
+      'Des circuits conçus par Elena pour mieux voyager aux États-Unis.'
     );
   });
 
@@ -62,7 +62,7 @@ describe('index.astro', () => {
 
     it('passes subtitle', () => {
       expect(page).toContain(
-        'subtitle="Des circuits conçus par Elena pour mieux voyager aux États-Unis et au Canada. Tu choisis, on s’occupe du reste."'
+        'subtitle="Des circuits conçus par Elena pour mieux voyager aux États-Unis. Tu choisis, on s’occupe du reste."'
       );
     });
 

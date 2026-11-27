@@ -1,4 +1,5 @@
 ---
+draft: true
 country: 'Yukon au bout du monde'
 description: 'Territoire sauvage du Grand Nord canadien, le Yukon te plonge dans des paysages démesurés où la nature règne en maître absolu — glaciers, toundra infinie, aurores boréales et faune libre. Une destination pour ceux qui veulent vivre quelque chose de rare, loin de tout.'
 image: '../../assets/images/destinations/yukon.webp'

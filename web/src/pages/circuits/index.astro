@@ -14,7 +14,7 @@ const collectionLd = {
   '@type': 'CollectionPage',
   name: 'Les circuits — Slow Adventures',
   description:
-    'Les circuits Slow Adventures aux États-Unis et au Canada, imaginés par Elena.',
+    'Les circuits Slow Adventures aux États-Unis, imaginés par Elena.',
   url: Astro.url.toString(),
   mainEntity: {
     '@type': 'ItemList',
@@ -30,7 +30,7 @@ const collectionLd = {
 
 <BaseLayout
   title="Les circuits — Slow Adventures"
-  description="Plutôt USA ou Canada ? Découvre les circuits Slow Adventures, imaginés par Elena pour mieux voyager aux États-Unis et au Canada."
+  description="Plutôt grands espaces ou city trip ? Découvre les circuits Slow Adventures, imaginés par Elena pour mieux voyager aux États-Unis."
   extraLd={collectionLd}
 >
   <main id="main">
@@ -43,7 +43,7 @@ const collectionLd = {
     >
       <Image
         src={destPoster}
-        alt="Paysage d'Amérique du Nord"
+        alt="Paysage des États-Unis"
         class="dest-listing-hero__poster"
         widths={[768, 1440]}
         sizes="100vw"
@@ -76,8 +76,8 @@ const collectionLd = {
         <p
           class="font-sans text-white/80 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
         >
-          Plutôt USA ou Canada&nbsp;? Chaque circuit est pensé pour mieux
-          voyager.
+          Plutôt grands espaces ou city trip&nbsp;? Chaque circuit est pensé
+          pour mieux voyager.
         </p>
       </div>
     </section>

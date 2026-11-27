@@ -164,6 +164,29 @@ describe('New York Essentials', () => {
   });
 });
 
+describe('En bref on every circuit', () => {
+  it('gives each circuit the same six key facts', () => {
+    const blocks = circuitsData.split(/slug: '/).slice(1);
+    expect(blocks).toHaveLength(3);
+    for (const block of blocks) {
+      const enBref = block.slice(
+        block.indexOf('enBref:'),
+        block.indexOf('etapes:')
+      );
+      for (const label of [
+        'Durée',
+        'Rythme',
+        'Ambiance',
+        'Idéal pour',
+        'Où dormir',
+        'Quand partir',
+      ]) {
+        expect(enBref).toContain(`label: '${label}'`);
+      }
+    }
+  });
+});
+
 describe('contact links', () => {
   it('uses the 15-minute Calendly event', () => {
     expect(contact).toContain(

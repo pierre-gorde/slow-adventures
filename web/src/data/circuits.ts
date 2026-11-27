@@ -124,6 +124,34 @@ export const circuits: Circuit[] = [
       'Grand Canyon, Zion, Bryce, Death Valley… L’Ouest américain dans ce qu’il a de plus spectaculaire, à ton rythme.',
     pourquoi:
       'L’Ouest américain dans ce qu’il a de plus spectaculaire, en une boucle pensée pour en profiter vraiment. On part des palmiers de Los Angeles pour traverser les déserts de Californie, on rejoint les roches rouges de l’Arizona et le vertige du Grand Canyon, puis les canyons sculptés de l’Utah. Deux jours entre les néons de Las Vegas et les roches rouges du Nevada, une dernière nuit au cœur de la Vallée de la Mort, et retour au Pacifique. Deux semaines de paysages qui semblent venir d’une autre planète, sans jamais avoir l’impression de courir.',
+    enBref: [
+      { label: 'Durée', valeur: '2 semaines, en boucle depuis Los Angeles' },
+      {
+        label: 'Rythme',
+        valeur:
+          'Équilibré\u00a0: une à deux nuits par étape, jamais plus de 4\u00a0h\u00a030 de route dans la journée',
+      },
+      {
+        label: 'Ambiance',
+        valeur:
+          'Road trip dans les grands espaces de l’Ouest, entre déserts, canyons et parcs mythiques',
+      },
+      {
+        label: 'Idéal pour',
+        valeur:
+          'Un premier road trip dans l’Ouest américain, en couple, en famille ou entre amis',
+      },
+      {
+        label: 'Où dormir',
+        valeur:
+          'Selon tes envies\u00a0: camping, lodges et motels de charme, hôtels supérieurs, ou un mélange des trois',
+      },
+      {
+        label: 'Quand partir',
+        valeur:
+          'Au printemps et à l’automne, pour des températures plus douces dans les déserts. L’été est possible, mais très chaud à Death Valley',
+      },
+    ],
     etapes: [
       {
         jours: 'Jours 1 et 2',
@@ -250,6 +278,34 @@ export const circuits: Circuit[] = [
       'Lacs turquoise, glaciers et forêts à perte de vue, entre Banff et Jasper.',
     pourquoi:
       'Deux semaines entièrement consacrées aux Rocheuses, pour enfin prendre le temps. Des lacs d’un turquoise irréel, des glaciers que l’on touche presque, des sources chaudes au milieu des montagnes, et des ours, des wapitis et des mouflons au bord des routes. On sillonne l’Alberta et la Colombie-Britannique, de Banff à Jasper par l’Icefields Parkway, l’une des plus belles routes du monde. Et pour finir, un détour par Abraham Lake, un lac sauvage que peu de voyageurs connaissent. Un circuit pour ceux qui aiment marcher, respirer et se sentir tout petits face à la nature.',
+    enBref: [
+      { label: 'Durée', valeur: '2 semaines, en boucle depuis Calgary' },
+      {
+        label: 'Rythme',
+        valeur:
+          'Équilibré\u00a0: deux à trois nuits par étape pour prendre le temps de randonner, jamais plus de 4\u00a0h de route dans la journée',
+      },
+      {
+        label: 'Ambiance',
+        valeur:
+          'Road trip nature au cœur des Rocheuses, entre lacs turquoise, glaciers et faune sauvage',
+      },
+      {
+        label: 'Idéal pour',
+        valeur:
+          'Les amoureux de nature et de randonnée, en couple, en famille ou entre amis',
+      },
+      {
+        label: 'Où dormir',
+        valeur:
+          'Selon tes envies\u00a0: camping, lodges et chalets de montagne, hôtels supérieurs, ou un mélange des trois',
+      },
+      {
+        label: 'Quand partir',
+        valeur:
+          'De juin à septembre, quand les journées sont longues, les sentiers ouverts et la faune active. Septembre pour les couleurs d’automne et moins de monde',
+      },
+    ],
     etapes: [
       {
         jours: 'Jour 1',

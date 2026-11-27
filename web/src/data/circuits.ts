@@ -30,6 +30,7 @@ import nycCoucherSoleil from '../assets/images/circuits/new-york/01-coucher-sole
 import nycArchitecture from '../assets/images/circuits/new-york/02-architecture-lower-manhattan.webp';
 import nycMemorial from '../assets/images/circuits/new-york/03-memorial-911.webp';
 import nycSkyline from '../assets/images/circuits/new-york/04-skyline-manhattan.webp';
+import nycCarte from '../assets/images/circuits/carte-new-york-essentials.webp';
 import nycStatue from '../assets/images/circuits/new-york/05-statue-de-la-liberte.webp';
 import nycCentralParkAutomne from '../assets/images/circuits/new-york/06-central-park-automne.webp';
 import nycMoma from '../assets/images/circuits/new-york/07-moma-nuit-etoilee.webp';
@@ -195,6 +196,11 @@ export const circuits: Circuit[] = [
         texte: 'Restitution du véhicule et vol retour.',
       },
     ],
+    petitPlus: {
+      titre: 'Le petit plus\u00a0: une semaine de plus jusqu’à San Francisco',
+      texte:
+        'Prolonge ton voyage d’une semaine\u00a0: Sequoia, Yosemite et San Francisco, avec retour depuis San Francisco.',
+    },
     options: [
       {
         label: 'Hébergement',
@@ -204,11 +210,6 @@ export const circuits: Circuit[] = [
       {
         label: 'Véhicule',
         texte: 'SUV, van aménagé, tente de toit ou camping-car',
-      },
-      {
-        label: 'Prolonge ton voyage d’une semaine',
-        texte:
-          'Sequoia, Yosemite et San Francisco, avec retour depuis San Francisco',
       },
     ],
     formulaire: {
@@ -577,18 +578,12 @@ export const circuits: Circuit[] = [
           'Broadway, match NBA, Top of the Rock, MoMA et Empire State Building.',
       },
       {
-        label: 'Budget sur place',
-        valeur:
-          'Compte environ 700 € par personne pour 4 jours pleins (repas, métro et principales visites), hors vols, hôtel, spectacle et match. C’est ce que j’ai dépensé lors de mon voyage.',
-      },
-      {
         label: 'Pourboire',
         valeur: 'Environ 18 à 20 % au restaurant, c’est la norme là-bas.',
       },
       {
         label: 'Formalités',
-        valeur:
-          'L’ESTA est obligatoire, fais la demande en ligne bien avant le départ.',
+        valeur: 'L’ESTA est obligatoire.',
       },
       {
         label: 'Internet',
@@ -607,15 +602,6 @@ export const circuits: Circuit[] = [
       ],
       note: 'Le prix dépend de tes dates et des disponibilités : il t’est communiqué dans le devis, sans engagement.',
     },
-    inclus: [
-      'Les vols',
-      'L’hôtel, selon le style que tu choisis',
-      'Les billets que tu veux réserver : Broadway, match NBA, Top of the Rock, MoMA, Empire State Building…',
-      'L’itinéraire détaillé et une eSim',
-      'Une assistance 24 h/24 pendant ton voyage',
-      'Des options d’annulation flexibles et la protection de tes fonds',
-      'Un voyage ajusté à tes dates et à tes options',
-    ],
     options: [
       {
         label: 'Hôtel',
@@ -645,6 +631,9 @@ export const circuits: Circuit[] = [
     heroAlt:
       'La skyline de Lower Manhattan et le One World Trade Center vus depuis l’eau',
     heroPosition: 'center 68%',
+    carte: nycCarte,
+    carteAlt:
+      'Carte du circuit New York Essentials : Central Park, Times Square, High Line, East Village, Chinatown, Wall Street, Statue de la Liberté, Brooklyn Bridge, Williamsburg, Hunter’s Point',
     slide: nycCoucherSoleil,
     slideAlt:
       'Voyageuse de dos face à la skyline au coucher du soleil, au bord de l’Hudson',

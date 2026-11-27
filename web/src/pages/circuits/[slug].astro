@@ -359,7 +359,7 @@ const tripLd = {
               id="heading-conseils"
               class="circuit-section__header font-serif text-2xl md:text-3xl text-warm-black leading-tight mb-8 pb-3"
             >
-              Mes conseils pratiques
+              Bon à savoir
             </h2>
             <ul class="circuit-options list-none p-0 m-0 space-y-4">
               {circuit.conseils.map((c) => (
@@ -424,49 +424,8 @@ const tripLd = {
       </div>
     </section>
 
-    <!-- COMMENT ÇA MARCHE -->
-    {
-      circuit.commentCaMarche && (
-        <section
-          class="bg-white sa-section-padding"
-          aria-labelledby="heading-comment"
-        >
-          <div class="max-w-3xl mx-auto">
-            <h2
-              id="heading-comment"
-              class="circuit-section__header font-serif text-2xl md:text-3xl text-warm-black leading-tight mb-8 pb-3"
-            >
-              Comment ça marche&nbsp;?
-            </h2>
-            <p class="font-sans text-lg text-warm-black/85 leading-relaxed mb-6">
-              {circuit.commentCaMarche.intro}
-            </p>
-            <ol class="circuit-etapes-resa list-none p-0 m-0 space-y-4">
-              {circuit.commentCaMarche.etapes.map((etape, i) => (
-                <li class="font-sans text-lg text-warm-black leading-relaxed">
-                  <span class="circuit-etapes-resa__num" aria-hidden="true">
-                    {i + 1}
-                  </span>
-                  {etape}
-                </li>
-              ))}
-            </ol>
-            <p class="font-sans text-warm-gray leading-relaxed mt-6">
-              {circuit.commentCaMarche.note}
-            </p>
-          </div>
-        </section>
-      )
-    }
-
     <!-- COMBIEN ÇA COÛTE -->
-    <section
-      class:list={[
-        'sa-section-padding',
-        circuit.commentCaMarche ? 'bg-creme' : 'bg-white',
-      ]}
-      aria-labelledby="heading-prix"
-    >
+    <section class="bg-white sa-section-padding" aria-labelledby="heading-prix">
       <div class="max-w-3xl mx-auto">
         <h2
           id="heading-prix"
@@ -717,26 +676,6 @@ const tripLd = {
 
   .circuit-table tbody th {
     font-weight: 600;
-  }
-
-  .circuit-etapes-resa li {
-    position: relative;
-    padding-left: 2.75rem;
-  }
-
-  .circuit-etapes-resa__num {
-    position: absolute;
-    left: 0;
-    top: 0.1rem;
-    width: 1.9rem;
-    height: 1.9rem;
-    border-radius: 9999px;
-    background: var(--color-terracotta);
-    color: #fff;
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 
   .circuit-inclus li {

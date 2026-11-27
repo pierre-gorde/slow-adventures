@@ -104,6 +104,18 @@ describe('New York Essentials', () => {
     expect(circuitsData).toContain('nycCentralParkElena');
   });
 
+  it('keeps the New York day-by-day simple: no clock times, no shop list', () => {
+    const nyc = circuitsData.slice(
+      circuitsData.indexOf("slug: 'new-york-essentials'")
+    );
+    const etapes = nyc.slice(nyc.indexOf('etapes:'), nyc.indexOf('petitPlus:'));
+    expect(etapes).not.toMatch(/\d[\s\u00a0]h\b|vers \d|ouvre vers/);
+    expect(etapes).not.toContain('Awoke Vintage');
+    expect(etapes).not.toContain('gospel');
+    expect(nyc).toContain('en couple, en famille ou entre amis');
+    expect(nyc).toContain('s’acclimater à la ville');
+  });
+
   it('has no vehicle question and no route map', () => {
     expect(circuitsData).toMatch(/vehicules: \[\],/);
     expect(form).toContain('vehicules.length > 0');

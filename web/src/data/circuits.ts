@@ -111,8 +111,6 @@ export interface Circuit {
   petitPlus?: { titre: string; texte: string };
   evenements?: CircuitEvenements;
   conseils?: CircuitInfo[];
-  /** Section « Comment ça marche ? » propre au circuit. */
-  commentCaMarche?: { intro: string; etapes: string[]; note: string };
 }
 
 export const circuits: Circuit[] = [
@@ -573,11 +571,6 @@ export const circuits: Circuit[] = [
           'Paie directement en sans contact (carte bancaire ou téléphone) avec le système OMNY. Le trajet coûte 3 $, et après 12 trajets sur 7 jours, tout le reste est gratuit (35 $ maximum par semaine).',
       },
       {
-        label: 'Réserve à l’avance',
-        valeur:
-          'Broadway, match NBA, Top of the Rock, MoMA et Empire State Building.',
-      },
-      {
         label: 'Pourboire',
         valeur: 'Environ 18 à 20 % au restaurant, c’est la norme là-bas.',
       },
@@ -585,23 +578,7 @@ export const circuits: Circuit[] = [
         label: 'Formalités',
         valeur: 'L’ESTA est obligatoire.',
       },
-      {
-        label: 'Internet',
-        valeur:
-          'Une eSIM installée avant le départ, et tu es connecté(e) dès l’atterrissage.',
-      },
     ],
-    commentCaMarche: {
-      intro:
-        'Cet itinéraire est une base : on l’adapte à tes dates, à ton budget et à tes envies, puis notre agence partenaire s’occupe de tout réserver.',
-      etapes: [
-        'Tu choisis ce circuit et tu m’envoies ta demande via le formulaire.',
-        'Je te recontacte sur WhatsApp pour caler tes dates, le nombre de voyageurs et le style d’hôtel. Un appel est possible si tu le souhaites.',
-        'Tu reçois un devis personnalisé de notre agence partenaire : vols, hôtel et billets selon tes choix.',
-        'Tu valides, l’agence réserve tout, et tu n’as plus qu’à faire ta valise.',
-      ],
-      note: 'Le prix dépend de tes dates et des disponibilités : il t’est communiqué dans le devis, sans engagement.',
-    },
     options: [
       {
         label: 'Hôtel',

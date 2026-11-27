@@ -130,6 +130,21 @@ describe('New York Essentials', () => {
     expect(nyc).not.toContain('fais la demande en ligne');
   });
 
+  it('keeps only a short "Bon à savoir" and no "Comment ça marche ?"', () => {
+    const nyc = circuitsData.slice(
+      circuitsData.indexOf("slug: 'new-york-essentials'")
+    );
+    const tips = [
+      ...nyc
+        .slice(nyc.indexOf('conseils:'), nyc.indexOf('options:'))
+        .matchAll(/label: '([^']*)'/g),
+    ].map((m) => m[1]);
+    expect(tips).toEqual(['Métro', 'Pourboire', 'Formalités']);
+    expect(page).toContain('Bon à savoir');
+    expect(page).not.toContain('Comment ça marche');
+    expect(circuitsData).not.toContain('commentCaMarche');
+  });
+
   it('has no vehicle question; the map section stays optional', () => {
     expect(circuitsData).toMatch(/vehicules: \[\],/);
     expect(form).toContain('vehicules.length > 0');
@@ -141,7 +156,6 @@ describe('New York Essentials', () => {
       'circuit.enBref',
       'circuit.evenements',
       'circuit.conseils',
-      'circuit.commentCaMarche',
       'circuit.petitPlus',
     ]) {
       expect(page).toContain(key);

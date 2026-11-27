@@ -49,7 +49,7 @@ web/
 ├── tests/                   # Tests Vitest (miroir de src/ et scripts/)
 ├── astro.config.mjs         # Config Astro + Sitemap + robots.txt + Tailwind Vite
 ├── eslint.config.mjs        # ESLint 9 flat config
-├── netlify.toml             # Headers sécurité + cache
+├── netlify.toml             # Build Netlify (prod / previews) + headers sécurité + cache
 ├── vitest.config.ts         # Config tests (jsdom)
 └── .env.example             # Variables d'environnement documentées
 ```
@@ -72,11 +72,11 @@ Copier `.env.example` vers `.env` et remplir les valeurs :
 
 ## Deployment
 
-Le deploy se fait via **GitHub Actions** ([deploy.yml](../.github/workflows/deploy.yml)) :
+Le deploy se fait uniquement via le **build Git de Netlify** (base directory `web`, config dans [netlify.toml](netlify.toml)) :
 
-- Trigger : push sur `main` modifiant `web/**`
-- Steps : install > lint > test > build > deploy Netlify CLI
-- Secrets requis : `NETLIFY_AUTH_TOKEN`, `NETLIFY_SITE_ID`
+- **Production** : push sur `main` > `npm run lint && npm run test && npm run build`. Si lint ou tests échouent, rien n'est publié et la version précédente reste en ligne.
+- **Deploy previews** : chaque PR vers `main` a sa preview (`deploy-preview-<n>--slowadventures.netlify.app`), construite avec `npm run build` seul pour rester visible même si le lint échoue.
+- **Check de PR** : [verification.yml](../.github/workflows/verification.yml) lance lint + tests sur chaque PR modifiant `web/**`, pour voir le résultat avant le merge. Ce workflow ne déploie rien.
 
 ## Rapport hebdo analytics
 

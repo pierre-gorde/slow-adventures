@@ -96,6 +96,14 @@ describe('New York Essentials', () => {
     expect(circuitsData).toContain('Lever de soleil sur le Brooklyn Bridge');
   });
 
+  it('shows the 10 photos from Elena in its gallery', () => {
+    const files = circuitsData.match(
+      /circuits\/new-york\/\d{2}-[a-z0-9-]+\.webp/g
+    );
+    expect(new Set(files).size).toBe(10);
+    expect(circuitsData).toContain('nycCentralParkElena');
+  });
+
   it('has no vehicle question and no route map', () => {
     expect(circuitsData).toMatch(/vehicules: \[\],/);
     expect(form).toContain('vehicules.length > 0');

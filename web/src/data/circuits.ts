@@ -26,11 +26,40 @@ import ca4 from '../assets/images/destinations/gallery/canada/04.webp';
 import ca5 from '../assets/images/destinations/gallery/canada/05.webp';
 import ca6 from '../assets/images/destinations/gallery/canada/06.webp';
 
+import nycCoucherSoleil from '../assets/images/circuits/new-york/01-coucher-soleil-hudson.webp';
+import nycArchitecture from '../assets/images/circuits/new-york/02-architecture-lower-manhattan.webp';
+import nycMemorial from '../assets/images/circuits/new-york/03-memorial-911.webp';
+import nycSkyline from '../assets/images/circuits/new-york/04-skyline-manhattan.webp';
+import nycStatue from '../assets/images/circuits/new-york/05-statue-de-la-liberte.webp';
+
+/** Partie d'une journée détaillée (« Matin », « Le soir »…). */
+export interface CircuitEtapeBloc {
+  titre?: string;
+  texte?: string;
+  items?: string[];
+}
+
 export interface CircuitEtape {
   jours: string;
   lieu: string;
   route?: string;
   texte: string;
+  /** Programme détaillé de la journée (circuits en ville). */
+  blocs?: CircuitEtapeBloc[];
+  /** Encadré « Mon conseil » sous la journée. */
+  conseil?: string;
+}
+
+export interface CircuitInfo {
+  label: string;
+  valeur: string;
+}
+
+export interface CircuitEvenements {
+  titre: string;
+  intro: string;
+  lignes: { nom: string; quand: string; ou: string }[];
+  note: string;
 }
 
 export interface CircuitOption {
@@ -40,6 +69,7 @@ export interface CircuitOption {
 
 export interface CircuitFormulaire {
   hebergements: string[];
+  /** Laisser vide si le circuit n'a pas de véhicule (city trip). */
   vehicules: string[];
   /** Option supplémentaire (Oui / Non), propre au circuit. */
   extra?: string;
@@ -61,10 +91,22 @@ export interface Circuit {
   slide: ImageMetadata;
   slideAlt: string;
   gallery: ImageMetadata[];
-  carte: ImageMetadata;
-  carteAlt: string;
+  /** Carte du trajet (facultative : pas de carte pour un city trip). */
+  carte?: ImageMetadata;
+  carteAlt?: string;
+  /** Partie de la photo d'en-tête à garder visible (CSS object-position). */
+  heroPosition?: string;
   metaTitle: string;
   metaDescription: string;
+  /** Section « En bref » : durée, rythme, ambiance… */
+  enBref?: CircuitInfo[];
+  /** Remplace la liste commune « Ce qui est inclus ». */
+  inclus?: string[];
+  petitPlus?: { titre: string; texte: string };
+  evenements?: CircuitEvenements;
+  conseils?: CircuitInfo[];
+  /** Section « Comment ça marche ? » propre au circuit. */
+  commentCaMarche?: { intro: string; etapes: string[]; note: string };
 }
 
 export const circuits: Circuit[] = [
@@ -291,6 +333,333 @@ export const circuits: Circuit[] = [
       'Les Rocheuses canadiennes — Circuit de 2 semaines | Slow Adventures',
     metaDescription:
       'Circuit de 2 semaines en boucle depuis Calgary : Banff, Lake Louise, l’Icefields Parkway, Jasper et Abraham Lake. Un road trip imaginé par Elena.',
+  },
+  {
+    slug: 'new-york-essentials',
+    nom: 'New York Essentials',
+    duree: '6 jours',
+    trajet: 'City trip à New York',
+    tags: [
+      'Incontournables',
+      'Friperies',
+      'Food',
+      'Vues panoramiques',
+      'Soirées',
+      'Rythme soutenu',
+    ],
+    accroche:
+      'Lever de soleil sur le Brooklyn Bridge, friperies de Williamsburg, ferry au coucher du soleil, jazz club et match NBA.',
+    pourquoi:
+      'Six jours pour cocher les incontournables de New York sans passer à côté de la ville des New-Yorkais : lever de soleil sur le Brooklyn Bridge, friperies de Williamsburg, ferry au coucher du soleil, jazz club et match NBA. Cet itinéraire, je l’ai fait moi-même. C’est celui que je referais les yeux fermés.',
+    enBref: [
+      { label: 'Durée', valeur: '6 jours / 5 nuits' },
+      {
+        label: 'Rythme',
+        valeur: 'Soutenu : on marche beaucoup, prévois de bonnes baskets',
+      },
+      {
+        label: 'Ambiance',
+        valeur: 'City trip, entre icônes et coins plus locaux',
+      },
+      {
+        label: 'Idéal pour',
+        valeur:
+          'Un premier voyage à New York, en couple, entre sœurs ou entre amis',
+      },
+      {
+        label: 'Où dormir',
+        valeur:
+          'Midtown (autour de Times Square), pour tout faire à pied ou en métro',
+      },
+      {
+        label: 'Quand partir',
+        valeur:
+          'Toute l’année. Coup de cœur pour l’automne et la période des fêtes',
+      },
+    ],
+    etapes: [
+      {
+        jours: 'Jour 1',
+        lieu: 'New York, New York',
+        texte:
+          'Arrivée en fin de matinée et installation à l’hôtel, puis première balade pour prendre le pouls de la ville.',
+        blocs: [
+          {
+            items: [
+              'Union Square, le cœur animé du sud de Manhattan',
+              'Flatiron Building, l’immeuble en forme de fer à repasser',
+              'East Village : Tompkins Square Park, puis le Strand Book Store, librairie mythique où l’on peut passer des heures',
+            ],
+          },
+          {
+            titre: 'Le soir',
+            texte: 'Times Square illuminé, juste en bas de l’hôtel.',
+          },
+        ],
+      },
+      {
+        jours: 'Jour 2',
+        lieu: 'Brooklyn au lever du soleil & soirée Broadway',
+        texte:
+          'Réveil aux aurores pour voir le soleil se lever sur Manhattan depuis le pont de Brooklyn.',
+        blocs: [
+          {
+            titre: 'Tôt le matin',
+            items: [
+              'Arrivée en métro à la station Brooklyn Bridge–City Hall environ 40 minutes avant le lever du soleil',
+              'Traversée du pont de Brooklyn : place-toi au milieu du pont, le soleil se lève côté Brooklyn',
+              'DUMBO et sa vue culte sur le Manhattan Bridge',
+              'Balade sur la Brooklyn Heights Promenade, puis un café ou un petit-déj dans le quartier',
+            ],
+          },
+          {
+            texte:
+              'Si tu tombes un dimanche : c’est le moment d’assister à une messe gospel à Brooklyn. Une expérience incroyable, à vérifier selon les disponibilités.',
+          },
+          {
+            titre: 'Fin de matinée : friperies de Williamsburg',
+            items: [
+              'Awoke Vintage (ouvre vers 10 h)',
+              'Beacon’s Closet (ouvre vers 11 h)',
+              'Stella Dallas (ouvre vers 12 h)',
+            ],
+          },
+          {
+            titre: 'Après-midi',
+            texte: 'Retour à Manhattan, côté Union Square.',
+          },
+          {
+            titre: 'Le soir',
+            texte:
+              'Spectacle à Broadway (séances vers 18 h 30-19 h selon les shows), avec un verre sur un rooftop avant ou après.',
+          },
+        ],
+        conseil:
+          'La plupart des théâtres de Broadway sont fermés le lundi, on cale donc le spectacle un autre soir.',
+      },
+      {
+        jours: 'Jour 3',
+        lieu: 'Central Park & vues sur la skyline',
+        texte:
+          'Une journée entre nature en pleine ville, art et la plus belle vue sur Manhattan.',
+        blocs: [
+          {
+            titre: 'Matin',
+            items: [
+              'Arrivée vers 9 h 30 à Central Park pour une longue balade',
+              'Petit-déj ou brunch dans un vrai diner new-yorkais, façon luncheonette',
+              'MoMA vers 11 h (billets à prendre en ligne à l’avance)',
+            ],
+          },
+          {
+            titre: 'Après-midi',
+            items: [
+              'Marche sur la 5th Avenue : cathédrale Saint-Patrick, Rockefeller Center et boutiques',
+              'Top of the Rock : arrive environ 1 heure avant le coucher du soleil pour voir la ville de jour, puis s’illuminer, avec l’Empire State Building juste en face',
+            ],
+          },
+        ],
+      },
+      {
+        jours: 'Jour 4',
+        lieu: 'Statue de la Liberté, Wall Street & Lower Manhattan',
+        texte:
+          'Petit-déj dans un diner près de l’hôtel avant de descendre vers le sud.',
+        blocs: [
+          {
+            titre: 'Matin',
+            items: [
+              '9 h : ferry de Staten Island, gratuit, avec une super vue sur la Statue de la Liberté. À l’aller, place-toi côté droit ; au retour, côté gauche',
+              'Petit café ou balade à Staten Island, puis retour',
+              'Wall Street, le Charging Bull, Ground Zero et l’Oculus',
+            ],
+          },
+          {
+            titre: 'Après-midi',
+            items: [
+              'Chinatown : Mott Street, Canal Street, Doyers Street et Columbus Park, parfait pour déjeuner',
+              'Little Italy : Mulberry Street, Ferrara Bakery & Café et l’épicerie Di Palo’s',
+            ],
+          },
+          {
+            titre: 'Fin d’après-midi',
+            texte:
+              'NYC Ferry (ligne East River) depuis Wall St/Pier 11 jusqu’à Hunter’s Point South Park, environ 30 minutes de bateau, pour un coucher de soleil sur toute la skyline. Pars au plus tard 1 heure avant le coucher du soleil. Plan B : un rooftop.',
+          },
+          {
+            titre: 'Le soir',
+            texte: 'Jazz club ! Greenwich Village en regorge.',
+          },
+        ],
+      },
+      {
+        jours: 'Jour 5',
+        lieu: 'Midtown, temps libre & soirée NBA',
+        texte:
+          'Les grands classiques de Midtown le matin, puis un après-midi à ta façon.',
+        blocs: [
+          {
+            titre: 'Matin',
+            items: [
+              '9 h : Grand Central, la New York Public Library et Bryant Park',
+              'Pause dans un diner, comme The Comfort Diner',
+              'Selon tes envies : le nord de Central Park, ou le Roosevelt Island Tramway pour une vue aérienne sur l’East River',
+              'Empire State Building (compte environ 1 h 30)',
+            ],
+          },
+          {
+            titre: 'Après-midi libre, à composer selon tes envies',
+            items: [
+              'West Village et la High Line',
+              'Chelsea Market',
+              'Gantry Plaza State Park',
+              'Les bonnes adresses souvenirs, comme Grand Slam',
+            ],
+          },
+          {
+            titre: 'Le soir',
+            texte:
+              'Match NBA (saison d’octobre à avril). Hors saison, place à Broadway ou à un dernier rooftop.',
+          },
+        ],
+      },
+      {
+        jours: 'Jour 6',
+        lieu: 'See you soon, New York',
+        texte: 'Check-out, un dernier café, et direction l’aéroport.',
+      },
+    ],
+    petitPlus: {
+      titre: 'Le petit plus : un jour de plus pour Harlem',
+      texte:
+        'Si tu peux rester une journée de plus, file à Harlem : ses rues de brownstones, son histoire musicale et ses adresses soul food. Et si tu as la chance d’y être un dimanche, assiste à une messe gospel sur place.',
+    },
+    evenements: {
+      titre: 'Selon la saison : les parades à ne pas manquer',
+      intro:
+        'Tomber sur une parade, c’est la cerise sur le gâteau. Si tes dates coïncident, on l’intègre au programme.',
+      lignes: [
+        {
+          nom: 'Village Halloween Parade',
+          quand: '31 octobre, en soirée',
+          ou: '6th Avenue, Greenwich Village',
+        },
+        {
+          nom: 'Macy’s Thanksgiving Day Parade',
+          quand: '4e jeudi de novembre, le matin',
+          ou: 'De Central Park West à Herald Square',
+        },
+        {
+          nom: 'Sapin du Rockefeller Center',
+          quand: 'De fin novembre à mi-janvier environ',
+          ou: 'Rockefeller Center',
+        },
+        {
+          nom: 'St. Patrick’s Day Parade',
+          quand: 'Autour du 17 mars',
+          ou: '5th Avenue',
+        },
+        {
+          nom: 'NYC Pride March',
+          quand: 'Dernier dimanche de juin',
+          ou: 'Lower Manhattan',
+        },
+      ],
+      note: 'Les dates exactes changent chaque année : je les vérifie avec toi au moment de ta demande.',
+    },
+    conseils: [
+      {
+        label: 'Métro',
+        valeur:
+          'Paie directement en sans contact (carte bancaire ou téléphone) avec le système OMNY. Le trajet coûte 3 $, et après 12 trajets sur 7 jours, tout le reste est gratuit (35 $ maximum par semaine).',
+      },
+      {
+        label: 'Réserve à l’avance',
+        valeur:
+          'Broadway, match NBA, Top of the Rock, MoMA et Empire State Building.',
+      },
+      {
+        label: 'Budget sur place',
+        valeur:
+          'Compte environ 700 € par personne pour 4 jours pleins (repas, métro et principales visites), hors vols, hôtel, spectacle et match. C’est ce que j’ai dépensé lors de mon voyage.',
+      },
+      {
+        label: 'Pourboire',
+        valeur: 'Environ 18 à 20 % au restaurant, c’est la norme là-bas.',
+      },
+      {
+        label: 'Formalités',
+        valeur:
+          'L’ESTA est obligatoire, fais la demande en ligne bien avant le départ.',
+      },
+      {
+        label: 'Internet',
+        valeur:
+          'Une eSIM installée avant le départ, et tu es connecté(e) dès l’atterrissage.',
+      },
+    ],
+    commentCaMarche: {
+      intro:
+        'Cet itinéraire est une base : on l’adapte à tes dates, à ton budget et à tes envies, puis notre agence partenaire s’occupe de tout réserver.',
+      etapes: [
+        'Tu choisis ce circuit et tu m’envoies ta demande via le formulaire.',
+        'Je te recontacte sur WhatsApp pour caler tes dates, le nombre de voyageurs et le style d’hôtel. Un appel est possible si tu le souhaites.',
+        'Tu reçois un devis personnalisé de notre agence partenaire : vols, hôtel et billets selon tes choix.',
+        'Tu valides, l’agence réserve tout, et tu n’as plus qu’à faire ta valise.',
+      ],
+      note: 'Le prix dépend de tes dates et des disponibilités : il t’est communiqué dans le devis, sans engagement.',
+    },
+    inclus: [
+      'Les vols',
+      'L’hôtel, selon le style que tu choisis',
+      'Les billets que tu veux réserver : Broadway, match NBA, Top of the Rock, MoMA, Empire State Building…',
+      'L’itinéraire détaillé et une eSim',
+      'Une assistance 24 h/24 pendant ton voyage',
+      'Des options d’annulation flexibles et la protection de tes fonds',
+      'Un voyage ajusté à tes dates et à tes options',
+    ],
+    options: [
+      {
+        label: 'Hôtel',
+        texte:
+          'à Midtown, du simple et bien placé au haut de gamme, selon ton budget',
+      },
+      {
+        label: 'Billets',
+        texte:
+          'Broadway, match NBA, Top of the Rock, MoMA, Empire State Building, à ajouter selon tes envies',
+      },
+      {
+        label: 'Ajoute un jour à Harlem',
+        texte: 'brownstones, histoire musicale, soul food et messe gospel',
+      },
+    ],
+    formulaire: {
+      hebergements: [
+        'Hôtel simple et bien placé',
+        'Hôtel de charme',
+        'Hôtel haut de gamme',
+      ],
+      vehicules: [],
+      extra: 'Ajouter un jour à Harlem',
+    },
+    hero: nycSkyline,
+    heroAlt:
+      'La skyline de Lower Manhattan et le One World Trade Center vus depuis l’eau',
+    heroPosition: 'center 68%',
+    slide: nycCoucherSoleil,
+    slideAlt:
+      'Voyageuse de dos face à la skyline au coucher du soleil, au bord de l’Hudson',
+    gallery: [
+      nycCoucherSoleil,
+      nycStatue,
+      nycSkyline,
+      nycArchitecture,
+      nycMemorial,
+    ],
+    metaTitle: 'New York Essentials — City trip de 6 jours | Slow Adventures',
+    metaDescription:
+      'Six jours à New York imaginés par Elena : Brooklyn Bridge au lever du soleil, friperies, ferry au coucher du soleil, jazz club et match NBA.',
   },
 ];
 

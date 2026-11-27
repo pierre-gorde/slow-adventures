@@ -20,7 +20,7 @@ import { CIRCUITS_URL } from '../data/contact';
   </SectionReveal>
 
   <ul
-    class="circuit-track max-w-5xl mx-auto list-none p-0"
+    class="circuit-track max-w-6xl mx-auto list-none p-0"
     aria-label="Nos circuits"
   >
     {
@@ -76,6 +76,7 @@ import { CIRCUITS_URL } from '../data/contact';
     scroll-snap-align: center;
   }
 
+  /* Tablette : 2 par ligne. Desktop : 3 par ligne. */
   @media (min-width: 768px) {
     .circuit-track {
       display: grid;
@@ -84,6 +85,12 @@ import { CIRCUITS_URL } from '../data/contact';
       overflow: visible;
       margin-inline: auto;
       padding-inline: 0;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .circuit-track {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
 </style>

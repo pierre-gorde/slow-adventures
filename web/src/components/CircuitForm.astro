@@ -195,28 +195,32 @@ const { hebergements, vehicules, extra } = circuit.formulaire;
         </div>
       </div>
 
-      <div class="sa-field">
-        <span class="sa-choices__label" id="sa-veh-label">Véhicule</span>
-        <div
-          class="sa-choices"
-          role="radiogroup"
-          aria-labelledby="sa-veh-label"
-        >
-          {
-            vehicules.map((v, i) => (
-              <label class="sa-choice">
-                <input
-                  type="radio"
-                  name="vehicule"
-                  value={v}
-                  required={i === 0}
-                />
-                <span>{v}</span>
-              </label>
-            ))
-          }
-        </div>
-      </div>
+      {
+        vehicules.length > 0 && (
+          <div class="sa-field">
+            <span class="sa-choices__label" id="sa-veh-label">
+              Véhicule
+            </span>
+            <div
+              class="sa-choices"
+              role="radiogroup"
+              aria-labelledby="sa-veh-label"
+            >
+              {vehicules.map((v, i) => (
+                <label class="sa-choice">
+                  <input
+                    type="radio"
+                    name="vehicule"
+                    value={v}
+                    required={i === 0}
+                  />
+                  <span>{v}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+        )
+      }
 
       {
         extra && (
@@ -647,7 +651,7 @@ const { hebergements, vehicules, extra } = circuit.formulaire;
   import { trackCircuitRequest } from '../lib/analytics';
 
   const MSG_MANQUANT =
-    'Il manque quelques informations : vérifie les champs en rouge, ton hébergement, ton véhicule et la case de consentement.';
+    'Il manque quelques informations : vérifie les champs en rouge et la case de consentement.';
   const MSG_ECHEC =
     'Oups, ta demande n’a pas pu partir. Réessaie dans un instant, ou écris-moi sur WhatsApp.';
 

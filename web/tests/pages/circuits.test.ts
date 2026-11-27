@@ -86,6 +86,36 @@ describe('road time and children ages', () => {
   });
 });
 
+describe('New York Essentials', () => {
+  const page = read('../../src/pages/circuits/[slug].astro');
+
+  it('is listed as a circuit with its own content', () => {
+    expect(circuitsData).toContain("slug: 'new-york-essentials'");
+    expect(circuitsData).toContain("nom: 'New York Essentials'");
+    expect(circuitsData).toContain("duree: '6 jours'");
+    expect(circuitsData).toContain('Lever de soleil sur le Brooklyn Bridge');
+  });
+
+  it('has no vehicle question and no route map', () => {
+    expect(circuitsData).toMatch(/vehicules: \[\],/);
+    expect(form).toContain('vehicules.length > 0');
+    expect(page).toContain('circuit.carte && carteFull');
+  });
+
+  it('renders the city-trip sections only when a circuit has them', () => {
+    for (const key of [
+      'circuit.enBref',
+      'circuit.evenements',
+      'circuit.conseils',
+      'circuit.commentCaMarche',
+      'circuit.petitPlus',
+    ]) {
+      expect(page).toContain(key);
+    }
+    expect(page).toContain('circuit.inclus ?? circuitInclus');
+  });
+});
+
 describe('contact links', () => {
   it('uses the 15-minute Calendly event', () => {
     expect(contact).toContain(

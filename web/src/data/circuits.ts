@@ -31,6 +31,11 @@ import nycArchitecture from '../assets/images/circuits/new-york/02-architecture-
 import nycMemorial from '../assets/images/circuits/new-york/03-memorial-911.webp';
 import nycSkyline from '../assets/images/circuits/new-york/04-skyline-manhattan.webp';
 import nycStatue from '../assets/images/circuits/new-york/05-statue-de-la-liberte.webp';
+import nycCentralParkAutomne from '../assets/images/circuits/new-york/06-central-park-automne.webp';
+import nycMoma from '../assets/images/circuits/new-york/07-moma-nuit-etoilee.webp';
+import nycCentralParkElena from '../assets/images/circuits/new-york/08-central-park-elena.webp';
+import nycTopOfTheRock from '../assets/images/circuits/new-york/09-top-of-the-rock-nuit.webp';
+import nycDumbo from '../assets/images/circuits/new-york/10-dumbo-manhattan-bridge.webp';
 
 /** Partie d'une journée détaillée (« Matin », « Le soir »…). */
 export interface CircuitEtapeBloc {
@@ -652,8 +657,13 @@ export const circuits: Circuit[] = [
       'Voyageuse de dos face à la skyline au coucher du soleil, au bord de l’Hudson',
     gallery: [
       nycCoucherSoleil,
+      nycCentralParkElena,
+      nycDumbo,
+      nycTopOfTheRock,
       nycStatue,
       nycSkyline,
+      nycCentralParkAutomne,
+      nycMoma,
       nycArchitecture,
       nycMemorial,
     ],

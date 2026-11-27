@@ -12,6 +12,10 @@ export default defineConfig({
   // Les pages /destinations/<pays>/ restent en ligne pour le référencement.
   redirects: {
     '/destinations': '/circuits/',
+    // Circuits masqués (`masque: true` dans src/data/circuits.ts) :
+    // leur ancienne adresse renvoie vers la liste. Retirer la ligne si on
+    // réaffiche le circuit (vérifié par tests/pages/circuits.test.ts).
+    '/circuits/rocheuses-canadiennes': '/circuits/',
   },
   integrations: [
     sitemap({

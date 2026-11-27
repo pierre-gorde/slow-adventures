@@ -7,7 +7,7 @@ import ScrollHint from '../../components/ScrollHint.astro';
 import DestinationGallery from '../../components/DestinationGallery.astro';
 import CircuitForm from '../../components/CircuitForm.astro';
 import {
-  circuits,
+  circuitsVisibles,
   circuitInclus,
   circuitInclusNote,
   circuitPrix,
@@ -21,7 +21,7 @@ import {
 } from '../../data/contact';
 
 export function getStaticPaths() {
-  return circuits.map((circuit) => ({
+  return circuitsVisibles.map((circuit) => ({
     params: { slug: circuit.slug },
     props: { circuit },
   }));

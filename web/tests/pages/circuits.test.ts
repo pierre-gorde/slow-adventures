@@ -116,7 +116,17 @@ describe('New York Essentials', () => {
     expect(nyc).toContain('s’acclimater à la ville');
   });
 
-  it('has no vehicle question and no route map', () => {
+  it('has a route map, the common included list and no budget tip', () => {
+    const nyc = circuitsData.slice(
+      circuitsData.indexOf("slug: 'new-york-essentials'")
+    );
+    expect(nyc).toContain('carte: nycCarte');
+    expect(nyc).not.toMatch(/\n\s*inclus: \[/);
+    expect(nyc).not.toContain('Budget sur place');
+    expect(nyc).not.toContain('fais la demande en ligne');
+  });
+
+  it('has no vehicle question; the map section stays optional', () => {
     expect(circuitsData).toMatch(/vehicules: \[\],/);
     expect(form).toContain('vehicules.length > 0');
     expect(page).toContain('circuit.carte && carteFull');
